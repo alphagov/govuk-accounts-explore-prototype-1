@@ -1,0 +1,33 @@
+{%- macro list() -%}
+  <div class="xpl-tabs__banner"></div>
+  <div class="xpl-tabs__list-outer">
+    <p class="xpl-tabs__title">On this page</p>
+    <ul class="xpl-tabs__list">{{ caller() }}</ul>
+  </div>
+{%- endmacro -%}
+
+{%- macro content() -%}
+  <div class="xpl-tabs__content-outer">
+    <div class="xpl-tabs__content">{{ caller() }}</div>
+  </div>
+{%- endmacro -%}
+
+{%- macro link(text, panelId) -%}
+    <a class="xpl-tabs__toggle" href="#{{ panelId }}">{{ text }}</a>
+{%- endmacro -%}
+
+{%- macro selectedLink(text, panelId) -%}
+    <a class="xpl-tabs__toggle xpl-tabs__toggle--selected" href="#{{ panelId }}">{{ text }}</a>
+{%- endmacro -%}
+
+{%- macro item(text, panelId) -%}
+    <li class="xpl-tabs__item">{{ link(text, panelId) }}</li>
+{%- endmacro -%}
+
+{%- macro selectedItem(text, panelId) -%}
+    <li class="xpl-tabs__item">{{ selectedLink(text, panelId) }}</li>
+{%- endmacro -%}
+
+{%- macro panel(id) -%}
+    <div class="xpl-tabs__panel" id="{{ id }}">{{ caller() }}</div>
+{%- endmacro -%}

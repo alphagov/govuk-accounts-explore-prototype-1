@@ -1,0 +1,20 @@
+{% macro accordion(options) %}
+  <div class="gem-c-accordion govuk-!-margin-bottom-6" {{ "id="+options.id if options.id }} data-module="gem-accordion">
+
+    {% for section in options.items  %}
+
+      <section class="gem-c-accordion__section">
+        <div class="gem-c-accordion__section-header">
+          <h2 class="gem-c-accordion__section-heading">
+            <span id="default-id-23a888a4-heading-1" class="gem-c-accordion__section-button">{{ section.heading.text }}</span>
+          </h2>
+        </div>
+        <div id="default-id-23a888a4-content-1" class="gem-c-accordion__section-content" aria-label="{{ section.heading.text }}">
+          <p class='govuk-body'>
+            {{ section.content.html | safe }}
+          </p>
+        </div>
+    </section>
+    {% endfor %}
+  </div>
+{% endmacro %}

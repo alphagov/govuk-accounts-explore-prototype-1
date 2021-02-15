@@ -1,0 +1,11 @@
+<link href="/public/css/explore.css" rel="stylesheet" type="text/css" />
+<link href="/public/css/explore-menu.css" rel="stylesheet" type="text/css" />
+<link href="/public/css/govuk.css" rel="stylesheet" type="text/css" />
+<link href="/public/css/govuk-accordion.css" rel="stylesheet" type="text/css" />
+
+<!--[if lte IE 8]><link href="/public/stylesheets/application-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
+<!--[if gt IE 8]><!--><link href="/public/stylesheets/application.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
+
+{% for stylesheetUrl in extensionConfig.stylesheets %}
+  <link href="{{ stylesheetUrl }}" rel="stylesheet" type="text/css" />
+{% endfor %}

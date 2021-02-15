@@ -1,0 +1,199 @@
+{
+  "id": "backstop_default",
+  "onBeforeScript": "puppet/onBefore.js",
+  "onReadyScript": "puppet/onReady.js",
+  "viewports": [
+    {
+      "label": "very narrow",
+      "width": 320,
+      "height": 480
+    },
+    {
+      "label": "narrow",
+      "width": 360,
+      "height": 480
+    },
+    {
+      "label": "mobile",
+      "width": 512,
+      "height": 480
+    },
+    {
+      "label": "desktop",
+      "width": 1124,
+      "height": 768
+    }
+  ],
+  "scenarios": [
+    {
+      "label": "Explore Homepage",
+      "url": "http://localhost:3000/",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Departments page",
+      "url": "http://localhost:3000/government/organisations",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Specialist Topics Page",
+      "url": "http://localhost:3000/topic",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "misMatchThreshold" : 0.1,
+      "requireSameDimensions" : false
+    },
+    {
+      "label": "Births Mainstream Topics Page",
+      "url": "http://localhost:3000/browse/births-deaths-marriages",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "misMatchThreshold" : 0.1,
+      "requireSameDimensions" : false
+    },
+    {
+      "label": "Benefits specialist topics Page",
+      "url": "http://localhost:3000/topic/benefits-credits",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Universal credit mainstream subtopic",
+      "url": "http://localhost:3000/browse/benefits/universal-credit",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Mainstream subtopic with accordion",
+      "url": "http://localhost:3000/browse/business/setting-up",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Benefits specialist topics Page",
+      "url": "http://localhost:3000/topic/benefits-credits",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Specialist topic page (no tabs)",
+      "url": "http://localhost:3000/topic/further-education-skills",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Benefits specialist topics Page (activity tab)",
+      "url": "http://localhost:3000/topic/benefits-credits",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "clickSelector": "a[href='#government-activity']",
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Benefits mainstream topics page with tabs (very narrow)",
+      "url": "http://localhost:3000/browse/benefits",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Finder page with search menu open",
+      "url": "http://localhost:3000/search/all?keywords=benefits",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "clickSelector": "#xpl-search-button",
+      "misMatchThreshold" : 0.1,
+      "viewports": [
+        {
+          "label": "mobile",
+          "width": 512,
+          "height": 480
+        }
+      ]
+    },
+
+    {
+      "label": "Explore Homepage with Search dropdown open (Desktop)",
+      "url": "http://localhost:3000/",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "clickSelector": "#xpl-search-button-desktop",
+      "misMatchThreshold" : 0.1,
+      "viewports": [
+        {
+          "label": "desktop",
+          "width": 1124,
+          "height": 768
+        }
+      ]
+    },
+    {
+      "label": "Explore Homepage with Search dropdown open (Mobile)",
+      "url": "http://localhost:3000/",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "clickSelector": "#xpl-search-button",
+      "misMatchThreshold" : 0.1,
+      "viewports": [
+        {
+          "label": "mobile",
+          "width": 512,
+          "height": 480
+        }
+      ]
+    },
+    {
+      "label": "Explore Homepage with Menu dropdown open (Mobile)",
+      "url": "http://localhost:3000/",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "clickSelector": "#xpl-menu-button",
+      "misMatchThreshold" : 0.1,
+      "viewports": [
+        {
+          "label": "mobile",
+          "width": 512,
+          "height": 480
+        }
+      ]
+    },
+    {
+      "label": "Explore Homepage with Topics dropdown open (Desktop)",
+      "url": "http://localhost:3000/",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "clickSelector": "#xpl-topics-button-desktop",
+      "misMatchThreshold" : 0.1,
+      "viewports": [
+        {
+          "label": "desktop",
+          "width": 1124,
+          "height": 768
+        }
+      ]
+    },
+    {
+      "label": "Explore Homepage with Gov activity dropdown open (Desktop)",
+      "url": "http://localhost:3000/",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "clickSelector": "#xpl-activity-button-desktop",
+      "misMatchThreshold" : 0.1,
+      "viewports": [
+        {
+          "label": "desktop",
+          "width": 1124,
+          "height": 768
+        }
+      ]
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "engine_scripts": "backstop_data/engine_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
+  },
+  "report": ["browser"],
+  "engine": "puppeteer",
+  "engineOptions": {
+    "args": ["--no-sandbox"]
+  },
+  "asyncCaptureLimit": 5,
+  "asyncCompareLimit": 50,
+  "debug": false,
+  "debugWindow": false
+}
