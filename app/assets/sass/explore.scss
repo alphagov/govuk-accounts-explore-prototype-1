@@ -92,7 +92,7 @@ $wide-width: 1300px;
     li {
       padding-left: 30px;
       padding-bottom: 5px;
-      background-image: url("'/public/images/arrow.svg'");
+      background-image: url("/public/images/arrow.svg");
       background-repeat: no-repeat;
       background-position: 0 0;
       background-size: 21px;
@@ -304,7 +304,7 @@ $wide-width: 1300px;
   }
 
   .xpl-subsubtopics-section {
-      margin-top: 30px;
+    margin-top: 30px;
   }
 
   .home-numbers {
