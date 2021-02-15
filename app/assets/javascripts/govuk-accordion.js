@@ -287,5 +287,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 })(window.GOVUK.Modules)
 
 const accDivs = document.querySelectorAll('div[data-module="gem-accordion"]');
-const accs = new window.GOVUK.Modules.GemAccordion(accDivs);
-accs.start(accDivs);
+if (accDivs.length > 0) {
+  const accs = new window.GOVUK.Modules.GemAccordion(accDivs);
+  accs.start(accDivs);
+}
