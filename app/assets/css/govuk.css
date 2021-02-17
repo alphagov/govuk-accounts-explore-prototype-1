@@ -1,6 +1,16 @@
 .hidden, .js-enabled .js-hidden {
   display: none;
 }
+
+.visually-hidden, .visuallyhidden {
+    position: absolute;
+    left: -9999em;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
 .gem-c-subscription-links .gem-c-subscription-links__link,
 .gem-c-step-nav-related__link,
 .gem-c-related-navigation__section-link,
