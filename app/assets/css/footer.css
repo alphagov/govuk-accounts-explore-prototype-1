@@ -2,8 +2,12 @@
   background-color:#f3f2f1;
   border-top:10px solid #1d70b8;
   font-family: "GDS Transport", nta, arial, sans-serif;
-
 }
+
+#footer a:link {
+  text-decoration: underline;
+}
+
 #footer .govuk-link:focus,#footer #global-header .govuk-link.gem-c-search__input[type="search"]:focus,#global-header #footer .govuk-link.gem-c-search__input[type="search"]:focus {
   color:#0b0c0c
 }
