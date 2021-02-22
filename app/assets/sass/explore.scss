@@ -367,6 +367,18 @@ $wide-width: 1300px;
     margin-top: 50px;
   }
 
+  // govuk accordion overrides
+
+  .gem-c-accordion__section-content {
+    a {
+      text-decoration: underline;
+    }
+    .govuk-list li {
+      margin-bottom: 1em;
+    }
+  }
+
+
 
 }
 
