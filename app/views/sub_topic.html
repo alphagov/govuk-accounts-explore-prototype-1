@@ -41,7 +41,11 @@
               {{ subtopic_sections.items[0].content.html|safe }}
             </div>
           {% else %}
-            {{ accordion.accordion(subtopic_sections) }}
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-two-thirds">
+                {{ accordion.accordion(subtopic_sections) }}
+              </div>
+            </div>
           {% endif %}
         {% else %}
           <ul class="govuk-list xpl-subsubtopics">
