@@ -372,6 +372,9 @@ $wide-width: 1300px;
   .gem-c-accordion__section-content {
     a {
       text-decoration: underline;
+      &:focus {
+        text-decoration: none;
+      }
     }
     .govuk-list li {
       margin-bottom: 1em;
