@@ -34,38 +34,37 @@
 
     {% set topicsHtml %}
       <div class="xpl-subsubtopics-section">
-        {% if subtopic_sections %}
-          {% if subtopic_sections.items.length === 1 %}
-            <h2 class="govuk-heading-m">{{ subtopic_sections.items[0].heading.text }}</h2>
-            <div class="a-z-list">
-              {{ subtopic_sections.items[0].content.html|safe }}
-            </div>
-          {% else %}
-            <div class="govuk-grid-row">
-              <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            {% if subtopic_sections %}
+              {% if subtopic_sections.items.length === 1 %}
+                <h2 class="govuk-heading-m">{{ subtopic_sections.items[0].heading.text }}</h2>
+                <div class="a-z-list">
+                  {{ subtopic_sections.items[0].content.html|safe }}
+                </div>
+              {% else %}
                 {{ accordion.accordion(subtopic_sections) }}
+              {% endif %}
+            {% else %}
+              <ul class="govuk-list xpl-subsubtopics">
+                {% for subtopic in subtopics %}
+                  <li><a href="{{ subtopic.link }}">{{ subtopic.title }}</a></li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+
+            {% if related_topics|length > 0 %}
+              <h2 class="govuk-heading-m">Related topics</h2>
+              <div class="topic-tags">
+                <ul>
+                  {% for topic in related_topics %}
+                    <li><a href="{{ topic.link }}">{{ topic.title }}</a></li>
+                  {% endfor %}
+                </ul>
               </div>
-            </div>
-          {% endif %}
-        {% else %}
-          <ul class="govuk-list xpl-subsubtopics">
-            {% for subtopic in subtopics %}
-              <li><a href="{{ subtopic.link }}">{{ subtopic.title }}</a></li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-
-
-        {% if related_topics|length > 0 %}
-          <h2 class="govuk-heading-m">Related topics</h2>
-          <div class="topic-tags">
-            <ul>
-              {% for topic in related_topics %}
-                <li><a href="{{ topic.link }}">{{ topic.title }}</a></li>
-              {% endfor %}
-            </ul>
+            {% endif %}
           </div>
-        {% endif %}
+        </div>
       </div>
     {% endset -%}
 

@@ -64,6 +64,12 @@
       "misMatchThreshold" : 0.1
     },
     {
+      "label": "Topic page with A to Z",
+      "url": "http://localhost:3000/browse/working/finding-job",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "misMatchThreshold" : 0.1
+    },
+    {
       "label": "Mainstream subtopic with accordion",
       "url": "http://localhost:3000/browse/business/setting-up",
       "cookiePath": "backstop_data/engine_scripts/cookies.json",
