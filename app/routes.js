@@ -150,11 +150,14 @@ const augmentedBody = function (req, response, body) {
   <link href="/public/stylesheets/explore-header.css" media="all" rel="stylesheet" type="text/css" />
   ` + headerString;
 
+  const footerTemplate = fs.readFileSync('app/views/explore-footer.html', 'utf8');
+
   // Make all src and ref attributes absolute, or the server will try to
   // fetch its own version
   return body
     .replace(/(href|src)="\//g, '$1="https://www.gov.uk/')
     .replace(/<header[^]+?<\/header>/, headerStringWithCss)
+    .replace(/<footer[^]+?<\/footer>/, footerTemplate)
     .replace(
       '<div class="govuk-header__container govuk-width-container">',
       '<div class="govuk-header__container govuk-header__container--old-page govuk-width-container">')
