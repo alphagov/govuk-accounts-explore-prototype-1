@@ -54,4 +54,4 @@ windows:
         -
         - emacs -nw .
         - cd ../govuk-explore-api-prototype && bundle exec rails s -p 3050
-        - API_URL=http://localhost:3050 npm start
+        - nvm use && API_URL=http://localhost:3050 npm start
