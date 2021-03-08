@@ -173,6 +173,9 @@ $wide-width: 1300px;
     }
   }
 
+  .a-z-list a:link {
+    text-decoration: underline;
+  }
 
   .govuk-accordion, .govuk-accordion__section-header {
     margin-left: 0;
