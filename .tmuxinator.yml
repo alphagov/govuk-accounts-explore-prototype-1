@@ -51,7 +51,7 @@ windows:
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
-        -
         - emacs -nw .
+        -
         - cd ../govuk-explore-api-prototype && bundle exec rails s -p 3050
         - nvm use && API_URL=http://localhost:3050 npm start
