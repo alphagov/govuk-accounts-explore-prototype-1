@@ -1,3 +1,5 @@
+/* global $ */
+
 // Desktop: when the Topics header button is clicked
 $('#xpl-topics-menu-item, #xpl-topics-button-desktop').on('click', event => {
   event.stopPropagation();
@@ -96,7 +98,7 @@ document.getElementById('xpl-search-button').addEventListener('click', event => 
 });
 
 
-$('.xpl-backdrop').on('click', function(event) {
+$('.xpl-backdrop').on('click', function() {
   $(this).hide();
   $('.xpl-frame2').hide();
   $('#navigation-desktop li').removeClass('menu-item-open');
