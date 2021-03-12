@@ -122,13 +122,6 @@ router.get('/topic/:topicSlug/:subTopicSlug', function (req, res) {
 router.get('/topic', function( req, res ) {
   request(API_URL + '/topic', { json: true }, (error, results, body) => {
     if (error) throw error;
-    if (body.subtopics) {
-      // Add the description of each subtopic from the specialistTopics global var
-      body.subtopics = body.subtopics.map(sub => {
-        return {...sub, description: specialistTopics.find(topic => topic._id === sub.link).description };
-      });
-    }
-
     res.render('topics', body);
   });
 });
