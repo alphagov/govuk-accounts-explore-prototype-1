@@ -110,3 +110,24 @@ const cookieBanners = [
   document.querySelector('.app-cookie-banner')
 ];
 cookieBanners.forEach(banner => banner && banner.parentNode.removeChild(banner));
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  $('#xpl-topics-button-desktop').replaceWith(`
+    <button id="xpl-topics-button-desktop" class="xpl-menu__button">
+      Topics
+    </button>
+ `);
+
+  $('#xpl-activity-button-desktop').replaceWith(`
+    <button id="xpl-activity-button-desktop" class="xpl-menu__button">
+       Government activity
+    </button>
+  `);
+
+  $('#xpl-search-button-desktop').replaceWith(`
+    <button id="xpl-search-button-desktop" class="xpl-menu__button xpl-search-button">Search</button>
+  `);
+
+
+});

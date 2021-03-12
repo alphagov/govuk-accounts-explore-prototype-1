@@ -544,7 +544,6 @@ $font: "GDS Transport", nta, Arial, sans-serif;
 }
 
 
-
 // Desktop
 
 @include govuk-media-query ($from: $desktop-width) {
@@ -587,19 +586,10 @@ $font: "GDS Transport", nta, Arial, sans-serif;
           color: govuk-colour("white");
           font-size: 16px;
         }
-        a:focus {
-          color: govuk-colour("black");
-        }
         &--active {
           a:link, a:visited {
             color: $govuk-link-colour;
           }
-        }
-        &#xpl-topics-menu-item {
-          padding-right: 55px;
-        }
-        &#xpl-activity-menu-item {
-          padding-right: 45px;
         }
         &#xpl-topics-menu-item, &#xpl-activity-menu-item {
           button {
@@ -662,7 +652,9 @@ $font: "GDS Transport", nta, Arial, sans-serif;
               background-position: 50% 50%;
             }
           }
-          button {
+          button, a {
+            display: block;
+            position: static;
             right: 0;
             width: 54px;
             height: 54px;
@@ -792,6 +784,33 @@ $font: "GDS Transport", nta, Arial, sans-serif;
         button {
           cursor: pointer;
           color: govuk-colour("black");
+        }
+      }
+    }
+  }
+}
+
+
+// JS-specific styling
+
+@include govuk-media-query ($from: $desktop-width) {
+  .explore-page.js-enabled {
+    .explore-header {
+      .govuk-header__container {
+        .govuk-header__navigation-item {
+          a:focus {
+            color: govuk-colour("black");
+          }
+        }
+      }
+      .xpl-nav--desktop {
+        .govuk-header__navigation-item {
+          &#xpl-topics-menu-item {
+            padding-right: 55px;
+          }
+          &#xpl-activity-menu-item {
+            padding-right: 45px;
+          }
         }
       }
     }

@@ -22,22 +22,22 @@
       <nav class="xpl-nav--desktop">
         <ul id="navigation-desktop" class="govuk-header__navigation" aria-label="Navigation menu" aria-hidden="false">
           <li id="xpl-topics-menu-item" class="govuk-header__navigation-item">
-            <button id="xpl-topics-button-desktop" class="xpl-menu__button">
-              Topics
-            </button>
+            <a href="/topic" id="xpl-topics-button-desktop">Topics</a>
+
           </li>
           <li class="govuk-header__navigation-item {% if req.url === '/government/organisations' %}govuk-header__navigation-item--active{% endif %}">
             <a href="/government/organisations">Departments</a>
           </li>
           <li id="xpl-activity-menu-item" class="govuk-header__navigation-item">
-            <button id="xpl-activity-button-desktop" class="xpl-menu__button">
+            <a id="xpl-activity-button-desktop" href="/activity">
               Government activity
-            </button>
+            </a>
           </li>
           <li id="xpl-search-menu-item" class="govuk-header__navigation-item">
-            <button id="xpl-search-button-desktop" class="xpl-menu__button xpl-search-button">Search</button>
+            <a id="xpl-search-button-desktop" href="/search" class="xpl-search-button">
+              Search
+            </a>
           </li>
-
         </ul>
 
         <div class="xpl-frame2" id="xpl-frame2-topics" style="display: none">
