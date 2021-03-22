@@ -31,6 +31,7 @@ govukTopics.fetchSpecialistTopics(body => specialistTopics=body);
 const topicPage = function(topicType, req, res) {
   const topicSlug = req.params.topicSlug;
   const url = `${API_URL}/${topicType}/${topicSlug}`;
+  console.log(`requesting ${url}`);
   request(url, { json: true }, (error, result, body) => {
     body.topicSlug = topicSlug;
     if (body.organisations) {
@@ -75,6 +76,7 @@ router.get('/browse/:topicSlug/:subTopicSlug', function (req, res) {
   const topicSlug = req.params.topicSlug;
   const subTopicSlug = req.params.subTopicSlug;
   const url = `${API_URL}/browse/${topicSlug}/${subTopicSlug}`;
+  console.log(`requesting ${url}`);
   request(url, { json: true }, (error, result, body) => {
     body.topicSlug = topicSlug;
     if (body.organisations) {
@@ -100,7 +102,7 @@ router.get('/topic/:topicSlug/:subTopicSlug', function (req, res) {
   const topicSlug = req.params.topicSlug;
   const subTopicSlug = req.params.subTopicSlug;
   const url = `${API_URL}/topic/${topicSlug}/${subTopicSlug}`;
-
+  console.log(`requesting ${url}`);
   request(url, { json: true }, (error, result, body) => {
     body.topicSlug = topicSlug;
     if (body.subtopics) {
@@ -120,7 +122,9 @@ router.get('/topic/:topicSlug/:subTopicSlug', function (req, res) {
 //----------------------
 
 router.get('/topic', function( req, res ) {
-  request(API_URL + '/topic', { json: true }, (error, results, body) => {
+  const url = `${API_URL}/topic`;
+  console.log(`requesting ${url}`);
+  request(url, { json: true }, (error, results, body) => {
     if (error) throw error;
     res.render('topics', body);
   });
