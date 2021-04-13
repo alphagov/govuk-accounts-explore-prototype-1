@@ -1,0 +1,42 @@
+/*
+ * This stylesheet contains rules to change the design of any gov.uk page that
+ * is "passed through" by this app (ie, any page except home, topics, subtopics,
+ * and a couple others)
+ */
+
+@import "colour";
+
+$govuk-secondary-text-colour: #505a5f;
+
+.global-bar {
+  border-bottom: none;
+}
+
+.govuk-breadcrumbs {
+  position: relative;
+  width: calc(100vw - 30px);
+  margin: 0 -15px 0 -15px;
+  padding: 15px;
+  background: govuk-colour("light-grey");
+
+  &__link:link {
+    color: $govuk-secondary-text-colour;
+  }
+}
+
+
+
+@media (min-width: 40.0625em) {
+  .govuk-breadcrumbs {
+    width: calc(100vw - 60px);
+    padding: 30px;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    &__list {
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

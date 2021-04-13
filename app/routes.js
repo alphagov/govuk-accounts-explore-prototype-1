@@ -145,6 +145,7 @@ const augmentedBody = function (req, response, body) {
   const headerString = nunjucks.renderString(headerTemplate, {req});
   const headerStringWithCss = `
   <link href="/public/stylesheets/explore-header.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/public/stylesheets/explore-govuk-overrides.css" media="all" rel="stylesheet" type="text/css" />
   ` + headerString;
 
   const footerTemplate = fs.readFileSync('app/views/explore-footer.html', 'utf8');
