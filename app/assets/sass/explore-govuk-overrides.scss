@@ -19,7 +19,7 @@ $govuk-secondary-text-colour: #505a5f;
   padding: 15px;
   background: govuk-colour("light-grey");
 
-  &__link:link {
+  &__link:link, &__link:link:visited {
     color: $govuk-secondary-text-colour;
   }
 }
