@@ -22,6 +22,10 @@ $govuk-secondary-text-colour: #505a5f;
   &__link:link, &__link:visited, &__link:hover, &__link:active, &__link:focus {
     color: $govuk-secondary-text-colour;
   }
+
+  .govuk-breadcrumbs__list-item {
+    margin-bottom: 0;
+  }
 }
 
 
