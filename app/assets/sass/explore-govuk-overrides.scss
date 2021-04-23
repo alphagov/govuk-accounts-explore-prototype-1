@@ -23,11 +23,12 @@ $govuk-secondary-text-colour: #505a5f;
     color: $govuk-secondary-text-colour;
   }
 
-  .govuk-breadcrumbs__list-item {
-    margin-bottom: 0;
+  .gem-c-contextual-breadcrumbs {
+    .govuk-breadcrumbs__list-item {
+      margin-bottom: 0;
+    }
   }
 }
-
 
 
 @media (min-width: 40.0625em) {
