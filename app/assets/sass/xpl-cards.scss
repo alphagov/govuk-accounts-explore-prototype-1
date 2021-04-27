@@ -8,6 +8,11 @@ $govuk-secondary-text-colour: #505a5f;
 $link-hover-colour: #003078;
 $menu-hover-colour: #005ff8;
 
+$govuk-link-underline-thickness: 0.0625rem !default;
+$govuk-link-hover-underline-thickness: unquote("max(.1875rem, .12em)") !default;
+$govuk-link-underline-offset: 0.1em !default;
+$govuk-text-colour: govuk-colour("black") !default;
+
 $mobile-width: 320px;
 $tablet-width: 740px;
 $desktop-width: 768px;
@@ -25,6 +30,7 @@ $wide-width: 1000px;
       padding-top: 7px;
     }
   }
+
   h3 {
     font-size: 18px;
     float: left;
@@ -46,12 +52,23 @@ $wide-width: 1000px;
         height: calc(100% - 15px);
         display: block;
         padding-top: 15px;
+        text-decoration: none;
+        h3 {
+          text-decoration: underline;
+          text-decoration-thickness: $govuk-link-underline-thickness;
+        }
+
         &:hover {
           background: #f3f2f1;
+
+          h3 {
+            text-decoration-thickness: $govuk-link-hover-underline-thickness;
+          }
         }
         &:focus {
           box-shadow: 0 2px #ffdd00, 0 -4px #0b0c0c;
         }
+
       }
       p {
         font-size: 16px;
