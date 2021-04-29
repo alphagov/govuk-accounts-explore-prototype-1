@@ -30,6 +30,18 @@ $govuk-secondary-text-colour: #505a5f;
   }
 }
 
+.content.taxon-page {
+  .govuk-breadcrumbs {
+    &__link:link,
+    &__link:visited,
+    &__link:hover,
+    &__link:active,
+    &__link:focus {
+      color: $govuk-secondary-text-colour;
+    }
+  }
+}
+
 
 @media (min-width: 40.0625em) {
   .govuk-breadcrumbs {
