@@ -30,6 +30,12 @@ $govuk-secondary-text-colour: #505a5f;
   }
 }
 
+.covid__page-header {
+  .govuk-breadcrumbs {
+    background-color: #1d70b8;
+  }
+}
+
 .content.taxon-page {
   .govuk-breadcrumbs {
     &__link:link,
