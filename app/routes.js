@@ -154,13 +154,15 @@ const augmentedBody = function (req, response, body) {
   // fetch its own version
   return body
     .replace(/(href|src)="\//g, '$1="https://www.gov.uk/')
+    .replace(/<body( class=")*?/, '<body class="explore-body"')
     .replace(/<header[^]+?<\/header>/, headerStringWithCss)
     .replace(/<footer[^]+?<\/footer>/, footerTemplate)
     .replace(
       '<div class="govuk-header__container govuk-width-container">',
       '<div class="govuk-header__container govuk-header__container--old-page govuk-width-container">')
-    .replace(/<\/body>/,'<script src="/public/javascripts/explore-header.js"></script>\n</body>')
-    .replace(/<a(.*) href\s*=\s*(['"])\s*(https:)?\/\/www.gov.uk\//g,'<a $1 href=$2/');
+    .replace('<div class="gem-c-title govuk-!-margin-top-8 govuk-!-margin-bottom-8">', '<div class="gem-c-title govuk-!-margin-bottom-8">')
+    .replace(/<\/body>/, '<script src="/public/javascripts/explore-header.js"></script>\n</body>')
+    .replace(/<a(.*) href\s*=\s*(['"])\s*(https:)?\/\/www.gov.uk\//g, '<a $1 href=$2/');
 };
 
 
