@@ -1,21 +1,23 @@
 @import "media-queries";
 @import "sass-mq";
 @import "colour";
-
+@import "xpl-link-styles";
 
 $govuk-link-colour: govuk-colour("blue") !default;
 $govuk-border-colour: govuk-colour("mid-grey");
 $link-hover-colour: #003078;
 $menu-hover-colour: #005ff8;
 
+// $govuk-link-underline-thickness: 0.0625rem !default;
+// $govuk-link-hover-underline-thickness: unquote("max(.1875rem, .12em)") !default;
+// $govuk-link-underline-offset: 0.1em !default;
+// $govuk-text-colour: govuk-colour("black") !default;
+
 $mobile-width: 320px;
 $tablet-width: 740px;
 $desktop-width: 768px;
 //$desktop-width: 960px;
 $wide-width: 1300px;
-
-
-
 
 #global-header-bar-outer {
   background: #283135;
@@ -142,6 +144,10 @@ $wide-width: 1300px;
     padding-top: 30px;
     margin-bottom: 30px;
     padding-bottom: 6px;
+
+    a {
+      text-decoration: none;
+    }
 
     &__chevron {
       background-image: url("/public/images/chevron-right-505a5f.svg");
@@ -310,6 +316,21 @@ $wide-width: 1300px;
     margin-top: 30px;
   }
 
+  .home-numbers__link {
+    text-decoration: none;
+    line-height: 1.5;
+
+    .home-numbers__label{
+      margin-bottom: $govuk-link-underline-thickness;
+      border-bottom: $govuk-link-underline-thickness solid;
+
+      &:hover {
+        margin-bottom: $govuk-link-underline-thickness * -1;
+        border-bottom: $govuk-link-underline-thickness solid;
+      }
+    }
+  }
+
   .home-numbers {
     &__large {
       font-size: 88px;
@@ -357,8 +378,17 @@ $wide-width: 1300px;
     }
   }
 
+
   a {
-    text-decoration: none;
+    @extend %xpl-a-link;
+
+    &:hover {
+      @extend %xpl-a-hover;
+    }
+
+    &:focus {
+      text-decoration: none;
+    }
   }
 
   .govuk-accordion li {
@@ -370,11 +400,21 @@ $wide-width: 1300px;
     margin-top: 50px;
   }
 
+  // Override footer links
+  #footer {
+    a:hover {
+      text-decoration-thickness: $govuk-link-underline-thickness * 3;
+    }
+  }
+
   // govuk accordion overrides
 
   .gem-c-accordion__section-content {
     a {
       text-decoration: underline;
+      &:hover {
+        text-decoration-thickness: $govuk-link-hover-underline-thickness;
+      }
       &:focus {
         text-decoration: none;
       }

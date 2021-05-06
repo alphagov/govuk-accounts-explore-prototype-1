@@ -62,3 +62,29 @@ $govuk-secondary-text-colour: #505a5f;
     }
   }
 }
+
+
+//================================================================
+// Links
+// taken from https://github.com/alphagov/govuk-frontend/pull/2183/files
+
+/*
+$govuk-link-underline-thickness: 0.0625rem !default;
+$govuk-link-hover-underline-thickness: unquote("max(.1875rem, .12em)") !default;
+$govuk-link-underline-offset: 0.1em !default;
+$govuk-text-colour: govuk-colour("black") !default;
+*/
+
+/*
+a:link {
+  text-decoration: underline;
+  text-underline-offset: $govuk-link-underline-offset;
+  text-decoration-thickness: $govuk-link-underline-thickness;
+}
+*/
+
+/*
+margin-bottom: $govuk-heavy-link-underline-thickness * -1;
+border-bottom: $govuk-heavy-link-underline-thickness solid;
+*/
+
