@@ -29,6 +29,9 @@ $govuk-assets-path: '/govuk/assets/';
 
 .inverse-header a {
   color: govuk-colour("white");
+  &:focus {
+    color: $govuk-link-active-colour;
+  }
 }
 
 .inverse-header--full-width {

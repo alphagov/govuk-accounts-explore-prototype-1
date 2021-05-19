@@ -17,7 +17,14 @@
   <div class="xpl-topics-page xpl-topic-page {{containerClasses}}">
     <header class="inverse-header">
       <div class="header-inner">
-        <a class="govuk-back-link" href="{{ parent.link }}">{{ parent.title }}</a>
+        <ol class="xpl-breadcrumb">
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="{{ parent.link }}">{{ parent.title }}</a>
+            </li>
+          </ol>
       </div>
 
       <div class="header-inner">

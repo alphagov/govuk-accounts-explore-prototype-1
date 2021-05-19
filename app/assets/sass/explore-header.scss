@@ -1,6 +1,7 @@
 @import "media-queries";
 @import "sass-mq";
 @import "colour";
+@import "xpl-link-styles";
 
 
 $govuk-link-colour: govuk-colour("blue") !default;
@@ -84,11 +85,14 @@ $font: "GDS Transport", nta, Arial, sans-serif;
     font-family: $font;
   }
 
-  a.govuk-header__link--homepage {
-    &:hover,
-    &:active {
-      margin-bottom: $govuk-heavy-link-underline-thickness *.5;
-      border-bottom: $govuk-heavy-link-underline-thickness solid;
+  .govuk-header__logo {
+    a {
+      text-decoration: underline;
+      &:hover,
+      &:active {
+        border-bottom: 3px solid;
+        margin-bottom: -3px;
+      }
     }
   }
 
@@ -743,6 +747,7 @@ $font: "GDS Transport", nta, Arial, sans-serif;
           }
         }
       }
+
       .xpl-frame2 {
         position: absolute;
         left: 50%;
@@ -768,20 +773,21 @@ $font: "GDS Transport", nta, Arial, sans-serif;
             padding-top: 0;
           }
 
-          a {
-            border-bottom: $govuk-link-underline-thickness solid;
+          li a {
+            text-decoration: underline;
 
             &:link {
               font-weight: bold;
             }
 
-            &:hover {
-              color: $link-hover-colour;
-              border-bottom: $govuk-heavy-link-underline-thickness solid;
+            &:hover,
+            &:focus {
+              margin-bottom: 5px;
+              text-decoration-thickness: 3px;
+              text-underline-offset: 0.15em;
             }
 
             &:focus {
-              margin-bottom: 0;
               border-bottom: 0;
             }
           }
@@ -847,11 +853,22 @@ $font: "GDS Transport", nta, Arial, sans-serif;
 
     $govuk-heavy-link-underline-thickness: 3px !default;
     .govuk-header__navigation-item {
-      &:hover {
-        button, a:link, a:visited {
+      a {
+        &:link,
+        &:visited {
           text-decoration: none;
-          margin-bottom: $govuk-heavy-link-underline-thickness * -1;
-          border-bottom: $govuk-heavy-link-underline-thickness solid;
+        }
+
+        &:hover {
+          text-decoration: underline;
+          text-decoration-thickness: 3px;
+        }
+      }
+      &:hover {
+        button {
+          text-decoration: none;
+          margin-bottom: $govuk-heavy-link-underline-thickness *-1;
+          border-bottom: 3px solid;
         }
       }
       &.menu-item-open {
@@ -897,6 +914,10 @@ $font: "GDS Transport", nta, Arial, sans-serif;
   // Add extra line spacing - using padding because of the accordion markup
   .xpl-accordion__section-content p {
     padding-top: 5px;
+  }
+
+  .xpl-nav--desktop .xpl-frame2 a:focus {
+    margin-bottom: 5px;
   }
 }
 

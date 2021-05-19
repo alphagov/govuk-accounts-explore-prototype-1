@@ -7,7 +7,7 @@
 
 $govuk-secondary-text-colour: #505a5f;
 $govuk-link-underline-thickness: 0.0625rem !default;
-$govuk-link-hover-underline-thickness: unquote("max(.1875rem, .12em)") !default;
+$govuk-link-hover-underline-thickness: unquote("max(.1875em, .12em)") !default;
 $govuk-link-underline-offset: 0.15em;
 $govuk-text-colour: govuk-colour("black") !default;
 
@@ -15,11 +15,14 @@ $govuk-text-colour: govuk-colour("black") !default;
   text-decoration: underline;
   text-underline-offset: $govuk-link-underline-offset;
   text-decoration-thickness: $govuk-link-underline-thickness;
-  margin-bottom: 0.15em;
 }
 
 %xpl-a-hover {
-  text-decoration-thickness: $govuk-link-underline-thickness * 3;
+  text-decoration-thickness: $govuk-link-hover-underline-thickness;
+}
+
+%xpl-a-heavy-hover {
+  text-decoration-thickness: 3px;
 }
 
 %xpl-link-underline {
@@ -29,5 +32,5 @@ $govuk-text-colour: govuk-colour("black") !default;
 
 %xpl-link-hover {
   margin-bottom: $govuk-link-underline-thickness * -1;
-  border-bottom: $govuk-link-underline-thickness solid;
+  border-bottom: $govuk-link-hover-underline-thickness solid;
 }
