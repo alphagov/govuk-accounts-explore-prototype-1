@@ -10,7 +10,7 @@ $link-hover-colour: #003078;
 $menu-hover-colour: #005ff8;
 
 $govuk-link-underline-thickness: 0.0625rem !default;
-$govuk-heavy-link-underline-thickness: $govuk-link-underline-thickness * 3;
+$govuk-heavy-link-underline-thickness: 3px;
 $govuk-link-hover-underline-thickness: unquote("max(.1875rem, .12em)") !default;
 $govuk-link-underline-offset: 0.15em !default;
 $govuk-text-colour: govuk-colour("black") !default;
@@ -126,7 +126,7 @@ $font: "GDS Transport", nta, Arial, sans-serif;
       }
 
       a:hover {
-        margin-bottom: $govuk-link-underline-thickness * 3;
+        margin-bottom: 3px;
       }
     }
   }
@@ -348,7 +348,7 @@ $font: "GDS Transport", nta, Arial, sans-serif;
       text-decoration-thickness: $govuk-link-underline-thickness;
 
       &:hover {
-        text-decoration-thickness: $govuk-link-underline-thickness *3;
+        text-decoration-thickness: 3px;
       }
     }
   }
@@ -359,7 +359,7 @@ $font: "GDS Transport", nta, Arial, sans-serif;
       text-decoration-thickness: $govuk-link-underline-thickness;
 
       &:hover {
-        text-decoration-thickness: $govuk-link-underline-thickness *3;
+        text-decoration-thickness: 3px;
       }
     }
   }

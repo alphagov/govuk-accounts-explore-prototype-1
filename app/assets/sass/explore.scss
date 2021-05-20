@@ -325,7 +325,7 @@ $wide-width: 1300px;
       border-bottom: $govuk-link-underline-thickness solid;
 
       &:hover {
-        margin-bottom: $govuk-link-underline-thickness * -1;
+        margin-bottom: -3px;
         border-bottom: $govuk-link-underline-thickness solid;
       }
     }
@@ -458,7 +458,7 @@ $wide-width: 1300px;
   // Override footer links
   #footer {
     a:hover {
-      text-decoration-thickness: $govuk-link-underline-thickness * 3;
+      text-decoration-thickness: 3px;
     }
   }
 
