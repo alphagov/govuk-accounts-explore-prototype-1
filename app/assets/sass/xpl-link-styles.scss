@@ -31,6 +31,6 @@ $govuk-text-colour: govuk-colour("black") !default;
 }
 
 %xpl-link-hover {
-  margin-bottom: $govuk-link-underline-thickness * -1;
+  margin-bottom: 3px;
   border-bottom: $govuk-link-hover-underline-thickness solid;
 }
