@@ -48,8 +48,16 @@ const topicPage = function (topicType, req, res) {
     if (body.subtopics) {
       // Add the description of each subtopic from the appropriate topics global var
       body.subtopics = body.subtopics.map(sub => {
+        console.log('SUBTOPIC')
+        console.log(sub)
+
+        // TODO: Hardcoded for now as we're only mocking one specialist topic for now
+        if (sub.link === '/browse/visas-immigration/immigration-operational-guidance') {
+          return { ...sub, description: 'Immigration Rules, forms and guidance for advisers' }
+        }
+
         const topicList = topicType === 'browse' ? mainstreamTopics : specialistTopics
-        return {...sub, description: topicList.find(topic => topic._id === sub.link).description }
+        return { ...sub, description: topicList.find(topic => topic._id === sub.link).description }
       })
     }
     res.render('topic', body)
@@ -57,21 +65,21 @@ const topicPage = function (topicType, req, res) {
 }
 
 router.get('/browse/:topicSlug', function (req, res) {
-  return topicPage('browse', req, res);
+  return topicPage('browse', req, res)
 })
 
 
 router.get('/topic/:topicSlug', function (req, res) {
-  return topicPage('topic', req, res);
+  return topicPage('topic', req, res)
 })
 
 // ---- Mainstream subtopics
 
 router.get('/browse/:topicSlug/:subTopicSlug', function (req, res) {
-  const topicSlug = req.params.topicSlug;
-  const subTopicSlug = req.params.subTopicSlug;
-  const url = `${API_URL}/browse/${topicSlug}/${subTopicSlug}`;
-  console.log(`requesting ${url}`);
+  const topicSlug = req.params.topicSlug
+  const subTopicSlug = req.params.subTopicSlug
+  const url = `${API_URL}/browse/${topicSlug}/${subTopicSlug}`
+  console.log(`requesting ${url}`)
   request(url, { json: true }, (_error, result, body) => {
     body.topicSlug = topicSlug
     if (body.organisations) {
@@ -130,7 +138,6 @@ router.get('/', function (req, res) {
 
 // Modifies the body of all pages returned from gov.uk to add the Explore elements
 const augmentedBody = function (req, response, body) {
-
   const headerTemplate = fs.readFileSync('app/views/explore-header.html', 'utf8')
   const headerString = nunjucks.renderString(headerTemplate, {req})
   const headerStringWithCss = `
@@ -155,13 +162,13 @@ const augmentedBody = function (req, response, body) {
 }
 
 // Constructs the URL to get the page body from on gov.uk
-const govUkUrl = function(req) {
-  var url_parts = url.parse(req.url, false)
-  var query = url_parts.query
+const govUkUrl = function (req) {
+  var urlParts = new URL(req.url, 'https://www.gov.uk')
+  var query = urlParts.query
   return 'https://www.gov.uk' + req.path + (query? '?' + query : '')
 }
 
-router.get('/*', function(req,res) {
+router.get('/*', function (req,res) {
   request(govUkUrl(req), function (error, response, body) {
     if (error) throw error
     if (response.headers['content-type'].indexOf('application/json') !== -1) {
@@ -172,7 +179,7 @@ router.get('/*', function(req,res) {
   })
 })
 
-router.post('/*', function(req, res) {
+router.post('/*', function (req, res) {
   request.post({
     url: govUkUrl(req),
     followAllRedirects: true,
