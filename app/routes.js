@@ -164,8 +164,8 @@ const augmentedBody = function (req, response, body) {
 // Constructs the URL to get the page body from on gov.uk
 const govUkUrl = function (req) {
   var urlParts = new URL(req.url, 'https://www.gov.uk')
-  var query = urlParts.query
-  return 'https://www.gov.uk' + req.path + (query? '?' + query : '')
+  var query = urlParts.search
+  return 'https://www.gov.uk' + req.path + (query? query : '')
 }
 
 router.get('/*', function (req,res) {
