@@ -134,6 +134,13 @@ router.get('/', function (req, res) {
 })
 
 // ==================================================
+// All accounts stuff starts here
+
+router.get('/account/home', function (req, res) {
+  res.render('account/home')
+})
+
+// ==================================================
 // All other URLs
 
 // Modifies the body of all pages returned from gov.uk to add the Explore elements
