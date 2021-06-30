@@ -669,7 +669,7 @@ $font: "GDS Transport", nta, Arial, sans-serif;
             color: $govuk-link-colour;
           }
         }
-        &#xpl-topics-menu-item, &#xpl-activity-menu-item {
+        &#xpl-topics-menu-item, &#xpl-activity-menu-item, &#xpl-account-menu-item {
           button {
             font-family: $font;
             -webkit-font-smoothing: antialiased;
@@ -925,7 +925,8 @@ $font: "GDS Transport", nta, Arial, sans-serif;
   .js-enabled .explore-header {
     .govuk-header__container {
       .govuk-header__navigation-item {
-        a:link, a:visited, button#xpl-activity-button-desktop, button#xpl-topics-button-desktop {
+        a:link, a:visited, button#xpl-activity-button-desktop,
+        button#xpl-topics-button-desktop, button#xpl-account-button-desktop {
           font-size: 16px;
         }
         a:focus {
