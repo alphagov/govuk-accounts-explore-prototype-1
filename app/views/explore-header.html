@@ -33,6 +33,9 @@
               Government activity
             </a>
           </li>
+          <li class="govuk-header__navigation-item {% if req.url === '/account/home' %}govuk-header__navigation-item--active{% endif %}">
+            <a href="/account/home">Sign in</a>
+          </li>
           <li id="xpl-search-menu-item" class="govuk-header__navigation-item">
             <a id="xpl-search-button-desktop" href="/search" class="xpl-search-button">
               Search
@@ -233,6 +236,15 @@
                       <p>Government data, freedom of information responses and corporate reports</p>
                     </li>
                   </ul>
+                </div>
+              </div>
+              <div class="xpl-accordion__section-link">
+                <div class="xpl-accordion__section-header">
+                  <h2 class="xpl-accordion__section-heading">
+                    <a href="/account/home" id="xpl-accordion-default-heading-2">
+                      Sign In
+                    </a>
+                  </h2>
                 </div>
               </div>
             </div>
