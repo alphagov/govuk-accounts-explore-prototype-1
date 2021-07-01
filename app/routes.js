@@ -136,6 +136,21 @@ router.get('/', function (req, res) {
 // ==================================================
 // All accounts stuff starts here
 
+router.get('/sign-in', function (req, res) {
+  res.render('account/sign-in')
+})
+
+router.post('/sign-in/set-cookie', function (req, res) {
+  res.redirect('/account/home')
+})
+
+router.get('/sign-out', function (req, res) {
+  if(req.session.data.signedIn) {
+    delete req.session.data.signedIn
+  }
+  res.redirect('/')
+})
+
 router.get('/account/home', function (req, res) {
   res.render('account/home')
 })
