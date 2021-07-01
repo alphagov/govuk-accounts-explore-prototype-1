@@ -155,6 +155,14 @@ router.get('/account/home', function (req, res) {
   res.render('account/home')
 })
 
+router.get('/account/manage', function (req, res) {
+  res.render('account/manage')
+})
+
+router.get('/account/other-accounts', function (req, res) {
+  res.render('account/sign-in-to-another-service')
+})
+
 // ==================================================
 // All other URLs
 
