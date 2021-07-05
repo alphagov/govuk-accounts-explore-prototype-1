@@ -7,12 +7,31 @@
     Manage your GOV.UK emails
   </h1>
 
-  {% if data['notifications'] is iterable %}
-    {% for url in data['notifications'] %}
-      <p>
-        <a href="{{url}}">{{ url | urlToTitle(1) }}</a>
-      </p>
+
+
+
+{% set notificationTemp = data['notifications'] | default([]) %}
+
+  {% if not ( notificationTemp == "") %}
+
+  {{ govukInsetText({
+    html: "<a href='#'>Unsubscribe from everything</a>"
+  }) }}
+
+
+  <ul class="govuk-list">
+
+    {% for url in notificationTemp %}
+      <li>
+        <p class="govuk-!-margin-bottom-0">Page</p>
+        <h2 class="govuk-heading-m govuk-!-padding-top-0 govuk-!-padding-bottom-3"><a href="{{url}}">{{ url | urlToTitle(1) }}</a></h2>
+        <p >You subscribed on 7 July 2021</p>
+        <p>You’ll get an email each time this page is updated.</p>
+        <p><a href="#">Change how often you get emails</a></p>
+        <p><a href="#">Unsubscribe from this page</a></p>
+      </li>
     {% endfor %}
+</ul>
   {% else %}
     <p>No notifications</p>
   {% endif %}
