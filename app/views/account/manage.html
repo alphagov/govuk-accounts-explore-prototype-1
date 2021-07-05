@@ -3,23 +3,17 @@
 {% import "includes/xpl-tabs.njk" as tabs %}
 
 {% block account %}
+  <h1 class="gem-c-heading govuk-heading-xl govuk-!-padding-top-0 govuk-!-margin-bottom-4">
+    Manage your GOV.UK emails
+  </h1>
 
-<h1 class="gem-c-heading govuk-heading-xl govuk-!-padding-top-0 govuk-!-margin-bottom-4">
-  Manage your GOV.UK emails
-</h1>
-
-{% if not data['notifications'] %}
-<p>No notifications</p>
-
-{% else %}
-
-{% for url in data['notifications'] %}
-
-<p><a href="{{url}}">{{url | urlToTitle(1)   }}</a></p>
-
-{% endfor %}
-
-
-
-{% endif %}
+  {% if data['notifications'] is iterable %}
+    {% for url in data['notifications'] %}
+      <p>
+        <a href="{{url}}">{{ url | urlToTitle(1) }}</a>
+      </p>
+    {% endfor %}
+  {% else %}
+    <p>No notifications</p>
+  {% endif %}
 {% endblock %}
