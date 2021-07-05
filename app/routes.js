@@ -269,7 +269,7 @@ router.get('/includes/banner', function (req, res) {
 
 router.post('/search/router', function (req, res) {
   var string = req.session.data['keywords'].replace(/ /g, '+');
-  res.redirect('/search/all?keywords=' + string + '&content_purpose_supergroup%5B%5D=services&order=relevance'  )
+  res.redirect('/search/all?keywords=' + string + '&content_purpose_supergroup%5B%5D=services&order=relevance')
 })
 
 
@@ -278,10 +278,8 @@ router.post('/search/router', function (req, res) {
 
 // Modifies the body of all pages returned from gov.uk to add the Explore and Accounts elements
 const augmentedBody = function (req, response, body) {
-
-
   const headerTemplate = fs.readFileSync('app/views/explore-header.html', 'utf8')
-  const headerString = nunjucks.renderString(headerTemplate, {req, signedIn: req.session.data.signedIn})
+  const headerString = nunjucks.renderString(headerTemplate, { req, signedIn: req.session.data.signedIn })
 
   const headerStringWithCss = `
   <link href="/public/stylesheets/explore-header.css" media="all" rel="stylesheet" type="text/css" />
@@ -290,19 +288,19 @@ const augmentedBody = function (req, response, body) {
 
   const footerTemplate = fs.readFileSync('app/views/explore-footer.html', 'utf8')
   const notificationsBase = fs.readFileSync('app/views/includes/print-notifications.html', 'utf8')
-  const notificationsTemplate = nunjucks.renderString(notificationsBase, {signedIn: req.session.data.signedIn, currentURL: req.url, notifications: req.session.data.notifications})
+  const notificationsTemplate = nunjucks.renderString(notificationsBase, { signedIn: req.session.data.signedIn, currentURL: req.url, notifications: req.session.data.notifications })
 
-var bannerAlert = req.session.data.bannerAlert; // only set from a router
+  var bannerAlert = req.session.data.bannerAlert; // only set from a router
 
-const topBannerHTML = fs.readFileSync('app/views/includes/banner.html', 'utf8')
-const topBannerTemplate = nunjucks.renderString(topBannerHTML, { previousURL: bannerAlert })
+  const topBannerHTML = fs.readFileSync('app/views/includes/banner.html', 'utf8')
+  const topBannerTemplate = nunjucks.renderString(topBannerHTML, { previousURL: bannerAlert })
 
 
-const pageURL = req.url // this is a hack to get a unique identifer on each page
+  const pageURL = req.url // this is a hack to get a unique identifer on each page
 
-if (bannerAlert){
-  delete req.session.data.bannerAlert; // should be a flash alert, can be removed once we've got the variable
-}
+  if (bannerAlert) {
+    delete req.session.data.bannerAlert; // should be a flash alert, can be removed once we've got the variable
+  }
 
   // Make all src and ref attributes absolute, or the server will try to
   // fetch its own version
@@ -310,21 +308,18 @@ if (bannerAlert){
     .replace(/(href|src)="\//g, '$1="https://www.gov.uk/')
     .replace(/<body( class=")*?/, '<body class="explore-body ' + pageURL + '"')
     .replace(/<header[^]+?<\/header>/, headerStringWithCss)
-    .replace(/<main role="main" id="content" class="detailed-guide" lang="en">/, topBannerTemplate + '<main role="main" id="content" class="detailed-guide" lang="en">' )
+    .replace(/<main role="main" id="content" class="detailed-guide" lang="en">/, topBannerTemplate + '<main role="main" id="content" class="detailed-guide" lang="en">')
 
     .replace(/<footer[^]+?<\/footer>/, footerTemplate)
 
     .replace(/<div class="gem-c-print-link[^]+?<\/div>/, notificationsTemplate)
     .replace(/<div class="gem-c-print-link[^]+?<\/div>/, notificationsTemplate) // hack to get bottom of page
-     .replace(
+    .replace(
       '<div class="govuk-header__container govuk-width-container">',
       '<div class="govuk-header__container govuk-header__container--old-page govuk-width-container">')
 
-    .replace(/<\/body>/,'<script src="/public/javascripts/explore-header.js"></script>\n</body>')
-    .replace(/<a(.*) href\s*=\s*(['"])\s*(https:)?\/\/www.gov.uk\//g,'<a $1 href=$2/')
-
-
-
+    .replace(/<\/body>/, '<script src="/public/javascripts/explore-header.js"></script>\n</body>')
+    .replace(/<a(.*) href\s*=\s*(['"])\s*(https:)?\/\/www.gov.uk\//g, '<a $1 href=$2/')
 
 }
 
@@ -332,22 +327,22 @@ if (bannerAlert){
 const govUkUrl = function (req) {
   var urlParts = new URL(req.url, 'https://www.gov.uk')
   var query = urlParts.search
-  return 'https://www.gov.uk' + req.path + (query? query : '')
+  return 'https://www.gov.uk' + req.path + (query ? query : '')
 }
 
-router.all('*', (req, res, next ) => {
-        const log = {
-          method: req.method,
-          url: req.originalUrl,
-          data: req.session.data
-        }
-        console.log(JSON.stringify(log, null, 2))
+router.all('*', (req, res, next) => {
+  const log = {
+    method: req.method,
+    url: req.originalUrl,
+    data: req.session.data
+  }
+  console.log(JSON.stringify(log, null, 2))
 
-      next()
-    })
+  next()
+})
 
 
-router.get('/*', function (req,res) {
+router.get('/*', function (req, res) {
   request(govUkUrl(req), function (error, response, body) {
     if (error) throw error
     if (response.headers['content-type'].indexOf('application/json') !== -1) {
@@ -358,13 +353,7 @@ router.get('/*', function (req,res) {
   })
 })
 
-
-
-
 router.post('/*', function (req, res) {
-
-
-
   request.post({
     url: govUkUrl(req),
     followAllRedirects: true,
