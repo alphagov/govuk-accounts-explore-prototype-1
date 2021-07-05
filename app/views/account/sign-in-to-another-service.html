@@ -13,10 +13,97 @@
   <div id="global-header-bar"></div>
 </div>
 
-<div class="xpl-section-inner">
+<div class="xpl-section-inner ">
+
+  <main class="govuk-main-wrapper">
+
+    {{ govukBreadcrumbs({
+      items: [
+        {
+          text: "Home",
+          href: "#"
+        }
+      ]
+    }) }}
+
+    <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
   <h1 class="govuk-heading-xl">
-    Sign in to another service
+    Sign in to a government service
   </h1>
+
+
+
+<p>
+At the moment, there are separate accounts for signing in to different government services.
+</p><p>
+We’re working on building a new GOV.UK account where you’ll be able to access all government services in one place. Currently you can only use this account to manage the emails you get about GOV.UK pages you’re interested in.
+</p>
+
+<h2 class="govuk-heading-l  govuk-!-padding-top-2 govuk-!-padding-bottom-2">
+What service do you want to sign in to?
+</h2>
+
+<p>
+These are the most viewed government services on GOV.UK:
+</p>
+
+<h3 class="govuk-heading-m  govuk-!-padding-top-2 govuk-!-padding-bottom-2"><a href="/sign-in">
+Manage your GOV.UK emails (new GOV.UK account)
+</a></h3><P>
+Manage the emails you get about GOV.UK pages you’re interested in.
+</p>
+
+<h3 class="govuk-heading-m  govuk-!-padding-top-2 govuk-!-padding-bottom-2"><a href="/sign-in-universal-credit">
+Universal Credit
+</a></h3><P>
+See and update your Universal credit claim.
+</p>
+
+<h3 class="govuk-heading-m govuk-!-padding-top-2  govuk-!-padding-bottom-2"><a href="/log-in-register-hmrc-online-services">
+HMRC services
+</a></h3><P>
+Sign in to HMRC services using Government Gateway or GOV.UK Verify.
+</p>
+
+<h3 class="govuk-heading-m  govuk-!-padding-top-2 govuk-!-padding-bottom-2"><a href="/check-state-pension">
+Check your State Pension forecast
+</a></h3><p>
+Find out how much State Pension you could get and when.
+</P>
+
+<h3 class="govuk-heading-m govuk-!-padding-top-2  govuk-!-padding-bottom-2"><a href="/sign-in-to-manage-your-student-loan-balance">
+Manage your student loan balance
+</a></h3><p>
+See your student loan balance and manage your repayments.
+</p>
+
+<h3 class="govuk-heading-m  govuk-!-padding-top-2 govuk-!-padding-bottom-2"><a href="/claim-rural-payments">
+Make or update a rural payments claim
+</a></h3><p>
+Apply for rural grants and payments.
+</P>
+<h3 class="govuk-heading-m  govuk-!-padding-top-2 govuk-!-padding-bottom-2"><a href="">
+Search for a different service
+</a></h3><p>
+
+If you’re looking for a different service, try searching for it or navigating to it from the GOV.UK homepage.
+</P>
+
+<form action="/search/router" method="post" class="xpl-menu-search-input">
+              <div class="govuk-form-group">
+                <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="desktop-search">
+                  Search GOV.UK
+                </label>
+                </h2>
+                <div class="govuk-input__wrapper"><input class="govuk-input" id="desktop-search" name="keywords" type="text" spellcheck="false">
+                  <button class="govuk-input__suffix" aria-hidden="true">Search</button>
+                </div>
+              </div>
+            </form>
+
 </div>
+</div></div>
+
 
 {% endblock %}

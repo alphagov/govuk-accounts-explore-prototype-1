@@ -1,22 +1,25 @@
-{% extends "layout.html" %}
+{% extends "account/_account.html" %}
 {% import "includes/xpl-cards.html" as cards %}
 {% import "includes/xpl-tabs.njk" as tabs %}
 
-{% block pageTitle %}
-  {{ title }}
-{% endblock %}
+{% block account %}
+
+<h1 class="gem-c-heading govuk-heading-xl govuk-!-padding-top-0 govuk-!-margin-bottom-4">
+  Manage your GOV.UK emails
+</h1>
+
+{% if not data['notifications'] %}
+<p>No notifications</p>
+
+{% else %}
+
+{% for url in data['notifications'] %}
+
+<p><a href="{{url}}">{{url | urlToTitle(1)   }}</a></p>
+
+{% endfor %}
 
 
-{% block main %}
 
-<div id="global-header-bar-outer">
-  <div id="global-header-bar"></div>
-</div>
-
-<div class="xpl-section-inner">
-  <h1 class="govuk-heading-xl">
-    Manage
-  </h1>
-</div>
-
+{% endif %}
 {% endblock %}
