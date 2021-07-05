@@ -99,7 +99,7 @@ router.get('/browse/:topicSlug/:subTopicSlug', function (req, res) {
 })
 
 // ---- Specialist subtopics
-/*
+
 router.get('/topic/:topicSlug/:subTopicSlug', function (req, res) {
   const topicSlug = req.params.topicSlug
   const subTopicSlug = req.params.subTopicSlug
@@ -116,7 +116,7 @@ router.get('/topic/:topicSlug/:subTopicSlug', function (req, res) {
     }
     res.render('sub_topic', body)
   })
-}) */
+})
 
 // ----------------------
 
