@@ -136,24 +136,19 @@ router.get('/', function (req, res) {
 // ==================================================
 // All accounts stuff starts here
 
-
-
 // GET SPRINT NAME - useful for relative templates
 router.use('/', (req, res, next) => {
-   var tempPrev = req.get('Referrer');
-   if (tempPrev){
-   tempPrev = tempPrev.replace( /^[a-zA-Z]{3,5}\:\/{2}[a-zA-Z0-9_.:-]+\//, '' );
-}
+  var tempPrev = req.get('Referrer');
+  if (tempPrev) {
+    tempPrev = tempPrev.replace(/^[a-zA-Z]{3,5}\:\/{2}[a-zA-Z0-9_.:-]+\//, '');
+  }
   req.session.data.previousURL = tempPrev; // previous screen
   next();
 });
 
-
-
 router.get('/layout_unbranded', function (req, res) {
   res.render('layout_unbranded')
 })
-
 
 router.get('/sign-in', function (req, res) {
   res.render('account/sign-in')
@@ -164,74 +159,55 @@ router.get('/sign-in-to-another-service', function (req, res) {
 })
 
 router.all('/sign-in/set-cookie', function (req, res) {
-  req.session.data.signedIn = "true"
   res.redirect('/account/home')
 })
 
 router.get('/sign-out', function (req, res) {
-  if(req.session.data.signedIn) {
+  if (req.session.data.signedIn) {
     delete req.session.data.signedIn
   }
   res.redirect('/')
 })
 
 router.get('/account/home', function (req, res) {
-  req.session.data.signedIn = 'true';
-  res.render('account/home', {signedIn : 'true'} )
+  res.render('account/home', { signedIn: 'true' })
 })
 
 router.get('/account/manage', function (req, res) {
-  req.session.data.signedIn = 'true';
-  if (!req.session.data.notifications){
-  req.session.data.notifications = []; //stop manage page from breaking
-  }
   res.render('account/manage')
 })
 
-router.all('/account/verification-router', function (req, res){
-
-
-}
-
-
-)
-
 router.all('/account/router-remove', function (req, res) {
-  if (req.session.data.remove ) {
-  var tempRemove = req.session.data.remove;
-  delete req.session.data.remove;
+  if (req.session.data.remove) {
+    var tempRemove = req.session.data.remove;
+    delete req.session.data.remove;
 
-  req.session.data.notifications = req.session.data.notifications.filter(function(v, index) { return v !== tempRemove });
-      req.session.data.bannerAlert = '/account/router-remove';
-  return res.redirect(tempRemove + '#notification-success');
-
-}
+    req.session.data.notifications = req.session.data.notifications.filter(function (v, index) { return v !== tempRemove });
+    req.session.data.bannerAlert = '/account/router-remove';
+    return res.redirect(tempRemove + '#notification-success');
+  }
 })
 
-
 router.all('/account/router-add', function (req, res) {
-
-console.log("signed in " + req.session.data['signedIn'])
   var tempSave = req.session.data.save;
 
   if (!req.session.data.notifications) {
     req.session.data.notifications = [];
   }
 
-if (!req.session.data.notifications.includes(tempSave) ){
-  req.session.data.notifications.unshift(tempSave);
-}
+  if (!req.session.data.notifications.includes(tempSave)) {
+    req.session.data.notifications.unshift(tempSave);
+  }
 
-  delete req.session.data.save ;
-    req.session.data.bannerAlert = '/account/router-add';
-if (!req.session.data['signedIn']){
+  delete req.session.data.save;
+  req.session.data.bannerAlert = '/account/router-add';
+  if (!req.session.data['signedIn']) {
 
-  return res.redirect('/new-account/email')
-} else {
-  return res.redirect(tempSave + '#notification-success')
-}})
-
-
+    return res.redirect('/new-account/email')
+  } else {
+    return res.redirect(tempSave + '#notification-success')
+  }
+})
 
 router.get('/new-account/email', function (req, res) {
   res.render('new-account/email')
@@ -250,9 +226,8 @@ router.get('/new-account/your-information', function (req, res) {
 })
 
 router.get('/new-account/confirm', function (req, res) {
-  res.render('new-account/confirm', {signedIn: 'true'})
+  res.render('new-account/confirm', { signedIn: 'true' })
 })
-
 
 router.get('/account/other-accounts', function (req, res) {
   res.render('account/sign-in-to-another-service')
@@ -266,12 +241,13 @@ router.get('/includes/banner', function (req, res) {
   res.render('includes/banner')
 })
 
-
 router.post('/search/router', function (req, res) {
   var string = req.session.data['keywords'].replace(/ /g, '+');
   res.redirect('/search/all?keywords=' + string + '&content_purpose_supergroup%5B%5D=services&order=relevance')
 })
 
+// All accounts routes end here
+// ==================================================
 
 // ==================================================
 // All other URLs
@@ -340,7 +316,6 @@ router.all('*', (req, res, next) => {
 
   next()
 })
-
 
 router.get('/*', function (req, res) {
   request(govUkUrl(req), function (error, response, body) {
