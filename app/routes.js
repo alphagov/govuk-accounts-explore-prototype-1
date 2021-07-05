@@ -174,7 +174,7 @@ router.get('/account/home', function (req, res) {
 })
 
 router.get('/account/manage', function (req, res) {
-  res.render('account/manage')
+  res.render('account/manage', { signedIn: 'true' })
 })
 
 router.all('/account/router-remove', function (req, res) {

@@ -33,7 +33,7 @@
               Government activity
             </a>
           </li>
-          {% if data['signedIn'] %}
+          {% if data['signedIn'] or signedIn %}
             <li id="xpl-account-menu-item" class="govuk-header__navigation-item">
               <a id="xpl-account-button-desktop" href="/#account">
                 GOV.UK Account
@@ -41,7 +41,7 @@
             </li>
           {% else %}
             <li class="govuk-header__navigation-item">
-              <a href="/sign-in">Sign in</a>
+              <a href="/sign-in-to-another-service">Sign in</a>
             </li>
           {% endif %}
 
@@ -145,7 +145,6 @@
               </div>
               <div class="govuk-grid-column-one-third">
                 <ul>
-                  <li><a href="/account/manage">Manage your GOV.UK emails</a></li>
                   <li><a href="/account/home">Go to your GOV.UK account</a></li>
                   <li><a href="/sign-out">Sign out of your GOV.UK account</a></li>
                 </ul>
@@ -268,7 +267,7 @@
                   </ul>
                 </div>
               </div>
-              {% if data['signedIn'] %}
+              {% if data['signedIn'] or signedIn %}
                 <div class="xpl-accordion__section">
                   <div class="xpl-accordion__section-header">
                     <h2 class="xpl-accordion__section-heading">
@@ -279,9 +278,6 @@
                   </div>
                   <div id="xpl-accordion-default-content-4" class="xpl-accordion__section-content" aria-labelledby="xpl-accordion-default-heading-4">
                     <ul class="govuk-list xpl-gov-account">
-                      <li class="govuk-header__navigation-item-2">
-                        <a class="govuk-header__link" href="/account/manage">Manage your GOV.UK emails</a><br/>
-                      </li>
                       <li class="govuk-header__navigation-item-2">
                         <a class="govuk-header__link" href="/account/home">Go to your GOV.UK account</a><br/>
                       </li>
