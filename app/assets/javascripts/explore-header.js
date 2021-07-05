@@ -15,6 +15,7 @@ $('#xpl-topics-menu-item, #xpl-topics-button-desktop').on('click', event => {
   $('#xpl-frame2-topics').toggle();
   $('#xpl-frame2-search').hide();
   $('#xpl-frame2-activity').hide();
+  $('#xpl-frame2-account').hide();
 });
 
 // Desktop: when the Government activity header button is clicked
@@ -32,6 +33,25 @@ $('#xpl-activity-menu-item, #xpl-activity-button-desktop').on('click', event => 
   $('#xpl-frame2-topics').hide();
   $('#xpl-frame2-search').hide();
   $('#xpl-frame2-activity').toggle();
+  $('#xpl-frame2-account').hide();
+});
+
+// Desktop: when the Government account header button is clicked
+$('#xpl-account-menu-item, #xpl-account-button-desktop').on('click', event => {
+  event.stopPropagation();
+  const menuLabel = $('#xpl-account-button-desktop');
+  if (menuLabel.parent().hasClass('menu-item-open')) {
+    menuLabel.closest('ul').children('li').removeClass('menu-item-open');
+    $('.xpl-backdrop').hide();
+  } else {
+    menuLabel.closest('ul').children('li').removeClass('menu-item-open');
+    menuLabel.parent('li').addClass('menu-item-open');
+    $('.xpl-backdrop').show();
+  }
+  $('#xpl-frame2-topics').hide();
+  $('#xpl-frame2-search').hide();
+  $('#xpl-frame2-activity').hide();
+  $('#xpl-frame2-account').toggle();
 });
 
 // Desktop: when the Search header button is clicked
@@ -47,8 +67,9 @@ $('#xpl-search-menu-item, #xpl-search-button-desktop').on('click', event => {
     $('.xpl-backdrop').show();
   }
   $('#xpl-frame2-topics').hide();
-  $('#xpl-frame2-activity').hide();
   $('#xpl-frame2-search').toggle();
+  $('#xpl-frame2-activity').hide();
+  $('#xpl-frame2-account').hide();
 });
 
 
@@ -125,9 +146,13 @@ document.addEventListener('DOMContentLoaded', () => {
     </button>
   `);
 
+  $('#xpl-account-button-desktop').replaceWith(`
+    <button id="xpl-account-button-desktop" class="xpl-menu__button">
+       GOV.UK Account
+    </button>
+  `);
+
   $('#xpl-search-button-desktop').replaceWith(`
     <button id="xpl-search-button-desktop" class="xpl-menu__button xpl-search-button">Search</button>
   `);
-
-
 });

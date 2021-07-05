@@ -184,6 +184,20 @@
           "height": 768
         }
       ]
+    },
+    {
+      "label": "Explore Homepage with Gov account dropdown open (Desktop)",
+      "url": "http://localhost:3000/",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "clickSelector": "#xpl-account-button-desktop",
+      "misMatchThreshold" : 0.1,
+      "viewports": [
+        {
+          "label": "desktop",
+          "width": 1124,
+          "height": 768
+        }
+      ]
     }
   ],
   "paths": {

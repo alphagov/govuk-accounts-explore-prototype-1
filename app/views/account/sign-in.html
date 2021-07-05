@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% import "includes/xpl-cards.html" as cards %}
+{% import "includes/xpl-tabs.njk" as tabs %}
+
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+
+{% block main %}
+
+<div id="global-header-bar-outer">
+  <div id="global-header-bar"></div>
+</div>
+
+<div class="xpl-section-inner">
+  <h1 class="govuk-heading-xl">
+    Sign in here
+  </h1>
+
+  <form action="/sign-in/set-cookie" method="POST" class="sign-in">
+    <input id="signedIn" name="signedIn" type="hidden" value="true">
+    <button class="govuk-button" data-module="govuk-button">
+      Sign in
+    </button>
+  </form>
+</div>
+
+{% endblock %}

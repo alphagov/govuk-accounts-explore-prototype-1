@@ -33,6 +33,18 @@
               Government activity
             </a>
           </li>
+          {% if data['signedIn'] %}
+            <li id="xpl-account-menu-item" class="govuk-header__navigation-item">
+              <a id="xpl-account-button-desktop" href="/#account">
+                GOV.UK Account
+              </a>
+            </li>
+          {% else %}
+            <li class="govuk-header__navigation-item">
+              <a href="/sign-in">Sign in</a>
+            </li>
+          {% endif %}
+
           <li id="xpl-search-menu-item" class="govuk-header__navigation-item">
             <a id="xpl-search-button-desktop" href="/search" class="xpl-search-button">
               Search
@@ -125,6 +137,27 @@
           </div>
         </div>
 
+        <div class="xpl-frame2" id="xpl-frame2-account" style="display: none">
+          <div class="xpl-frame2-inner">
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-one-third">
+                <p class="xpl-dropdown-intro">Use your GOV.UK account to manage the emails you get about pages you are interested in</p>
+              </div>
+              <div class="govuk-grid-column-one-third">
+                <ul>
+                  <li><a href="/account/manage">Manage your GOV.UK emails</a></li>
+                  <li><a href="/account/home">Go to your GOV.UK account</a></li>
+                  <li><a href="/sign-out">Sign out of your GOV.UK account</a></li>
+                </ul>
+              </div>
+              <div class="govuk-grid-column-one-third">
+                <ul>
+                  <li><a href="/account/other-accounts">Sign in to another government service</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Desktop search menu -->
         <div class="xpl-frame2" id="xpl-frame2-search" style="display: none">
@@ -235,6 +268,43 @@
                   </ul>
                 </div>
               </div>
+              {% if data['signedIn'] %}
+                <div class="xpl-accordion__section">
+                  <div class="xpl-accordion__section-header">
+                    <h2 class="xpl-accordion__section-heading">
+                      <span class="xpl-accordion__section-button" id="xpl-accordion-default-heading-4">
+                        GOV.UK Account
+                      </span>
+                    </h2>
+                  </div>
+                  <div id="xpl-accordion-default-content-4" class="xpl-accordion__section-content" aria-labelledby="xpl-accordion-default-heading-4">
+                    <ul class="govuk-list xpl-gov-account">
+                      <li class="govuk-header__navigation-item-2">
+                        <a class="govuk-header__link" href="/account/manage">Manage your GOV.UK emails</a><br/>
+                      </li>
+                      <li class="govuk-header__navigation-item-2">
+                        <a class="govuk-header__link" href="/account/home">Go to your GOV.UK account</a><br/>
+                      </li>
+                      <li class="govuk-header__navigation-item-2">
+                        <a class="govuk-header__link" href="/sign-out">Sign out of your GOV.UK account</a><br/>
+                      </li>
+                      <li class="govuk-header__navigation-item-2">
+                        <a class="govuk-header__link" href="/account/other-accounts">Sign in to another government service</a><br/>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              {% else %}
+              <div class="xpl-accordion__section-link">
+                <div class="xpl-accordion__section-header">
+                  <h2 class="xpl-accordion__section-heading">
+                    <a href="/sign-in" id="xpl-accordion-default-heading-2">
+                      Sign In
+                    </a>
+                  </h2>
+                </div>
+              </div>
+              {% endif %}
             </div>
             <ul class="govuk-list xpl-below-accordion">
               <li class="govuk-header__navigation-item xpl-minor-nav-item">
