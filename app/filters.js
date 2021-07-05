@@ -38,6 +38,20 @@ module.exports = function (env) {
 
   ------------------------------------------------------------------ */
 
+filters.urlToTitle = function(url, shift){
+  if (url) {
+  var temp = url.slice(9) // remove start '/guidance/'
+  if (shift){
+    temp = temp.slice(shift)
+  }
+  temp2 = temp.replace(/\-/g, ' ');
+  return temp2.charAt(0).toUpperCase() + temp2.slice(1)
+} else {
+  return '';
+}
+}
+
+
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */

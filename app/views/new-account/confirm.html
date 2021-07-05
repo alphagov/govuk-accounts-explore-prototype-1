@@ -1,0 +1,37 @@
+{% set hideAccountMenu = true %}
+{% extends "account/_account.html" %}
+
+{% block account %}
+
+
+
+<h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-4">Confirm your email address</h1>
+
+
+<p class="govuk-body">
+  We’ve sent an email to <strong>test.example@gmail.com</strong>
+</p>
+
+<p class="govuk-body">
+  You need to click on the confirmation link in the email to finish creating your account.
+</p>
+
+
+  <div id="inset-text-8f24d898" class="gem-c-inset-text govuk-inset-text">
+    You will be locked out of your account if you do not confirm your email address within 7 days.
+</div>
+
+<p><a href="/sign-in/set-cookie">Go to your GOV.UK account</a></p>
+
+<h2 class="gem-c-heading govuk-heading-s   govuk-!-margin-bottom-3">If you did not get the email or want to use a different address</h2>
+
+
+<p class="govuk-body">We can <a class="govuk-link" href="#">send the confirmation email again</a> if you did not get it.
+</p><p class="govuk-body">You can <a class="govuk-link" href="#">use a different email address</a> if your email address is not correct.</p>
+
+
+{% endblock %}
+
+{% block urLinks%}
+<p><a href="/new-account/email-confirmation">Go to email</a>
+{% endblock %}

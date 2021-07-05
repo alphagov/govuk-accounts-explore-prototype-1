@@ -1,22 +1,31 @@
-{% extends "layout.html" %}
-{% import "includes/xpl-cards.html" as cards %}
-{% import "includes/xpl-tabs.njk" as tabs %}
+{% set signedIn = true %}
+{% extends "account/_account.html" %}
 
-{% block pageTitle %}
-  {{ title }}
-{% endblock %}
+{% block account%}
 
 
-{% block main %}
+<h1 class="gem-c-heading govuk-heading-xl  govuk-!-padding-top-0 govuk-!-margin-bottom-4">Your GOV.UK account</h1>
 
-<div id="global-header-bar-outer">
-  <div id="global-header-bar"></div>
-</div>
 
-<div class="xpl-section-inner">
-  <h1 class="govuk-heading-xl">
-    Hello Accounts
-  </h1>
-</div>
+  <p class="govuk-body accounts-your-account__email">
+    test@example.com
+  </p>
 
-{% endblock %}
+  <div class="accounts-panel">
+    <h2 class="gem-c-heading govuk-heading-m   govuk-!-margin-bottom-4">
+Manage your GOV.UK emails
+    </h2>
+
+
+    <p class="govuk-body">
+    See and update the emails you get about GOV.UK pages you're interested in.
+    </p>
+
+    <p class="govuk-body govuk-!-margin-0">
+      <a href="manage" class="govuk-link">
+        Go to your GOV.UK emails
+      </a>
+    </p>
+  </div>
+<br>
+  {% endblock %}

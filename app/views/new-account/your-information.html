@@ -1,0 +1,112 @@
+{% set hideAccountMenu = true %}
+{% extends "account/_account.html" %}
+
+{% block account %}
+
+
+<h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">Control how we use information about you</h1>
+
+
+
+<p class="govuk-body">Your GOV.UK account will only store the information you’ve chosen to provide about yourself. You can access, update or permanently delete your account and all the information stored in it at any time.</p>
+<p class="govuk-body">We will never:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>sell or rent your information to third parties</li>
+  <li>share your information with third parties for marketing purposes</li>
+</ul>
+<!-- <p class="govuk-body">As we add new features to your account, we may ask if we can share your information with other organisations to help us provide more efficient online services that are relevant to you. We will always ask your permission beforehand.</p> -->
+<p class="govuk-body">We may <!-- also -->use your information to produce anonymised reports to help us get a better understanding of GOV.UK account users. <!-- For example, to create a report on the proportion of users who are students in the UK. --> We’ll use this data to decide what features or services to add to GOV.UK accounts in future. <!-- These reports will not identify you personally.--> You will not be identified personally.</p>
+<p class="govuk-body">You can read the <a href="https://www.gov.uk/government/publications/govuk-accounts-trial-full-privacy-notice-and-accessibility-statement" class="govuk-link">full privacy notice</a> for more detail on how your information is stored, shared and used.</p>
+
+
+<h2 class="gem-c-heading govuk-heading-m   govuk-!-margin-bottom-3">Data about how you use GOV.UK</h2>
+
+
+<p class="govuk-body">We’d like to use cookies to collect anonymised analytics about how you use GOV.UK, for example what pages you visit and what you click on.</p>
+<p class="govuk-body">This data shows us what is and isn’t working, and helps us understand where we can make improvements to GOV.UK.</p>
+
+
+<form data-module="track-form" data-track-category="account-create" action="/new-account/your-information" accept-charset="UTF-8" data-remote="true" method="post"><input type="hidden" name="authenticity_token" value="og25FmBLIDheSQbGNWeKpPe1uIIbBCDbvAAxM1WTfnry45CKEntMEjleKCrkna3gbgatJug8JkSwQ4f93HTvcQ==">
+
+  <div id="cookie_consent" class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="hint-21c66224">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+
+        <h3 class="govuk-fieldset__heading">Can we use cookies to learn about how you use GOV.UK while you’re signed in to your account?</h3>
+</legend>
+
+<div id="hint-21c66224" class="gem-c-hint govuk-hint govuk-!-margin-bottom-3">
+  You’ll be able to update this later in your privacy settings if you’re not sure or you change your mind.
+</div>
+
+
+    <div class="govuk-radios">
+          <div class="gem-c-radio govuk-radios__item">
+            <input type="radio" name="cookie_consent" id="radio-ad584065-0" value="yes" class="govuk-radios__input" data-track-action="personal-information-cookies">
+
+  <label for="radio-ad584065-0" class="gem-c-label govuk-label govuk-radios__label">Yes</label>
+
+
+</div>
+
+          <div class="gem-c-radio govuk-radios__item">
+            <input type="radio" name="cookie_consent" id="radio-ad584065-1" value="no" class="govuk-radios__input" data-track-action="personal-information-cookies">
+
+  <label for="radio-ad584065-1" class="gem-c-label govuk-label govuk-radios__label">No</label>
+
+
+</div>
+
+</div>
+</fieldset></div>
+
+  <h2 class="gem-c-heading govuk-heading-m   govuk-!-margin-bottom-3">Feedback about your GOV.UK account</h2>
+
+
+  <p class="govuk-body">
+    As we add more features to your account, we would like to email you to find out any thoughts or suggestions you might have.
+  </p>
+
+  <div id="feedback_consent" class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="hint-84507d30">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+
+        <h3 class="govuk-fieldset__heading">Can we email you to ask for feedback about your account?</h3>
+</legend>
+
+<div id="hint-84507d30" class="gem-c-hint govuk-hint govuk-!-margin-bottom-3">
+  You can update this later in your privacy settings if you’re not sure or you change your mind.
+</div>
+
+
+    <div class="govuk-radios">
+          <div class="gem-c-radio govuk-radios__item">
+            <input type="radio" name="feedback_consent" id="radio-d167959e-0" value="yes" class="govuk-radios__input" data-track-action="personal-information-feedback">
+
+  <label for="radio-d167959e-0" class="gem-c-label govuk-label govuk-radios__label">Yes</label>
+
+
+</div>
+
+          <div class="gem-c-radio govuk-radios__item">
+            <input type="radio" name="feedback_consent" id="radio-d167959e-1" value="no" class="govuk-radios__input" data-track-action="personal-information-feedback">
+
+  <label for="radio-d167959e-1" class="gem-c-label govuk-label govuk-radios__label">No</label>
+
+
+</div>
+
+</div>
+</fieldset></div>
+
+
+
+
+{{ govukButton({
+  text: "Continue",
+  href: "/new-account/confirm"
+}) }}
+
+</form>
+
+{% endblock %}
