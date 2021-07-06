@@ -1,125 +1,68 @@
 {% set hideAccountMenu = true %}
-
 {% extends "account/_account.html" %}
-
 {% block account %}
-
-
-<form data-module="gem-track-click" action="/new-account" accept-charset="UTF-8" data-remote="true" method="post"><input type="hidden" name="authenticity_token" value="qN3NeE0rDQErgwLO7D0w3rPE4Z0dZMcFgmpqi9V96vYzryz7YoE2fVqk0uP12hmEQHBsDl9teD5JL0aPOj2dRQ==">
-
+<form data-module="gem-track-click" action="/new-account" accept-charset="UTF-8" data-remote="true" method="post">
+  <input type="hidden" name="authenticity_token"
+    value="qN3NeE0rDQErgwLO7D0w3rPE4Z0dZMcFgmpqi9V96vYzryz7YoE2fVqk0uP12hmEQHBsDl9teD5JL0aPOj2dRQ==">
   <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">Create a GOV.UK account</h1>
-
-
   <p>
     Create an account so you can manage the GOV.UK pages you’re interested in. You can:
-
-  <ul class="govuk-list govuk-list--bullet"><li>
-  subscribe to notifications about specific pages
-  </li><li>
-  save and organise pages you visit regularly
-  </li><li>
-  share pages you think someone else might be interested in
-  </li></ul>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      subscribe to notifications about specific pages
+    </li>
+    <li>
+      save and organise pages you visit regularly
+    </li>
+    <li>
+      share pages you think someone else might be interested in
+    </li>
+  </ul>
   </p>
-
-
-
-
   {{ govukInsetText({
-    html: 'This is different from <a href="#">Government Gateway</a>, <a href="#">Universal Credit</a> or other government accounts.'
+  html: 'This is different from <a href="#">Government Gateway</a>, <a href="#">Universal Credit</a> or other government
+  accounts.'
   }) }}
-
-<div class="govuk-form-group">
-
-
-  <label for="email" class="gem-c-label govuk-label">Email address</label>
-
-
-
-
-
-
-
+  <div class="govuk-form-group">
+    <label for="email" class="gem-c-label govuk-label">Email address</label>
     <input name="user[email]" class="gem-c-input govuk-input" id="email" type="email" autocomplete="username">
-</div>
-
-    <div class="gem-c-show-password" data-module="show-password" data-disable-form-submit-check="false" data-show-text="Show" data-hide-text="Hide" data-show-full-text="Show password" data-hide-full-text="Hide password" data-announce-show="Your password is shown" data-announce-hide="Your password is hidden">
-
-<div class="govuk-form-group">
-
-
-  <label for="password" class="gem-c-label govuk-label">Password</label>
-
-
-
-
-
-<div id="hint-9542783c" class="gem-c-hint govuk-hint govuk-!-margin-bottom-3">
-  Your password must be at least 8 characters and hard to guess.
-</div>
-
-
-
-    <div class="gem-c-show-password__input-wrapper"><input name="user[password]" class="gem-c-input govuk-input gem-c-input--with-password" id="password" type="password" autocomplete="new-password" aria-describedby="hint-9542783c"><button class="gem-c-show-password__toggle" aria-controls="password" type="button" aria-label="Show password" data-track-label="createNewAccount" data-track-category="pageElementInteraction" data-track-action="passwordShowHide">Show</button><span class="govuk-visually-hidden" aria-live="polite">Your password is hidden</span></div>
-</div>
-</div>
-
-  <details class="gem-c-details govuk-details govuk-!-margin-bottom-6" data-module="govuk-details">
-  <summary class="govuk-details__summary" data-details-track-click="">
-    <span class="govuk-details__summary-text">
-      How to create a secure password
-    </span>
-  </summary>
-  <div class="govuk-details__text">
-
-  <p class="govuk-body">A good way to create a secure and memorable password is to use 3 random words.</p>
-<p class="govuk-body">You can use numbers, symbols and spaces.</p>
-
-
   </div>
-</details>
-
-<!--
-<div class="govuk-form-group">
-
-
-  <label for="phone" class="gem-c-label govuk-label">Mobile number</label>
-
-
-
-
-
-<div id="hint-82a1103b" class="gem-c-hint govuk-hint govuk-!-margin-bottom-3">
-  We’ll send you a security code by text message
-</div>
-
-
-
-    <input name="user[phone]" value="" class="gem-c-input govuk-input govuk-input--width-10" id="phone" type="tel" autocomplete="tel" aria-describedby="hint-82a1103b">
-</div>
-
-  <input type="hidden" name="previous_url" id="previous_url" value="/oauth/authorize?client_id=20VwoXiasGyUE7nS3M9l9TBjew8Lid_qCd6eSmSXuQU&amp;nonce=1e8df8c4b9368b8aa3d7b919f69e6c65&amp;redirect_uri=https%3A%2F%2Fwww.gov.uk%2Fsign-in%2Fcallback&amp;response_type=code&amp;scope=transition_checker%20openid%20level1&amp;state=6eecc6eb-9e36-41ce-95ec-4bf4aef88fcb%3A39797">
-  <input type="hidden" name="authenticate_to_level" id="authenticate_to_level" value="level1">
-
-
--->
-
+  <div class="gem-c-show-password" data-module="show-password" data-disable-form-submit-check="false"
+    data-show-text="Show" data-hide-text="Hide" data-show-full-text="Show password" data-hide-full-text="Hide password"
+    data-announce-show="Your password is shown" data-announce-hide="Your password is hidden">
+    <div class="govuk-form-group">
+      <label for="password" class="gem-c-label govuk-label">Password</label>
+      <div id="hint-9542783c" class="gem-c-hint govuk-hint govuk-!-margin-bottom-3">
+        Your password must be at least 8 characters and hard to guess.
+      </div>
+      <div class="gem-c-show-password__input-wrapper">
+        <input name="user[password]" class="gem-c-input govuk-input gem-c-input--with-password" id="password"
+          type="password" autocomplete="new-password" aria-describedby="hint-9542783c">
+        <button class="gem-c-show-password__toggle" aria-controls="password" type="button" aria-label="Show password"
+          data-track-label="createNewAccount" data-track-category="pageElementInteraction"
+          data-track-action="passwordShowHide">Show</button>
+        <span class="govuk-visually-hidden" aria-live="polite">Your password is hidden</span>
+      </div>
+    </div>
+  </div>
+  <details class="gem-c-details govuk-details govuk-!-margin-bottom-6" data-module="govuk-details">
+    <summary class="govuk-details__summary" data-details-track-click="">
+      <span class="govuk-details__summary-text">
+        How to create a secure password
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      <p class="govuk-body">A good way to create a secure and memorable password is to use 3 random words.</p>
+      <p class="govuk-body">You can use numbers, symbols and spaces.</p>
+    </div>
+  </details>
   {{ govukButton({
-    text: "Continue",
-    href: "your-information"
+  text: "Continue",
+  href: "your-information"
   }) }}
-
 </form>
 <p class="govuk-body">
   If you already have an account,
   <a class="govuk-link" href="/sign-in">sign in to manage your pages</a>.
 </p>
-
-<!--
-  <div id="inset-text-5fb506e5" class="gem-c-inset-text govuk-inset-text">
-    If you do not have a mobile phone, you can still get <a class="govuk-link" href="https://www.gov.uk/transition-check/save-your-results?c%5B%5D=does-not-own-operate-business-organisation&amp;c%5B%5D=move-to-eu-no&amp;c%5B%5D=travel-eu-business-no&amp;c%5B%5D=working-uk&amp;c%5B%5D=living-uk&amp;c%5B%5D=nationality-uk">email alerts and a link to your results</a>.
-</div>
--->
-
-
 {% endblock %}
