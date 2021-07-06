@@ -180,8 +180,12 @@ router.get('/sign-up/your-information', function (req, res) {
   res.render('account/sign-up/your-information')
 })
 
+router.all('/sign-up/account-created', function (req, res) {
+  res.redirect('/sign-up/confirm')
+})
+
 router.get('/sign-up/confirm', function (req, res) {
-  res.render('account/sign-up/confirm', { signedIn: 'true' })
+  res.render('account/sign-up/confirm')
 })
 
 // Sign out routes
