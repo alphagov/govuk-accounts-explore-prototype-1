@@ -146,6 +146,23 @@ router.use('/', (req, res, next) => {
   next();
 });
 
+// Tasks page
+router.get('/tasks', function (req, res) {
+  res.render('tasks')
+})
+
+router.get('/prototype-admin/log-in-unverified', function (req, res) {
+  req.session.data.signedIn = true
+  req.session.data.emailUnverified = true
+  res.redirect('/account/home')
+})
+
+router.get('/prototype-admin/log-in-verified', function (req, res) {
+  req.session.data.signedIn = true
+  req.session.data.emailUnverified = null
+  res.redirect('/account/home')
+})
+
 router.get('/layout_unbranded', function (req, res) {
   res.render('layout_unbranded')
 })
@@ -164,7 +181,7 @@ router.get('/sign-in/another-government-service', function (req, res) {
 })
 
 // Sign up routes
-router.get('/new-account/email', function (req, res) {
+router.get('/sign-up/email', function (req, res) {
   res.render('account/sign-up/email')
 })
 
@@ -188,6 +205,11 @@ router.get('/sign-up/confirm', function (req, res) {
   res.render('account/sign-up/confirm')
 })
 
+// sorting hat
+router.get('/account/other-accounts', function (req, res) {
+  res.render('account/sign-in-to-another-service')
+})
+
 // Confirm email routes
 router.all('/email/verify', function (req, res) {
   if (req.session.data.emailUnverified) {
@@ -205,6 +227,7 @@ router.get('/sign-out', function (req, res) {
   res.redirect('/')
 })
 
+// account home
 router.get('/account/home', function (req, res) {
   res.render('account/home')
 })
@@ -213,6 +236,7 @@ router.get('/account/manage', function (req, res) {
   res.render('account/manage')
 })
 
+// Router magic
 router.all('/account/router-remove', function (req, res) {
   if (req.session.data.remove) {
     var tempRemove = req.session.data.remove;
@@ -238,14 +262,10 @@ router.all('/account/router-add', function (req, res) {
   delete req.session.data.save;
   req.session.data.bannerAlert = '/account/router-add';
   if (!req.session.data['signedIn']) {
-    return res.redirect('/new-account/email')
+    return res.redirect('/sign-up/email')
   } else {
     return res.redirect(tempSave + '#notification-success')
   }
-})
-
-router.get('/account/other-accounts', function (req, res) {
-  res.render('account/sign-in-to-another-service')
 })
 
 router.get('/includes/print-notifications', function (req, res) {
@@ -265,7 +285,6 @@ router.get('/prototype-admin/clear-data', function (req, res) {
     res.render('prototype-admin/clear-data')
   }
 )
-
 router.get('/prototype-admin/clear-data-success', function (req, res) {
     res.render('prototype-admin/clear-data-success')
   }

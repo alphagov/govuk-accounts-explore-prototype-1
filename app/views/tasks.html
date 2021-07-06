@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK User testing - Tasks
+{% endblock %}
+
+{% block main %}
+<main class="govuk-main-wrapper">
+  <section>
+    <div class="xpl-section-inner">
+      <h2 class="govuk-heading-l">Admin Actions</h2>
+
+      <ul>
+        <li>
+          <a class="govuk-link" aria-current="page" href="/prototype-admin/clear-data">Clear all session data (logged out state)</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="/prototype-admin/log-in-unverified">Sign user in with unverified email (manage page)</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="/prototype-admin/log-in-verified">Sign user in with verified email (manage page)</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="/sign-up/email-confirmation">Email confirmation</a>
+        </li>
+      </ul>
+      </div>
+  </section>
+</main>
+{% endblock %}
