@@ -150,16 +150,17 @@ router.get('/layout_unbranded', function (req, res) {
   res.render('layout_unbranded')
 })
 
+// Sign in Routes
 router.get('/sign-in', function (req, res) {
   res.render('account/sign-in')
 })
 
-router.get('/sign-in-to-another-service', function (req, res) {
-  res.render('account/sign-in-to-another-service')
-})
-
 router.all('/sign-in/set-cookie', function (req, res) {
   res.redirect('/account/home')
+})
+
+router.get('/sign-in/another-government-service', function (req, res) {
+  res.render('account/sign-in-to-another-service')
 })
 
 router.get('/sign-out', function (req, res) {
