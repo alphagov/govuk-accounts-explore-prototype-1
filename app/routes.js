@@ -188,6 +188,15 @@ router.get('/sign-up/confirm', function (req, res) {
   res.render('account/sign-up/confirm')
 })
 
+// Confirm email routes
+router.all('/email/verify', function (req, res) {
+  if (req.session.data.emailUnverified) {
+    delete req.session.data.emailUnverified
+  }
+  req.session.data.previousURL = "/email/verify"
+  res.redirect('/account/home')
+})
+
 // Sign out routes
 router.get('/sign-out', function (req, res) {
   if (req.session.data.signedIn) {
@@ -229,7 +238,6 @@ router.all('/account/router-add', function (req, res) {
   delete req.session.data.save;
   req.session.data.bannerAlert = '/account/router-add';
   if (!req.session.data['signedIn']) {
-
     return res.redirect('/new-account/email')
   } else {
     return res.redirect(tempSave + '#notification-success')
@@ -254,13 +262,13 @@ router.post('/search/router', function (req, res) {
 })
 
 router.get('/prototype-admin/clear-data', function (req, res) {
-res.render('prototype-admin/clear-data')
-}
+    res.render('prototype-admin/clear-data')
+  }
 )
 
 router.get('/prototype-admin/clear-data-success', function (req, res) {
-res.render('prototype-admin/clear-data-success')
-}
+    res.render('prototype-admin/clear-data-success')
+  }
 )
 
 // All accounts routes end here
@@ -286,7 +294,7 @@ const augmentedBody = function (req, response, body) {
   var bannerAlert = req.session.data.bannerAlert; // only set from a router
 
   const topBannerHTML = fs.readFileSync('app/views/includes/banner.html', 'utf8')
-  const topBannerTemplate = nunjucks.renderString(topBannerHTML, { previousURL: bannerAlert, verification: req.session.data.verification })
+  const topBannerTemplate = nunjucks.renderString(topBannerHTML, { previousURL: bannerAlert })
 
 
   const pageURL = req.url // this is a hack to get a unique identifer on each page
