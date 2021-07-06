@@ -246,6 +246,16 @@ router.post('/search/router', function (req, res) {
   res.redirect('/search/all?keywords=' + string + '&content_purpose_supergroup%5B%5D=services&order=relevance')
 })
 
+router.get('/prototype-admin/clear-data', function (req, res) {
+res.render('prototype-admin/clear-data')
+}
+)
+
+router.get('/prototype-admin/clear-data-success', function (req, res) {
+res.render('prototype-admin/clear-data-success')
+}
+)
+
 // All accounts routes end here
 // ==================================================
 
@@ -327,6 +337,8 @@ router.get('/*', function (req, res) {
     }
   })
 })
+
+
 
 router.post('/*', function (req, res) {
   request.post({
