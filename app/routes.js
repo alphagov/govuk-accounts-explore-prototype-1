@@ -168,19 +168,19 @@ router.get('/new-account/email', function (req, res) {
   res.render('account/sign-up/email')
 })
 
-router.get('/new-account/email-confirmation', function (req, res) {
+router.get('/sign-up/email-confirmation', function (req, res) {
   res.render('account/sign-up/email-confirmation')
 })
 
-router.get('/new-account/index', function (req, res) {
+router.get('/sign-up', function (req, res) {
   res.render('account/sign-up/index')
 })
 
-router.get('/new-account/your-information', function (req, res) {
+router.get('/sign-up/your-information', function (req, res) {
   res.render('account/sign-up/your-information')
 })
 
-router.get('/new-account/confirm', function (req, res) {
+router.get('/sign-up/confirm', function (req, res) {
   res.render('account/sign-up/confirm', { signedIn: 'true' })
 })
 
