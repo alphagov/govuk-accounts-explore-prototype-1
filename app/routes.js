@@ -163,6 +163,28 @@ router.get('/sign-in/another-government-service', function (req, res) {
   res.render('account/sign-in-to-another-service')
 })
 
+// Sign up routes
+router.get('/new-account/email', function (req, res) {
+  res.render('account/sign-up/email')
+})
+
+router.get('/new-account/email-confirmation', function (req, res) {
+  res.render('account/sign-up/email-confirmation')
+})
+
+router.get('/new-account/index', function (req, res) {
+  res.render('account/sign-up/index')
+})
+
+router.get('/new-account/your-information', function (req, res) {
+  res.render('account/sign-up/your-information')
+})
+
+router.get('/new-account/confirm', function (req, res) {
+  res.render('account/sign-up/confirm', { signedIn: 'true' })
+})
+
+// Sign out routes
 router.get('/sign-out', function (req, res) {
   if (req.session.data.signedIn) {
     delete req.session.data.signedIn
@@ -208,26 +230,6 @@ router.all('/account/router-add', function (req, res) {
   } else {
     return res.redirect(tempSave + '#notification-success')
   }
-})
-
-router.get('/new-account/email', function (req, res) {
-  res.render('new-account/email')
-})
-
-router.get('/new-account/email-confirmation', function (req, res) {
-  res.render('new-account/email-confirmation')
-})
-
-router.get('/new-account/index', function (req, res) {
-  res.render('new-account/index')
-})
-
-router.get('/new-account/your-information', function (req, res) {
-  res.render('new-account/your-information')
-})
-
-router.get('/new-account/confirm', function (req, res) {
-  res.render('new-account/confirm', { signedIn: 'true' })
 })
 
 router.get('/account/other-accounts', function (req, res) {
