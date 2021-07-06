@@ -141,6 +141,13 @@ router.get('/tasks', function (req, res) {
   res.render('tasks')
 })
 
+router.get('/prototype-admin/home-signed-out', function (req, res) {
+  req.session.data.signedIn = false
+  res.redirect('/index')
+})
+
+
+
 router.get('/prototype-admin/log-in-unverified', function (req, res) {
   req.session.data.signedIn = true
   req.session.data.emailUnverified = true
