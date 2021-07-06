@@ -1,44 +1,39 @@
-{% set verificationTemp = verification | default("") %}
 
 {% if (previousURL == "/account/router-add") or (previousURL == "/account/router-remove")   %}
+  {% if data['emailUnverified'] %}
 
-{% if not verificationTemp %}
+    <div id="notification-success" class="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-bottom-0" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Success
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <h3 class="govuk-notification-banner__heading">
+          {% if previousURL == "/account/router-add" %} <!-- change for move or remove -->
+            You’ve signed up for email updates on this page
+          {% else %}
+          You’ve stopped getting email updates for this page
+          {% endif %} <!-- change for move or remove -->
+        </h3>
+        <p class="govuk-body"><a class="govuk-notification-banner__link" href="/account/manage">Manage your email updates</a>.</p>
+      </div>
+    </div>
 
-<div id="notification-success"  class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-  <div class="govuk-notification-banner__header">
-    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-      Important
-    </h2>
-  </div>
-  <div class="govuk-notification-banner__content">
-    <p class="govuk-notification-banner__heading">
-        Confirm your email address to start getting email updates about this page.
-        <a class="govuk-notification-banner__link" href="/account/home">Manage your email updates</a>.
-    </p>
-  </div>
-</div>
+  {% else %}
 
-{% else %}
-
-<div id="notification-success" class="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-bottom-0" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-  <div class="govuk-notification-banner__header">
-    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-      Success
-    </h2>
-  </div>
-  <div class="govuk-notification-banner__content">
-    <h3 class="govuk-notification-banner__heading">
-{% if previousURL == "/account/router-add" %} <!-- change for move or remove -->
-
-      You’ve signed up for email updates on this page
-{% else %}
-You’ve stopped getting email updates for this page
-{% endif %} <!-- change for move or remove -->
-
-    </h3>
-    <p class="govuk-body"><a class="govuk-notification-banner__link" href="/account/manage">Manage your email updates</a>.</p>
-  </div>
-</div>
-{% endif %}
-
+    <div id="notification-success"  class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Important
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <p class="govuk-notification-banner__heading">
+            Confirm your email address to start getting email updates about this page.
+            <a class="govuk-notification-banner__link" href="/account/home">Manage your email updates</a>.
+        </p>
+      </div>
+    </div>
+  {% endif %}
 {% endif %}

@@ -1,0 +1,27 @@
+{% set hideAccountMenu = true %}
+{% extends "account/_account.html" %}
+{% block account %}
+<h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-4">
+  You need a GOV.UK account to get email updates
+</h1>
+<p class="govuk-body">
+  The way you subscribe to emails from GOV.UK has changed. You now need a GOV.UK account to subscribe to emails.
+</p>
+<p class="govuk-body">
+  Creating an account takes about 3 minutes.
+</p>
+<p>
+  Create a GOV.UK account so you can get email updates about the page:
+</p>
+<h2 class="gem-c-heading govuk-heading-s   govuk-!-margin-bottom-3">
+  {{ data['previousURL'] | default('guidance/red-amber-green-alerts') | urlToTitle }}
+</h2>
+{{ govukButton({
+text: "Create a GOV.UK account",
+href: "/sign-up"
+}) }}
+<p>
+  <a href="/sign-in">Sign in</a>
+  if you already have a GOV.UK account.
+</p>
+{% endblock %}

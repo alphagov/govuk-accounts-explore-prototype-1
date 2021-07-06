@@ -146,22 +146,80 @@ router.use('/', (req, res, next) => {
   next();
 });
 
+// Tasks page
+router.get('/tasks', function (req, res) {
+  res.render('tasks')
+})
+
+router.get('/prototype-admin/log-in-unverified', function (req, res) {
+  req.session.data.signedIn = true
+  req.session.data.emailUnverified = true
+  res.redirect('/account/home')
+})
+
+router.get('/prototype-admin/log-in-verified', function (req, res) {
+  req.session.data.signedIn = true
+  req.session.data.emailUnverified = null
+  res.redirect('/account/home')
+})
+
 router.get('/layout_unbranded', function (req, res) {
   res.render('layout_unbranded')
 })
 
+// Sign in Routes
 router.get('/sign-in', function (req, res) {
   res.render('account/sign-in')
-})
-
-router.get('/sign-in-to-another-service', function (req, res) {
-  res.render('account/sign-in-to-another-service')
 })
 
 router.all('/sign-in/set-cookie', function (req, res) {
   res.redirect('/account/home')
 })
 
+router.get('/sign-in/another-government-service', function (req, res) {
+  res.render('account/sign-in-to-another-service')
+})
+
+// Sign up routes
+router.get('/sign-up/email', function (req, res) {
+  res.render('account/sign-up/email')
+})
+
+router.get('/sign-up/email-confirmation', function (req, res) {
+  res.render('account/sign-up/email-confirmation')
+})
+
+router.get('/sign-up', function (req, res) {
+  res.render('account/sign-up/index')
+})
+
+router.get('/sign-up/your-information', function (req, res) {
+  res.render('account/sign-up/your-information')
+})
+
+router.all('/sign-up/account-created', function (req, res) {
+  res.redirect('/sign-up/confirm')
+})
+
+router.get('/sign-up/confirm', function (req, res) {
+  res.render('account/sign-up/confirm')
+})
+
+// sorting hat
+router.get('/account/other-accounts', function (req, res) {
+  res.render('account/sign-in-to-another-service')
+})
+
+// Confirm email routes
+router.all('/email/verify', function (req, res) {
+  if (req.session.data.emailUnverified) {
+    delete req.session.data.emailUnverified
+  }
+  req.session.data.previousURL = "/email/verify"
+  res.redirect('/account/home')
+})
+
+// Sign out routes
 router.get('/sign-out', function (req, res) {
   if (req.session.data.signedIn) {
     delete req.session.data.signedIn
@@ -169,14 +227,16 @@ router.get('/sign-out', function (req, res) {
   res.redirect('/')
 })
 
+// account home
 router.get('/account/home', function (req, res) {
-  res.render('account/home', { signedIn: 'true' })
+  res.render('account/home')
 })
 
 router.get('/account/manage', function (req, res) {
-  res.render('account/manage', { signedIn: 'true' })
+  res.render('account/manage')
 })
 
+// Router magic
 router.all('/account/router-remove', function (req, res) {
   if (req.session.data.remove) {
     var tempRemove = req.session.data.remove;
@@ -202,35 +262,10 @@ router.all('/account/router-add', function (req, res) {
   delete req.session.data.save;
   req.session.data.bannerAlert = '/account/router-add';
   if (!req.session.data['signedIn']) {
-
-    return res.redirect('/new-account/email')
+    return res.redirect('/sign-up/email')
   } else {
     return res.redirect(tempSave + '#notification-success')
   }
-})
-
-router.get('/new-account/email', function (req, res) {
-  res.render('new-account/email')
-})
-
-router.get('/new-account/email-confirmation', function (req, res) {
-  res.render('new-account/email-confirmation')
-})
-
-router.get('/new-account/index', function (req, res) {
-  res.render('new-account/index')
-})
-
-router.get('/new-account/your-information', function (req, res) {
-  res.render('new-account/your-information')
-})
-
-router.get('/new-account/confirm', function (req, res) {
-  res.render('new-account/confirm', { signedIn: 'true' })
-})
-
-router.get('/account/other-accounts', function (req, res) {
-  res.render('account/sign-in-to-another-service')
 })
 
 router.get('/includes/print-notifications', function (req, res) {
@@ -247,13 +282,12 @@ router.post('/search/router', function (req, res) {
 })
 
 router.get('/prototype-admin/clear-data', function (req, res) {
-res.render('prototype-admin/clear-data')
-}
+    res.render('prototype-admin/clear-data')
+  }
 )
-
 router.get('/prototype-admin/clear-data-success', function (req, res) {
-res.render('prototype-admin/clear-data-success')
-}
+    res.render('prototype-admin/clear-data-success')
+  }
 )
 
 // All accounts routes end here
@@ -279,7 +313,7 @@ const augmentedBody = function (req, response, body) {
   var bannerAlert = req.session.data.bannerAlert; // only set from a router
 
   const topBannerHTML = fs.readFileSync('app/views/includes/banner.html', 'utf8')
-  const topBannerTemplate = nunjucks.renderString(topBannerHTML, { previousURL: bannerAlert, verification: req.session.data.verification })
+  const topBannerTemplate = nunjucks.renderString(topBannerHTML, { previousURL: bannerAlert })
 
 
   const pageURL = req.url // this is a hack to get a unique identifer on each page

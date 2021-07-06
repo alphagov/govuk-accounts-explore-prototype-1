@@ -1,79 +1,84 @@
-{% set signedIn = true %}
 {% extends "account/_account.html" %}
-
 {% block account%}
-
-
-{% if not data['verification'] %}
-
-<div id="notification-success"  class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-  <div class="govuk-notification-banner__header">
-    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-      Important
-    </h2>
-  </div>
-  <div class="govuk-notification-banner__content">
-    <p class="govuk-notification-banner__heading">
-        Confirm your email address to start getting email updates about this page.
-        <a class="govuk-notification-banner__link" href="/new-account/email-confirmation">Send confirmation email again.</a>
-    </p>
-  </div>
-</div>
-{% endif %}
-
-{% if (data['previousURL'] == "/new-account/email-confirmation" ) %}
-
-<div id="notification-success" class="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-bottom-0" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-  <div class="govuk-notification-banner__header">
-    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-      Success
-    </h2>
-  </div>
-  <div class="govuk-notification-banner__content">
-    <h3 class="govuk-notification-banner__heading">
-      You’ve successfully confirmed your email address.
-    </h3>
+  {% if data['emailUnverified'] %}
+    <div
+      id="notification-success"
+      class="govuk-notification-banner"
+      role="region"
+      aria-labelledby="govuk-notification-banner-title"
+      data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Important
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <p class="govuk-notification-banner__heading">
+          Confirm your email address to start getting email updates about this page.
+          <a class="govuk-notification-banner__link" href="/sign-up/email-confirmation">Send confirmation email again.</a>
+        </p>
+      </div>
     </div>
-</div>
-
-{% endif %}
-
-<h1 class="gem-c-heading govuk-heading-xl  govuk-!-padding-top-0 govuk-!-margin-bottom-4">Your GOV.UK account</h1>
-
-
+  {% elseif data['previousURL'] == "/email/verify" %}
+    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Success
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <h3 class="govuk-notification-banner__heading">
+          You’ve successfully confirmed your email address.
+        </h3>
+      </div>
+    </div>
+  {% endif %}
+  {% if (data['previousURL'] == "/sign-up/email-confirmation" ) %}
+    <div
+      id="notification-success"
+      class="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-bottom-0"
+      role="alert"
+      aria-labelledby="govuk-notification-banner-title"
+      data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Success
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <h3 class="govuk-notification-banner__heading">
+          You’ve successfully confirmed your email address.
+        </h3>
+      </div>
+    </div>
+  {% endif %}
+  <h1 class="gem-c-heading govuk-heading-xl  govuk-!-padding-top-0 govuk-!-margin-bottom-4">Your GOV.UK account</h1>
   <p class="govuk-body accounts-your-account__email">
     test@example.com
   </p>
-
   <div class="accounts-panel">
     <h2 class="gem-c-heading govuk-heading-m   govuk-!-margin-bottom-4">
-Manage your GOV.UK emails
+      Manage your GOV.UK emails
     </h2>
-
-
-{% if data['verification'] %}
-    <p class="govuk-body">
-    See and update the emails you get about GOV.UK pages you're interested in.
-    </p>
-
-    <p class="govuk-body govuk-!-margin-0">
-      <a href="manage" class="govuk-link">
-        Go to your GOV.UK emails
+    {% if data['emailUnverified'] %}
+      <p class="govuk-body">
+        You must confirm your email address to start getting emails.</p>
+      <p class="govuk-body govuk-!-margin-0">
+        We can
+        <a href="/sign-up/email-confirmation" class="govuk-link">send the confirmation email again</a>
+        if you did not get it.
       </a>
     </p>
-{% else %}
-
-<p class="govuk-body">
-  You must confirm your email address to start getting emails.</p>
-
-<p class="govuk-body govuk-!-margin-0">
-
-    We can <a href="/new-account/email-confirmation" class="govuk-link">send the confirmation email again</a> if you did not get it.
-  </a>
-</p>
-
-{% endif %}
-
-  </div>
+    {% else %}
+      <p class="govuk-body">
+        See and update the emails you get about GOV.UK pages you're interested in.
+      </p>
+      <p class="govuk-body govuk-!-margin-0">
+        <a href="manage" class="govuk-link">
+          Go to your GOV.UK emails
+        </a>
+      </p>
+  {% endif %}
+</div>
 <br>
-  {% endblock %}
+{% endblock %}
