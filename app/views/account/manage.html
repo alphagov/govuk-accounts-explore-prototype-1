@@ -6,7 +6,7 @@
     Manage your GOV.UK emails
   </h1>
   {% set notificationTemp = data['notifications'] | default([]) %}
-  {% if not ( notificationTemp == "") %}
+  {% if not ( notificationTemp == []) %}
     {{ govukInsetText({
     html: "<a href='#'>Unsubscribe from everything</a>"
   }) }}

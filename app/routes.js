@@ -269,7 +269,7 @@ const augmentedBody = function (req, response, body) {
   var bannerAlert = req.session.data.bannerAlert; // only set from a router
 
   const topBannerHTML = fs.readFileSync('app/views/includes/banner.html', 'utf8')
-  const topBannerTemplate = nunjucks.renderString(topBannerHTML, { previousURL: bannerAlert })
+  const topBannerTemplate = nunjucks.renderString(topBannerHTML, { previousURL: bannerAlert, verification: req.session.data.verification })
 
 
   const pageURL = req.url // this is a hack to get a unique identifer on each page
