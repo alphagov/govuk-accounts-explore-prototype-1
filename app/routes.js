@@ -171,11 +171,11 @@ router.get('/sign-out', function (req, res) {
 })
 
 router.get('/account/home', function (req, res) {
-  res.render('account/home', { signedIn: 'true' })
+  res.render('account/home')
 })
 
 router.get('/account/manage', function (req, res) {
-  res.render('account/manage', { signedIn: 'true' })
+  res.render('account/manage')
 })
 
 router.all('/account/router-remove', function (req, res) {
