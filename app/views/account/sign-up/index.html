@@ -6,22 +6,10 @@
     value="qN3NeE0rDQErgwLO7D0w3rPE4Z0dZMcFgmpqi9V96vYzryz7YoE2fVqk0uP12hmEQHBsDl9teD5JL0aPOj2dRQ==">
   <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">Create a GOV.UK account</h1>
   <p>
-    Create an account so you can manage the GOV.UK pages you’re interested in. You can:
-  <ul class="govuk-list govuk-list--bullet">
-    <li>
-      subscribe to notifications about specific pages
-    </li>
-    <li>
-      save and organise pages you visit regularly
-    </li>
-    <li>
-      share pages you think someone else might be interested in
-    </li>
-  </ul>
+    Create a GOV.UK account so you can subscribe to and manage emails you get about GOV.UK pages you’re interested in.
   </p>
   {{ govukInsetText({
-  html: 'This is different from <a href="#">Government Gateway</a>, <a href="#">Universal Credit</a> or other government
-  accounts.'
+  html: 'This account is separate from <a href="/sign-in/another-government-service" class="govuk-link">other government accounts</a> (for example Government Gateway or Universal Credit)'
   }) }}
   <div class="govuk-form-group">
     <label for="email" class="gem-c-label govuk-label">Email address</label>
@@ -62,7 +50,6 @@
   }) }}
 </form>
 <p class="govuk-body">
-  If you already have an account,
-  <a class="govuk-link" href="/sign-in">sign in to manage your pages</a>.
+  <a class="govuk-link" href="/sign-in">Sign in</a> if you already have a GOV.UK accoun.
 </p>
 {% endblock %}

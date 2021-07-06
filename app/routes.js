@@ -136,16 +136,6 @@ router.get('/', function (req, res) {
 // ==================================================
 // All accounts stuff starts here
 
-// GET SPRINT NAME - useful for relative templates
-router.use('/', (req, res, next) => {
-  var tempPrev = req.get('Referrer');
-  if (tempPrev) {
-    tempPrev = tempPrev.replace(/^[a-zA-Z]{3,5}\:\/{2}[a-zA-Z0-9_.:-]+\//, '');
-  }
-  req.session.data.previousURL = tempPrev; // previous screen
-  next();
-});
-
 // Tasks page
 router.get('/tasks', function (req, res) {
   res.render('tasks')
@@ -236,6 +226,7 @@ router.get('/account/manage', function (req, res) {
   res.render('account/manage')
 })
 
+
 // Router magic
 router.all('/account/router-remove', function (req, res) {
   if (req.session.data.remove) {
@@ -243,8 +234,16 @@ router.all('/account/router-remove', function (req, res) {
     delete req.session.data.remove;
 
     req.session.data.notifications = req.session.data.notifications.filter(function (v, index) { return v !== tempRemove });
-    req.session.data.bannerAlert = '/account/router-remove';
-    return res.redirect(tempRemove + '#notification-success');
+
+    if (!req.session.data.signedIn) {
+      return res.redirect('/sign-up/email')
+    } else if(!req.session.data.emailUnverified) {
+      delete req.session.data.showSuccessBanner
+      req.session.data.showRemoveBanner = true
+      return res.redirect(tempRemove + '#notification-success')
+    } else {
+      return res.redirect(tempRemove + '#notification-success')
+    }
   }
 })
 
@@ -260,9 +259,13 @@ router.all('/account/router-add', function (req, res) {
   }
 
   delete req.session.data.save;
-  req.session.data.bannerAlert = '/account/router-add';
-  if (!req.session.data['signedIn']) {
+
+  if (!req.session.data.signedIn) {
     return res.redirect('/sign-up/email')
+  } else if(!req.session.data.emailUnverified) {
+    delete req.session.data.showRemoveBanner
+    req.session.data.showSuccessBanner = true
+    return res.redirect(tempSave + '#notification-success')
   } else {
     return res.redirect(tempSave + '#notification-success')
   }
@@ -310,17 +313,15 @@ const augmentedBody = function (req, response, body) {
   const notificationsBase = fs.readFileSync('app/views/includes/print-notifications.html', 'utf8')
   const notificationsTemplate = nunjucks.renderString(notificationsBase, { signedIn: req.session.data.signedIn, currentURL: req.url, notifications: req.session.data.notifications })
 
-  var bannerAlert = req.session.data.bannerAlert; // only set from a router
-
   const topBannerHTML = fs.readFileSync('app/views/includes/banner.html', 'utf8')
-  const topBannerTemplate = nunjucks.renderString(topBannerHTML, { previousURL: bannerAlert })
-
+  const topBannerTemplate = nunjucks.renderString(topBannerHTML,
+                                                  {
+                                                    emailUnverified: req.session.data.emailUnverified,
+                                                    showRemoveBanner: req.session.data.showRemoveBanner,
+                                                    showSuccessBanner: req.session.data.showSuccessBanner,
+                                                  })
 
   const pageURL = req.url // this is a hack to get a unique identifer on each page
-
-  if (bannerAlert) {
-    delete req.session.data.bannerAlert; // should be a flash alert, can be removed once we've got the variable
-  }
 
   // Make all src and ref attributes absolute, or the server will try to
   // fetch its own version
@@ -371,8 +372,6 @@ router.get('/*', function (req, res) {
     }
   })
 })
-
-
 
 router.post('/*', function (req, res) {
   request.post({
