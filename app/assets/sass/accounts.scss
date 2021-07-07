@@ -144,9 +144,17 @@
 }}
 
 
+// hide call to action on RAG status page
+
+.\/guidance\/red-amber-and-green-list-rules-for-entering-england .call-to-action {
+  display: none !important;
+}
+
 .\/guidance\/red-amber-and-green-list-rules-for-entering-england .gem-c-contents-list__list > li:first-child {
   display: none !important;
 }
+
+// end hide call to action
 
 .gem-c-notification-link__link, .gem-c-notification-link__button {
     background: url(../images/alerts.png) no-repeat 10px 50%;
