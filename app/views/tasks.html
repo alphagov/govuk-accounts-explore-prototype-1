@@ -1,29 +1,132 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  GOV.UK User testing - Tasks
+  GOV.UK user research - tasks
 {% endblock %}
 
 {% block main %}
 <main class="govuk-main-wrapper">
   <section>
     <div class="xpl-section-inner">
-      <h2 class="govuk-heading-l">Admin Actions</h2>
+      <h1 class="govuk-heading-xl">User research - tasks</h1>
 
-      <ul>
-        <li>
-          <a class="govuk-link" aria-current="page" href="/prototype-admin/clear-data">Clear all session data (logged out state)</a>
-        </li>
-        <li>
-          <a class="govuk-link" href="/prototype-admin/log-in-unverified">Sign user in with unverified email (manage page)</a>
-        </li>
-        <li>
-          <a class="govuk-link" href="/prototype-admin/log-in-verified">Sign user in with verified email (manage page)</a>
-        </li>
-        <li>
-          <a class="govuk-link" href="/sign-up/email-confirmation">Email confirmation</a>
-        </li>
-      </ul>
+      <h2 class="govuk-heading-m">Task 1</h2>
+
+<p class="govuk-body">
+      {{ govukButton({
+        text: "Go to task 1",
+        href: "/guidance/red-amber-and-green-list-rules-for-entering-england",
+        classes: "govuk-button--secondary"
+      }) }}
+</p>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+           Links
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+{% set list =[
+  { title: "You need a GOV.UK account to get email updates" , url: "/sign-up/email" }
+  , { title: "Create a GOV.UK account" , url: "/sign-up" }
+  , { title: "Control how we use information about you" , url: "/sign-up/your-information" }
+  , { title: 'Confirm your email address' , url: "/sign-up/confirm" }
+  , { title: 'Your GOV.UK account' , url:  "/account/home" }]
+
+  %}
+
+  {% set recovery = [
+    { title: "Sign user in with unverified email (manage page)" , url: "/prototype-admin/log-in-unverified" }
+    , { title: "Sign user in with verified email (manage page)" , url:  "/prototype-admin/log-in-verified" }
+    , { title: "Email confirmation" , url:  "/sign-up/email-confirmation" }
+    , { title: "Clear all session data (logged out state)", url: "/prototype-admin/clear-data"}
+  ]  %}
+
+<h3 class="govuk-heading-s">List</h3>
+          <ul>
+
+            {% for item in list %}
+            <li>
+
+              <a class="govuk-link" href="{{item.url}}">{{item.title}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+
+          <h3 class="govuk-heading-s">Troubleshooting</h3>
+          <ul>
+
+            {% for item in recovery %}
+            <li>
+
+              <a class="govuk-link" href="{{item.url}}">{{item.title}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+
+                </div>
+      </details>
+
+      <h2 class="govuk-heading-m">Task 2</h2>
+
+
+      {{ govukButton({
+        text: "Go to task 2",
+        href: "/prototype-admin/home-signed-out",
+        classes: "govuk-button--secondary"
+      }) }}
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+           Links
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+{% set list =[
+  { title: "GOV.UK" , url: "/" }
+  , { title: "Sign in to a government service" , url: "/sign-in/another-government-service" }
+  , { title: "Sign in to your GOV.UK account" , url: "/sign-in" }
+  , { title: 'Home - GOV.UK account' , url: "/account/home" }
+  , { title: 'Manage your GOV.UK emails - GOV.UK account' , url:  "/account/manage" }]
+
+  %}
+
+  {% set recovery = [
+    { title: "Sign user in with unverified email (manage page)" , url: "/prototype-admin/log-in-unverified" }
+    , { title: "Sign user in with verified email (manage page)" , url:  "/prototype-admin/log-in-verified" }
+    , { title: "Email confirmation" , url:  "/sign-up/email-confirmation" }
+    , { title: "Clear all session data (logged out state)", url: "/prototype-admin/clear-data"}
+  ]  %}
+
+<h3 class="govuk-heading-s">List</h3>
+          <ul>
+
+            {% for item in list %}
+            <li>
+
+              <a class="govuk-link" href="{{item.url}}">{{item.title}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+
+          <h3 class="govuk-heading-s">Troubleshooting</h3>
+          <ul>
+
+            {% for item in recovery %}
+            <li>
+
+              <a class="govuk-link" href="{{item.url}}">{{item.title}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+
+                </div>
+      </details>
+
+
+
       </div>
   </section>
 </main>
