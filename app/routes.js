@@ -143,7 +143,7 @@ router.get('/tasks', function (req, res) {
 
 router.get('/prototype-admin/home-signed-out', function (req, res) {
   req.session.data.signedIn = false
-  res.redirect('/index')
+  res.redirect('/')
 })
 
 
