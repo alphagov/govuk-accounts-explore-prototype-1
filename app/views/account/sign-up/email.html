@@ -11,11 +11,9 @@
   Creating an account takes about 3 minutes.
 </p>
 <p>
-  Create a GOV.UK account so you can get email updates about the page:
+  Create a GOV.UK account so you can get email updates about the page: <br>
+  <strong>{{ data['previousURL'] | default('guidance/red-amber-green-alerts') | urlToTitle }}</strong>
 </p>
-<h2 class="gem-c-heading govuk-heading-s   govuk-!-margin-bottom-3">
-  {{ data['previousURL'] | default('guidance/red-amber-green-alerts') | urlToTitle }}
-</h2>
 {{ govukButton({
 text: "Create a GOV.UK account",
 href: "/sign-up"
