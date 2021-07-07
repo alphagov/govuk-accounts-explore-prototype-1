@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   $('#xpl-account-button-desktop').replaceWith(`
     <button id="xpl-account-button-desktop" class="xpl-menu__button">
-       GOV.UK Account
+       GOV.UK account
     </button>
   `);
 
