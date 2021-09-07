@@ -2,7 +2,7 @@
 {% import "includes/xpl-cards.html" as cards %}
 {% import "includes/xpl-tabs.njk" as tabs %}
 {% block pageTitle %}
-  {{ title }}
+    Sign in to a government service
 {% endblock %}
 {% block main %}
   <div id="global-header-bar-outer">
@@ -11,99 +11,131 @@
   <div class="xpl-section-inner ">
     <main class="govuk-main-wrapper">
       {{ govukBreadcrumbs({ items: [{text: "Home", href: "#"}]}) }}
+
+
+
       <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <h1 class="govuk-heading-xl">
+          <div class="govuk-grid-column-two-thirds">
+
+            <h1 class="govuk-heading-xl">
             Sign in to a government service
-          </h1>
-          <p>
-            At the moment, there are separate accounts for signing in to different government services.
-          </p>
-          <p>
-            We’re working on building a new GOV.UK account where you’ll be able to access all government services in one place.
-          </p>
-          <p>
-            Currently you can only use this account to manage the emails you get about GOV.UK pages you’re interested in.
-          </p>
-          <h2 class="govuk-heading-l  govuk-!-padding-top-2 govuk-!-padding-bottom-2">
-            What service do you want to sign in to?
-          </h2>
-          <p>
-            These are the most viewed government services on GOV.UK:
-          </p>
-          <h3 class="govuk-heading-s govuk-!-padding-top-2 govuk-!-padding-bottom-0 govuk-!-margin-bottom-1">
-            <a href="/sign-in">
-              Manage your GOV.UK emails (new GOV.UK account)
-            </a>
-          </h3>
-          <p class="govuk-!-margin-bottom-1">
+            </h1>
 
-            Manage the emails you get about GOV.UK pages you’re interested in.
-          </p>
-          <h3 class="govuk-heading-s govuk-!-padding-top-2 govuk-!-padding-bottom-0 govuk-!-margin-bottom-1">
-            <a href="/sign-in-universal-credit">
-              Universal Credit
-            </a>
-          </h3>
-          <p class="govuk-!-margin-bottom-1">
+            <p>Choose the government service you want to sign in to.</p>
 
-            See and update your Universal credit claim.
-          </p>
-          <h3 class="govuk-heading-s govuk-!-padding-top-2 govuk-!-padding-bottom-0 govuk-!-margin-bottom-1">
-            <a href="/log-in-register-hmrc-online-services">
-              HMRC services
-            </a>
-          </h3>
-          <p class="govuk-!-margin-bottom-1">
+            <div class="govuk-inset-text">
+        At the moment, there are separate accounts for signing in to different government services.
+      </div>
 
-            Sign in to HMRC services using Government Gateway or GOV.UK Verify.
-          </p>
-          <h3 class="govuk-heading-s govuk-!-padding-top-2 govuk-!-padding-bottom-0 govuk-!-margin-bottom-1">
-            <a href="/check-state-pension">
-              Check your State Pension forecast
-            </a>
-          </h3>
-          <p class="govuk-!-margin-bottom-1">
+            <p>These are the most viewed government services on GOV.UK:</p>
 
-            Find out how much State Pension you could get and when.
-          </p>
-          <h3 class="govuk-heading-s govuk-!-padding-top-2 govuk-!-padding-bottom-0 govuk-!-margin-bottom-1">
-            <a href="/sign-in-to-manage-your-student-loan-balance">
-              Manage your student loan balance
-            </a>
-          </h3>
-          <p class="govuk-!-margin-bottom-1">
+      <div class="govuk-service-list">
 
-            See your student loan balance and manage your repayments.
-          </p>
-          <h3 class="govuk-heading-s govuk-!-padding-top-2 govuk-!-padding-bottom-0 govuk-!-margin-bottom-1">
-            <a href="/claim-rural-payments">
-              Make or update a rural payments claim
-            </a>
-          </h3>
-          <p class="govuk-!-margin-bottom-1">
-            Apply for rural grants and payments.
-          </p>
-          <h2 class="govuk-heading-l  govuk-!-padding-top-2 govuk-!-padding-bottom-2">
-              Search for a different service
-          </h2>
-          <p>
-            If you’re looking for a different service, try searching for it or navigating to it from the GOV.UK homepage.
-          </p>
-          <form action="/search/router" method="post" class="xpl-menu-search-input">
-            <div class="govuk-form-group">
-              <h2 class="govuk-label-wrapper">
-                <label class="govuk-label " for="desktop-search">
-                  Search GOV.UK
-                </label>
-              </h2>
-              <div class="govuk-input__wrapper">
-                <input class="govuk-input" id="desktop-search" name="keywords" type="text" spellcheck="false">
-                  <button class="govuk-input__suffix" aria-hidden="true">Search</button>
-                </div>
-              </div>
-            </form>
+        <div class="govuk-service-list-item">
+          <div>
+          <img class="img-1" src="{{asset_path}}images/icon-arrow.svg">
+            <div class="govuk-service-list-text">
+              <a href="/sign-in-universal-credit" class="govuk-link govuk-link--no-visited-state govuk-heading-m">Universal Credit</a>
+              <p>See and update your Universal credit claim.</p>
+            </div>
           </div>
         </div>
+
+        <div class="govuk-service-list-item">
+          <div>
+          <img class="img-1" src="{{asset_path}}images/icon-arrow.svg">
+            <div class="govuk-service-list-text">
+              <a href="/log-in-register-hmrc-online-services" class="govuk-link govuk-link--no-visited-state govuk-heading-m">HMRC services</a>
+              <p>Sign in to HMRC services using Government Gateway or GOV.UK Verify.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-service-list-item">
+          <div>
+          <img class="img-1" src="{{asset_path}}images/icon-arrow.svg">
+            <div class="govuk-service-list-text">
+              <a href="/check-state-pension" class="govuk-link govuk-link--no-visited-state govuk-heading-m">Check your State Pension forecast</a>
+              <p>Find out how much State Pension you could get and when.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-service-list-item">
+          <div>
+          <img class="img-1" src="{{asset_path}}images/icon-arrow.svg">
+            <div class="govuk-service-list-text">
+              <a href="/sign-in-to-manage-your-student-loan-balance" class="govuk-link govuk-link--no-visited-state govuk-heading-m">Manage your student loan balance</a>
+              <p>See your student loan balance and manage your repayments.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-service-list-item govuk-service-list-item">
+          <div>
+          <img class="img-1" src="{{asset_path}}images/icon-arrow.svg">
+            <div class="govuk-service-list-text">
+              <a href="/claim-rural-payments" class="govuk-link govuk-link--no-visited-state govuk-heading-m">Make or update a rural payments claim</a>
+              <p>Apply for rural grants and payments.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-service-list-item govuk-service-list-item-last">
+          <div>
+          <img class="img-1" src="{{asset_path}}images/icon-arrow.svg">
+            <div class="govuk-service-list-text">
+              <a href="/help/get-emails-about-updates-to-govuk" class="govuk-link govuk-link--no-visited-state govuk-heading-m">Manage your GOV.UK emails</a>
+              <p>Manage the emails you get about GOV.UK pages you’re interested in.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
+            <h2 class="govuk-heading-m">If the service you’re looking for is not listed</h2>
+
+            <p>If you’re looking for a different service, you can search for it.</p>
+
+            <div class="govuk-input-container">
+              <img class="img-2" src="{{asset_path}}images/icon-search.svg">
+              <input class="govuk-input govuk-!-width-two-thirds" id="event-name" name="event-name" type="text">
+            </div>
+            <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+        Search
+      </button>
+
+          </div>
+
+          <div class="govuk-grid-column-one-third">
+
+            <aside class="app-related-items govuk-!-display-none" role="complementary">
+              <h2 class="govuk-heading-m" id="subsection-title">
+                Subsection
+              </h2>
+              <nav role="navigation" aria-labelledby="subsection-title">
+                <ul class="govuk-list govuk-!-font-size-16">
+                  <li>
+                    <a href="#">
+                      Related link
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Related link
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="govuk-!-font-weight-bold">
+                      More <span class="govuk-visually-hidden">in Subsection</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </aside>
+
+          </div>
+        </div>
+</main>
+</div>
+
     {% endblock %}

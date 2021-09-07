@@ -2,18 +2,35 @@
 {% extends "account/_account.html" %}
 {% block account %}
 <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-4">
-  You need a GOV.UK account to get email updates
+  You need a GOV.UK account to get these email updates
 </h1>
 <p class="govuk-body">
-  The way you subscribe to emails from GOV.UK has changed. You now need a GOV.UK account to subscribe to emails.
-</p>
+  The way you subscribe to emails from GOV.UK is changing.</p>
 <p class="govuk-body">
-  Creating an account takes about 3 minutes.
+  You need a GOV.UK account to subscribe to emails about:
 </p>
 <p>
-  Create a GOV.UK account so you can get email updates about the page: <br>
   <strong>{{ data['previousURL'] | default('guidance/red-amber-green-alerts') | urlToTitle }}</strong>
 </p>
+
+<p>
+  To create an account, you need:
+ </p>
+
+ <ul class="govuk-list govuk-list--bullet">
+<li>
+  an email address
+  </li><li>
+  a UK mobile number with reception
+</li></ul>
+<p>
+  It takes about 5 minutes to create an account.</p>
+  <div class="govuk-inset-text">
+
+
+  If you already get email updates from GOV.UK, they’ll be added to your new GOV.UK account.
+</div>
+
 {{ govukButton({
 text: "Create a GOV.UK account",
 href: "/sign-up"

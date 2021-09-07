@@ -1,0 +1,53 @@
+{% set accountHidden = true %}
+{% extends "account/_account.html" %}
+{% import "includes/xpl-cards.html" as cards %}
+{% import "includes/xpl-tabs.njk" as tabs %}
+{% set hideAccountMenu = true %}
+
+{% block pageTitle %}
+  Check your phone
+{% endblock %}
+
+{% block account %}
+  <form action="/sign-in/set-cookie" method="POST" class="sign-in">
+    <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">
+    Check your phone
+    </h1>
+    <p>
+      We sent a code to *******6789. It may take a few minutes to arrive.
+</p><p>
+The  code will expire in 30 minutes.    </p>
+
+
+
+        {{ govukInput({
+          label: {
+            text: "Enter the 6 digit security code"
+          },
+          id: "email",
+          name: "_email",
+          value: _email
+        }) }}
+
+        <p >If you’re having trouble with the code, you can <a class="govuk-link" href="#">request a new code or use a different phone number</a>.
+
+        </p>
+
+        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="remember" name="remember" type="checkbox" value="carcasses">
+            <label class="govuk-label govuk-checkboxes__label" for="remember">
+              Stay signed in on this device for the next 30 days.
+              <br>Do not do this if you’re using a shared or public device.
+            </label>
+          </div>
+        </div>
+        <br>
+        <input id="signedIn" name="signedIn" type="hidden" value="true">
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+
+
+    {% endblock %}
