@@ -1,3 +1,4 @@
+{% set accountHidden = true %}
 {% extends "account/_account.html" %}
 {% import "includes/xpl-cards.html" as cards %}
 {% import "includes/xpl-tabs.njk" as tabs %}
@@ -8,7 +9,7 @@
 {% endblock %}
 
 {% block account %}
-  <form action="/sign-in/set-cookie" method="POST" class="sign-in">
+  <form action="/sign-in/password"  class="sign-in">
     <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">
       Sign in to your GOV.UK account
     </h1>
@@ -27,52 +28,26 @@
           value="UcFSY6TIi0tf5CnMvlE7Yn9jKY+J8AHMsl9DP7pdwDhM9AVnJG0qaiaT9djzNVWf8vm53kzjIXLCjkKsUeaYCQ==">
         <input type="hidden" name="previous_url" id="previous_url">
         <input type="hidden" name="from_confirmation_email" id="from_confirmation_email">
-        <div class="govuk-form-group">
-          <label for="_email" class="gem-c-label govuk-label">Email address</label>
-          <input name="_user[email]" class="gem-c-input govuk-input" id="email" type="email" autocomplete="off" style="background-image:
-                      url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAkCAYAAADo6zjiAAAAAXNSR0IArs4c6QAAAx9JREFUWAndV79LY0EQnjySSAQ1OUG4OxvxR5BALggBi0BEIYUYtLC43v8ghZVgY3V9/oUjpMovEBvRSsGAHrY2Yi7BwlgEREXNzffMLnnP91bzkiDcQNjdmdlvvt3ZnbdxEcvOzs73p6enX9xdaDab36DrlbhcripjHbjd7s2tra2/ZlxXK/gfDjxqNvZyzERumMQPMwkNK+93cCwEMVq7bFiXxqMFg6a/gzextF7nXMXfKhZ24FPl/yYwOztLqVSK0NpJX3cgFArR8PAwobWTvhLgu6/HFa0Vib4SsApo1hkIDAwM0OTkJAUCAbMfObW9ATIp3GLs9/tpY2ODhoaG6OXlhQqFAp2dnelmpzaBrWrlDszPz+vB4axpGi0uLsp5Tm0SQNGRBBQ+fTVJAsfHx9RoNPRgSMH+/r4M7NQmARQd1/b2dlPYcdDGx8epXq/T7e2tUOutymZwfGfAV7LGLoet98GVgcA7c3tqZiJ1JhGRKegp+gfA+Mv4Be+DTyPQ4hiXdeADpG1dUCei0ShNT0/TyMgI3d/fU61Wo3K5TBcXF7bzeBe+dk0gHA7TysoKeb1eGQgHFkRmZmZod3eXTk5OpM3c6ToFExMThuDPz88yBgpaIpHQy7hUmjpd70CxWCSkYHBwkEqlElUqFYrFYrS0tKSH8ng8uv36+toU+nXo5utQtXqrWXpbKFG0MpkMYeV8qnUP1JF2EQWuXSf6SMGBGDhtHx4eZHCsOB6PS6jLy0u6u7uTY3NHQ0XiXbgxG5yMkfP19XUaGxvTp2NH9vb2lFAa/qngHwuT+I10KL0VRp5La2trFAwGdS+kJp/PU7Wqhnx9MymAzab2b4ewIfjq6ipFIhFdhfOQy+Xo/PxcuNi2Xd8CICeTSRn88fGRstmssgC1s+mawPLyMs3NzUlMrB53Hz8hR0dHdHp6KoaGtmsCU1NTBkCfz0f4tQtqhJ10XAk53/ie90SA5WQHDjn6T8EgnU4TDqFKcCNs5LBjAqgbfL8T+J4DtL322wSxVDNpPEg2O04B140rnhhhgAy20BJdocQczAUGsP4BPJYni4VMj2AAAAAASUVORK5CYII=&quot;);
-                      background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;
-                      cursor: auto;">
-        </div>
-        <div class="gem-c-show-password" data-module="show-password" data-disable-form-submit-check="false"
-          data-show-text="Show" data-hide-text="Hide" data-show-full-text="Show password"
-          data-hide-full-text="Hide password" data-announce-show="Your password is shown"
-          data-announce-hide="Your password is hidden">
-          <div class="govuk-form-group">
-            <label for="_password" class="gem-c-label govuk-label">Password</label>
-            <div class="gem-c-show-password__input-wrapper">
-              <input name="_user[password]" class="gem-c-input govuk-input gem-c-input--with-password" id="password"
-                type="password" autocomplete="off" style="background-image:
-                            url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAkCAYAAADo6zjiAAAAAXNSR0IArs4c6QAAAx9JREFUWAndV79LY0EQnjySSAQ1OUG4OxvxR5BALggBi0BEIYUYtLC43v8ghZVgY3V9/oUjpMovEBvRSsGAHrY2Yi7BwlgEREXNzffMLnnP91bzkiDcQNjdmdlvvt3ZnbdxEcvOzs73p6enX9xdaDab36DrlbhcripjHbjd7s2tra2/ZlxXK/gfDjxqNvZyzERumMQPMwkNK+93cCwEMVq7bFiXxqMFg6a/gzextF7nXMXfKhZ24FPl/yYwOztLqVSK0NpJX3cgFArR8PAwobWTvhLgu6/HFa0Vib4SsApo1hkIDAwM0OTkJAUCAbMfObW9ATIp3GLs9/tpY2ODhoaG6OXlhQqFAp2dnelmpzaBrWrlDszPz+vB4axpGi0uLsp5Tm0SQNGRBBQ+fTVJAsfHx9RoNPRgSMH+/r4M7NQmARQd1/b2dlPYcdDGx8epXq/T7e2tUOutymZwfGfAV7LGLoet98GVgcA7c3tqZiJ1JhGRKegp+gfA+Mv4Be+DTyPQ4hiXdeADpG1dUCei0ShNT0/TyMgI3d/fU61Wo3K5TBcXF7bzeBe+dk0gHA7TysoKeb1eGQgHFkRmZmZod3eXTk5OpM3c6ToFExMThuDPz88yBgpaIpHQy7hUmjpd70CxWCSkYHBwkEqlElUqFYrFYrS0tKSH8ng8uv36+toU+nXo5utQtXqrWXpbKFG0MpkMYeV8qnUP1JF2EQWuXSf6SMGBGDhtHx4eZHCsOB6PS6jLy0u6u7uTY3NHQ0XiXbgxG5yMkfP19XUaGxvTp2NH9vb2lFAa/qngHwuT+I10KL0VRp5La2trFAwGdS+kJp/PU7Wqhnx9MymAzab2b4ewIfjq6ipFIhFdhfOQy+Xo/PxcuNi2Xd8CICeTSRn88fGRstmssgC1s+mawPLyMs3NzUlMrB53Hz8hR0dHdHp6KoaGtmsCU1NTBkCfz0f4tQtqhJ10XAk53/ie90SA5WQHDjn6T8EgnU4TDqFKcCNs5LBjAqgbfL8T+J4DtL322wSxVDNpPEg2O04B140rnhhhgAy20BJdocQczAUGsP4BPJYni4VMj2AAAAAASUVORK5CYII=&quot;);
-                            background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;
-                            cursor: auto;">
-              <button class="gem-c-show-password__toggle" aria-controls="password" type="button"
-                aria-label="Show password" data-track-label="signIn" data-track-category="pageElementInteraction"
-                data-track-action="passwordShowHide">Show</button>
-              <span class="govuk-visually-hidden" aria-live="polite">Your password is hidden</span>
-            </div>
-          </div>
-        </div>
-        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="remember" name="remember" type="checkbox" value="carcasses">
-            <label class="govuk-label govuk-checkboxes__label" for="remember">
-              Stay signed in on this device for the next 30 days.
-              <br>Do not do this if you’re using a shared or public device.
-            </label>
-          </div>
-        </div>
-        <br>
+
+
+        {{ govukInput({
+          label: {
+            text: "Email address"
+          },
+          id: "email",
+          name: "_email",
+          value: _email
+        }) }}
+
+
+
         <input id="signedIn" name="signedIn" type="hidden" value="true">
         <button class="govuk-button" data-module="govuk-button">
-          Sign in
+          Continue
         </button>
       </form>
-      <p class="govuk-body">You can
-        <a class="govuk-link" href="#">change your password</a>
-        if you’ve forgotten it.
-      </p>
-      <p class="govuk-body">
+
+      <p>
         <a class="govuk-link" href="/sign-up">Create a GOV.UK account</a>
         if you do not have one.
       </p>

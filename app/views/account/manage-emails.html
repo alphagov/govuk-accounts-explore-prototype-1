@@ -1,17 +1,40 @@
 {% extends "account/_account.html" %}
+{% set hideAccountMenu = true %}
 {% import "includes/xpl-cards.html" as cards %}
 {% import "includes/xpl-tabs.njk" as tabs %}
 {% block account %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Manage your GOV.UK account",
+      href: "/account/manage-account"
+    }
+  ]
+}) }}
+
   <h1 class="gem-c-heading govuk-heading-xl govuk-!-padding-top-0 govuk-!-margin-bottom-4">
     Manage your GOV.UK emails
   </h1>
-  {% set notificationTemp = data['notifications'] | default([]) %}
-  {% if not ( notificationTemp == []) %}
+
+
+  {% set notificationTemp = data['notifications'] | default([])  %}
+
+{% if ( notificationTemp == [] ) %}
+
+test
+{% endif %}
+
+
+
+  {% if (notificationTemp) and not ( notificationTemp == []) %}
     {{ govukInsetText({
     html: "<a href='#'>Unsubscribe from everything</a>"
   }) }}
     <ul class="govuk-list">
       {% for url in notificationTemp %}
+
+
         <li>
           <p class="govuk-!-margin-bottom-0">Page</p>
           <h2 class="govuk-heading-m govuk-!-padding-top-0 govuk-!-padding-bottom-3">
@@ -29,6 +52,11 @@
       {% endfor %}
     </ul>
   {% else %}
-    <p>No notifications</p>
+    <p>
+
+      You’re not currently getting emails about changes to GOV.UK.
+
+      Some GOV.UK pages have a ‘get emails’ link. You can use that link to subscribe to pages or topics you’re interested in.
+    </p>
   {% endif %}
 {% endblock %}

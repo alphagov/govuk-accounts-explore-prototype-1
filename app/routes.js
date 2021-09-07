@@ -7,7 +7,10 @@ const govukTopics = require('./govuk-topics')
 const url = require('url')
 const nunjucks = require('nunjucks')
 
+
 // Add your routes here - above the module.exports line
+
+
 
 if (!process.env.API_URL) {
   console.warn('\n\n=== ERROR ============================')
@@ -64,9 +67,10 @@ const topicPage = function (topicType, req, res) {
   })
 }
 
+/*
 router.get('/browse/:topicSlug', function (req, res) {
   return topicPage('browse', req, res)
-})
+}) */
 
 
 router.get('/topic/:topicSlug', function (req, res) {
@@ -133,6 +137,11 @@ router.get('/', function (req, res) {
   res.render('index')
 })
 
+router.all('*', (req, res, next) => {
+req.session.data['currentURL'] = req.url;
+next();
+})
+
 // ==================================================
 // All accounts stuff starts here
 
@@ -166,11 +175,22 @@ router.get('/layout_unbranded', function (req, res) {
 
 // Sign in Routes
 router.get('/sign-in', function (req, res) {
-  res.render('account/sign-in')
+  var temp = req.query
+  res.render('account/sign-in', {_email: temp.email})
+})
+
+router.get('/sign-in/password', function (req, res) {
+
+  res.render('account/password')
+})
+
+router.get('/sign-in/2fa', function (req, res) {
+
+  res.render('account/2fa')
 })
 
 router.all('/sign-in/set-cookie', function (req, res) {
-  res.redirect('/account/home')
+  res.redirect('/account/manage-emails')
 })
 
 router.get('/sign-in/another-government-service', function (req, res) {
@@ -188,6 +208,21 @@ router.get('/sign-up/email-confirmation', function (req, res) {
 
 router.get('/sign-up', function (req, res) {
   res.render('account/sign-up/index')
+})
+router.get('/sign-up/check-email', function (req, res) {
+  res.render('account/sign-up/check-email')
+})
+
+router.get('/sign-up/create-password', function (req, res) {
+  res.render('account/sign-up/create-password')
+})
+
+router.get('/sign-up/enter-phone', function (req, res) {
+  res.render('account/sign-up/enter-phone')
+})
+
+router.get('/sign-up/check-phone', function (req, res) {
+  res.render('account/sign-up/check-phone')
 })
 
 router.get('/sign-up/your-information', function (req, res) {
@@ -225,12 +260,23 @@ router.get('/sign-out', function (req, res) {
 })
 
 // account home
+
+
+
 router.get('/account/home', function (req, res) {
   res.render('account/home')
 })
 
-router.get('/account/manage', function (req, res) {
-  res.render('account/manage')
+router.get('/account/manage-emails', function (req, res) {
+  res.render('account/manage-emails', req  )
+})
+
+router.get('/account/manage-account', function (req, res) {
+  res.render('account/manage-account', req )
+})
+
+router.get('/account/security', function (req, res) {
+  res.render('account/security', req )
 })
 
 
@@ -300,6 +346,51 @@ router.get('/prototype-admin/clear-data-success', function (req, res) {
   }
 )
 
+
+/// email stuff
+
+
+router.get('/email/manage/authenticate', function (req, res) {
+  res.render('email/manage/authenticate')
+})
+
+
+router.post('/email/manage/authenticate-2', function (req, res) {
+  res.render('email/manage/authenticate-2')
+})
+
+router.get('/email/manage/authenticate-2', function (req, res) {
+  res.render('email/manage/authenticate-2')
+})
+
+
+router.post('/email/manage/have-govuk-account', function (req, res) {
+  res.render('email/manage/have-govuk-account')
+})
+
+router.get('/email/manage/have-govuk-account', function (req, res) {
+  res.render('email/manage/have-govuk-account')
+})
+
+
+router.get('/email/subscriptions/frequency', function (req, res) {
+  res.render('email/subscriptions/frequency')
+})
+
+
+router.post('/email/subscriptions/frequency', function (req, res) {
+  res.render('email/subscriptions/frequency')
+})
+
+router.get('/email/subscriptions/verify', function (req, res) {
+  res.render('email/subscriptions/verify')
+})
+
+
+router.post('/email/subscriptions/verify', function (req, res) {
+  res.render('email/subscriptions/verify')
+})
+
 // All accounts routes end here
 // ==================================================
 
@@ -314,7 +405,7 @@ const augmentedBody = function (req, response, body) {
   const headerStringWithCss = `
   <link href="/public/stylesheets/explore-header.css" media="all" rel="stylesheet" type="text/css" />
   <link href="/public/stylesheets/explore-govuk-overrides.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="/public/stylesheets/accounts.css" media="all" rel="stylesheet" type="text/css" />` + headerString
+  <link href="/public/stylesheets/accounts.css" media="all" rel="stylesheet" type="text/css" />`
 
   const footerTemplate = fs.readFileSync('app/views/explore-footer.html', 'utf8')
   const notificationsBase = fs.readFileSync('app/views/includes/print-notifications.html', 'utf8')
@@ -323,7 +414,7 @@ const augmentedBody = function (req, response, body) {
   const topBannerHTML = fs.readFileSync('app/views/includes/banner.html', 'utf8')
   const topBannerTemplate = nunjucks.renderString(topBannerHTML,
                                                   {
-                                                    emailUnverified: req.session.data.emailUnverified,
+
                                                     showRemoveBanner: req.session.data.showRemoveBanner,
                                                     showSuccessBanner: req.session.data.showSuccessBanner,
                                                   })
@@ -332,10 +423,12 @@ const augmentedBody = function (req, response, body) {
 
   // Make all src and ref attributes absolute, or the server will try to
   // fetch its own version
+
   return body
     .replace(/(href|src)="\//g, '$1="https://www.gov.uk/')
     .replace(/<body( class=")*?/, '<body class="explore-body ' + pageURL + '"')
-    .replace(/<header[^]+?<\/header>/, headerStringWithCss)
+    .replace(/<header[^]+?<\/header>/, headerString)
+    .replace('</head>', headerStringWithCss + '</head>')
     .replace(/<main role="main" id="content" class="detailed-guide" lang="en">/, topBannerTemplate + '<main role="main" id="content" class="detailed-guide" lang="en">')
 
     .replace(/<footer[^]+?<\/footer>/, footerTemplate)
@@ -349,6 +442,7 @@ const augmentedBody = function (req, response, body) {
     .replace(/<\/body>/, '<script src="/public/javascripts/explore-header.js"></script>\n</body>')
     .replace(/<a(.*) href\s*=\s*(['"])\s*(https:)?\/\/www.gov.uk\//g, '<a $1 href=$2/')
 
+
 }
 
 // Constructs the URL to get the page body from on gov.uk
@@ -361,7 +455,7 @@ const govUkUrl = function (req) {
 router.all('*', (req, res, next) => {
   const log = {
     method: req.method,
-    url: req.originalUrl,
+    url: req.url,
     data: req.session.data
   }
   console.log(JSON.stringify(log, null, 2))
@@ -369,7 +463,11 @@ router.all('*', (req, res, next) => {
   next()
 })
 
+
+
 router.get('/*', function (req, res) {
+
+
   request(govUkUrl(req), function (error, response, body) {
     if (error) throw error
     if (response.headers['content-type'].indexOf('application/json') !== -1) {
@@ -387,9 +485,12 @@ router.post('/*', function (req, res) {
     formData: req.body
   }, function (error, response, body) {
     if (error) throw error
-
     res.send(augmentedBody(req, response, body))
   })
 })
+
+
+
+
 
 module.exports = router

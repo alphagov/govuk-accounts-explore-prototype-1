@@ -6,7 +6,9 @@
 {% endfor %}
 
 <script src="/public/javascripts/application.js"></script>
+{% if not hideExplore %}
 <script src="/public/javascripts/explore-header.js"></script>
+{% endif %}
 <script src="/public/javascripts/xpl-tabs.js"></script>
 <script src="/public/javascripts/govuk-accordion.js"></script>
 
