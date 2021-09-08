@@ -1,5 +1,7 @@
 
-{% if showSuccessBanner %}
+
+{% if sessionFlash  or echo %}
+{% if (sessionFlash == "added") or (echo == "added") %}
   <div id="notification-success" class="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-bottom-0" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
     <div class="govuk-notification-banner__header">
       <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
@@ -11,11 +13,11 @@
         You’ve subscribed to email updates about this page.
       </p>
       <p class="govuk-body">
-        <strong></strong><a class="govuk-notification-banner__link" href="/account/manage-account">Manage your GOV.UK emails</a>.</strong>
+        <strong><a class="govuk-notification-banner__link" href="/account/manage-emails">Manage your GOV.UK emails</a>.</strong>
       </p>
     </div>
   </div>
-{% elseif showRemoveBanner %}
+{% else  %}
   <div id="notification-success" class="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-bottom-0" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
     <div class="govuk-notification-banner__header">
       <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
@@ -27,8 +29,10 @@
         You're no longer getting email updates about this page.
       </p>
       <p class="govuk-body">
-        <strong><a class="govuk-notification-banner__link" href="/account/manage-account">Manage your GOV.UK emails</a></strong>.
+        <strong><a class="govuk-notification-banner__link" href="/account/manage-emails">Manage your GOV.UK emails</a></strong>.
       </p>
     </div>
   </div>
+  {% endif %}
+
 {% endif %}

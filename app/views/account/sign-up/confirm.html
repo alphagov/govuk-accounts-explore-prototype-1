@@ -11,9 +11,10 @@ You'll get emails when we update
 {{ govukInsetText({
 html: '[You already get email updates from GOV.UK. They’ll be added to your new GOV.UK account when you confirm  you want to get email updates about this page.]' }) }}
 
+
 <p>
   <a class="govuk-button"
-    href="/account/manage-emails">
+    href="/account/router-add?save={{ data['notifications'][0] | default('/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do') }}">
       [Continue]</a>
 </p>
 
