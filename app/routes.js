@@ -190,7 +190,7 @@ router.get('/sign-in/2fa', function (req, res) {
 })
 
 router.all('/sign-in/set-cookie', function (req, res) {
-  res.redirect('/account/manage-emails')
+  res.redirect('/sign-up/confirm')
 })
 
 router.get('/sign-in/another-government-service', function (req, res) {
