@@ -26,6 +26,7 @@ router.use(function(req, res, next){
     console.log("session is " + req.session.data.sessionFlash + "and echo is " + req.session.data.echo );
     delete req.session.data.sessionFlash;
     next();
+    // Don't forget to make changes with topBannerTemplate - unlike most of the prototype, these variables have to be manually sent to the template
 });
 
 // Add your routes here - above the module.exports line
