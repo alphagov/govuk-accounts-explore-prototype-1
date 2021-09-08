@@ -391,6 +391,10 @@ router.post('/email/subscriptions/verify', function (req, res) {
   res.render('email/subscriptions/verify')
 })
 
+router.get('/help/get-emails-about-updates-to-govuk', function(req, res){
+  res.render('help/get-emails-about-updates-to-govuk')
+})
+
 // All accounts routes end here
 // ==================================================
 
