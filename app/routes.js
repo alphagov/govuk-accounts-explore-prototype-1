@@ -7,6 +7,26 @@ const govukTopics = require('./govuk-topics')
 const url = require('url')
 const nunjucks = require('nunjucks')
 
+// FLASH! AH-AH … this allows for one time showing of success banner
+
+
+
+// Custom flash middleware -- from Ethan Brown's book, 'Web Development with Node & Express'
+router.use(function(req, res, next){
+    // if there's a flash message in the session request, make it available in the response, then delete it
+    // ADDED FOR THIS PROTOTYPE - all of the redirecting means that we need an echo version of flash (one page behind?) hence why we're using an extra echo variable
+    res.locals.sessionFlash = req.session.data.sessionFlash;
+    if (req.session.data.echo) {
+      delete req.session.data.echo;
+    } else {
+      if (req.session.data.sessionFlash != 'undefined'){
+      req.session.data.echo = req.session.data.sessionFlash;
+      }
+    }
+    console.log("session is " + req.session.data.sessionFlash + "and echo is " + req.session.data.echo );
+    delete req.session.data.sessionFlash;
+    next();
+});
 
 // Add your routes here - above the module.exports line
 
@@ -290,11 +310,10 @@ router.all('/account/router-remove', function (req, res) {
 
     if (!req.session.data.signedIn) {
       return res.redirect('/sign-up/email')
-    } else if(!req.session.data.emailUnverified) {
-      delete req.session.data.showSuccessBanner
-      req.session.data.showRemoveBanner = true
-      return res.redirect(tempRemove + '#notification-success')
     } else {
+
+      req.session.data.sessionFlash = 'removed';
+
       return res.redirect(tempRemove + '#notification-success')
     }
   }
@@ -315,11 +334,8 @@ router.all('/account/router-add', function (req, res) {
 
   if (!req.session.data.signedIn) {
     return res.redirect('/sign-up/email')
-  } else if(!req.session.data.emailUnverified) {
-    delete req.session.data.showRemoveBanner
-    req.session.data.showSuccessBanner = true
-    return res.redirect(tempSave + '#notification-success')
   } else {
+    req.session.data.sessionFlash = 'added';
     return res.redirect(tempSave + '#notification-success')
   }
 })
@@ -419,8 +435,7 @@ const augmentedBody = function (req, response, body) {
   const topBannerTemplate = nunjucks.renderString(topBannerHTML,
                                                   {
 
-                                                    showRemoveBanner: req.session.data.showRemoveBanner,
-                                                    showSuccessBanner: req.session.data.showSuccessBanner,
+                                                  sessionFlash: req.session.data.sessionFlash, echo: req.session.data.echo
                                                   })
 
   const pageURL = req.url // this is a hack to get a unique identifer on each page
