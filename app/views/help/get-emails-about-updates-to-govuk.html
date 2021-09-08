@@ -1,34 +1,38 @@
+{% extends "layout.html" %}
+{% import "includes/xpl-cards.html" as cards %}
+{% import "includes/xpl-tabs.njk" as tabs %}
+
 {% set title = "Get emails about updates to GOV.UK" %}
-{% extends "index.html" %}
 
-{% block beforeContent %}  <ol class="govuk-breadcrumbs__list">
-        <li class="govuk-breadcrumbs__list-item">
-          <a data-track-category="homeLinkClicked" data-track-action="homeBreadcrumb" data-track-label="" data-track-options="{}" class="govuk-breadcrumbs__link" href="/">Home</a>
-        </li>
-  </ol>{% endblock %}
-
-
-
+{% block pageTitle %}
+    Sign in to a government service
+{% endblock %}
 {% block main %}
-    <main role="main" id="content" class="help-page" lang="en">
-
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
-
-<div class="gem-c-title govuk-!-margin-top-8 govuk-!-margin-bottom-8">
-
-  <h1 class="gem-c-title__text govuk-heading-xl">
-    Get emails about updates to GOV.UK
-  </h1>
-</div>
+  <div id="global-header-bar-outer">
+    <div id="global-header-bar"></div>
   </div>
-</div>
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <div class="responsive-bottom-margin">
+  <div class="xpl-section-inner ">
+    <main class="govuk-main-wrapper">
+      {{ govukBreadcrumbs({ items: [{text: "Home", href: "#"}]}) }}
 
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+      <div class="gem-c-title govuk-!-margin-top-8 govuk-!-margin-bottom-8">
+
+        <h1 class="gem-c-title__text govuk-heading-xl">
+          {{title}}
+        </h1>
+      </div>
+        </div>
+      </div>
+
+
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+    <div class="responsive-bottom-margin">
 
 
 <div class="gem-c-govspeak govuk-govspeak direction-ltr disable-youtube" data-module="govspeak">
@@ -55,7 +59,7 @@
 
 <h2 id="how-to-change-your-email-preferences">How to change your email preferences</h2>
 
-<p>You can <a href="/email/manage/authenticate">unsubscribe or change your email preferences</a> at any time.</p>
+<p>You can <a href="{% if data['signedIn'] %}/account/manage-emails{% else %}/email/manage/authenticate{% endif %}">unsubscribe or change your email preferences</a> at any time.</p>
 
 <p>You can also use the ‘unsubscribe’ or ‘change your email preferences’ links in the emails you get from GOV.UK to:</p>
 
@@ -266,4 +270,5 @@
 
 </div>
 
+</div>
 {% endblock %}
