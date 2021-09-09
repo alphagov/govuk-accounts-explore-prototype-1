@@ -10,6 +10,46 @@
     <div class="xpl-section-inner">
       <h1 class="govuk-heading-xl">User research - tasks</h1>
 
+<form
+
+      <form action="/tasks" method="post" >
+
+      {{ govukRadios({
+        idPrefix: "user-group",
+        name: "user-group",
+        fieldset: {
+          legend: {
+            text: "Set journey",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+    text: "Default setting is 'Nothing' - even when data is cleared "
+  },
+        items: [
+          {
+            value: "Nothing",
+            checked: true if (data['user-group'] == "Nothing") ,
+            text: "Nothing"
+          },
+          {
+            value: "Email updates",
+            checked: true if (data['user-group'] == "Email updates") ,
+            text: "Email updates"
+          },
+          {
+            value: "Brexit checker",
+            checked: true if (data['user-group'] == "Brexit checker") ,
+            text: "Brexit checker"
+          }
+        ]
+      }) }}
+      {{ govukButton({
+        text: "Save selection"
+      }) }}
+
+</form>
+
       <h2 class="govuk-heading-m">Task 1</h2>
 
 <p class="govuk-body">
