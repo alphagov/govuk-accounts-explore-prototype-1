@@ -246,6 +246,10 @@ router.get('/sign-up/check-phone', function (req, res) {
   res.render('account/sign-up/check-phone')
 })
 
+router.get('/sign-up/created', function (req, res) {
+  res.render('account/sign-up/created')
+})
+
 router.get('/sign-up/your-information', function (req, res) {
   res.render('account/sign-up/your-information')
 })
@@ -432,6 +436,11 @@ const augmentedBody = function (req, response, body) {
   const notificationsBase = fs.readFileSync('app/views/includes/print-notifications.html', 'utf8')
   const notificationsTemplate = nunjucks.renderString(notificationsBase, { signedIn: req.session.data.signedIn, currentURL: req.url, notifications: req.session.data.notifications })
 
+// new version of email only
+  const emailUpdatesBase = fs.readFileSync('app/views/includes/email-updates.html', 'utf8')
+  const emailUpdates= nunjucks.renderString(emailUpdatesBase, { signedIn: req.session.data.signedIn, currentURL: req.url, notifications: req.session.data.notifications })
+
+
   const topBannerHTML = fs.readFileSync('app/views/includes/banner.html', 'utf8')
   const topBannerTemplate = nunjucks.renderString(topBannerHTML,
                                                   {
@@ -444,6 +453,11 @@ const augmentedBody = function (req, response, body) {
   // Make all src and ref attributes absolute, or the server will try to
   // fetch its own version
 
+// this is the current updates end part that we'll search for and then replace - this workaround is because of how we've set up this prototype
+const currentUpdates = '<a href="#history" class="gem-c-metadata__definition-link govuk-!-display-none-print" data-track-category="content-history" data-track-action="see-all-updates-link-clicked" data-track-label="history">See all updates</a></dd>'
+
+const updateHistory = '<a href="#full-history" class="app-c-published-dates__toggle govuk-link" data-controls="full-history" data-expanded="false" data-toggled-text="- hide all updates">+ show all updates</a>'
+
   return body
     .replace(/(href|src)="\//g, '$1="https://www.gov.uk/')
     .replace(/<body( class=")*?/, '<body class="explore-body ' + pageURL + '"')
@@ -451,10 +465,15 @@ const augmentedBody = function (req, response, body) {
     .replace('</head>', headerStringWithCss + '</head>')
     .replace(/<main role="main" id="content" class="detailed-guide" lang="en">/, topBannerTemplate + '<main role="main" id="content" class="detailed-guide" lang="en">')
 
+    .replace(/<main role="main" id="content" class="publication" lang="en">/, topBannerTemplate + '<main role="main" id="content" class="publication" lang="en">')
+
     .replace(/<footer[^]+?<\/footer>/, footerTemplate)
 
-    .replace(/<div class="gem-c-print-link[^]+?<\/div>/, notificationsTemplate)
-    .replace(/<div class="gem-c-print-link[^]+?<\/div>/, notificationsTemplate) // hack to get bottom of page
+    .replace(/<a(.*) href="#history"[^]+?<\/a>/, currentUpdates + emailUpdates )
+    .replace(/<a href="#full-history"[^]+?<\/a>/, updateHistory + emailUpdates )
+
+/*    .replace(/<div class="gem-c-print-link[^]+?<\/div>/, notificationsTemplate) */
+/*    .replace(/<div class="gem-c-print-link[^]+?<\/div>/, notificationsTemplate) */ // hack to get bottom of page
     .replace(
       '<div class="govuk-header__container govuk-width-container">',
       '<div class="govuk-header__container govuk-header__container--old-page govuk-width-container">')
