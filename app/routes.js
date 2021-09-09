@@ -167,7 +167,7 @@ next();
 // All accounts stuff starts here
 
 // Tasks page
-router.get('/tasks', function (req, res) {
+router.all('/tasks', function (req, res) {
   res.render('tasks')
 })
 
