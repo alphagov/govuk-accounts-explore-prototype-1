@@ -95,8 +95,7 @@
     %}
 
   {% set recovery = [
-    { title: "Sign user in with unverified email (manage page)" , url: "/prototype-admin/log-in-unverified" }
-    , { title: "Sign user in with verified email (manage page)" , url:  "/prototype-admin/log-in-verified" }
+    { title: "Sign user in" , url:  "/prototype-admin/log-in-verified" }
     , { title: "Email confirmation" , url:  "/sign-up/email-confirmation" }
     , { title: "Clear all session data (logged out state)", url: "/prototype-admin/clear-data"}
   ]  %}
@@ -164,8 +163,64 @@
   %}
 
   {% set recovery = [
-    { title: "Sign user in with unverified email (manage page)" , url: "/prototype-admin/log-in-unverified" }
-    , { title: "Sign user in with verified email (manage page)" , url:  "/prototype-admin/log-in-verified" }
+    { title: "Sign user in" , url:  "/prototype-admin/log-in-verified" }
+    , { title: "Email confirmation" , url:  "/sign-up/email-confirmation" }
+    , { title: "Clear all session data (logged out state)", url: "/prototype-admin/clear-data"}
+  ]  %}
+
+<h3 class="govuk-heading-s">List</h3>
+          <ul>
+
+            {% for item in list %}
+            <li>
+
+              <a class="govuk-link" href="{{item.url}}">{{item.title}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+
+          <h3 class="govuk-heading-s">Troubleshooting</h3>
+          <ul>
+
+            {% for item in recovery %}
+            <li>
+
+              <a class="govuk-link" href="{{item.url}}">{{item.title}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+
+                </div>
+      </details>
+
+
+      <h2 class="govuk-heading-m">Task 3</h2>
+
+
+      {{ govukButton({
+        text: "Go to task 3",
+        href: "/government/publications/deferring-your-state-pension",
+        classes: "govuk-button--secondary"
+      }) }}
+
+
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+           Links
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+{% set list =[
+{ title: "Deferring your state pension" , url: "/government/publications/deferring-your-state-pension" }
+
+]
+
+  %}
+
+  {% set recovery = [
+    { title: "Sign user in" , url:  "/prototype-admin/log-in-verified" }
     , { title: "Email confirmation" , url:  "/sign-up/email-confirmation" }
     , { title: "Clear all session data (logged out state)", url: "/prototype-admin/clear-data"}
   ]  %}
