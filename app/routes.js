@@ -351,7 +351,7 @@ router.get('/includes/banner', function (req, res) {
 
 router.post('/search/router', function (req, res) {
   var string = req.session.data['keywords'].replace(/ /g, '+');
-  res.redirect('/search/all?keywords=' + string + '&content_purpose_supergroup%5B%5D=services&order=relevance')
+  res.redirect('/search/all?keywords=' + string + '&content_purpose_supergroup%5B%5D=services&content_purpose_supergroup%5B%5D=guidance_and_regulation&order=relevance')
 })
 
 router.get('/prototype-admin/clear-data', function (req, res) {
