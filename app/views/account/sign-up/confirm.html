@@ -6,7 +6,8 @@
 
 You’ll get emails when there are updates to:</P>
 <p>
-   <strong>{[page]}</strong>
+
+   <strong>{{ data['url'] | urlToTitle | default("National lockdown stay at home")}}</strong>
 </p>
 
 {% if (data['user-group'] == "Email updates") %}

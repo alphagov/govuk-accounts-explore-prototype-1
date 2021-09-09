@@ -181,13 +181,13 @@ router.get('/prototype-admin/home-signed-out', function (req, res) {
 router.get('/prototype-admin/log-in-unverified', function (req, res) {
   req.session.data.signedIn = true
   req.session.data.emailUnverified = true
-  res.redirect('/account/home')
+  res.redirect('/account/manage-account')
 })
 
 router.get('/prototype-admin/log-in-verified', function (req, res) {
   req.session.data.signedIn = true
   req.session.data.emailUnverified = null
-  res.redirect('/account/home')
+  res.redirect('/account/manage-account')
 })
 
 router.get('/layout_unbranded', function (req, res) {
