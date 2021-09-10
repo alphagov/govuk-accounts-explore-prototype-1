@@ -62,7 +62,7 @@
 
 <h2 class="gem-c-heading govuk-heading-m  govuk-!-padding-bottom-0 ">Your GOV.UK emails</h2>
 
-{% if not hideNotifications %}
+{% if  (data['notifications'] | length )  %}
 <p>See and manage the emails you get about updates to pages on GOV.UK.</p>
 
 <p><a href="/account/manage-emails">Manage your GOV.UK emails</a></p>
@@ -76,7 +76,7 @@ Some GOV.UK pages have a ‘get emails’ link. You can use that link to subscri
 </div>
 {% endif %}
 
-{% if brexitChecker %}
+{% if brexitChecker or (data['user-group'] == "Brexit checker") %}
 
 <h2 class="gem-c-heading govuk-heading-m  ">Brexit checker results: what you need to do</h2>
 

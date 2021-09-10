@@ -17,22 +17,13 @@
     Manage your GOV.UK emails
   </h1>
 
+  {% if  (data['notifications'] | length )  %}
 
-  {% set notificationTemp = data['notifications'] | default([])  %}
-
-{% if ( notificationTemp == [] ) %}
-
-test
-{% endif %}
-
-
-
-  {% if (notificationTemp) and not ( notificationTemp == []) %}
     {{ govukInsetText({
     html: "<a href='#'>Unsubscribe from everything</a>"
   }) }}
     <ul class="govuk-list">
-      {% for url in notificationTemp %}
+      {% for url in data['notifications'] %}
 
 
         <li>
@@ -40,7 +31,7 @@ test
           <h2 class="govuk-heading-m govuk-!-padding-top-0 govuk-!-padding-bottom-3">
             <a href="{{ url }}">{{ url | urlToTitle }}</a>
           </h2>
-          <p>You subscribed on 7 July 2021</p>
+          <p>You subscribed on 14 September 2021</p>
           <p>You’ll get an email each time this page is updated.</p>
           <p>
             <a href="#">Change how often you get emails</a>
