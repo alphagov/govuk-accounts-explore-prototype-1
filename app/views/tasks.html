@@ -12,7 +12,8 @@
 
       {% if (sessionFlash  or echo ) %}
       {% if ((sessionFlash == "settings") or (echo == "settings")) %}
-        <div id="notification-success" class="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-bottom-0" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+
+        <div id="notification-success" class="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-top-6 govuk-!-margin-bottom-0" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
           <div class="govuk-notification-banner__header">
             <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
               Success
@@ -21,6 +22,9 @@
           <div class="govuk-notification-banner__content">
             <p class="govuk-body">
               You’ve saved the user group as '{{ data['user-group'] }}'.
+            </p>
+            <p class="govuk-body">
+              You’ve saved the email settings as '{{ data['get-emails'] }}'.
             </p>
 
           </div>
@@ -33,7 +37,7 @@
 
 <p>Public inbox (mailinator): <a href="https://www.mailinator.com/v4/public/inboxes.jsp?msgid=govukresearch.inbox1-1631267017-29842&to=govukresearch.inbox1#">govukresearch.inbox1</a></p>
 
-      <form action="/tasks" method="post" >
+      <form action="/tasks-router" method="post" >
 
 {#
 
@@ -72,18 +76,13 @@ text: "Default setting is 'Nothing' - even when data is cleared "
           }
         ]
       }) }}
-      {{ govukButton({
-        text: "Save selection"
-      }) }}
 
-</form>
-
-<form action="/tasks" method="post" >
 
 
 {{ govukRadios({
   idPrefix: "get-emails",
   name: "get-emails",
+  classes: "govuk-radios--inline",
   fieldset: {
     legend: {
       text: "Get emails",

@@ -357,7 +357,7 @@ if (req.session.data["get-emails"]=="Yes") {
 }
   // This is the URL the users will be redirected to once the email
   // has been sent
-  res.redirect('/account/router-add');
+  return res.redirect('/account/router-add');
 
 });
 
