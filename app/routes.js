@@ -31,7 +31,8 @@ router.use(function(req, res, next){
 
 // Add your routes here - above the module.exports line
 
-
+var NotifyClient = require('notifications-node-client').NotifyClient,
+    notify = new NotifyClient(process.env.NOTIFYAPIKEY);
 
 if (!process.env.API_URL) {
   console.warn('\n\n=== ERROR ============================')
@@ -234,6 +235,10 @@ router.get('/sign-up/check-email', function (req, res) {
   res.render('account/sign-up/check-email')
 })
 
+router.post('/sign-up/check-email', function (req, res) {
+  res.render('account/sign-up/check-email')
+})
+
 router.get('/sign-up/create-password', function (req, res) {
   res.render('account/sign-up/create-password')
 })
@@ -261,6 +266,7 @@ router.all('/sign-up/account-created', function (req, res) {
 router.get('/sign-up/confirm', function (req, res) {
   res.render('account/sign-up/confirm')
 })
+
 
 // sorting hat
 router.get('/account/other-accounts', function (req, res) {
@@ -415,6 +421,79 @@ router.post('/email/subscriptions/verify', function (req, res) {
 router.get('/help/get-emails-about-updates-to-govuk', function(req, res){
   res.render('help/get-emails-about-updates-to-govuk')
 })
+
+// Verification code email
+router.post('/sign-up/check-email/router', function (req, res) {
+
+console.log("sending");
+
+  notify.sendEmail(
+    // Template ID
+    'fde4cb3e-3811-4f13-9b27-b93cf8956013',
+    // `emailAddress` here needs to match the name of the form field in
+    // your HTML page
+    'govukresearch.inbox1@mailinator.com'
+  );
+
+  // This is the URL the users will be redirected to once the email
+  // has been sent
+  res.redirect('/sign-up/check-email');
+
+});
+
+// Welcome email
+router.post('/sign-up/your-information/router', function (req, res) {
+
+  notify.sendEmail(
+    // Template ID
+    'dfd9ba0e-d063-43fb-9774-4cb18f8d4c1a',
+    // `emailAddress` here needs to match the name of the form field in
+    // your HTML page
+    'govukresearch.inbox1@mailinator.com'
+  );
+
+  // This is the URL the users will be redirected to once the email
+  // has been sent
+  res.redirect('/sign-up/confirm');
+
+});
+
+
+// RAG subscription email
+router.post('/sign-up/confirm/router', function (req, res) {
+
+  notify.sendEmail(
+    // Template ID
+    'fd9e5160-1c0e-4e3b-92d8-2a461af8f3ae',
+    // `emailAddress` here needs to match the name of the form field in
+    // your HTML page
+    'govukresearch.inbox1@mailinator.com'
+  );
+
+  // This is the URL the users will be redirected to once the email
+  // has been sent
+  res.redirect('/account/manage-emails');
+
+});
+
+/*
+// Merged accounts email
+router.post('/sign-up/confirm/router', function (req, res) {
+
+  notify.sendEmail(
+    // Template ID
+    '4bd299fb-e82d-46f9-8178-2cb31d904836',
+    // `emailAddress` here needs to match the name of the form field in
+    // your HTML page
+    'govukresearch.inbox1@mailinator.com'
+  );
+
+  // This is the URL the users will be redirected to once the email
+  // has been sent
+  res.redirect('/account/manage-emails');
+
+});
+*/
 
 // All accounts routes end here
 // ==================================================
