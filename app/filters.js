@@ -40,7 +40,7 @@ module.exports = function (env) {
 
 filters.urlToTitle = function(url, shift){
   if (url) {
-  var temp = url.split('/')[2] // remove start '/guidance/'
+  var temp = url.split('/').pop(); // get last element of the array as we can't guarantee the starting point
   console.log("url is" + temp);
   if (shift){
     temp = temp.slice(shift)
