@@ -29,69 +29,34 @@
 
             <p>These are the most viewed government services on GOV.UK:</p>
 
-      <div class="govuk-service-list">
+            <div class="govuk-service-list">
 
-        <div class="govuk-service-list-item">
-          <div>
-          <img class="img-1" src="{{asset_path}}images/icon-arrow.svg">
-            <div class="govuk-service-list-text">
-              <a href="/sign-in-universal-credit" class="govuk-link govuk-link--no-visited-state govuk-heading-m">Universal Credit</a>
-              <p>See and update your Universal credit claim.</p>
+            {% macro service(name, text, url, last="") %}
+              <div class="govuk-service-list-item {% if last %}govuk-service-list-item-last{% endif %}">
+                <div>
+                <img class="img-1" src="/public/images/icon-arrow.svg" alt="right arrow">
+                  <div class="govuk-service-list-text">
+                    <a href="{{url}}" class="govuk-link govuk-link--no-visited-state govuk-heading-m">{{name}}</a>
+                    <p>{{text}}</p>
+                  </div>
+                </div>
+              </div>
+            {% endmacro %}
+
+            {{service(name='Universal Credit', text='See and update your Universal credit claim.', url='https://www.gov.uk/sign-in-universal-credit')}}
+
+            {{service(name='HMRC services', text='Sign in to HMRC services using Government Gateway or GOV.UK Verify.', url='https://www.gov.uk/log-in-register-hmrc-online-services')}}
+
+            {{service(name='Check your State Pension forecast', text='Find out how much State Pension you could get and when.', url='https://www.gov.uk/check-state-pension')}}
+
+            {{service(name='Manage your student loan balance', text='See your student loan balance and manage your repayments.', url='https://www.gov.uk/sign-in-to-manage-your-student-loan-balance')}}
+
+            {{service(name='Make or update a rural payments claim', text='Apply for rural grants and payments.', url='https://www.gov.uk/claim-rural-payments')}}
+
+            {{service(name='Manage your GOV.UK emails', text='Manage the emails you get about GOV.UK pages you’re interested in.', url='#', last=true)}}
+
             </div>
-          </div>
-        </div>
 
-        <div class="govuk-service-list-item">
-          <div>
-          <img class="img-1" src="{{asset_path}}images/icon-arrow.svg">
-            <div class="govuk-service-list-text">
-              <a href="/log-in-register-hmrc-online-services" class="govuk-link govuk-link--no-visited-state govuk-heading-m">HMRC services</a>
-              <p>Sign in to HMRC services using Government Gateway or GOV.UK Verify.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="govuk-service-list-item">
-          <div>
-          <img class="img-1" src="{{asset_path}}images/icon-arrow.svg">
-            <div class="govuk-service-list-text">
-              <a href="/check-state-pension" class="govuk-link govuk-link--no-visited-state govuk-heading-m">Check your State Pension forecast</a>
-              <p>Find out how much State Pension you could get and when.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="govuk-service-list-item">
-          <div>
-          <img class="img-1" src="{{asset_path}}images/icon-arrow.svg">
-            <div class="govuk-service-list-text">
-              <a href="/sign-in-to-manage-your-student-loan-balance" class="govuk-link govuk-link--no-visited-state govuk-heading-m">Manage your student loan balance</a>
-              <p>See your student loan balance and manage your repayments.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="govuk-service-list-item govuk-service-list-item">
-          <div>
-          <img class="img-1" src="{{asset_path}}images/icon-arrow.svg">
-            <div class="govuk-service-list-text">
-              <a href="/claim-rural-payments" class="govuk-link govuk-link--no-visited-state govuk-heading-m">Make or update a rural payments claim</a>
-              <p>Apply for rural grants and payments.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="govuk-service-list-item govuk-service-list-item-last">
-          <div>
-          <img class="img-1" src="{{asset_path}}images/icon-arrow.svg">
-            <div class="govuk-service-list-text">
-              <a href="/help/get-emails-about-updates-to-govuk" class="govuk-link govuk-link--no-visited-state govuk-heading-m">Manage your GOV.UK emails</a>
-              <p>Manage the emails you get about GOV.UK pages you’re interested in.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
             <h2 class="govuk-heading-m">If the service you’re looking for is not listed</h2>
 
             <p>If you’re looking for a different service, you can search for it.</p>
@@ -105,8 +70,11 @@
                 </h2>
                 <div class="govuk-input__wrapper">
                   <input class="govuk-input" id="desktop-search" name="keywords" type="text" spellcheck="false">
-                    <button class="govuk-input__suffix" aria-hidden="true">Search</button>
                   </div>
+                  {{ govukButton({
+                    text: "Search",
+                    classes: "govuk-button--secondary"
+                  }) }}
                 </div>
               </form>
 

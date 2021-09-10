@@ -349,7 +349,7 @@ img {
 
 .govuk-service-list-item {
   border-top: 1px solid #b1b4b6;
-  padding-top: 30px;
+  padding-top: 5px;
   padding-bottom: 10px;
 }
 
@@ -372,11 +372,6 @@ img {
   padding-left:40px;
 }
 
-.img-2{
-  position:absolute;
-  padding:8px;
-}
-
 .govuk-tag {
   margin-bottom: 20px;
 }
@@ -395,4 +390,9 @@ img {
 
 .govuk-service-list-item-first {
   border-top: 0px;
+}
+
+.govuk-service-list-item .govuk-heading-m {
+  font-size: 24px;
+  margin-bottom: -10px;
 }
