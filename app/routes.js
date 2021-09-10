@@ -7,9 +7,9 @@ const govukTopics = require('./govuk-topics')
 const url = require('url')
 const nunjucks = require('nunjucks')
 
+
+
 // FLASH! AH-AH … this allows for one time showing of success banner
-
-
 
 // Custom flash middleware -- from Ethan Brown's book, 'Web Development with Node & Express'
 router.use(function(req, res, next){
@@ -33,6 +33,8 @@ router.use(function(req, res, next){
 
 var NotifyClient = require('notifications-node-client').NotifyClient,
     notify = new NotifyClient(process.env.NOTIFYAPIKEY);
+
+
 
 if (!process.env.API_URL) {
   console.warn('\n\n=== ERROR ============================')
@@ -88,6 +90,18 @@ const topicPage = function (topicType, req, res) {
     res.render('topic', body)
   })
 }
+
+
+router.all('*', (req, res, next) => {
+  const log = {
+    method: req.method,
+    url: req.url,
+    data: req.session.data
+  }
+  console.log(JSON.stringify(log, null, 2))
+
+  next()
+})
 
 /*
 router.get('/browse/:topicSlug', function (req, res) {
@@ -239,6 +253,31 @@ router.get('/sign-up/email-confirmation', function (req, res) {
 router.get('/sign-up', function (req, res) {
   res.render('account/sign-up/index')
 })
+
+
+// Verification code email
+router.post('/sign-up/check-email/router', function (req, res) {
+
+if (req.session.data["get-emails"]=="Yes") {
+console.log("'Confirmation email' sending");
+  notify.sendEmail(
+    // Template ID
+    'fde4cb3e-3811-4f13-9b27-b93cf8956013',
+    // `emailAddress` here needs to match the name of the form field in
+    // your HTML page
+    'govukresearch.inbox1@mailinator.com'
+  );
+} else{
+  console.log("'Confirmation email' surpressed - change email setting to yes to send");
+}
+
+  // This is the URL the users will be redirected to once the email
+  // has been sent
+  res.redirect('/sign-up/check-email');
+
+});
+
+
 router.get('/sign-up/check-email', function (req, res) {
   res.render('account/sign-up/check-email')
 })
@@ -259,6 +298,28 @@ router.get('/sign-up/check-phone', function (req, res) {
   res.render('account/sign-up/check-phone')
 })
 
+// Welcome email
+router.all('/sign-up/check-phone/router', function (req, res) {
+
+if (req.session.data["get-emails"]=="Yes") {
+  console.log("'Welcome email' sending");
+  notify.sendEmail(
+    // Template ID
+    'dfd9ba0e-d063-43fb-9774-4cb18f8d4c1a',
+    // `emailAddress` here needs to match the name of the form field in
+    // your HTML page
+    'govukresearch.inbox1@mailinator.com'
+  );
+} else {
+
+  console.log("'Welcome email' surpressed - change email setting to yes to send");
+}
+  // This is the URL the users will be redirected to once the email
+  // has been sent
+  res.redirect('/sign-up/created');
+
+});
+
 router.get('/sign-up/created', function (req, res) {
   res.render('account/sign-up/created')
 })
@@ -271,9 +332,83 @@ router.all('/sign-up/account-created', function (req, res) {
   res.redirect('/sign-up/confirm')
 })
 
+router.post('/sign-up/confirm', function (req, res) {
+  res.render('account/sign-up/confirm')
+})
+
 router.get('/sign-up/confirm', function (req, res) {
   res.render('account/sign-up/confirm')
 })
+
+
+// Merged accounts email - people only get this router basd on logic in the confirm page
+router.all('/sign-up/confirm/router/merge', function (req, res) {
+if (req.session.data["get-emails"]=="Yes") {
+  console.log("'Merging emails' sending")
+  notify.sendEmail(
+    // Template ID
+    '4bd299fb-e82d-46f9-8178-2cb31d904836', // merged accounts email
+    // `emailAddress` here needs to match the name of the form field in
+    // your HTML page
+    'govukresearch.inbox1@mailinator.com'
+  );
+} else{
+  console.log("'Merged email' surpressed - change email setting to yes to send");
+}
+  // This is the URL the users will be redirected to once the email
+  // has been sent
+  res.redirect('/account/router-add');
+
+});
+
+
+
+
+router.all('/account/router-add', function (req, res) {
+  var tempSave = req.session.data.save;
+
+  if (!req.session.data.notifications) {
+    req.session.data.notifications = [];
+  }
+
+  if (!req.session.data.notifications.includes(tempSave)) {
+    req.session.data.notifications.unshift(tempSave);
+  }
+
+//  delete req.session.data.save;
+
+  if (!req.session.data.signedIn) {
+    return res.redirect('/sign-up/email')
+  } else {
+
+      if (req.session.data["get-emails"]=="Yes") {// RAG subscription email
+        console.log("'" + req.session.data.title +  "'" + "subscription email sending ");
+    notify.sendEmail(
+      // Template ID
+      'fd9e5160-1c0e-4e3b-92d8-2a461af8f3ae', // subscriptions email
+      // `emailAddress` here needs to match the name of the form field in
+      // your HTML page
+      'govukresearch.inbox1@mailinator.com',
+          {
+        personalisation: {
+          'page': req.session.data.title
+            }
+          }
+          );
+        } else {
+          console.log("'" + req.session.data.title +  "'" + " subcription email surpressed - change email setting to yes to send");
+
+        }
+
+
+    req.session.data.sessionFlash = 'added';
+    return res.redirect(tempSave + '#notification-success')
+  }
+})
+
+
+/* END OF SIGN UP FLOWS */
+
 
 
 // sorting hat
@@ -281,14 +416,6 @@ router.get('/account/other-accounts', function (req, res) {
   res.render('account/sign-in-to-another-service')
 })
 
-// Confirm email routes
-router.all('/email/verify', function (req, res) {
-  if (req.session.data.emailUnverified) {
-    delete req.session.data.emailUnverified
-  }
-  req.session.data.previousURL = "/email/verify"
-  res.redirect('/account/home')
-})
 
 // Sign out routes
 router.get('/sign-out', function (req, res) {
@@ -411,105 +538,7 @@ router.get('/help/get-emails-about-updates-to-govuk', function(req, res){
   res.render('help/get-emails-about-updates-to-govuk')
 })
 
-// Verification code email
-router.post('/sign-up/check-email/router', function (req, res) {
 
-if (req.session.data["get-emails"]=="Yes") {
-console.log("sending");
-  notify.sendEmail(
-    // Template ID
-    'fde4cb3e-3811-4f13-9b27-b93cf8956013',
-    // `emailAddress` here needs to match the name of the form field in
-    // your HTML page
-    'govukresearch.inbox1@mailinator.com'
-  );
-} else{
-  console.log("emails surpressed, change settings to emails yes");
-}
-
-  // This is the URL the users will be redirected to once the email
-  // has been sent
-  res.redirect('/sign-up/check-email');
-
-});
-
-// Welcome email
-router.post('/sign-up/your-information/router', function (req, res) {
-
-if (req.session.data["get-emails"]=="Yes") {
-  notify.sendEmail(
-    // Template ID
-    'dfd9ba0e-d063-43fb-9774-4cb18f8d4c1a',
-    // `emailAddress` here needs to match the name of the form field in
-    // your HTML page
-    'govukresearch.inbox1@mailinator.com'
-  );
-}
-  // This is the URL the users will be redirected to once the email
-  // has been sent
-  res.redirect('/sign-up/confirm');
-
-});
-
-
-// RAG subscription email
-router.post('/sign-up/confirm/router', function (req, res) {
-if (req.session.data["get-emails"]=="Yes") {
-  notify.sendEmail(
-    // Template ID
-    'fd9e5160-1c0e-4e3b-92d8-2a461af8f3ae',
-    // `emailAddress` here needs to match the name of the form field in
-    // your HTML page
-    'govukresearch.inbox1@mailinator.com',
-    {
-      personalisation: {
-        'page': req.session.data.currentURL
-      }
-    }
-  );
-}
-  // This is the URL the users will be redirected to once the email
-  // has been sent
-  res.redirect('/sign-up/confirm/router/merge');
-
-});
-
-// Merged accounts email
-router.get('/sign-up/confirm/router/merge', function (req, res) {
-if (req.session.data["get-emails"]=="Yes") {
-  notify.sendEmail(
-    // Template ID
-    '4bd299fb-e82d-46f9-8178-2cb31d904836',
-    // `emailAddress` here needs to match the name of the form field in
-    // your HTML page
-    'govukresearch.inbox1@mailinator.com'
-  );
-}
-  // This is the URL the users will be redirected to once the email
-  // has been sent
-  res.redirect('/account/router-add');
-
-});
-router.all('/account/router-add', function (req, res) {
-  var tempSave = req.session.data.save;
-
-  if (!req.session.data.notifications) {
-    req.session.data.notifications = [];
-  }
-
-  if (!req.session.data.notifications.includes(tempSave)) {
-    req.session.data.notifications.unshift(tempSave);
-  }
-
-  delete req.session.data.save;
-
-  if (!req.session.data.signedIn) {
-    return res.redirect('/sign-up/email')
-  } else {
-    req.session.data.sessionFlash = 'added';
-    return res.redirect(tempSave + '#notification-success')
-  }
-})
 
 
 
@@ -575,7 +604,7 @@ const updateHistory = '<a href="#full-history" class="app-c-published-dates__tog
       '<div class="govuk-header__container govuk-width-container">',
       '<div class="govuk-header__container govuk-header__container--old-page govuk-width-container">')
 
-    .replace(/<\/body>/, '<script src="/public/javascripts/explore-header.js"></script>\n</body>')
+    .replace(/<\/body>/, '<script src="/public/javascripts/explore-header.js"></script><script src="/public/javascripts/account.js"></script>\n</body>')
     .replace(/<a(.*) href\s*=\s*(['"])\s*(https:)?\/\/www.gov.uk\//g, '<a $1 href=$2/')
 
 
@@ -588,16 +617,7 @@ const govUkUrl = function (req) {
   return 'https://www.gov.uk' + req.path + (query ? query : '')
 }
 
-router.all('*', (req, res, next) => {
-  const log = {
-    method: req.method,
-    url: req.url,
-    data: req.session.data
-  }
-  console.log(JSON.stringify(log, null, 2))
 
-  next()
-})
 
 
 

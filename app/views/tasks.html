@@ -51,7 +51,9 @@ text: "Default setting is 'Nothing' - even when data is cleared "
             classes: "govuk-fieldset__legend--m"
           }
         },
-
+        hint: {
+        text: "Default setting is 'Nothing' - even when data is cleared "
+        },
         items: [
           {
             value: "Nothing",
@@ -78,12 +80,6 @@ text: "Default setting is 'Nothing' - even when data is cleared "
 
 <form action="/tasks" method="post" >
 
-{#
-
-hint: {
-text: "Default setting is 'Nothing' - even when data is cleared "
-},
-#}
 
 {{ govukRadios({
   idPrefix: "get-emails",
@@ -94,7 +90,9 @@ text: "Default setting is 'Nothing' - even when data is cleared "
       classes: "govuk-fieldset__legend--m"
     }
   },
-
+  hint: {
+  text: "We can only send 50 Notify emails a day on our trial, so only turn on emails when you need it! "
+  },
   items: [
     {
       value: "Yes",
