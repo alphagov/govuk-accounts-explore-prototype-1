@@ -35,7 +35,7 @@
       <h1 class="govuk-heading-xl">User research - tasks</h1>
 
 
-<p>Public inbox (mailinator): <a href="https://www.mailinator.com/v4/public/inboxes.jsp?msgid=govukresearch.inbox1-1631267017-29842&to=govukresearch.inbox1#">govukresearch.inbox1</a></p>
+<p>Public inbox (mailinator): <a target="_blank"  href="https://www.mailinator.com/v4/public/inboxes.jsp?msgid=govukresearch.inbox1-1631267017-29842&to=govukresearch.inbox1#">govukresearch.inbox1 (opens in new tab)</a></p>
 
       <form action="/tasks-router" method="post" >
 
@@ -218,8 +218,8 @@ text: "Default setting is 'Nothing' - even when data is cleared "
   { title: "GOV.UK" , url: "/" }
   , { title: "Sign in to a government service" , url: "/sign-in/another-government-service" }
   , { title: "Sign in to your GOV.UK account" , url: "/sign-in" }
-  , { title: 'Home - GOV.UK account' , url: "/account/home" }
-  , { title: 'Manage your GOV.UK emails - GOV.UK account' , url:  "/account/manage" }]
+  , { title: 'Home - GOV.UK account' , url: "/account/manage-account" }
+  , { title: 'Manage your GOV.UK emails - GOV.UK account' , url:  "/account/manage-emails" }]
 
   %}
 
@@ -260,7 +260,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
 
       {{ govukButton({
         text: "Go to task 3",
-        href: "/government/publications/deferring-your-state-pension",
+        href: "/government/publications/information-for-drivers-with-diabetes",
         classes: "govuk-button--secondary"
       }) }}
 
@@ -274,7 +274,9 @@ text: "Default setting is 'Nothing' - even when data is cleared "
         </summary>
         <div class="govuk-details__text">
 {% set list =[
-{ title: "Deferring your state pension" , url: "/government/publications/deferring-your-state-pension" }
+  { title: "Information for drivers with diabetes" , url : "/government/publications/information-for-drivers-with-diabetes" }
+  , { title: "Private providers of coronavirus (COVID-19) testing" , url: "government/publications/list-of-private-providers-of-coronavirus-testing" }
+, { title: "Deferring your state pension" , url: "/government/publications/deferring-your-state-pension" }
 
 ]
 
@@ -282,7 +284,6 @@ text: "Default setting is 'Nothing' - even when data is cleared "
 
   {% set recovery = [
     { title: "Sign user in" , url:  "/prototype-admin/log-in-verified" }
-    , { title: "Email confirmation" , url:  "/sign-up/email-confirmation" }
     , { title: "Clear all session data (logged out state)", url: "/prototype-admin/clear-data"}
   ]  %}
 
