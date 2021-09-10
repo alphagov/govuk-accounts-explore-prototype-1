@@ -10,6 +10,46 @@
     <div class="xpl-section-inner">
       <h1 class="govuk-heading-xl">User research - tasks</h1>
 
+<form
+
+      <form action="/tasks" method="post" >
+
+      {{ govukRadios({
+        idPrefix: "user-group",
+        name: "user-group",
+        fieldset: {
+          legend: {
+            text: "Set journey",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+    text: "Default setting is 'Nothing' - even when data is cleared "
+  },
+        items: [
+          {
+            value: "Nothing",
+            checked: true if (data['user-group'] == "Nothing") ,
+            text: "Nothing"
+          },
+          {
+            value: "Email updates",
+            checked: true if (data['user-group'] == "Email updates") ,
+            text: "Email updates"
+          },
+          {
+            value: "Brexit checker",
+            checked: true if (data['user-group'] == "Brexit checker") ,
+            text: "Brexit checker"
+          }
+        ]
+      }) }}
+      {{ govukButton({
+        text: "Save selection"
+      }) }}
+
+</form>
+
       <h2 class="govuk-heading-m">Task 1</h2>
 
 <p class="govuk-body">
@@ -27,33 +67,61 @@
           </span>
         </summary>
         <div class="govuk-details__text">
-{% set list =[
+{% set list1 =[
   { title: "Coronavirus: how to stay safe and help prevent the spread
 " , url: "/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do" }
+  , { title: "You need a GOV.UK account to get these email updates" , url: "/sign-up/email" }
   , { title: "Create a GOV.UK account" , url: "/sign-up" }
+  , { title: "Check your email" , url: "/sign-up/check-email" }
+  , { title: "Create your password" , url: "/sign-up/create-password" }
+  , { title: "Enter your mobile phone number" , url: "/sign-up/enter-phone" }
+  , { title: "Check your phone" , url: "/sign-up/check-phone" }
+  , { title: "You've created your GOV.UK account" , url: "/sign-up/created" }
   , { title: "Control how we use information about you" , url: "/sign-up/your-information" }
-  , { title: 'Confirm your email address' , url: "/sign-up/confirm" }
-  , { title: 'Your GOV.UK account' , url:  "/account/home" }]
-
+  , { title: 'Confirm you want to get email updates' , url: "/sign-up/confirm" }
+  , { title: 'Coronavirus: how to stay safe and help prevent the spread' , url:  "/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do" }]
   %}
 
+
+  {% set list3 =[
+    { title: "Coronavirus: how to stay safe and help prevent the spread
+  " , url: "/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do" }
+    , { title: "You need a GOV.UK account to get these email updates" , url: "/sign-up/email" }
+    , { title: "Sign in to your GOV.UK account" , url: "/sign-in" }
+    , { title: "Enter your password" , url: "/sign-in/password" }
+    , { title: "Check your phone" , url: "/sign-in/2fa" }
+    , { title: 'Confirm you want to get email updates' , url: "/sign-up/confirm" }
+    , { title: 'Coronavirus: how to stay safe and help prevent the spread' , url:  "/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do" }]
+    %}
+
   {% set recovery = [
-    { title: "Sign user in with unverified email (manage page)" , url: "/prototype-admin/log-in-unverified" }
-    , { title: "Sign user in with verified email (manage page)" , url:  "/prototype-admin/log-in-verified" }
+    { title: "Sign user in" , url:  "/prototype-admin/log-in-verified" }
     , { title: "Email confirmation" , url:  "/sign-up/email-confirmation" }
     , { title: "Clear all session data (logged out state)", url: "/prototype-admin/clear-data"}
   ]  %}
 
-<h3 class="govuk-heading-s">List</h3>
+<h3 class="govuk-heading-s">Group 1 and 2</h3>
           <ul>
 
-            {% for item in list %}
+            {% for item in list1 %}
             <li>
 
               <a class="govuk-link" href="{{item.url}}">{{item.title}}</a>
             </li>
             {% endfor %}
           </ul>
+
+
+          <h3 class="govuk-heading-s">Group 3</h3>
+                    <ul>
+
+                      {% for item in list3 %}
+                      <li>
+
+                        <a class="govuk-link" href="{{item.url}}">{{item.title}}</a>
+                      </li>
+                      {% endfor %}
+                    </ul>
 
           <h3 class="govuk-heading-s">Troubleshooting</h3>
           <ul>
@@ -95,8 +163,64 @@
   %}
 
   {% set recovery = [
-    { title: "Sign user in with unverified email (manage page)" , url: "/prototype-admin/log-in-unverified" }
-    , { title: "Sign user in with verified email (manage page)" , url:  "/prototype-admin/log-in-verified" }
+    { title: "Sign user in" , url:  "/prototype-admin/log-in-verified" }
+    , { title: "Email confirmation" , url:  "/sign-up/email-confirmation" }
+    , { title: "Clear all session data (logged out state)", url: "/prototype-admin/clear-data"}
+  ]  %}
+
+<h3 class="govuk-heading-s">List</h3>
+          <ul>
+
+            {% for item in list %}
+            <li>
+
+              <a class="govuk-link" href="{{item.url}}">{{item.title}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+
+          <h3 class="govuk-heading-s">Troubleshooting</h3>
+          <ul>
+
+            {% for item in recovery %}
+            <li>
+
+              <a class="govuk-link" href="{{item.url}}">{{item.title}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+
+                </div>
+      </details>
+
+
+      <h2 class="govuk-heading-m">Task 3</h2>
+
+
+      {{ govukButton({
+        text: "Go to task 3",
+        href: "/government/publications/deferring-your-state-pension",
+        classes: "govuk-button--secondary"
+      }) }}
+
+
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+           Links
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+{% set list =[
+{ title: "Deferring your state pension" , url: "/government/publications/deferring-your-state-pension" }
+
+]
+
+  %}
+
+  {% set recovery = [
+    { title: "Sign user in" , url:  "/prototype-admin/log-in-verified" }
     , { title: "Email confirmation" , url:  "/sign-up/email-confirmation" }
     , { title: "Clear all session data (logged out state)", url: "/prototype-admin/clear-data"}
   ]  %}

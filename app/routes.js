@@ -7,6 +7,27 @@ const govukTopics = require('./govuk-topics')
 const url = require('url')
 const nunjucks = require('nunjucks')
 
+// FLASH! AH-AH … this allows for one time showing of success banner
+
+
+
+// Custom flash middleware -- from Ethan Brown's book, 'Web Development with Node & Express'
+router.use(function(req, res, next){
+    // if there's a flash message in the session request, make it available in the response, then delete it
+    // ADDED FOR THIS PROTOTYPE - all of the redirecting means that we need an echo version of flash (one page behind?) hence why we're using an extra echo variable
+    res.locals.sessionFlash = req.session.data.sessionFlash;
+    if (req.session.data.echo) {
+      delete req.session.data.echo;
+    } else {
+      if (req.session.data.sessionFlash != 'undefined'){
+      req.session.data.echo = req.session.data.sessionFlash;
+      }
+    }
+    console.log("session is " + req.session.data.sessionFlash + "and echo is " + req.session.data.echo );
+    delete req.session.data.sessionFlash;
+    next();
+    // Don't forget to make changes with topBannerTemplate - unlike most of the prototype, these variables have to be manually sent to the template
+});
 
 // Add your routes here - above the module.exports line
 
@@ -147,7 +168,7 @@ next();
 // All accounts stuff starts here
 
 // Tasks page
-router.get('/tasks', function (req, res) {
+router.all('/tasks', function (req, res) {
   res.render('tasks')
 })
 
@@ -161,13 +182,13 @@ router.get('/prototype-admin/home-signed-out', function (req, res) {
 router.get('/prototype-admin/log-in-unverified', function (req, res) {
   req.session.data.signedIn = true
   req.session.data.emailUnverified = true
-  res.redirect('/account/home')
+  res.redirect('/account/manage-account')
 })
 
 router.get('/prototype-admin/log-in-verified', function (req, res) {
   req.session.data.signedIn = true
   req.session.data.emailUnverified = null
-  res.redirect('/account/home')
+  res.redirect('/account/manage-account')
 })
 
 router.get('/layout_unbranded', function (req, res) {
@@ -191,7 +212,7 @@ router.get('/sign-in/2fa', function (req, res) {
 })
 
 router.all('/sign-in/set-cookie', function (req, res) {
-  res.redirect('/account/manage-emails')
+  res.redirect('/sign-up/confirm')
 })
 
 router.get('/sign-in/another-government-service', function (req, res) {
@@ -228,6 +249,10 @@ router.get('/sign-up/enter-phone', function (req, res) {
 
 router.get('/sign-up/check-phone', function (req, res) {
   res.render('account/sign-up/check-phone')
+})
+
+router.get('/sign-up/created', function (req, res) {
+  res.render('account/sign-up/created')
 })
 
 router.get('/sign-up/your-information', function (req, res) {
@@ -296,11 +321,10 @@ router.all('/account/router-remove', function (req, res) {
 
     if (!req.session.data.signedIn) {
       return res.redirect('/sign-up/email')
-    } else if(!req.session.data.emailUnverified) {
-      delete req.session.data.showSuccessBanner
-      req.session.data.showRemoveBanner = true
-      return res.redirect(tempRemove + '#notification-success')
     } else {
+
+      req.session.data.sessionFlash = 'removed';
+
       return res.redirect(tempRemove + '#notification-success')
     }
   }
@@ -321,11 +345,8 @@ router.all('/account/router-add', function (req, res) {
 
   if (!req.session.data.signedIn) {
     return res.redirect('/sign-up/email')
-  } else if(!req.session.data.emailUnverified) {
-    delete req.session.data.showRemoveBanner
-    req.session.data.showSuccessBanner = true
-    return res.redirect(tempSave + '#notification-success')
   } else {
+    req.session.data.sessionFlash = 'added';
     return res.redirect(tempSave + '#notification-success')
   }
 })
@@ -340,7 +361,7 @@ router.get('/includes/banner', function (req, res) {
 
 router.post('/search/router', function (req, res) {
   var string = req.session.data['keywords'].replace(/ /g, '+');
-  res.redirect('/search/all?keywords=' + string + '&content_purpose_supergroup%5B%5D=services&order=relevance')
+  res.redirect('/search/all?keywords=' + string + '&content_purpose_supergroup%5B%5D=services&content_purpose_supergroup%5B%5D=guidance_and_regulation&order=relevance')
 })
 
 router.get('/prototype-admin/clear-data', function (req, res) {
@@ -494,18 +515,27 @@ const augmentedBody = function (req, response, body) {
   const notificationsBase = fs.readFileSync('app/views/includes/print-notifications.html', 'utf8')
   const notificationsTemplate = nunjucks.renderString(notificationsBase, { signedIn: req.session.data.signedIn, currentURL: req.url, notifications: req.session.data.notifications })
 
+// new version of email only
+  const emailUpdatesBase = fs.readFileSync('app/views/includes/email-updates.html', 'utf8')
+  const emailUpdates= nunjucks.renderString(emailUpdatesBase, { signedIn: req.session.data.signedIn, currentURL: req.url, notifications: req.session.data.notifications })
+
+
   const topBannerHTML = fs.readFileSync('app/views/includes/banner.html', 'utf8')
   const topBannerTemplate = nunjucks.renderString(topBannerHTML,
                                                   {
 
-                                                    showRemoveBanner: req.session.data.showRemoveBanner,
-                                                    showSuccessBanner: req.session.data.showSuccessBanner,
+                                                  sessionFlash: req.session.data.sessionFlash, echo: req.session.data.echo
                                                   })
 
   const pageURL = req.url // this is a hack to get a unique identifer on each page
 
   // Make all src and ref attributes absolute, or the server will try to
   // fetch its own version
+
+// this is the current updates end part that we'll search for and then replace - this workaround is because of how we've set up this prototype
+const currentUpdates = '<a href="#history" class="gem-c-metadata__definition-link govuk-!-display-none-print" data-track-category="content-history" data-track-action="see-all-updates-link-clicked" data-track-label="history">See all updates</a></dd>'
+
+const updateHistory = '<a href="#full-history" class="app-c-published-dates__toggle govuk-link" data-controls="full-history" data-expanded="false" data-toggled-text="- hide all updates">+ show all updates</a>'
 
   return body
     .replace(/(href|src)="\//g, '$1="https://www.gov.uk/')
@@ -514,10 +544,15 @@ const augmentedBody = function (req, response, body) {
     .replace('</head>', headerStringWithCss + '</head>')
     .replace(/<main role="main" id="content" class="detailed-guide" lang="en">/, topBannerTemplate + '<main role="main" id="content" class="detailed-guide" lang="en">')
 
+    .replace(/<main role="main" id="content" class="publication" lang="en">/, topBannerTemplate + '<main role="main" id="content" class="publication" lang="en">')
+
     .replace(/<footer[^]+?<\/footer>/, footerTemplate)
 
-    .replace(/<div class="gem-c-print-link[^]+?<\/div>/, notificationsTemplate)
-    .replace(/<div class="gem-c-print-link[^]+?<\/div>/, notificationsTemplate) // hack to get bottom of page
+    .replace(/<a(.*) href="#history"[^]+?<\/a>/, currentUpdates + emailUpdates )
+    .replace(/<a href="#full-history"[^]+?<\/a>/, updateHistory + emailUpdates )
+
+/*    .replace(/<div class="gem-c-print-link[^]+?<\/div>/, notificationsTemplate) */
+/*    .replace(/<div class="gem-c-print-link[^]+?<\/div>/, notificationsTemplate) */ // hack to get bottom of page
     .replace(
       '<div class="govuk-header__container govuk-width-container">',
       '<div class="govuk-header__container govuk-header__container--old-page govuk-width-container">')

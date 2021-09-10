@@ -1,0 +1,23 @@
+{% set accountHidden = true %}
+{% set hideAccountMenu = true %}
+{% extends "account/_account.html" %}
+{% block account %}
+
+<br>
+{{ govukPanel({
+  titleText: "You've created your GOV.UK account"
+}) }}
+
+<p>[You need to return to GOV.UK to continue.]</p>
+
+{{ govukButton({
+text: "[Go back to GOV.UK to continue]",
+href: "/sign-up/your-information"
+}) }}
+
+
+<h3 class='govuk-heading-m'>[Information]</h3>
+
+<p>[text]</p>
+
+{% endblock %}
