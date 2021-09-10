@@ -40,14 +40,15 @@ module.exports = function (env) {
 
 filters.urlToTitle = function(url, shift){
   if (url) {
-  var temp = url.slice(9) // remove start '/guidance/'
+  var temp = url.split('/')[2] // remove start '/guidance/'
+  console.log("url is" + temp);
   if (shift){
     temp = temp.slice(shift)
   }
   temp2 = temp.replace(/\-/g, ' ');
   return temp2.charAt(0).toUpperCase() + temp2.slice(1)
 } else {
-  return '';
+  return 'Blank';
 }
 }
 
