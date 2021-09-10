@@ -17,9 +17,11 @@ html: 'The other email updates you currently get from GOV.UK will be added to yo
 
 {% endif %}
 <p>
-  
-  
+
+
   <form class="form" method="post" action="/sign-up/confirm/router" name="emailAddress">
+
+<input type='hidden' name="save" id="save" value="{{ data['notifications'][0] | default('/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do') }}" />
     <input type="hidden">
     <button class="govuk-button" data-module="govuk-button">Confirm</button>
   </form>
@@ -27,11 +29,14 @@ html: 'The other email updates you currently get from GOV.UK will be added to yo
 <p><a class="govuk-link" href="/">Cancel and go to the GOV.UK homepage</a>
 </p>
 
-<!-- use this soon as it has the functionality for saving a notification -->
+
+<!-- use this soon as it has the functionality for saving a notification  -->
+<!--
   <a class="govuk-button"
     href="/account/router-add?save={{ data['notifications'][0] | default('/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do') }}">
       Confirm</a>
 </p>
-<!-- end functionality to use later -->
+->
+ <!-- end functionality to use later -->
 
 {% endblock %}

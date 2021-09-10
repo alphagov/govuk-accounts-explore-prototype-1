@@ -17,7 +17,7 @@
       </p>
     </div>
   </div>
-{% else  %}
+{% elseif (sessionFlash == "removed") or ( echo == "removed") %}
   <div id="notification-success" class="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-bottom-0" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
     <div class="govuk-notification-banner__header">
       <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
@@ -33,6 +33,8 @@
       </p>
     </div>
   </div>
+{% else %}
+
   {% endif %}
 
 {% endif %}

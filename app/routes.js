@@ -167,6 +167,14 @@ next();
 // ==================================================
 // All accounts stuff starts here
 
+
+
+// getting to this page from the form redirect
+router.post('/tasks-router', function (req, res) {
+  req.session.data.sessionFlash = 'settings';
+  return res.redirect('/tasks')
+})
+
 // Tasks page
 router.all('/tasks', function (req, res) {
   res.render('tasks')
@@ -330,26 +338,7 @@ router.all('/account/router-remove', function (req, res) {
   }
 })
 
-router.all('/account/router-add', function (req, res) {
-  var tempSave = req.session.data.save;
 
-  if (!req.session.data.notifications) {
-    req.session.data.notifications = [];
-  }
-
-  if (!req.session.data.notifications.includes(tempSave)) {
-    req.session.data.notifications.unshift(tempSave);
-  }
-
-  delete req.session.data.save;
-
-  if (!req.session.data.signedIn) {
-    return res.redirect('/sign-up/email')
-  } else {
-    req.session.data.sessionFlash = 'added';
-    return res.redirect(tempSave + '#notification-success')
-  }
-})
 
 router.get('/includes/print-notifications', function (req, res) {
   res.render('includes/print-notifications')
@@ -472,9 +461,31 @@ router.post('/sign-up/confirm/router', function (req, res) {
 
   // This is the URL the users will be redirected to once the email
   // has been sent
-  res.redirect('/account/manage-emails');
+  res.redirect('/account/router-add');
 
 });
+
+
+router.all('/account/router-add', function (req, res) {
+  var tempSave = req.session.data.save;
+
+  if (!req.session.data.notifications) {
+    req.session.data.notifications = [];
+  }
+
+  if (!req.session.data.notifications.includes(tempSave)) {
+    req.session.data.notifications.unshift(tempSave);
+  }
+
+  delete req.session.data.save;
+
+  if (!req.session.data.signedIn) {
+    return res.redirect('/sign-up/email')
+  } else {
+    req.session.data.sessionFlash = 'added';
+    return res.redirect(tempSave + '#notification-success')
+  }
+})
 
 /*
 // Merged accounts email

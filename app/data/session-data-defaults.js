@@ -19,7 +19,7 @@ Example usage:
 
 module.exports = {
 
-"user-group" : "Nothing"
+// "user-group" : "Nothing"
   // Insert values here
 
 }

@@ -8,11 +8,39 @@
 <main class="govuk-main-wrapper">
   <section>
     <div class="xpl-section-inner">
+
+
+      {% if (sessionFlash  or echo ) %}
+      {% if ((sessionFlash == "settings") or (echo == "settings")) %}
+        <div id="notification-success" class="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-bottom-0" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Success
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-body">
+              You’ve saved the user group as '{{ data['user-group'] }}'.
+            </p>
+
+          </div>
+        </div>
+        {% endif %}
+{% endif %}
+
       <h1 class="govuk-heading-xl">User research - tasks</h1>
 
-<form
+
+<p>Public inbox (mailinator): <a href="https://www.mailinator.com/v4/public/inboxes.jsp?msgid=govukresearch.inbox1-1631267017-29842&to=govukresearch.inbox1#">govukresearch.inbox1</a></p>
 
       <form action="/tasks" method="post" >
+
+{#
+
+  hint: {
+text: "Default setting is 'Nothing' - even when data is cleared "
+},
+  #}
 
       {{ govukRadios({
         idPrefix: "user-group",
@@ -23,9 +51,7 @@
             classes: "govuk-fieldset__legend--m"
           }
         },
-        hint: {
-    text: "Default setting is 'Nothing' - even when data is cleared "
-  },
+
         items: [
           {
             value: "Nothing",
