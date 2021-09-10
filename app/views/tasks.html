@@ -76,6 +76,44 @@ text: "Default setting is 'Nothing' - even when data is cleared "
 
 </form>
 
+<form action="/tasks" method="post" >
+
+{#
+
+hint: {
+text: "Default setting is 'Nothing' - even when data is cleared "
+},
+#}
+
+{{ govukRadios({
+  idPrefix: "get-emails",
+  name: "get-emails",
+  fieldset: {
+    legend: {
+      text: "Get emails",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+
+  items: [
+    {
+      value: "Yes",
+      checked: true if (data['get-emails'] == "Yes") ,
+      text: "Yes"
+    },
+    {
+      value: "No",
+      checked: true if (data['get-emails'] == "No") ,
+      text: "No"
+    }
+  ]
+}) }}
+{{ govukButton({
+  text: "Save selection"
+}) }}
+
+</form>
+
       <h2 class="govuk-heading-m">Task 1</h2>
 
 <p class="govuk-body">
