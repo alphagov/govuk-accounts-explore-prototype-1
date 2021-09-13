@@ -23,9 +23,11 @@
             <p class="govuk-body">
               You’ve saved the user group as '{{ data['user-group'] }}'.
             </p>
-            <p class="govuk-body">
+<!-- remove comment code after session - and remember to set 'sendEmails' back to no! -->
+
+<!--            <p class="govuk-body">
               You’ve saved the email settings as '{{ data['get-emails'] }}'.
-            </p>
+            </p> -->
 
           </div>
         </div>
@@ -35,7 +37,7 @@
       <h1 class="govuk-heading-xl">User research - tasks</h1>
 
 
-<p>Public inbox (mailinator): <a target="_blank"  href="https://www.mailinator.com/v4/public/inboxes.jsp?msgid=govukresearch.inbox1-1631267017-29842&to=govukresearch.inbox1#">govukresearch.inbox1 (opens in new tab)</a></p>
+<p>Public inbox (mailinator): <a target="_blank"  href="https://www.mailinator.com/v4/public/inboxes.jsp?to={{data['mailinator-email']}}#">{{data['mailinator-email']}} (opens in new tab)</a></p>
 
       <form action="/tasks-router" method="post" >
 
@@ -78,6 +80,14 @@ text: "Default setting is 'Nothing' - even when data is cleared "
       }) }}
 
 
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Other settings
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+
 
 {{ govukRadios({
   idPrefix: "get-emails",
@@ -105,9 +115,42 @@ text: "Default setting is 'Nothing' - even when data is cleared "
     }
   ]
 }) }}
+
+
+{{ govukRadios({
+  idPrefix: "mailinator-email",
+  name: "mailinator-email",
+  fieldset: {
+    legend: {
+      text: "Mailinator email",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "govukresearch.inbox1",
+      checked: true if (data['mailinator-email'] == "govukresearch.inbox1") ,
+      text: "govukresearch.inbox1"
+    },
+    {
+      value: "govukresearch.inbox2",
+      checked: true if (data['mailinator-email'] == "govukresearch.inbox2") ,
+      text: "govukresearch.inbox2"
+    }
+  ]
+}) }}
+
+
+</div>
+</details>
+
+
+
 {{ govukButton({
   text: "Save selection"
 }) }}
+
+
 
 </form>
 
@@ -142,7 +185,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
   , { title: "You've created your GOV.UK account" , url: "/sign-up/created" }
   , { title: "Control how we use information about you" , url: "/sign-up/your-information" }
   , { title: 'Confirm you want to get email updates' , url: "/sign-up/confirm" }
-    , { title: "[email] Merged" , url: "/notify/merged" }  
+    , { title: "[email] Merged" , url: "/notify/merged" }
     , { title: "[email] Subscribed" , url: "/notify/subscribed" }
   , { title: 'Coronavirus: how to stay safe and help prevent the spread' , url:  "/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do" }]
   %}
@@ -161,7 +204,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
 
   {% set recovery = [
     { title: "Sign user in" , url:  "/prototype-admin/log-in-verified" }
-    , { title: "Email confirmation" , url:  "/sign-up/email-confirmation" }
+    , { title: "Sign out" , url:  "/sign-out" }
     , { title: "Clear all session data (logged out state)", url: "/prototype-admin/clear-data"}
   ]  %}
 
@@ -229,7 +272,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
 
   {% set recovery = [
     { title: "Sign user in" , url:  "/prototype-admin/log-in-verified" }
-    , { title: "Email confirmation" , url:  "/sign-up/email-confirmation" }
+    , { title: "Sign out" , url:  "/sign-out" }
     , { title: "Clear all session data (logged out state)", url: "/prototype-admin/clear-data"}
   ]  %}
 
@@ -288,6 +331,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
 
   {% set recovery = [
     { title: "Sign user in" , url:  "/prototype-admin/log-in-verified" }
+    , { title: "Sign out" , url:  "/sign-out" }
     , { title: "Clear all session data (logged out state)", url: "/prototype-admin/clear-data"}
   ]  %}
 

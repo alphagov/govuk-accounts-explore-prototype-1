@@ -265,7 +265,7 @@ console.log("'Confirmation email' sending");
     'fde4cb3e-3811-4f13-9b27-b93cf8956013',
     // `emailAddress` here needs to match the name of the form field in
     // your HTML page
-    'govukresearch.inbox1@mailinator.com'
+    req.session.data["mailinator-email"] + "@mailinator.com"
   );
 } else{
   console.log("'Confirmation email' surpressed - change email setting to yes to send");
@@ -308,7 +308,7 @@ if (req.session.data["get-emails"]=="Yes") {
     'dfd9ba0e-d063-43fb-9774-4cb18f8d4c1a',
     // `emailAddress` here needs to match the name of the form field in
     // your HTML page
-    'govukresearch.inbox1@mailinator.com'
+    req.session.data["mailinator-email"] + "@mailinator.com"
   );
 } else {
 
@@ -350,7 +350,7 @@ if (req.session.data["get-emails"]=="Yes") {
     '4bd299fb-e82d-46f9-8178-2cb31d904836', // merged accounts email
     // `emailAddress` here needs to match the name of the form field in
     // your HTML page
-    'govukresearch.inbox1@mailinator.com'
+    req.session.data["mailinator-email"] + "@mailinator.com"
   );
 } else{
   console.log("'Merged email' surpressed - change email setting to yes to send");
@@ -388,7 +388,7 @@ router.all('/account/router-add', function (req, res) {
       'fd9e5160-1c0e-4e3b-92d8-2a461af8f3ae', // subscriptions email
       // `emailAddress` here needs to match the name of the form field in
       // your HTML page
-      'govukresearch.inbox1@mailinator.com',
+      req.session.data["mailinator-email"] + "@mailinator.com",
           {
         personalisation: {
           'page': req.session.data.title
