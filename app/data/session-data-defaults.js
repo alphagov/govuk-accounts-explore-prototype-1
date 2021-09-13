@@ -18,10 +18,13 @@ Example usage:
 */
 
 module.exports = {
+  // Insert values here
 
  "user-group" : "Nothing",
- "mailinator-email": "govukresearch.inbox1",
-  // Insert values here
+ "mailinator-email": "govukresearch.inbox1", // comment this out later if required and uncomment other section
+/*
+ "mailinator-email": "govukresearch.inbox2", // comment this out later if required and uncomment other section
+ */
   "get-emails" : "Yes"
 
 }
