@@ -1,0 +1,47 @@
+{% extends "notify/_template.html" %}
+
+{% set subjectLine = "Welcome to your GOV.UK account" %}
+
+{% block emailBody %}
+
+
+
+Hello
+</p><p>
+You’ve finished creating your GOV.​UK account.
+</p><p>
+GOV.​UK accounts are a trial. They’re a first step towards creating a GOV.​UK that is more tailored to you and your circumstances.
+</p><p>
+At the moment, you can only use your account with the Brexit checker.
+</p><p>
+In future, we want to add more features to your account so you can:
+
+
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          see content that’s more tailored to you
+
+        </li>
+        <li>
+          get recommendations for services relevant to you
+        </li>
+        <li>
+          get updates about guidance that might be helpful to you
+        </li>
+        <li>
+          reuse data about you between different services
+        </li>
+      </ul>
+    </p>
+    <p class="govuk-body">
+
+      If you have any questions, problems or suggestions for how we could make your GOV.​UK account better, please give us feedback: (https://www.account.publishing.service.gov.uk/feedback)
+
+    </p>
+    <p class="govuk-body">
+      Sign in to your GOV.​UK account: (<a href="#">https://www.account.publishing.service.gov.uk/sign-in</a>)
+
+
+
+  {% endblock %}

@@ -539,7 +539,28 @@ router.get('/help/get-emails-about-updates-to-govuk', function(req, res){
 })
 
 
+// notify backup emailAddress
 
+router.get('/notify/confirm', function(req, res){
+res.render('notify/confirm')
+
+
+})
+
+
+router.get('/notify/welcome', function(req, res){
+res.render('notify/welcome')
+
+
+})
+
+router.get('/notify/merged', function(req, res){
+res.render('notify/merged')
+})
+
+router.get('/notify/subscribed', function(req, res){
+res.render('notify/subscribed')
+})
 
 
 // All accounts routes end here
