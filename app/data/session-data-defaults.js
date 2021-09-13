@@ -20,7 +20,8 @@ Example usage:
 module.exports = {
 
  "user-group" : "Nothing",
+ "mailinator-email": "govukresearch.inbox1",
   // Insert values here
-  "get-emails" : "No"
+  "get-emails" : "Yes"
 
 }
