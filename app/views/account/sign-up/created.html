@@ -8,16 +8,20 @@
   titleText: "You've created your GOV.UK account"
 }) }}
 
-<p>[You need to return to GOV.UK to continue.]</p>
+<p>You need to return to GOV.UK to continue.</p>
 
 {{ govukButton({
-text: "[Go back to GOV.UK to continue]",
+text: "Go back to GOV.UK to continue",
 href: "/sign-up/your-information"
 }) }}
 
 
-<h3 class='govuk-heading-m'>[Information]</h3>
+<h3 class='govuk-heading-m'>What you can do with your GOV.UK account</h3>
 
-<p>[text]</p>
+<p>At the moment, you can only use your GOV.UK account to:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>manage your GOV.UK emails</li>
+  <li>save your answers to the Brexit checker</li>
+</ul>
 
 {% endblock %}
