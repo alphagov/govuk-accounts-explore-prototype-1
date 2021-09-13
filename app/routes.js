@@ -562,6 +562,10 @@ router.get('/notify/subscribed', function(req, res){
 res.render('notify/subscribed')
 })
 
+router.get('/notify/sms', function(req, res){
+res.render('notify/sms')
+})
+
 
 // All accounts routes end here
 // ==================================================
@@ -580,6 +584,8 @@ const augmentedBody = function (req, response, body) {
   <link href="/public/stylesheets/accounts.css" media="all" rel="stylesheet" type="text/css" />`
 
   const footerTemplate = fs.readFileSync('app/views/explore-footer.html', 'utf8')
+  const urTasksTemplate = fs.readFileSync('app/views/includes/ur-tasks.html', 'utf8')
+  const urTasksString = nunjucks.renderString(urTasksTemplate);
   const notificationsBase = fs.readFileSync('app/views/includes/print-notifications.html', 'utf8')
   const notificationsTemplate = nunjucks.renderString(notificationsBase, { signedIn: req.session.data.signedIn, currentURL: req.url, notifications: req.session.data.notifications })
 
@@ -614,7 +620,7 @@ const updateHistory = '<a href="#full-history" class="app-c-published-dates__tog
 
     .replace(/<main role="main" id="content" class="publication" lang="en">/, topBannerTemplate + '<main role="main" id="content" class="publication" lang="en">')
 
-    .replace(/<footer[^]+?<\/footer>/, footerTemplate)
+    .replace(/<footer[^]+?<\/footer>/, footerTemplate + urTasksString)
 
     .replace(/<a(.*) href="#history"[^]+?<\/a>/, currentUpdates + emailUpdates )
     .replace(/<a href="#full-history"[^]+?<\/a>/, updateHistory + emailUpdates )

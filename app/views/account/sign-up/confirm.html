@@ -1,4 +1,10 @@
 {% set hideAccountMenu = true %}
+
+{% if (data['user-group'] == "Email updates") %}
+{% set emailShortCut = [{link: "merged" , email: "Merged" }, {link: "subscribed" , email: "Subscribed" }]%}
+{% else %}
+{% set emailShortCut = [{link: "subscribed" , email: "Subsribed" }]%}
+{% endif %}
 {% extends "account/_account.html" %}
 {% block account %}
 <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-4">Confirm you want to get email updates</h1>

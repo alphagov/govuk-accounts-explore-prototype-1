@@ -59,16 +59,7 @@
 {% block footer %}
   {% include "explore-footer.html" %}
   {% block extraLinks %}{% endblock %}
-  <p><a href="/tasks">Go to user research tasks</a>
-
-{% if emailShortcut %}
-
-
-
-
-<a target="_blank" href="/notify/{{emailshortCut}}">Email (opens in new tab)</a>
-
-{% endif %}
+{% include "includes/ur-tasks.html" %}
 
   </p>
 {% endblock %}
