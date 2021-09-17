@@ -21,13 +21,17 @@
           </div>
           <div class="govuk-notification-banner__content">
             <p class="govuk-body">
-              You’ve saved the user group as '{{ data['user-group'] }}'.
-            </p>
-<!-- remove comment code after session - and remember to set 'sendEmails' back to no! -->
+              You've saved the:
+              <ul> <li>
+              user group as '{{ data['user-group'] }}'
+              </li><li>
+email settings as '{{ data['get-emails'] }}'
+</li><li>
+mailinator inbox as '{{data['mailinator-email']}}'
 
-<!--            <p class="govuk-body">
-              You’ve saved the email settings as '{{ data['get-emails'] }}'.
-            </p> -->
+  </li>
+                </ul>
+            </p>
 
           </div>
         </div>
@@ -38,6 +42,12 @@
 
 
 <p>Public inbox (mailinator): <a target="_blank"  href="https://www.mailinator.com/v4/public/inboxes.jsp?to={{data['mailinator-email']}}#">{{data['mailinator-email']}} (opens in new tab)</a></p>
+
+
+<div class="govuk-inset-text">
+
+
+  <h1 class="govuk-heading-l govuk-!-padding-top-1">Prototype settings</h1>
 
       <form action="/tasks-router" method="post" >
 
@@ -80,13 +90,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
       }) }}
 
 
-      <details class="govuk-details" data-module="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-            Other settings
-          </span>
-        </summary>
-        <div class="govuk-details__text">
+
 
 
 {{ govukRadios({
@@ -141,9 +145,6 @@ text: "Default setting is 'Nothing' - even when data is cleared "
 }) }}
 
 
-</div>
-</details>
-
 
 
 {{ govukButton({
@@ -153,7 +154,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
 
 
 </form>
-
+</div>
       <h2 class="govuk-heading-m">Task 1</h2>
 
 <p class="govuk-body">
