@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block account %}
-  <form action="/sign-in/password"  class="sign-in">
+  <form action="{% if (data['user-group'] == 'Brexit checker') %}/sign-in/password{% else %}/no-account{% endif %}" method="post" class="sign-in">
     <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">
       Sign in to your GOV.UK account
     </h1>
@@ -21,15 +21,6 @@
     html: 'You cannot use this to sign in to <a href="/sign-in/another-government-service">other government accounts</a>
     (for example Government Gateway or Universal Credit)'
     }) }}
-    <div data-module="gem-track-click">
-      <form data-module="explicit-cross-domain-links"
-        action="/sign-in?_ga=2.170750432.193280619.1621950818-2125854133.1618489947" accept-charset="UTF-8"
-        data-remote="true" method="post" _lpchecked="1">
-        <input type="hidden" name="authenticity_token"
-          value="UcFSY6TIi0tf5CnMvlE7Yn9jKY+J8AHMsl9DP7pdwDhM9AVnJG0qaiaT9djzNVWf8vm53kzjIXLCjkKsUeaYCQ==">
-        <input type="hidden" name="previous_url" id="previous_url">
-        <input type="hidden" name="from_confirmation_email" id="from_confirmation_email">
-
 
         {{ govukInput({
           label: {
@@ -41,8 +32,9 @@
         }) }}
 
 
-
+{% if (data['user-group'] == 'Brexit checker')  %}
         <input id="signedIn" name="signedIn" type="hidden" value="true">
+{% endif %}
         <button class="govuk-button" data-module="govuk-button">
           Continue
         </button>
