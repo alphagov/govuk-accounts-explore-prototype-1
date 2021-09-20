@@ -1,0 +1,36 @@
+{% set accountHidden = true %}
+{% set hideFeedback = true %}
+{% extends "account/_account.html" %}
+{% import "includes/xpl-cards.html" as cards %}
+{% import "includes/xpl-tabs.njk" as tabs %}
+{% set hideAccountMenu = true %}
+
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+{% block account %}
+    <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">
+      You do not have a GOV.UK account yet
+    </h1>
+    <p>
+      There is no GOV.UK account for :
+</p><p>
+    <strong>{{data['mailinator-email']}}@mailinator.com</strong>
+    </p>
+    {{ govukInsetText({
+    html: 'The GOV.UK account is new. <br>
+    It is different from <a href="/sign-in/another-government-service">other government accounts</a> you may have used (for example Government Gateway or Universal Credit).'
+    }) }}
+
+
+    {{ govukButton({
+      text: "Continue to create a GOV.UK account",
+      href: "/sign-up"
+    }) }}
+
+      <p>
+        <a class="govuk-link" href="/sign-in">Try another email address</a>
+  
+      </p>
+    {% endblock %}

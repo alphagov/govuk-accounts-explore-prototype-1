@@ -254,6 +254,14 @@ router.get('/sign-up', function (req, res) {
   res.render('account/sign-up/index')
 })
 
+router.get('/no-account', function (req, res) {
+  res.render('account/no-account')
+})
+
+router.post('/no-account', function (req, res) {
+  res.render('account/no-account')
+})
+
 
 // Verification code email
 router.post('/sign-up/check-email/router', function (req, res) {
