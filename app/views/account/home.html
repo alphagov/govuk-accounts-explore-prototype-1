@@ -17,7 +17,7 @@
       <div class="govuk-notification-banner__content">
         <p class="govuk-body">
           Confirm your email address to finish setting up your account and start getting email updates.<br>
-          <strong><a class="govuk-notification-banner__link" href="/sign-up/email-confirmation">Send confirmation email again.</a></strong>
+          <strong><a class="govuk-notification-banner__link" href="/auth/email-confirmation">Send confirmation email again.</a></strong>
         </p>
       </div>
     </div>
@@ -35,7 +35,7 @@
       </div>
     </div>
   {% endif %}
-  {% if (data['previousURL'] == "/sign-up/email-confirmation" ) %}
+  {% if (data['previousURL'] == "/auth/email-confirmation" ) %}
     <div
       id="notification-success"
       class="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-bottom-0"
@@ -67,7 +67,7 @@
         You must confirm your email address to start getting emails.</p>
       <p class="govuk-body govuk-!-margin-0">
         We can
-        <a href="/sign-up/email-confirmation" class="govuk-link">send the confirmation email again</a>
+        <a href="/auth/email-confirmation" class="govuk-link">send the confirmation email again</a>
         if you did not get it.
       </a>
     </p>

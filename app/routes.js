@@ -218,23 +218,23 @@ router.get('/layout_unbranded', function (req, res) {
 })
 
 // Sign in Routes
-router.get('/sign-in', function (req, res) {
+router.get('/auth/sign-in', function (req, res) {
   var temp = req.query
-  res.render('account/sign-in', {_email: temp.email})
+  res.render('auth/sign-in', {_email: temp.email})
 })
 
-router.get('/sign-in/password', function (req, res) {
+router.get('/auth/password', function (req, res) {
 
   res.render('account/password')
 })
 
-router.get('/sign-in/2fa', function (req, res) {
+router.get('/auth/2fa', function (req, res) {
 
-  res.render('account/2fa')
+  res.render('auth/2fa')
 })
 
 router.all('/sign-in/set-cookie', function (req, res) {
-  res.redirect('/sign-up/confirm')
+  res.redirect('/account/confirm')
 })
 
 router.get('/sign-in/another-government-service', function (req, res) {
@@ -242,29 +242,29 @@ router.get('/sign-in/another-government-service', function (req, res) {
 })
 
 // Sign up routes
-router.get('/sign-up/email', function (req, res) {
-  res.render('account/sign-up/email')
+router.get('/auth/interrupt', function (req, res) {
+  res.render('auth/interrupt')
 })
 
-router.get('/sign-up/email-confirmation', function (req, res) {
-  res.render('account/sign-up/email-confirmation')
+router.get('/auth/email-confirmation', function (req, res) {
+  res.render('auth/email-confirmation')
 })
 
-router.get('/sign-up', function (req, res) {
-  res.render('account/sign-up/index')
+router.get('/auth/create', function (req, res) {
+  res.render('auth/create')
 })
 
-router.get('/no-account', function (req, res) {
-  res.render('account/no-account')
+router.get('auth/no-acount', function (req, res) {
+  res.render('auth/no-acount')
 })
 
-router.post('/no-account', function (req, res) {
-  res.render('account/no-account')
+router.post('auth/no-acount', function (req, res) {
+  res.render('auth/no-acount')
 })
 
 
 // Verification code email
-router.post('/sign-up/check-email/router', function (req, res) {
+router.post('/auth/check-email/router', function (req, res) {
 
 if (req.session.data["get-emails"]=="Yes") {
 console.log("'Confirmation email' sending");
@@ -281,33 +281,33 @@ console.log("'Confirmation email' sending");
 
   // This is the URL the users will be redirected to once the email
   // has been sent
-  res.redirect('/sign-up/check-email');
+  res.redirect('/auth/check-email');
 
 });
 
 
-router.get('/sign-up/check-email', function (req, res) {
-  res.render('account/sign-up/check-email')
+router.get('/auth/check-email', function (req, res) {
+  res.render('auth/check-email')
 })
 
-router.post('/sign-up/check-email', function (req, res) {
-  res.render('account/sign-up/check-email')
+router.post('/auth/check-email', function (req, res) {
+  res.render('auth/check-email')
 })
 
-router.get('/sign-up/create-password', function (req, res) {
-  res.render('account/sign-up/create-password')
+router.get('/auth/create-password', function (req, res) {
+  res.render('auth/create-password')
 })
 
-router.get('/sign-up/enter-phone', function (req, res) {
-  res.render('account/sign-up/enter-phone')
+router.get('/auth/enter-phone', function (req, res) {
+  res.render('auth/enter-phone')
 })
 
-router.get('/sign-up/check-phone', function (req, res) {
-  res.render('account/sign-up/check-phone')
+router.get('/auth/check-phone', function (req, res) {
+  res.render('auth/check-phone')
 })
 
 // Welcome email
-router.all('/sign-up/check-phone/router', function (req, res) {
+router.all('/auth/check-phone/router', function (req, res) {
 
 if (req.session.data["get-emails"]=="Yes") {
   console.log("'Welcome email' sending");
@@ -324,33 +324,33 @@ if (req.session.data["get-emails"]=="Yes") {
 }
   // This is the URL the users will be redirected to once the email
   // has been sent
-  res.redirect('/sign-up/created');
+  res.redirect('/auth/created');
 
 });
 
-router.get('/sign-up/created', function (req, res) {
-  res.render('account/sign-up/created')
+router.get('/auth/created', function (req, res) {
+  res.render('auth/created')
 })
 
-router.get('/sign-up/your-information', function (req, res) {
-  res.render('account/sign-up/your-information')
+router.get('/account/control-how-we-use-information-about-you', function (req, res) {
+  res.render('account/control-how-we-use-information-about-you')
 })
 
-router.all('/sign-up/account-created', function (req, res) {
-  res.redirect('/sign-up/confirm')
+router.all('/auth/account-created', function (req, res) {
+  res.redirect('/account/confirm')
 })
 
-router.post('/sign-up/confirm', function (req, res) {
-  res.render('account/sign-up/confirm')
+router.post('/account/confirm', function (req, res) {
+  res.render('account/confirm')
 })
 
-router.get('/sign-up/confirm', function (req, res) {
-  res.render('account/sign-up/confirm')
+router.get('/account/confirm', function (req, res) {
+  res.render('account/confirm')
 })
 
 
 // Merged accounts email - people only get this router basd on logic in the confirm page
-router.all('/sign-up/confirm/router/merge', function (req, res) {
+router.all('/account/confirm/router/merge', function (req, res) {
 if (req.session.data["get-emails"]=="Yes") {
   console.log("'Merging emails' sending")
   notify.sendEmail(
@@ -386,7 +386,7 @@ router.all('/account/router-add', function (req, res) {
 //  delete req.session.data.save;
 
   if (!req.session.data.signedIn) {
-    return res.redirect('/sign-up/email')
+    return res.redirect('/auth/interrupt')
   } else {
 
       if (req.session.data["get-emails"]=="Yes") {// RAG subscription email
@@ -463,7 +463,7 @@ router.all('/account/router-remove', function (req, res) {
     req.session.data.notifications = req.session.data.notifications.filter(function (v, index) { return v !== tempRemove });
 
     if (!req.session.data.signedIn) {
-      return res.redirect('/sign-up/email')
+      return res.redirect('/auth/interrupt')
     } else {
 
       req.session.data.sessionFlash = 'removed';
