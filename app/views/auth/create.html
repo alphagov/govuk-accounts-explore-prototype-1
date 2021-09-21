@@ -3,17 +3,23 @@
 {% set hideFeedback = true %}
 {% extends "account/_account.html" %}
 {% block account %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "/auth/interrupt",
+  classes: "govuk-back-link-override"
+}) }}
+
+
+
+
 <form data-module="gem-track-click" action="/auth/check-email/router" accept-charset="UTF-8" data-remote="true" class="form" method="post" name="emailAddress">
   <input type="hidden" name="authenticity_token"
     value="qN3NeE0rDQErgwLO7D0w3rPE4Z0dZMcFgmpqi9V96vYzryz7YoE2fVqk0uP12hmEQHBsDl9teD5JL0aPOj2dRQ==">
-  <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">Create a GOV.UK account</h1>
+  <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">Enter your email address</h1>
   <p>
-    Create a GOV.UK account so you can subscribe to and manage emails you get about GOV.UK pages you’re interested in.
+    Enter your email address to create an account.
   </p>
-  {{ govukInsetText({
-  html: 'This account is separate from <a href="/sign-in/another-government-service" class="govuk-link">other government accounts</a> (for example Government Gateway or Universal Credit)'
-  }) }}
-
   <div class="govuk-form-group">
     <label for="email-address" class="gem-c-label govuk-label">Email address</label>
     <input name="emailAddress" class="gem-c-input govuk-input" id="email-address" type="text" value="{{data['emailAddress']}}" autocomplete="username">
@@ -23,7 +29,4 @@
 
 </form>
 
-<p class="govuk-body">
-  <a class="govuk-link" href="/sign-in">Sign in</a> if you already have a GOV.UK account.
-</p>
 {% endblock %}

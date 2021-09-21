@@ -254,12 +254,12 @@ router.get('/auth/create', function (req, res) {
   res.render('auth/create')
 })
 
-router.get('auth/no-acount', function (req, res) {
-  res.render('auth/no-acount')
+router.get('/auth/no-account', function (req, res) {
+  res.render('auth/no-account')
 })
 
-router.post('auth/no-acount', function (req, res) {
-  res.render('auth/no-acount')
+router.post('/auth/no-account', function (req, res) {
+  res.render('auth/no-account')
 })
 
 
@@ -430,7 +430,7 @@ router.get('/sign-out', function (req, res) {
   if (req.session.data.signedIn) {
     delete req.session.data.signedIn
   }
-  res.redirect('/')
+  res.redirect('/auth/signed-out')
 })
 
 // account home
@@ -451,6 +451,10 @@ router.get('/account/manage-account', function (req, res) {
 
 router.get('/account/security', function (req, res) {
   res.render('account/security', req )
+})
+
+router.get('/auth/signed-out', function (req, res) {
+  res.render('auth/signed-out', req )
 })
 
 
