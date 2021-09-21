@@ -17,23 +17,27 @@
     Manage your GOV.UK emails
   </h1>
 
-  {% if  (data['notifications'] | length )  %}
+  {% if  (data['notifications'] | length ) or (data['user-group'] == "Email updates")  %}
 
     {{ govukInsetText({
     html: "<a href='#'>Unsubscribe from everything</a>"
   }) }}
+{% endif %}
+
+
+  {% if  (data['notifications'] | length )  %}
+
     <ul class="govuk-list">
       {% for url in data['notifications'] %}
 
 
         <li>
           <p class="govuk-!-margin-bottom-0">Page</p>
-          <h2 class="govuk-heading-m govuk-!-padding-top-0 govuk-!-padding-bottom-3">
+          <h2 class="govuk-heading-s govuk-!-padding-top-0 govuk-!-padding-bottom-o govuk-!-margin-bottom-4"">
             <a href="{{ url }}">{{ url | urlToTitle }}</a>
           </h2>
           <p>You subscribed on 14 September 2021</p>
-          <p>You’ll get an email each time this page is updated.</p>
-          <p>
+          <p>You’ll get an email each time this page is updated.<br>
             <a href="#">Change how often you get emails</a>
           </p>
           <p>
@@ -43,11 +47,40 @@
       {% endfor %}
     </ul>
   {% else %}
+{% if not (data['user-group'] == "Email updates") %}  <!-- email updates functionality works separately -->
     <p>
 
       You’re not currently getting emails about changes to GOV.UK.
 
       Some GOV.UK pages have a ‘get emails’ link. You can use that link to subscribe to pages or topics you’re interested in.
     </p>
+{% endif %}
   {% endif %}
+
+{% if ( data['user-group'] == "Email updates") %}
+
+{% set topicList = [{topic: "News and communications", date : "10 August 2021", frequency: "daily" }, {topic: "Money", date : "6 April 2020"}, {topic: "Ofsted", date: "2 February 2019"}]%}
+
+<ul class="govuk-list">
+  {% for item in topicList %}
+
+
+    <li>
+      <p class="govuk-!-margin-bottom-0">Topic</p>
+      <h2 class="govuk-heading-s govuk-!-padding-top-0 govuk-!-padding-bottom-0 govuk-!-margin-bottom-4"">
+      {{item.topic}}
+      </h2>
+      <p>You subscribed on {{item.date}}</p>
+      <p>You get {{item.frequency | default("weekly")}} updates.<br/>
+        <a href="#">Change how often you get emails</a>
+      </p>
+      <p>
+        <a href="#">Unsubscribe from this topic</a>
+      </p>
+    </li>
+  {% endfor %}
+</ul>
+
+{% endif %}
+
 {% endblock %}

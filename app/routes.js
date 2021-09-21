@@ -324,6 +324,7 @@ if (req.session.data["get-emails"]=="Yes") {
 }
   // This is the URL the users will be redirected to once the email
   // has been sent
+  req.session.data["created"] = true;
   res.redirect('/auth/created');
 
 });
