@@ -24,7 +24,7 @@ html: 'The other email updates you currently get from GOV.UK will be added to yo
 <p>
 
 
-  <form class="form" method="post" action="{% if data['user-group'] == "Email updates" %}/sign-up/confirm/router/merge{% else %}/account/router-add{% endif %}" name="emailAddress">
+  <form class="form" method="post" action="{% if data['user-group'] == "Email updates" %}/account/confirm/router/merge{% else %}/account/router-add{% endif %}" name="emailAddress">
 
 <input type='hidden' name="save" id="save" value="{{ data['notifications'][0] | default('/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do') }}" />
     <input type="hidden">

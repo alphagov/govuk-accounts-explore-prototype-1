@@ -10,22 +10,30 @@
     value="qN3NeE0rDQErgwLO7D0w3rPE4Z0dZMcFgmpqi9V96vYzryz7YoE2fVqk0uP12hmEQHBsDl9teD5JL0aPOj2dRQ==">
   <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">Check your phone</h1>
   <p>
-We sent a code to 077777777777. It may take a few minutes to arrive.  </p>
-    <p>
-The code will expire in 30 minutes.      </p>
+We sent a code to *******7777. </p>
+<p>
+It might take a few minutes to arrive. The code will expire after 15 minutes.</p>
+
   <div class="govuk-form-group">
     <label for="email" class="gem-c-label govuk-label">Enter the 6 digit security code</label>
     <input name="_security" class="gem-c-input govuk-input" id="email" type="text" autocomplete="text">
   </div>
 
+
+<p>
+  <a class="govuk-link" href="#">Request a new code</a> if:
+
+  <ul class="govuk-list govuk-list--bullet">
+  <li>the code isn’t working or you didn’t receive one</li>
+  <li>you want to use a different phone number</li>
+
+  </ul>
+</p>
   {{ govukButton({
   text: "Continue",
-  href: "/sign-up/check-phone/router"
+  href: "/auth/check-phone/router"
   }) }}
 </form>
 
-<p class="govuk-body">
-  <p> If you’re having trouble with the code, you can
-  <a class="govuk-link" href="#">request a new code or use a different phone number</a>.
-</p>
+
 {% endblock %}

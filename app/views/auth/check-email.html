@@ -8,31 +8,41 @@
   <input type="hidden" name="authenticity_token"
     value="qN3NeE0rDQErgwLO7D0w3rPE4Z0dZMcFgmpqi9V96vYzryz7YoE2fVqk0uP12hmEQHBsDl9teD5JL0aPOj2dRQ==">
   <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">Check your email</h1>
-  <p>
-    We’ve sent an email with a security code to: <strong>{{data['mailinator-email']}}@mailinator.com</strong>
-  </p>
-  <p>
-The email might take a few minutes to arrive.
-    </p>
 
+
+  <div class="govuk-inset-text">
+  <p>
+    We’ve sent an email to: <strong>{{data['mailinator-email']}}@mailinator.com</strong>
+  </p>
+  </div>
+  <p>
+The email contains a 6 digit security code.
+    </p>
+<p>Your email might take a few minutes to arrive. If you do not get an email, check your spam folder.</p>
     <p>
-The security code will expire in 15 minutes.
+The code will expire after 15 minutes.
       </p>
   <div class="govuk-form-group">
     <label for="email" class="gem-c-label govuk-label">Enter the 6 digit security code</label>
     <input name="_security" class="gem-c-input govuk-input" id="email" type="text" autocomplete="text">
   </div>
 
+
+<p>
+<a class="govuk-link" href="#">Request a new code</a> if:
+
+<ul class="govuk-list govuk-list--bullet">
+<li>the code isn’t working or you didn’t receive one</li>
+<li>you want to use a different email address </li>
+
+</ul>
+</p>
   {{ govukButton({
   text: "Continue",
-  href: "/sign-up/create-password"
+  href: "/auth/create-password"
   }) }}
 </form>
-
-<h3 class="govuk-heading-m">If you did not get the code</h3>
-<p class="govuk-body">
-  Look for an email from GOV.UK Account. It may have gone to your spam folder.
-  </p><p> You can
-  <a class="govuk-link" href="#">request a new code or use a different email address</a>.
 </p>
+
+
 {% endblock %}
