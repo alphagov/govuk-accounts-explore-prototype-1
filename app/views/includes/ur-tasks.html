@@ -4,12 +4,13 @@
 {% if emailShortCut | length %}
 
 {% for item in emailShortCut %} <!-- for as one page may have two emails -->
-<a target="_blank" href="/notify/{{item.link}}">{{ item.email}} email (opens in new tab)</a>
+<p><a target="_blank" href="/notify/{{item.link}}">{{ item.email}} email (opens in new tab)</a></p>
+<p>&nbsp;</p>
 {% endfor %}
 
 {% endif %}
 
 {% if sms %} <!-- SMS message -->
-<a target="_blank" href="/notify/sms">SMS (opens in new tab)</a>
-
+<p><a target="_blank" href="/notify/sms">SMS (opens in new tab)</a></p>
+<p>&nbsp;</p>
 {% endif %}
