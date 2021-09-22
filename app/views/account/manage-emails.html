@@ -27,11 +27,13 @@
 
   {% if  (data['notifications'] | length )  %}
 
-    <ul class="govuk-list">
+  <dl class="govuk-summary-list">
+
       {% for url in data['notifications'] %}
 
 
-        <li>
+      <div class="govuk-!-margin-bottom-2 govuk-!-padding-top-2" style="border-top: 1px solid #b1b4b6;">
+
           <p class="govuk-!-margin-bottom-0">Page</p>
           <h2 class="govuk-heading-s govuk-!-padding-top-0 govuk-!-padding-bottom-o govuk-!-margin-bottom-4"">
             <a href="{{ url }}">{{ url | urlToTitle }}</a>
@@ -43,9 +45,9 @@
           <p>
             <a href="#">Unsubscribe from this page</a>
           </p>
-        </li>
+        </div>
       {% endfor %}
-    </ul>
+  {% if not (data['user-group'] == "Email updates") %}  </dl> {% endif %} <!-- one long list if both email udpates and notifications-->
   {% else %}
 {% if not (data['user-group'] == "Email updates") %}  <!-- email updates functionality works separately -->
     <p>
@@ -61,11 +63,15 @@
 
 {% set topicList = [{topic: "News and communications", date : "10 August 2021", frequency: "daily" }, {topic: "Money", date : "6 April 2020"}, {topic: "Ofsted", date: "2 February 2019"}]%}
 
-<ul class="govuk-list">
+{% if  not (data['notifications'] | length )  %} <!-- only start list if we don't have an existing set of notifications -->
+
+<dl class="govuk-summary-list">
+
+  {% endif %}
   {% for item in topicList %}
 
 
-    <li>
+    <div class="govuk-!-margin-bottom-2 govuk-!-padding-top-2" style="border-top: 1px solid #b1b4b6;">
       <p class="govuk-!-margin-bottom-0">Topic</p>
       <h2 class="govuk-heading-s govuk-!-padding-top-0 govuk-!-padding-bottom-0 govuk-!-margin-bottom-4"">
       {{item.topic}}
@@ -74,12 +80,12 @@
       <p>You get {{item.frequency | default("weekly")}} updates.<br/>
         <a href="#">Change how often you get emails</a>
       </p>
-      <p>
+      <p >
         <a href="#">Unsubscribe from this topic</a>
       </p>
-    </li>
+    </div>
   {% endfor %}
-</ul>
+</dl>
 
 {% endif %}
 
