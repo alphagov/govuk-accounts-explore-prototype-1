@@ -34,7 +34,6 @@
             {% macro service(name, text, url, last="") %}
               <div class="govuk-service-list-item {% if last %}govuk-service-list-item-last{% endif %}">
                 <div>
-                <img class="img-1" src="/public/images/icon-arrow.svg" alt="right arrow">
                   <div class="govuk-service-list-text">
                     <a href="{{url}}" class="govuk-link govuk-link--no-visited-state govuk-heading-m">{{name}}</a>
                     <p>{{text}}</p>
@@ -49,9 +48,11 @@
 
             {{service(name='Check your State Pension forecast', text='Find out how much State Pension you could get and when.', url='https://www.gov.uk/check-state-pension')}}
 
-            {{service(name='Manage your student loan balance', text='See your student loan balance and manage your repayments.', url='https://www.gov.uk/sign-in-to-manage-your-student-loan-balance')}}
+            {{service(name='Childcare account', text='Get 30 hours free childcare and pay for Tax-Free Childcare.', url='https://www.gov.uk/sign-in-childcare-account')}}
 
-            {{service(name='Make or update a rural payments claim', text='Apply for rural grants and payments.', url='https://www.gov.uk/claim-rural-payments')}}
+            {{service(name='Passenger locator form', text='Edit and submit an unfinished passenger locator form.', url='https://www.gov.uk/provide-journey-contact-details-before-travel-uk')}}
+
+            {{service(name='Manage your student loan balance', text='See your student loan balance and manage your repayments.', url='https://www.gov.uk/sign-in-to-manage-your-student-loan-balance')}}
 
             {{service(name='Manage your GOV.UK emails', text='Manage the emails you get about GOV.UK pages you’re interested in.', url='/sign-in', last=true)}}
 
