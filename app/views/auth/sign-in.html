@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block account %}
-  <form action="{% if (data['user-group'] == 'Brexit checker') %}/auth/password{% else %}/auth/no-account{% endif %}" method="post" class="sign-in">
+  <form action="{% if data['created'] or (data['user-group'] == 'Brexit checker') %}/auth/password{% else %}/auth/no-account{% endif %}" method="post" class="sign-in">
     <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">
       Enter your email address
     </h1>

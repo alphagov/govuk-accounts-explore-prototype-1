@@ -34,7 +34,7 @@ You have a GOV.UK account
 
         {{ govukButton({
           text: "Continue to sign in to your account",
-          href: "/sign-in?email=text@example.com"
+          href: "/auth/sign-in?email=" + data['mailinator-email'] + "@mailinator.com"
         }) }}
 
                       </div>
