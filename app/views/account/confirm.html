@@ -15,12 +15,7 @@ You’ll get emails when there are updates to:</P>
    <strong>{{ data['title'] | default("National lockdown stay at home")}}</strong>
 </p>
 
-{% if (data['user-group'] == "Email updates") %}
-{{ govukInsetText({
-html: 'The other email updates you currently get from GOV.UK will be added to your new GOV.UK account.' })
-}}
 
-{% endif %}
 <p>
 
 
@@ -30,10 +25,22 @@ html: 'The other email updates you currently get from GOV.UK will be added to yo
     <input type="hidden">
     <button class="govuk-button" data-module="govuk-button">Confirm</button>
   </form>
-</p>
-<p><a class="govuk-link" href="/">Cancel and go to the GOV.UK homepage</a>
+<p>
+  <a class="govuk-link" href="/">Cancel and go to the GOV.UK homepage</a>
 </p>
 
+{% if (data['user-group'] == "Email updates") %}
+
+<h2 class="govuk-heading-m">Other emails you get from GOV.UK</h2>
+<p class="govuk-body">You also have other GOV.UK email
+subscriptions. These will be moved to your
+new account:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>News and communications</li>
+  <li>Money</li>
+  <li>Ofsted</li>
+</ul>
+{% endif %}
 
 <!-- use this soon as it has the functionality for saving a notification  -->
 <!--

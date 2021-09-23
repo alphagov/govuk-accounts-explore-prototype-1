@@ -382,37 +382,85 @@ img {
   height: 5px;
 }
 
-
-.govuk-back-link-override:before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 3px;
-    width: 7px;
-    height: 7px;
-    margin: auto 0;
-    -webkit-transform: rotate(
-225deg);
-    -ms-transform: rotate(225deg);
-    transform: rotate(
-225deg);
-    border: solid;
-    border-width: 1px 1px 0 0;
-    border-color: #505a5f;
+// SEARCH BOX
+.gem-c-search--on-white .gem-c-search__submit {
+    background-color: #1d70b8;
+    color: #fff;
 }
 
-.govuk-back-link-override:link, .govuk-back-link-override:visited {
-    color: #0b0c0c;
-    text-decoration: underline;
+.gem-c-search--on-white .gem-c-search__submit {
+    background-color: #1d70b8;
+    color: #fff;
 }
-
-.govuk-back-link-override:after {
-    content: "";
-    position: absolute;
-    top: -14px;
-    right: 0;
-    bottom: -14px;
-    left: 0;
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)
+.gem-c-search__submit {
+    background-size: 52.5px auto;
+    background-position: 115% 50%;
+}
+.gem-c-search__submit {
+    border: 0;
+    cursor: pointer;
+    border-radius: 0;
+    position: relative;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    background-image: url('/public/images/search-button.png');
+    background-repeat: no-repeat;
+    background-position: 2px 50%;
+    text-indent: -5000px;
+    overflow: hidden;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)
+.gem-c-search__submit {
+    background-size: 52.5px auto;
+    background-position: 115% 50%;
+}
+.gem-c-search__submit {
+    border: 0;
+    cursor: pointer;
+    border-radius: 0;
+    position: relative;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    background-image: url('/public/images/search-button.png');
+    background-repeat: no-repeat;
+    background-position: 2px 50%;
+    text-indent: -5000px;
+    overflow: hidden;
+}
+user agent stylesheet
+button {
+    appearance: auto;
+    -webkit-writing-mode: horizontal-tb !important;
+    font-style: ;
+    font-variant-ligatures: ;
+    font-variant-caps: ;
+    font-variant-numeric: ;
+    font-variant-east-asian: ;
+    font-weight: ;
+    font-stretch: ;
+    font-size: ;
+    font-family: ;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    box-sizing: border-box;
+    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+    margin: 0em;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
 }
