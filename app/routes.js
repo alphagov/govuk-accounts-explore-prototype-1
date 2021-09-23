@@ -228,6 +228,12 @@ router.get('/auth/password', function (req, res) {
   res.render('account/password')
 })
 
+router.post('/auth/password', function (req, res) {
+
+  res.render('auth/password')
+})
+
+
 router.get('/auth/2fa', function (req, res) {
 
   res.render('auth/2fa')
@@ -442,8 +448,8 @@ router.get('/account/home', function (req, res) {
   res.render('account/home')
 })
 
-router.get('/account/manage-emails', function (req, res) {
-  res.render('account/manage-emails', req  )
+router.get('/email/manage/index', function (req, res) {
+  res.render('email/manage/index', req  )
 })
 
 router.get('/account/manage-account', function (req, res) {
@@ -520,12 +526,12 @@ router.get('/email/manage/authenticate-2', function (req, res) {
 })
 
 
-router.post('/email/manage/have-govuk-account', function (req, res) {
-  res.render('email/manage/have-govuk-account')
+router.post('/account/have-govuk-account', function (req, res) {
+  res.render('account/have-govuk-account')
 })
 
-router.get('/email/manage/have-govuk-account', function (req, res) {
-  res.render('email/manage/have-govuk-account')
+router.get('/account/have-govuk-account', function (req, res) {
+  res.render('account/have-govuk-account')
 })
 
 
