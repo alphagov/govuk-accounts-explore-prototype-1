@@ -1,8 +1,11 @@
-{% set accountHidden = true %}
-{% set hideAccountMenu = true %}
-{% set hideFeedback = true %}
-{% extends "account/_account.html" %}
-{% block account %}
+
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+  {{ govukBreadcrumbs({ items: [{text: "Home", href: "#"}]}) }}
 <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-4">
   The way you subscribe to emails from GOV.UK is changing
 </h1>
@@ -20,7 +23,7 @@
 <h3 class="govuk-heading-m">GOV.​UK accounts are new</h3>
 <p>GOV.UK accounts are a first step towards creating a single account where you can access all your government services. </p>
 <div class="govuk-inset-text">
-  GOV.UK accounts are different from <a href="/sign-in/another-government-service">other government accounts</a> you may have used before (for example Government Gateway or Universal Credit).
+  GOV.UK accounts are different from <a href="/sign-in">other government accounts</a> you may have used before (for example Government Gateway or Universal Credit).
 </div>
 
 <p>
@@ -63,4 +66,8 @@ href: "/auth/create"
   <a href="/auth/sign-in">Sign in</a>
   if you already have a GOV.UK account.
 </p>
+
+
+</div>
+</div>
 {% endblock %}
