@@ -382,37 +382,28 @@ img {
   height: 5px;
 }
 
-
-.govuk-back-link-override:before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 3px;
-    width: 7px;
-    height: 7px;
-    margin: auto 0;
-    -webkit-transform: rotate(
-225deg);
-    -ms-transform: rotate(225deg);
-    transform: rotate(
-225deg);
-    border: solid;
-    border-width: 1px 1px 0 0;
-    border-color: #505a5f;
+// SEARCH BOX
+.gem-c-search--on-white .gem-c-search__submit {
+    background-color: #1d70b8;
+    color: #fff;
 }
 
-.govuk-back-link-override:link, .govuk-back-link-override:visited {
-    color: #0b0c0c;
-    text-decoration: underline;
+.gem-c-search--on-white .gem-c-search__submit {
+    background-color: #1d70b8;
+    color: #fff;
 }
-
-.govuk-back-link-override:after {
-    content: "";
-    position: absolute;
-    top: -14px;
-    right: 0;
-    bottom: -14px;
-    left: 0;
+.gem-c-search__submit {
+    border: 0;
+    cursor: pointer;
+    border-radius: 0;
+    position: relative;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    background-image: url("/public/images/magnifying-glass.png");
+    background-repeat: no-repeat;
+    background-size: 30px auto;
+    background-position: 4px 50%;
+    text-indent: -5000px;
+    overflow: hidden;
 }
