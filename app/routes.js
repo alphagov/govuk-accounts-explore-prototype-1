@@ -273,8 +273,8 @@ router.all('/sign-in/set-cookie', function (req, res) {
   res.redirect('/account/confirm')
 })
 
-router.get('/sign-in/another-government-service', function (req, res) {
-  res.render('account/sign-in-to-another-service')
+router.get('/sign-in', function (req, res) {
+  res.render('sign-in')
 })
 
 
@@ -455,7 +455,7 @@ router.all('/account/router-add', function (req, res) {
 
 // sorting hat
 router.get('/account/other-accounts', function (req, res) {
-  res.render('account/sign-in-to-another-service')
+  res.render('sign-in')
 })
 
 

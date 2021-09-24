@@ -2,7 +2,7 @@
 {% import "includes/xpl-cards.html" as cards %}
 {% import "includes/xpl-tabs.njk" as tabs %}
 {% block pageTitle %}
-    Sign in to a government service
+    Sign in to a service
 {% endblock %}
 {% block main %}
   <div id="global-header-bar-outer">
@@ -18,7 +18,7 @@
           <div class="govuk-grid-column-two-thirds">
 
             <h1 class="govuk-heading-xl">
-            Sign in to a government service
+            Sign in to a service
             </h1>
 
             <p>Choose the government service you want to sign in to.</p>
@@ -54,7 +54,7 @@
 
             {{service(name='Manage your student loan balance', text='See your student loan balance and manage your repayments.', url='https://www.gov.uk/sign-in-to-manage-your-student-loan-balance')}}
 
-            {{service(name='Manage your GOV.UK emails', text='Manage the emails you get about GOV.UK pages you’re interested in.', url='/auth/sign-in', last=true)}}
+            {{service(name='Manage your GOV.UK emails', text='Manage the emails you get about GOV.UK pages you’re interested in.', url='/help/get-emails-about-updates-to-govuk', last=true)}}
 
             </div>
 

@@ -20,10 +20,10 @@
     </p>
     {{ govukInsetText({
     html: 'The GOV.UK account is new. <br>
-    It is different from <a href="/sign-in/another-government-service">other government accounts</a> you may have used (for example Government Gateway or Universal Credit).'
+    It is different from <a href="/sign-in">other government accounts</a> you may have used (for example Government Gateway or Universal Credit).'
     }) }}
 
-<p><You need to create a GOV.UK account even if you have another government account./p>
+<p>You need to create a GOV.UK account even if you have another government account.</p>
     {{ govukButton({
       text: "Create a GOV.UK account",
       href: "/auth/create?emailAddress="  + data['mailinator-email'] + "@mailinator.com"
