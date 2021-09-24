@@ -4,34 +4,56 @@
 {% extends "account/_account.html" %}
 {% block account %}
 <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-4">
-  You need a GOV.UK account to get these email updates
+  The way you subscribe to emails from GOV.UK is changing
 </h1>
 <p class="govuk-body">
-  The way you subscribe to emails from GOV.UK is changing.</p>
+  You need a new GOV.UK account to get these emails.</p>
+
+<!--
 <p class="govuk-body">
   You need a GOV.UK account to subscribe to emails about:
 </p>
 <p>
   <strong>{{ data['title'] | default('Test') }}</strong>
 </p>
-
-<p>
-  To create an account, you need:
- </p>
-
- <ul class="govuk-list govuk-list--bullet">
-<li>
-  an email address
-  </li><li>
-  a UK mobile number with reception
-</li></ul>
-<p>
-  It takes about 5 minutes to create an account.</p>
-  <div class="govuk-inset-text">
-
-
-  If you already get email updates from GOV.UK, they’ll be added to your new GOV.UK account.
+-->
+<h3 class="govuk-heading-m">GOV.​UK accounts are new</h3>
+<p>GOV.UK accounts are a first step towards creating a single account where you can access all your government services. </p>
+<div class="govuk-inset-text">
+  GOV.UK accounts are different from <a href="/sign-in/another-government-service">other government accounts</a> you may have used before (for example Government Gateway or Universal Credit).
 </div>
+
+<p>
+  At the moment, you can only use a GOV.UK account to:
+</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    manage the emails you get from GOV.UK
+    </li>
+  <li>
+    save answers to the Brexit checker
+  </li>
+</ul>
+
+<p>
+  We’ll be adding more features and services in the next few months.
+</p>
+
+<h3 class="govuk-heading-m">Create a new GOV.UK account</h3>
+<p>
+  It takes about 5 minutes to create an account.
+</p>
+<p>You’ll need:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    an email address
+    </li>
+  <li>
+    a UK mobile number with reception
+  </li>
+</ul>
+
 
 {{ govukButton({
 text: "Create a GOV.UK account",
