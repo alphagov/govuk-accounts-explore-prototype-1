@@ -49,7 +49,11 @@ mailinator inbox as '{{data['mailinator-email']}}'
 
   <h1 class="govuk-heading-l govuk-!-padding-top-1">Prototype settings</h1>
 
+<p>If you want to reset the journeys (i.e. test signed in or not), you will need to <a href="/prototype-admin/clear-data">clear the data</a> first. </p>
+
       <form action="/tasks-router" method="post" >
+
+
 
 {#
 
@@ -267,7 +271,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
   , { title: "Sign in to a government service" , url: "/sign-in/another-government-service" }
   , { title: "Sign in to your GOV.UK account" , url: "/sign-in" }
   , { title: 'Home - GOV.UK account' , url: "/account/manage-account" }
-  , { title: 'Manage your GOV.UK emails - GOV.UK account' , url:  "/account/manage-emails" }]
+  , { title: 'Manage your GOV.UK emails - GOV.UK account' , url:  "/email/manage/index" }]
 
   %}
 
@@ -308,7 +312,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
 
       {{ govukButton({
         text: "Go to task 3",
-        href: "/government/publications/information-for-drivers-with-diabetes",
+        href: "/money",
         classes: "govuk-button--secondary"
       }) }}
 
@@ -322,7 +326,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
         </summary>
         <div class="govuk-details__text">
 {% set list =[
-  { title: "Information for drivers with diabetes" , url : "/government/publications/information-for-drivers-with-diabetes" }
+  { title: "Money" , url : "/money" }
   , { title: "Private providers of coronavirus (COVID-19) testing" , url: "government/publications/list-of-private-providers-of-coronavirus-testing" }
 , { title: "Deferring your state pension" , url: "/government/publications/deferring-your-state-pension" }
     , { title: "Signed out" , url:  "/auth/signed-out" }
