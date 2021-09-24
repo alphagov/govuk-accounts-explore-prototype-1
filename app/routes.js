@@ -217,7 +217,37 @@ router.get('/layout_unbranded', function (req, res) {
   res.render('layout_unbranded')
 })
 
+//interrupt
+
+// Sign up routes
+router.get('/account/interrupt', function (req, res) {
+  res.render('account/interrupt')
+})
+
+
 // Sign in Routes
+router.get('/auth/sign-in-or-create', function (req, res) {
+  res.render('auth/sign-in-or-create')
+})
+
+
+
+router.post('/auth/sign-in-or-create/router', function (req, res) {
+  if (req.session.data['sign-in-or-create'] && (req.session.data['sign-in-or-create'] == "Sign in") ){
+    delete req.session.data['sign-in-or-create'];
+    return res.redirect('/auth/sign-in');
+
+  } else if (req.session.data['sign-in-or-create']){
+  delete req.session.data['sign-in-or-create'];
+  return res.redirect('/auth/create');
+
+  } else {
+  return res.redirect('/auth/sign-in-or-create');
+}
+
+})
+
+
 router.get('/auth/sign-in', function (req, res) {
   var temp = req.query
   res.render('auth/sign-in', {_email: temp.email})
@@ -247,10 +277,7 @@ router.get('/sign-in/another-government-service', function (req, res) {
   res.render('account/sign-in-to-another-service')
 })
 
-// Sign up routes
-router.get('/auth/interrupt', function (req, res) {
-  res.render('auth/interrupt')
-})
+
 
 router.get('/auth/email-confirmation', function (req, res) {
   res.render('auth/email-confirmation')
@@ -393,7 +420,7 @@ router.all('/account/router-add', function (req, res) {
 //  delete req.session.data.save;
 
   if (!req.session.data.signedIn) {
-    return res.redirect('/auth/interrupt')
+    return res.redirect('/account/interrupt')
   } else {
 
       if (req.session.data["get-emails"]=="Yes") {// RAG subscription email
@@ -474,7 +501,7 @@ router.all('/account/router-remove', function (req, res) {
     req.session.data.notifications = req.session.data.notifications.filter(function (v, index) { return v !== tempRemove });
 
     if (!req.session.data.signedIn) {
-      return res.redirect('/auth/interrupt')
+      return res.redirect('/account/interrupt')
     } else {
 
       req.session.data.sessionFlash = 'removed';
@@ -538,7 +565,6 @@ router.get('/account/have-govuk-account', function (req, res) {
 router.get('/email/subscriptions/frequency', function (req, res) {
   res.render('email/subscriptions/frequency')
 })
-
 
 router.post('/email/subscriptions/frequency', function (req, res) {
   res.render('email/subscriptions/frequency')

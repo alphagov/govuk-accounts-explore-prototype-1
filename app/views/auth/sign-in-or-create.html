@@ -1,0 +1,66 @@
+{% set accountHidden = true %}
+{% set hideFeedback = true %}
+{% extends "account/_account.html" %}
+{% import "includes/xpl-cards.html" as cards %}
+{% import "includes/xpl-tabs.njk" as tabs %}
+{% set hideAccountMenu = true %}
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+{% block account %}
+  <form action="/auth/sign-in-or-create/router" method="post" class="sign-in">
+    <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">
+      Sign in or create a GOV.UK account to [save your progress]
+    </h1>
+    <p>
+      You need a GOV.UK account to [save your progress]. If you don’t have a GOV.UK account, you can create one.
+    </p>
+
+    {{ govukInsetText({
+      html: "The GOV.UK account is different to <a href='/sign-in/another-government-service'>other government accounts</a> you already have (for example your personal tax account or Government Gateway). "
+    }) }}
+
+
+{% set govUKAccountText %}
+
+    <p>
+      GOV.UK account is a new account that we’re starting to use for some government services.
+</p><p>
+    Other services use different accounts, such as Government Gateway or your Universal Credit account.
+</p><p>
+    In the future, you’ll be able to use your GOV.UK account for all government services. For now, you need different accounts for different services.
+</p>
+{% endset %}
+
+    {{ govukDetails({
+      summaryText: "More about GOV.UK accounts",
+      html: govUKAccountText
+    }) }}
+
+    {{ govukRadios({
+idPrefix: "sign-in-or-create",
+name: "sign-in-or-create",
+
+items: [
+  {
+    value: "Create an account",
+    text: "Create an account",
+    hint: {text: "You’ll need an email address and a UK mobile phone number. It will take no more than 5 minutes. "}
+  },
+  {
+    value: "Sign in",
+    text: "Sign in"
+  }
+]
+}) }}
+
+
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+
+
+    {% endblock %}
