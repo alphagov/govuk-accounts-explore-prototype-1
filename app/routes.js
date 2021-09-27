@@ -639,12 +639,21 @@ const augmentedBody = function (req, response, body) {
   const emailUpdates= nunjucks.renderString(emailUpdatesBase, { signedIn: req.session.data.signedIn, currentURL: req.url, notifications: req.session.data.notifications })
 
 
+  const successHTML = fs.readFileSync('app/views/includes/success.html', 'utf8')
+  const successTemplate = nunjucks.renderString(successHTML,
+                                                  {
+
+                                                  sessionFlash: req.session.data.sessionFlash, echo: req.session.data.echo
+                                                  })
+
   const topBannerHTML = fs.readFileSync('app/views/includes/banner.html', 'utf8')
   const topBannerTemplate = nunjucks.renderString(topBannerHTML,
                                                   {
 
                                                   sessionFlash: req.session.data.sessionFlash, echo: req.session.data.echo
                                                   })
+
+
 
   const pageURL = req.url // this is a hack to get a unique identifer on each page
 
@@ -658,6 +667,7 @@ const updateHistory = '<a href="#full-history" class="app-c-published-dates__tog
 
   return body
     .replace(/(href|src)="\//g, '$1="https://www.gov.uk/')
+    .replace(/<title lang="en">/, '<title lang="en">' + successTemplate)
     .replace(/<body( class=")*?/, '<body class="explore-body ' + pageURL + '"')
     .replace(/<header[^]+?<\/header>/, headerString)
     .replace('</head>', headerStringWithCss + '</head>')
