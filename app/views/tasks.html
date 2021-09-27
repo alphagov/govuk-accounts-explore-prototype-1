@@ -21,16 +21,16 @@
           </div>
           <div class="govuk-notification-banner__content">
             <p class="govuk-body">
-              You've saved the:
-              <ul> <li>
+              You've saved the  <!-- :
+              <ul> <li> -->
               user group as '{{ data['user-group'] }}'
-              </li><li>
+<!--              </li><li>
 email settings as '{{ data['get-emails'] }}'
 </li><li>
 mailinator inbox as '{{data['mailinator-email']}}'
 
   </li>
-                </ul>
+                </ul> -->
             </p>
 
           </div>
@@ -44,12 +44,12 @@ mailinator inbox as '{{data['mailinator-email']}}'
 <p>Public inbox (mailinator): <a target="_blank"  href="https://www.mailinator.com/v4/public/inboxes.jsp?to={{data['mailinator-email']}}#">{{data['mailinator-email']}} (opens in new tab)</a></p>
 
 
-<div class="govuk-inset-text">
+ <div class="govuk-inset-text">
+
 
 
   <h1 class="govuk-heading-l govuk-!-padding-top-1">Prototype settings</h1>
 
-<p>If you want to reset the journeys (i.e. test signed in or not), you will need to <a href="/prototype-admin/clear-data">clear the data</a> first. </p>
 
       <form action="/tasks-router" method="post" >
 
@@ -95,6 +95,16 @@ text: "Default setting is 'Nothing' - even when data is cleared "
 
 
 
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+         Configure other states
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+
+          <p>If you want to reset the journeys (i.e. test signed in or not), you will need to <a href="/prototype-admin/clear-data">clear the data</a> first. </p>
 
 
 {{ govukRadios({
@@ -148,7 +158,8 @@ text: "Default setting is 'Nothing' - even when data is cleared "
   ]
 }) }}
 
-
+</div>
+</details>
 
 
 {{ govukButton({
@@ -309,7 +320,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
                 </div>
       </details>
 
-
+<!--
       <h2 class="govuk-heading-m">Task 3</h2>
 
 
@@ -368,7 +379,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
                 </div>
       </details>
 
-
+-->
 
       </div>
   </section>
