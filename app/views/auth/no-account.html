@@ -1,3 +1,5 @@
+{% set hidePhase = true %}
+{% set back = true %}
 {% set accountHidden = true %}
 {% set hideFeedback = true %}
 {% extends "account/_account.html" %}
@@ -11,7 +13,7 @@
 
 {% block account %}
     <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">
-      You do not have a GOV.UK account
+      No GOV.UK account found
     </h1>
     <p>
       There is no GOV.UK account for :
@@ -20,10 +22,10 @@
     </p>
     {{ govukInsetText({
     html: 'The GOV.UK account is new. <br>
-    It is different from <a href="/sign-in">other government accounts</a> you may have used (for example Government Gateway or Universal Credit).'
+    It’s separate from other government acocunts, such as Government Gateway or your personal tax account.'
     }) }}
 
-<p>You need to create a GOV.UK account even if you have another government account.</p>
+<p>You need to create a GOV.UK account even if you already have another type fof government account.</p>
     {{ govukButton({
       text: "Create a GOV.UK account",
       href: "/auth/create"

@@ -1,3 +1,5 @@
+{% set hidePhase = true %}
+{% set back = true %}
 {% set accountHidden = true %}
 {% set hideFeedback = true %}
 {% extends "account/_account.html" %}
@@ -12,7 +14,7 @@
 {% block account %}
   <form action="{% if data['created'] or (data['user-group'] == 'Brexit checker') %}/auth/password{% else %}/auth/no-account{% endif %}" method="post" class="sign-in">
     <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">
-      Enter your email address
+      Sign in to your GOV.UK account
     </h1>
     <p>
       Enter your email address to sign in.

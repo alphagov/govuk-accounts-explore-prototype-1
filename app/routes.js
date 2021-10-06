@@ -277,7 +277,9 @@ router.get('/sign-in', function (req, res) {
   res.render('sign-in')
 })
 
-
+router.get('/help/sign-in', function (req, res) {
+  res.render('sign-in')
+})
 
 router.get('/auth/email-confirmation', function (req, res) {
   res.render('auth/email-confirmation')
@@ -612,6 +614,7 @@ res.render('notify/sms')
 })
 
 
+
 // All accounts routes end here
 // ==================================================
 
@@ -653,6 +656,9 @@ const augmentedBody = function (req, response, body) {
                                                   sessionFlash: req.session.data.sessionFlash, echo: req.session.data.echo
                                                   })
 
+const searchBase = fs.readFileSync('app/views/includes/search-sign-in.html', 'utf8')
+const searchHTML = nunjucks.renderString(searchBase, { keywords: req.session.data.keywords, page: req.session.data.page } )
+
 
 
   const pageURL = req.url // this is a hack to get a unique identifer on each page
@@ -671,7 +677,7 @@ const updateHistory = '<a href="#full-history" class="app-c-published-dates__tog
     .replace(/<body( class=")*?/, '<body class="explore-body ' + pageURL + '"')
     .replace(/<header[^]+?<\/header>/, headerString)
     .replace('</head>', headerStringWithCss + '</head>')
-    .replace(/<main role="main" id="content" class="detailed-guide" lang="en">/, topBannerTemplate + '<main role="main" id="content" class="detailed-guide" lang="en">')
+      .replace(/<main role="main" id="content" class="detailed-guide" lang="en">/, topBannerTemplate + '<main role="main" id="content" class="detailed-guide" lang="en">')
 
     .replace(/<main role="main" id="content" class="publication" lang="en">/, topBannerTemplate + '<main role="main" id="content" class="publication" lang="en">')
 
@@ -688,6 +694,7 @@ const updateHistory = '<a href="#full-history" class="app-c-published-dates__tog
 
     .replace(/<\/body>/, '<script src="/public/javascripts/explore-header.js"></script><script src="/public/javascripts/account.js"></script>\n</body>')
     .replace(/<a(.*) href\s*=\s*(['"])\s*(https:)?\/\/www.gov.uk\//g, '<a $1 href=$2/')
+    .replace(/<div id="js-results">\s*<div class="finder-results js-finder-results" data-module="gem-track-click">\s*<ul class="gem-c-document-list gem-c-document-list--no-underline">/, searchHTML )
 
 
 }
