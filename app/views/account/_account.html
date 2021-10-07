@@ -85,6 +85,7 @@
 
 <div class="{% if not hideAccountMenu %}account{% endif %} govuk-width-container app-width-container">
 
+{% if not hidePhase %}
 <div class="gem-c-phase-banner govuk-phase-banner">
   <p class="govuk-phase-banner__content">
 
@@ -94,6 +95,8 @@
       will help us improve them.
 </span>
 </p></div>
+{% endif %}
+
     <div class="govuk-grid-row govuk-main-wrapper">
 
 {% if not hideAccountMenu %}
@@ -123,7 +126,11 @@
       <div class="govuk-grid-column-two-thirds">
 
         <main class="app-main-class" id="main-content" role="main">
+{% if back %}
 
+<a href="javascript:history.go(-1)" class="govuk-back-link" style="color: #0b0c0c !important;">Back</a>
+
+{% endif %}
           {% block account %}
 
           {% endblock %}

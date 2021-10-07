@@ -1,3 +1,4 @@
+{% set hidePhase = true %}
 {% set accountHidden = true %}
 {% set hideFeedback = true %}
 {% extends "account/_account.html" %}
@@ -15,7 +16,9 @@
     Check your phone
     </h1>
     <p>
-      We sent a code to *******6789. </p>
+  We sent a code to *******7777. </p>
+  <p>
+  It might take a few minutes to arrive. The code will expire after 15 minutes.</p>
 
 
 
@@ -30,13 +33,8 @@
 
 
 <p>
-          <a class="govuk-link" href="#">Request a new code</a> if:
+          <a class="govuk-link" href="#">Request a new code</a> if the code doesn't work or has expired, or you didn't receive one.
 
-          <ul class="govuk-list govuk-list--bullet">
-          <li>the code isn’t working or you didn’t receive one</li>
-          <li>you want to use a different phone number</li>
-
-          </ul>
 </p>
         <input id="signedIn" name="signedIn" type="hidden" value="true">
         <button class="govuk-button" data-module="govuk-button">
