@@ -27,15 +27,15 @@
         At the moment, there are separate accounts for signing in to different government services.
       </div>
 
-            <p>These are the most viewed services on GOV.UK:</p>
+              <h2 class="govuk-heading-m govuk-!-padding-top-0 govuk-!-padding-bottom-2">Sign in to one of the most viewed services</h2>
 
             <div class="govuk-service-list">
 
             {% macro service(name, text, url, last="") %}
-              <div class="govuk-service-list-item {% if last %}govuk-service-list-item-last{% endif %}">
+              <div class=" govuk-service-list-item {% if last %}govuk-service-list-item-last{% endif %}">
                 <div>
                   <div class="govuk-service-list-text">
-                    <a href="{{url}}" class="govuk-link govuk-link--no-visited-state govuk-heading-m">{{name}}</a>
+                    <a href="{{url}}" class="govuk-link govuk-link--no-visited-state govuk-heading-m govuk-!-padding-top-3">{{name}}</a>
                     <p>{{text}}</p>
                   </div>
                 </div>
