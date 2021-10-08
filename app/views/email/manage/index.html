@@ -1,14 +1,16 @@
 {% extends "account/_account.html" %}
+{% set current = "home" %}
 {% set hideAccountMenu = true %}
 {% import "includes/xpl-cards.html" as cards %}
 {% import "includes/xpl-tabs.njk" as tabs %}
 {% block account %}
 
+
 {{ govukBreadcrumbs({
   items: [
     {
-      text: "Manage your GOV.UK account",
-      href: "/account/manage-account"
+      text: "Account home",
+      href: "/account/index"
     }
   ]
 }) }}

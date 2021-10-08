@@ -473,8 +473,8 @@ router.get('/sign-out', function (req, res) {
 
 
 
-router.get('/account/home', function (req, res) {
-  res.render('account/home')
+router.get('/account/index', function (req, res) {
+  res.render('account/index')
 })
 
 router.get('/email/manage/index', function (req, res) {
