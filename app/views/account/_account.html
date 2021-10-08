@@ -33,6 +33,7 @@
 
     <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide navigation menu" aria-expanded="false">Menu</button>
     <nav>
+      <!--
       <ul id="navigation" class="govuk-header__navigation " aria-label="Navigation menu">
 
 
@@ -68,6 +69,7 @@
 
 
       </ul>
+      -->
     </nav>
 
     </div>
@@ -97,10 +99,10 @@
 </p></div>
 {% endif %}
 
-    <div class="govuk-grid-row govuk-main-wrapper">
+    <div class="govuk-grid-row govuk-main-wrapper-account">
 
 {% if not hideAccountMenu %}
-        <div class="govuk-grid-column-one-third">
+        <div class="govuk-grid-column-full">
 
 <nav aria-label="Account management">
   <ul class="accounts-menu">
@@ -115,6 +117,9 @@
     </li>
     <li class="accounts-menu__item {% if current == 'security' %}accounts-menu__item--current{% endif %}">
       <a class="accounts-menu__link govuk-link govuk-link--no-visited-state" href="/account/security">Security</a>
+    </li>
+    <li class="accounts-menu__item">
+      <a class="accounts-menu__link govuk-link govuk-link--no-visited-state" href="/sign-out">Sign out</a>
     </li>
   </ul>
 </nav>
