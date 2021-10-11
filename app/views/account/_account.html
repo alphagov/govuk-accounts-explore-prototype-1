@@ -1,7 +1,7 @@
 {% extends "layout-traditional.html" %}
 
 {% block pageTitle %}
-  {{ title }}
+  {{ title }} - GOV.UK account - GOV.UK
 {% endblock %}
 
 {% block header %}
@@ -97,6 +97,20 @@
 <a href="javascript:history.go(-1)" class="govuk-back-link" style="color: #0b0c0c !important;">Back</a>
 
 {% endif %}
+
+{% if breadcrumbs %}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Account home",
+      href: "/account/index"
+    }
+  ]
+}) }}
+{% endif %}
+
+<h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-4">{{title}}</h1>
+
           {% block account %}
 
           {% endblock %}
