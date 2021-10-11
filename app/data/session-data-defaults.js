@@ -26,6 +26,6 @@ module.exports = {
  /*
  "mailinator-email": "govukresearch.inbox2", // comment this out later if required and uncomment other section
 */
-  "get-emails" : "No"
+  "get-emails" : "Yes"
 
 }
