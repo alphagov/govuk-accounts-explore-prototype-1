@@ -9,8 +9,8 @@
 
 {{ govukHeader({
   homepageUrl: "/",
-  serviceName: "GOV.UK account" if accountShow,
-  serviceUrl: "/account/index",
+  serviceName: "GOV.UK account" if accountShow or auth,
+  serviceUrl: "/account/index" if accountShow,
   navigation: ([
     {
       href: "/account/index",

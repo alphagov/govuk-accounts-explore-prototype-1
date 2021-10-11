@@ -21,16 +21,16 @@
           </div>
           <div class="govuk-notification-banner__content">
             <p class="govuk-body">
-              You've saved the:
-              <ul> <li>
+              You've saved the  <!--:
+            <ul> <li> -->
               user group as '{{ data['user-group'] }}'
-            </li><li>
+    <!--        </li><li>
 email settings as '{{ data['get-emails'] }}'
 </li><li>
 mailinator inbox as '{{data['mailinator-email']}}'
 
   </li>
-                </ul>
+                </ul> -->
             </p>
 
           </div>
@@ -41,21 +41,24 @@ mailinator inbox as '{{data['mailinator-email']}}'
       <h1 class="govuk-heading-xl">User research - tasks</h1>
 
 
-<p>Public inbox (mailinator): <a target="_blank"  href="https://www.mailinator.com/v4/public/inboxes.jsp?to={{data['mailinator-email']}}#">{{data['mailinator-email']}} (opens in new tab)</a></p>
 
 
+<!--
  <div class="govuk-inset-text">
+-->
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
 
+  <h1 class="govuk-heading-l govuk-!-padding-top-1  govuk-!-padding-bottom-1">Settings for user research</h1>
 
-  <h1 class="govuk-heading-l govuk-!-padding-top-1">Prototype settings</h1>
-
-  <p>If you want to reset the journeys (i.e. test signed in or not), you will need to <a href="/prototype-admin/clear-data">clear the data</a> first. </p>
-
+  <!-- <p>If you want to reset the journeys (i.e. test signed in or not), you will need to <a href="/prototype-admin/clear-data">clear the data</a> first. </p>
+-->
 
       <form action="/tasks-router" method="post" >
 
 
+        <div class="govuk-inset-text govuk-!-margin-top-0">
 
 {#
 
@@ -66,6 +69,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
 
       {{ govukRadios({
         idPrefix: "user-group",
+         classes: "govuk-radios--inline",
         name: "user-group",
         fieldset: {
           legend: {
@@ -96,7 +100,13 @@ text: "Default setting is 'Nothing' - even when data is cleared "
       }) }}
 
 
-
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+           Advanced settings
+          </span>
+        </summary>
+        <div class="govuk-details__text">
 
 
 
@@ -131,6 +141,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
 {{ govukRadios({
   idPrefix: "mailinator-email",
   name: "mailinator-email",
+   classes: "govuk-radios--inline",
   fieldset: {
     legend: {
       text: "Mailinator email",
@@ -151,27 +162,50 @@ text: "Default setting is 'Nothing' - even when data is cleared "
   ]
 }) }}
 
+</div></details>
 
+
+
+<!-- </details> -->
 
 {{ govukButton({
   text: "Save selection"
 }) }}
-
+</div>
 
 
 </form>
-</div>
-      <h2 class="govuk-heading-m">Task 1</h2>
 
-<p class="govuk-body">
+<h2 class="govuk-heading-m govuk-!-padding-bottom-1 govuk-!-padding-top-0">Email inbox for research session</h2>
+
+<p>All emails generated from the prototype will be sent to a public email:  {{data['mailinator-email']}}@mailinator.com</p>
+
+
+{{ govukButton({
+  text: "Go to email inbox (opens in new tab)",
+  classes: "govuk-!-margin-bottom-0 govuk-!-margin-top-2",
+  attributes: {"target" : "_blank"},
+  href: "https://www.mailinator.com/v4/public/inboxes.jsp?to=" + data['mailinator-email'] + "#",
+  classes: "govuk-button--secondary govuk-!-margin-top-0"
+}) }}
+
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible  govuk-!-margin-top-2 ">
+
+
+<!--
+</div> -->
+      <h2 class="govuk-heading-m govuk-!-padding-bottom-2 govuk-!-padding-top-0">Task 1</h2>
+
+<p>
       {{ govukButton({
         text: "Go to task 1",
         href: "/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do",
-        classes: "govuk-button--secondary"
+        classes: "govuk-button--secondary govuk-!-margin-bottom-0 govuk-!-margin-top-1"
       }) }}
 </p>
 
-      <details class="govuk-details" data-module="govuk-details">
+      <details class="govuk-details govuk-!-margin-bottom-0 " data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
            Links
@@ -254,15 +288,19 @@ text: "Default setting is 'Nothing' - even when data is cleared "
                 </div>
       </details>
 
-      <h2 class="govuk-heading-m">Task 2</h2>
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-top-2 ">
 
 
+      <h2 class="govuk-heading-m govuk-!-padding-top-0 govuk-!-padding-bottom-2">Task 2</h2>
+
+<p>
       {{ govukButton({
         text: "Go to task 2",
+        classes: "govuk-!-margin-bottom-0 govuk-!-margin-top-2",
         href: "/",
-        classes: "govuk-button--secondary"
+        classes: "govuk-button--secondary govuk-!-margin-bottom-0 govuk-!-margin-top-0"
       }) }}
-
+</p>
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
@@ -275,7 +313,8 @@ text: "Default setting is 'Nothing' - even when data is cleared "
   , { title: "Sign in to a service" , url: "/sign-in" }
     , { title: "[AUTH] Sign in or create a GOV.UK acount" , url: "/auth/sign-in-or-create" }
   , { title: "Sign in to your GOV.UK account" , url: "/sign-in" }
-  , { title: 'Home - GOV.UK account' , url: "/account/manage-account" }
+  , { title: 'Home - GOV.UK account' , url: "/account/index" }
+  , { title: 'Settings - GOV.UK account' , url: "/account/manage-account" }
   , { title: 'Manage your GOV.UK emails - GOV.UK account' , url:  "/email/manage/index" }]
 
   %}
