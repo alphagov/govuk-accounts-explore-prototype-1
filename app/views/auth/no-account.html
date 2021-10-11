@@ -21,11 +21,10 @@
     <strong>{{ data['govUKEmail'] | default('text@example.com', true ) | safe  }}</strong>
     </p>
     {{ govukInsetText({
-    html: 'The GOV.UK account is new. <br>
-    It’s separate from other government acocunts, such as Government Gateway or your personal tax account.'
+    html: 'The GOV.UK account is new. It’s separate from other government accounts, such as Government Gateway or your personal tax account.'
     }) }}
 
-<p>You need to create a GOV.UK account even if you already have another type fof government account.</p>
+<p>You need to create a GOV.UK account even if you already have another type of government account.</p>
     {{ govukButton({
       text: "Create a GOV.UK account",
       href: "/auth/create"
