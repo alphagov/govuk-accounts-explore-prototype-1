@@ -674,7 +674,7 @@ const updateHistory = '<a href="#full-history" class="app-c-published-dates__tog
   return body
     .replace(/(href|src)="\//g, '$1="https://www.gov.uk/')
     .replace(/<title lang="en">/, '<title lang="en">' + successTemplate)
-    .replace(/<body( class=")*?/, '<body class="explore-body ' + pageURL + '"')
+    .replace(/<body( class=")*?/, '<body style="margin: 0; background-color: white;" class="explore-body ' + pageURL + '"')
     .replace(/<header[^]+?<\/header>/, headerString)
     .replace('</head>', headerStringWithCss + '</head>')
       .replace(/<main role="main" id="content" class="detailed-guide" lang="en">/, topBannerTemplate + '<main role="main" id="content" class="detailed-guide" lang="en">')
