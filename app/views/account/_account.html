@@ -48,8 +48,8 @@
 <div class="gem-c-phase-banner govuk-phase-banner">
   <p class="govuk-phase-banner__content">
 
-    <strong class="govuk-tag govuk-phase-banner__content__tag" style="margin-bottom: 0">alpha</strong>
-    <span class="govuk-phase-banner__text">      We’re trialling GOV.UK accounts - your
+    <strong class="govuk-tag govuk-phase-banner__content__tag" style="margin-bottom: 0">Beta</strong>
+    <span class="govuk-phase-banner__text">  This is a new service - your
       <a class="govuk-link" href="/feedback">feedback</a>
       will help us improve them.
 </span>
@@ -94,7 +94,7 @@
         <main class="app-main-class" id="main-content" role="main">
 {% if back %}
 
-<a href="javascript:history.go(-1)" class="govuk-back-link" style="color: #0b0c0c !important;">Back</a>
+<a href="{% if backLink %}/account/manage-account{% else %}javascript:history.go(-1){% endif %}" class="govuk-back-link" style="color: #0b0c0c !important;">Back</a>
 
 {% endif %}
 
@@ -108,6 +108,26 @@
   ]
 }) }}
 {% endif %}
+
+{% if (sessionFlash  or echo ) %}
+{% if ((sessionFlash == "feedback") or (echo == "feedback")) %}
+
+  <div id="notification-success" class="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-top-6 govuk-!-margin-bottom-0" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+    <div class="govuk-notification-banner__header">
+      <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+        Success
+      </h2>
+    </div>
+    <div class="govuk-notification-banner__content">
+      <p class="govuk-body">
+        Your feedback and cookie settings have been changed.
+      </p>
+
+    </div>
+  </div>
+  {% endif %}
+{% endif %}
+
 
 {% if title %}
 <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-4">{{title}}</h1>
@@ -125,11 +145,11 @@
       </div>
       <!-- feedback box -->
         {% if not hideFeedback %}
-
+<!--
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-full">
           <div class="feedback-footer">
-<!--
+
           <h2 class="gem-c-heading govuk-heading-m   govuk-!-margin-bottom-4">We’re still building GOV.UK accounts</h2>
 
 
@@ -137,7 +157,7 @@
             <a href="#">Read our roadmap</a> to find out about the features we’re planning to add to your account.
           </p>
 
-  -->          <h2 class="gem-c-heading govuk-heading-m   govuk-!-margin-bottom-4">Help improve GOV.UK accounts</h2>
+           <h2 class="gem-c-heading govuk-heading-m   govuk-!-margin-bottom-4">Help improve GOV.UK accounts</h2>
 
 
             <p class="govuk-body govuk-!-margin-bottom-0">
@@ -148,7 +168,7 @@
           </div>
           </div>
         </div>
-
+-->
 
         {% endif %}
       <!--  end feedback -->

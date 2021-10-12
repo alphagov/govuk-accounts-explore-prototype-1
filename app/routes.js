@@ -485,6 +485,21 @@ router.get('/account/manage-account', function (req, res) {
   res.render('account/manage-account', req )
 })
 
+router.get('/account/cookie-feedback-settings', function (req, res) {
+  res.render('account/cookie-feedback-settings', req )
+})
+
+router.post('/account/cookie-feedback-settings', function (req, res) {
+  res.render('account/cookie-feedback-settings', req )
+})
+
+// getting to this page from the form redirect
+router.post('/account/cookie-feedback-settings-router', function (req, res) {
+  req.session.data.sessionFlash = 'feedback';
+  return res.redirect('/account/cookie-feedback-settings')
+})
+
+
 router.get('/account/security', function (req, res) {
   res.render('account/security', req )
 })
