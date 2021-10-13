@@ -21,16 +21,16 @@
           </div>
           <div class="govuk-notification-banner__content">
             <p class="govuk-body">
-              You've saved the  <!--:
-            <ul> <li> -->
+              You've saved the:
+            <ul> <li>
               user group as '{{ data['user-group'] }}'
-    <!--        </li><li>
+           </li><li>
 email settings as '{{ data['get-emails'] }}'
 </li><li>
 mailinator inbox as '{{data['mailinator-email']}}'
 
   </li>
-                </ul> -->
+                </ul>
             </p>
 
           </div>
@@ -43,22 +43,21 @@ mailinator inbox as '{{data['mailinator-email']}}'
 
 
 
-<!--
- <div class="govuk-inset-text">
--->
+
+
 
 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
 
   <h1 class="govuk-heading-l govuk-!-padding-top-1  govuk-!-padding-bottom-1">Settings for user research</h1>
 
-  <!-- <p>If you want to reset the journeys (i.e. test signed in or not), you will need to <a href="/prototype-admin/clear-data">clear the data</a> first. </p>
--->
+  <p>If you want to reset the journeys (i.e. test signed in or not), you will need to <a href="/prototype-admin/clear-data">clear the data</a> first. </p>
+
 
       <form action="/tasks-router" method="post" >
 
 
-        <div class="govuk-inset-text govuk-!-margin-top-0">
+    <!--     <div class="govuk-inset-text govuk-!-margin-top-0"> -->
 
 {#
 
@@ -99,7 +98,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
         ]
       }) }}
 
-
+<!--
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
@@ -107,7 +106,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
           </span>
         </summary>
         <div class="govuk-details__text">
-
+-->
 
 
 {{ govukRadios({
@@ -162,8 +161,9 @@ text: "Default setting is 'Nothing' - even when data is cleared "
   ]
 }) }}
 
+<!--
 </div></details>
-
+-->
 
 
 <!-- </details> -->
@@ -171,10 +171,13 @@ text: "Default setting is 'Nothing' - even when data is cleared "
 {{ govukButton({
   text: "Save selection"
 }) }}
-</div>
+<!-- </div> -->
 
 
 </form>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible  govuk-!-margin-top-2 ">
+
 
 <h2 class="govuk-heading-m govuk-!-padding-bottom-1 govuk-!-padding-top-0">Email inbox for research session</h2>
 
