@@ -169,9 +169,10 @@ router.get('/topic', function (req, res) {
   })
 })
 
+/*
 router.get('/', function (req, res) {
   res.render('index')
-})
+}) */ 
 
 router.all('*', (req, res, next) => {
 req.session.data['currentURL'] = req.url;
