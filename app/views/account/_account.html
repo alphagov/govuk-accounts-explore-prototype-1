@@ -14,18 +14,8 @@
   navigation: ([
     {
       href: "/account/index",
-      text: "Account home",
+      text: "Account",
       active: true if (current == 'home')
-    },
-    {
-      href: "/account/manage-account",
-      text: "Settings",
-      active: true if (current == 'manage')
-    },
-    {
-      href: "/account/security",
-      text: "Security",
-      active: true if (current == 'security')
     },
     {
       href: "/sign-out",
@@ -56,35 +46,27 @@
 </p></div>
 {% endif %}
 
-    <div class="govuk-grid-row govuk-main-wrapper-account">
+    <div class="govuk-grid-row govuk-main-wrapper govuk-main-wrapper-account">
 
 {% if not hideAccountMenu %}
-        <div class="govuk-grid-column-full">
-<!--
+        <div class="govuk-grid-column-one-third" > <!-- make full width for inline -->
+
 <nav aria-label="Account management">
   <ul class="accounts-menu">
 
     <li class="accounts-menu__item {% if current == 'home' %}accounts-menu__item--current{% endif %}">
-      <a class="accounts-menu__link govuk-link govuk-link--no-visited-state" aria-current="page" href="/account/home">Your account</a>
+      <a class="accounts-menu__link govuk-link govuk-link--no-visited-state" aria-current="page" href="/account/index">Your account</a>
     </li>
 
-
-  <li class="accounts-menu__item {% if current == 'home' %}accounts-menu__item--current{% endif %}">
-    <a class="accounts-menu__link govuk-link govuk-link--no-visited-state" href="/account/index">Account home</a>
-  </li>
 
     <li class="accounts-menu__item {% if current == 'manage' %}accounts-menu__item--current{% endif %}">
       <a class="accounts-menu__link govuk-link govuk-link--no-visited-state" href="/account/manage-account">Manage your account</a>
     </li>
     <li class="accounts-menu__item {% if current == 'security' %}accounts-menu__item--current{% endif %}">
-      <a class="accounts-menu__link govuk-link govuk-link--no-visited-state" href="/account/security">Security</a>
-    </li>
-    <li class="accounts-menu__item">
-      <a class="accounts-menu__link govuk-link govuk-link--no-visited-state" href="/sign-out">Sign out</a>
+      <a class="accounts-menu__link govuk-link govuk-link--no-visited-state" href="/account/security">Security and privacy</a>
     </li>
   </ul>
 </nav>
-  -->
 
         </div>
 {% endif %}
@@ -130,7 +112,7 @@
 
 
 {% if title %}
-<h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-4">{{title}}</h1>
+<h1 class="gem-c-heading govuk-heading-l   govuk-!-margin-bottom-4">{{title}}</h1>
 {% endif %}
 
           {% block account %}
@@ -143,35 +125,6 @@
 
 
       </div>
-      <!-- feedback box -->
-        {% if not hideFeedback %}
-<!--
-        <div class="govuk-grid-row">
-          <div class="govuk-grid-column-full">
-          <div class="feedback-footer">
-
-          <h2 class="gem-c-heading govuk-heading-m   govuk-!-margin-bottom-4">We’re still building GOV.UK accounts</h2>
-
-
-          <p class="govuk-body ">
-            <a href="#">Read our roadmap</a> to find out about the features we’re planning to add to your account.
-          </p>
-
-           <h2 class="gem-c-heading govuk-heading-m   govuk-!-margin-bottom-4">Help improve GOV.UK accounts</h2>
-
-
-            <p class="govuk-body govuk-!-margin-bottom-0">
-              We’re trialling GOV.UK accounts.
-              <a href="#" class="govuk-link">Give feedback</a>
-              on your experience so we can make them better.
-            </p>
-          </div>
-          </div>
-        </div>
--->
-
-        {% endif %}
-      <!--  end feedback -->
 
       {% block urLinks%}{% endblock %}
     </div>

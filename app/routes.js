@@ -394,7 +394,10 @@ if (req.session.data["get-emails"]=="Yes") {
     '4bd299fb-e82d-46f9-8178-2cb31d904836', // merged accounts email
     // `emailAddress` here needs to match the name of the form field in
     // your HTML page
-    req.session.data["mailinator-email"] + "@mailinator.com"
+    req.session.data["mailinator-email"] + "@mailinator.com",{
+    personalisation: {
+      mergeEmail: req.session.data["mailinator-email"] + "@mailinator.com",
+    }}
   );
 } else{
   console.log("'Merged email' surpressed - change email setting to yes to send");
