@@ -3,8 +3,8 @@
 .accounts-menu {
     margin: 0 0 30px 0;
     padding: 0;
-    padding-bottom: 38px;
-    border-bottom: solid 1px #b1b4b6;
+/*    padding-bottom: 38px;
+    border-bottom: solid 1px #b1b4b6; */ // commented out as inline
 }
 
 .accounts-menu__link {
@@ -17,23 +17,27 @@
     line-height: 1.25;
 }
 
+/*
 .accounts-menu li {
   float: left;
   margin-right: 30px;
 }
+*/
+// commented out as it's for inline version
 
 @media (min-width: 40.0625em) {
 .accounts-menu__link {
     font-size: 19px;
     font-size: 1.1875rem;
     line-height: 1.3157894737;
-    text-decoration: none;
+  /*  text-decoration: none; */ //uncomment for inline version
 }}
 
 
 
 .accounts-menu__item {
     list-style-type: none;
+    padding: 12px 0; // remove for inline stuff
 }
 
 @media (min-width: 40.0625em) {
@@ -43,7 +47,11 @@
 }}
 
 .accounts-menu__item--current {
-    border-bottom: 4px solid #1d70b8;
+  /*   border-bottom: 4px solid #1d70b8; */ // uncomment out for inline
+  //comment out all the following for inline
+    margin-left: -14px;
+    padding-left: 10px;
+    border-left: 4px solid #1d70b8;
 }
 
 
@@ -172,6 +180,7 @@
 
 .account-area .govuk-link {
   font-weight: normal; // gem area makes it bold
+  text-decoration: underline;
   margin-top: 20px; // need to make this not bunch up against our version in mobile view
 }
 /*
@@ -194,6 +203,9 @@
   display: none;
 }
 
+// uncomment out for inlined
+/*
 .govuk-main-wrapper-account {
   padding-top: 20px;
 }
+*/
