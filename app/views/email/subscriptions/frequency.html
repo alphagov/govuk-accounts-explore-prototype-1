@@ -6,7 +6,12 @@ Enter your email address
 {% endblock %}
 {% block main %}
 
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 
+{{ govukBackLink({
+  text: "Back",
+  href: "#"
+}) }}
 
   <div id="global-header-bar-outer">
 

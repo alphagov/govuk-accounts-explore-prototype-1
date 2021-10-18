@@ -1,0 +1,51 @@
+{% extends "account/_account.html" %}
+{% set breadcrumbs = false %}
+{% set hideAccountMenu = true %}
+{% set title = "Change your email preferences" %}
+{% import "includes/xpl-cards.html" as cards %}
+{% import "includes/xpl-tabs.njk" as tabs %}
+
+{% block account %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  idPrefix: "email-frequency",
+  name: "email-frequency",
+  fieldset: {
+    legend: {
+      text: "How often do you want to get emails?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "once-a-day",
+      text: "Once a day"
+    },
+    {
+      value: "once-a-week",
+      text: "Once a week"
+    },
+    {
+      divider: "or"
+    },
+    {
+      value: "each-time",
+      text: "Each time we add or update a page (you may get more than one email a day)"
+    }
+  ]
+}) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Save"
+}) }}
+
+<div class="govuk-!-margin-bottom-5">
+<a class="" href="/email/manage/index">Cancel</a>
+</div>
+
+{% endblock %}

@@ -540,6 +540,13 @@ router.get('/prototype-admin/clear-data-success', function (req, res) {
 
 /// email stuff
 
+router.get('/email/manage/frequency', function (req, res) {
+  res.render('email/manage/frequency')
+})
+
+router.get('/email/manage/unsubscribe-everything', function (req, res) {
+  res.render('email/manage/unsubscribe-everything')
+})
 
 router.get('/email/manage/authenticate', function (req, res) {
   res.render('email/manage/authenticate')
