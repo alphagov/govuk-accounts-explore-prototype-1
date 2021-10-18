@@ -169,9 +169,10 @@ router.get('/topic', function (req, res) {
   })
 })
 
+/*
 router.get('/', function (req, res) {
   res.render('index')
-})
+}) */ 
 
 router.all('*', (req, res, next) => {
 req.session.data['currentURL'] = req.url;
@@ -394,7 +395,10 @@ if (req.session.data["get-emails"]=="Yes") {
     '4bd299fb-e82d-46f9-8178-2cb31d904836', // merged accounts email
     // `emailAddress` here needs to match the name of the form field in
     // your HTML page
-    req.session.data["mailinator-email"] + "@mailinator.com"
+    req.session.data["mailinator-email"] + "@mailinator.com",{
+    personalisation: {
+      mergeEmail: req.session.data["mailinator-email"] + "@mailinator.com",
+    }}
   );
 } else{
   console.log("'Merged email' surpressed - change email setting to yes to send");
@@ -484,6 +488,21 @@ router.get('/email/manage/index', function (req, res) {
 router.get('/account/manage-account', function (req, res) {
   res.render('account/manage-account', req )
 })
+
+router.get('/account/cookie-feedback-settings', function (req, res) {
+  res.render('account/cookie-feedback-settings', req )
+})
+
+router.post('/account/cookie-feedback-settings', function (req, res) {
+  res.render('account/cookie-feedback-settings', req )
+})
+
+// getting to this page from the form redirect
+router.post('/account/cookie-feedback-settings-router', function (req, res) {
+  req.session.data.sessionFlash = 'feedback';
+  return res.redirect('/account/cookie-feedback-settings')
+})
+
 
 router.get('/account/security', function (req, res) {
   res.render('account/security', req )
