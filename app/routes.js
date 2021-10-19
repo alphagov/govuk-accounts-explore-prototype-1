@@ -585,6 +585,9 @@ router.get('/email/manage/authenticate', function (req, res) {
   res.render('email/manage/authenticate')
 })
 
+router.get('/email/manage/index-subscriptions', function (req, res) {
+  res.render('email/manage/index-subscriptions')
+})
 
 router.post('/email/manage/authenticate-2', function (req, res) {
   res.render('email/manage/authenticate-2')
@@ -603,6 +606,9 @@ router.get('/account/have-govuk-account', function (req, res) {
   res.render('account/have-govuk-account')
 })
 
+router.get('/account/index-subscriptions', function (req, res) {
+  res.render('account/index-subscriptions')
+})
 
 router.get('/email/subscriptions/frequency', function (req, res) {
   res.render('email/subscriptions/frequency')
