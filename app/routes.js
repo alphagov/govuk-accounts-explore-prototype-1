@@ -169,9 +169,10 @@ router.get('/topic', function (req, res) {
   })
 })
 
+/*
 router.get('/', function (req, res) {
   res.render('index')
-})
+}) */
 
 router.all('*', (req, res, next) => {
 req.session.data['currentURL'] = req.url;
@@ -181,7 +182,16 @@ next();
 // ==================================================
 // All accounts stuff starts here
 
+// getting to this page from the form redirect
+router.post('/list-router', function (req, res) {
+  req.session.data.sessionFlash = 'settings';
+  return res.redirect('/list')
+})
 
+// Tasks page
+router.all('/list', function (req, res) {
+  res.render('list')
+})
 
 // getting to this page from the form redirect
 router.post('/tasks-router', function (req, res) {
@@ -384,6 +394,11 @@ router.get('/account/confirm', function (req, res) {
   res.render('account/confirm')
 })
 
+// special page for checking purposes
+router.get('/account/confirm-merge', function (req, res) {
+  res.render('account/confirm-merge')
+})
+
 
 // Merged accounts email - people only get this router basd on logic in the confirm page
 router.all('/account/confirm/router/merge', function (req, res) {
@@ -394,7 +409,10 @@ if (req.session.data["get-emails"]=="Yes") {
     '4bd299fb-e82d-46f9-8178-2cb31d904836', // merged accounts email
     // `emailAddress` here needs to match the name of the form field in
     // your HTML page
-    req.session.data["mailinator-email"] + "@mailinator.com"
+    req.session.data["mailinator-email"] + "@mailinator.com",{
+    personalisation: {
+      mergeEmail: req.session.data["mailinator-email"] + "@mailinator.com",
+    }}
   );
 } else{
   console.log("'Merged email' surpressed - change email setting to yes to send");
@@ -484,6 +502,21 @@ router.get('/email/manage/index', function (req, res) {
 router.get('/account/manage-account', function (req, res) {
   res.render('account/manage-account', req )
 })
+
+router.get('/account/cookie-feedback-settings', function (req, res) {
+  res.render('account/cookie-feedback-settings', req )
+})
+
+router.post('/account/cookie-feedback-settings', function (req, res) {
+  res.render('account/cookie-feedback-settings', req )
+})
+
+// getting to this page from the form redirect
+router.post('/account/cookie-feedback-settings-router', function (req, res) {
+  req.session.data.sessionFlash = 'feedback';
+  return res.redirect('/account/cookie-feedback-settings')
+})
+
 
 router.get('/account/security', function (req, res) {
   res.render('account/security', req )
@@ -639,8 +672,20 @@ const augmentedBody = function (req, response, body) {
   <link href="/public/stylesheets/accounts.css" media="all" rel="stylesheet" type="text/css" />`
 
   const footerTemplate = fs.readFileSync('app/views/explore-footer.html', 'utf8')
+
+
+// This was for UR Tasks
+/*
   const urTasksTemplate = fs.readFileSync('app/views/includes/ur-tasks.html', 'utf8')
   const urTasksString = nunjucks.renderString(urTasksTemplate);
+*/
+
+
+// List for snapshot
+  const listTemplate = fs.readFileSync('app/views/includes/list.html', 'utf8')
+  const listString = nunjucks.renderString(listTemplate);
+
+
   const notificationsBase = fs.readFileSync('app/views/includes/print-notifications.html', 'utf8')
   const notificationsTemplate = nunjucks.renderString(notificationsBase, { signedIn: req.session.data.signedIn, currentURL: req.url, notifications: req.session.data.notifications })
 
@@ -688,7 +733,8 @@ const updateHistory = '<a href="#full-history" class="app-c-published-dates__tog
 
     .replace(/<main role="main" id="content" class="publication" lang="en">/, topBannerTemplate + '<main role="main" id="content" class="publication" lang="en">')
 
-    .replace(/<footer[^]+?<\/footer>/, footerTemplate + urTasksString)
+/*     .replace(/<footer[^]+?<\/footer>/, footerTemplate + urTasksString) */  //no more UR tasks for now
+     .replace(/<footer[^]+?<\/footer>/, footerTemplate + listString) // link to list
 
     .replace(/<a(.*) href="#history"[^]+?<\/a>/, currentUpdates + emailUpdates )
     .replace(/<a href="#full-history"[^]+?<\/a>/, updateHistory + emailUpdates )

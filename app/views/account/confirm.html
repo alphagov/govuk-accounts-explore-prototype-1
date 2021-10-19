@@ -29,11 +29,14 @@ You’ll get emails when there are updates to:</P>
   <a class="govuk-link" href="/">Cancel and go to the GOV.UK homepage</a>
 </p>
 
-{% if (data['user-group'] == "Email updates") %}
+{% if ((data['user-group'] == "Email updates") or mergePage) %}
 
-<h2 class="govuk-heading-m">Other emails you get from GOV.UK</h2>
-<p class="govuk-body">You also have other GOV.UK email
-subscriptions. These will be moved to your
+<h2 class="govuk-heading-m">Your other GOV.UK email subscriptions</h2>
+<p class="govuk-body">
+There are more GOV.UK email subscriptions for <strong>{{data['mailinator-email']}}@mailinator.com</strong>
+</p>
+<p class="govuk-body">
+   These will be moved to your
 new account:</p>
 <ul class="govuk-list govuk-list--bullet">
   <li>News and communications</li>

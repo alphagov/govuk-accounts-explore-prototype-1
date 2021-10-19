@@ -1,0 +1,16 @@
+<p><a href="/list">Go to list</a></p>
+
+
+{% if emailShortCut | length %}
+
+{% for item in emailShortCut %} <!-- for as one page may have two emails -->
+<p><a target="_blank" href="/notify/{{item.link}}">{{ item.email}} email (opens in new tab)</a></p>
+<p>&nbsp;</p>
+{% endfor %}
+
+{% endif %}
+
+{% if sms %} <!-- SMS message -->
+<p><a target="_blank" href="/notify/sms">SMS (opens in new tab)</a></p>
+<p>&nbsp;</p>
+{% endif %}
