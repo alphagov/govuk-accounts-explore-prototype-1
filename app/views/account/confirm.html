@@ -29,7 +29,7 @@ You’ll get emails when there are updates to:</P>
   <a class="govuk-link" href="/">Cancel and go to the GOV.UK homepage</a>
 </p>
 
-{% if (data['user-group'] == "Email updates") %}
+{% if ((data['user-group'] == "Email updates") or mergePage) %}
 
 <h2 class="govuk-heading-m">Your other GOV.UK email subscriptions</h2>
 <p class="govuk-body">

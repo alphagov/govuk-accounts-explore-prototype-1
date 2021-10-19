@@ -172,7 +172,7 @@ router.get('/topic', function (req, res) {
 /*
 router.get('/', function (req, res) {
   res.render('index')
-}) */ 
+}) */
 
 router.all('*', (req, res, next) => {
 req.session.data['currentURL'] = req.url;
@@ -182,7 +182,16 @@ next();
 // ==================================================
 // All accounts stuff starts here
 
+// getting to this page from the form redirect
+router.post('/list-router', function (req, res) {
+  req.session.data.sessionFlash = 'settings';
+  return res.redirect('/list')
+})
 
+// Tasks page
+router.all('/list', function (req, res) {
+  res.render('list')
+})
 
 // getting to this page from the form redirect
 router.post('/tasks-router', function (req, res) {
@@ -383,6 +392,11 @@ router.post('/account/confirm', function (req, res) {
 
 router.get('/account/confirm', function (req, res) {
   res.render('account/confirm')
+})
+
+// special page for checking purposes
+router.get('/account/confirm-merge', function (req, res) {
+  res.render('account/confirm-merge')
 })
 
 
@@ -651,8 +665,20 @@ const augmentedBody = function (req, response, body) {
   <link href="/public/stylesheets/accounts.css" media="all" rel="stylesheet" type="text/css" />`
 
   const footerTemplate = fs.readFileSync('app/views/explore-footer.html', 'utf8')
+
+
+// This was for UR Tasks
+/*
   const urTasksTemplate = fs.readFileSync('app/views/includes/ur-tasks.html', 'utf8')
   const urTasksString = nunjucks.renderString(urTasksTemplate);
+*/
+
+
+// List for snapshot
+  const listTemplate = fs.readFileSync('app/views/includes/list.html', 'utf8')
+  const listString = nunjucks.renderString(listTemplate);
+
+
   const notificationsBase = fs.readFileSync('app/views/includes/print-notifications.html', 'utf8')
   const notificationsTemplate = nunjucks.renderString(notificationsBase, { signedIn: req.session.data.signedIn, currentURL: req.url, notifications: req.session.data.notifications })
 
@@ -700,7 +726,8 @@ const updateHistory = '<a href="#full-history" class="app-c-published-dates__tog
 
     .replace(/<main role="main" id="content" class="publication" lang="en">/, topBannerTemplate + '<main role="main" id="content" class="publication" lang="en">')
 
-    .replace(/<footer[^]+?<\/footer>/, footerTemplate + urTasksString)
+/*     .replace(/<footer[^]+?<\/footer>/, footerTemplate + urTasksString) */  //no more UR tasks for now
+     .replace(/<footer[^]+?<\/footer>/, footerTemplate + listString) // link to list
 
     .replace(/<a(.*) href="#history"[^]+?<\/a>/, currentUpdates + emailUpdates )
     .replace(/<a href="#full-history"[^]+?<\/a>/, updateHistory + emailUpdates )

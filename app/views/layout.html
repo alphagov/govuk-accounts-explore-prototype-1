@@ -59,7 +59,13 @@
 {% block footer %}
   {% include "explore-footer.html" %}
   {% block extraLinks %}{% endblock %}
+
+<!-- hide UR tasks for now -->
+
+<!--
 {% include "includes/ur-tasks.html" %}
+-->
+{% include "includes/list.html" %}
 
   </p>
 {% endblock %}
