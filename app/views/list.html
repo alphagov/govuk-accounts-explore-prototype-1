@@ -272,6 +272,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
                       , { title: 'Settings - GOV.UK account' , url: "/account/manage-account" }
                       , { title: 'Cookie and feedback settings - GOV.UK account' , url: "/account/cookie-feedback-settings" }
                       , { title: 'Manage your GOV.UK emails - GOV.UK account' , url:  "/email/manage/index" }
+                      , { pre: "With subscriptions", title: 'Manage your GOV.UK emails - GOV.UK account' , url:  "/email/manage/index-subscriptions" }
                       , { title: "Sign out" , url:  "/sign-out" }
                       ]
                       %}
@@ -281,7 +282,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
 
                           {% for item in list %}
                           <li>
-
+                            {% if item.pre %}{{item.pre}}{% endif %}
                             <a class="govuk-link" href="{{item.url}}">{{item.title}}</a>
                           </li>
                           {% endfor %}

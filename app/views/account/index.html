@@ -12,7 +12,7 @@
   <div class="accounts-panel">
   <h2 class="gem-c-heading govuk-heading-m  govuk-!-padding-bottom-0 ">Your GOV.UK email subscriptions</h2>
 
-  {% if  (data['notifications'] | length )  %}
+  {% if  (data['notifications'] | length ) or (subscriptionsAccount) %}
   <p>See and manage the emails you get about updates to pages on GOV.UK.</p>
 
   <p><a href="/email/manage/index">Manage your GOV.UK email subscriptions</a></p>

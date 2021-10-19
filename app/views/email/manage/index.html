@@ -12,7 +12,7 @@
 
 
 
-  {% if  (data['notifications'] | length ) or (data['user-group'] == "Email updates")  %}
+  {% if  (data['notifications'] | length ) or (data['user-group'] == "Email updates" or subscriptionsPage)  %}
 
     {{ govukInsetText({
     html: "<a href='#'>Unsubscribe from everything</a>"
@@ -20,7 +20,7 @@
 {% endif %}
 
 
-  {% if  (data['notifications'] | length )  %}
+  {% if  (data['notifications'] | length ) or (subscriptionsPage)  %}
 
   <dl class="govuk-summary-list">
 
@@ -44,7 +44,7 @@
       {% endfor %}
   {% if not (data['user-group'] == "Email updates") %}  </dl> {% endif %} <!-- one long list if both email udpates and notifications-->
   {% else %}
-{% if not (data['user-group'] == "Email updates") %}  <!-- email updates functionality works separately -->
+{% if not (data['user-group'] == "Email updates")  %}  <!-- email updates functionality works separately -->
     <p>
 
       You’re not currently getting emails about changes to GOV.UK.
@@ -54,7 +54,7 @@
 {% endif %}
   {% endif %}
 
-{% if ( data['user-group'] == "Email updates") %}
+{% if ( data['user-group'] == "Email updates") or (subscriptionsPage) %}
 
 {% set topicList = [{topic: "News and communications", date : "10 August 2021", frequency: "daily" }, {topic: "Money", date : "6 April 2020"}, {topic: "Ofsted", date: "2 February 2019"}]%}
 
