@@ -1,9 +1,15 @@
 {% extends "account/_account.html" %}
 {% set breadcrumbs = true %}
+
+{% if subscriptionsPage %}
+{% set breadcrumbs = false %}
+{% endif %}
+
 {% set hideAccountMenu = true %}
 {% set title = "Manage your GOV.UK email subscriptions" %}
 {% import "includes/xpl-cards.html" as cards %}
 {% import "includes/xpl-tabs.njk" as tabs %}
+
 
 
 {% block account %}
@@ -19,6 +25,22 @@
   }) }}
 {% endif %}
 
+{% if subscriptionsPage %}
+   <div class="govuk-!-margin-bottom-2 govuk-!-padding-top-2" style="border-top: 1px solid #b1b4b6;">
+
+       <p class="govuk-!-margin-bottom-0">Page</p>
+       <h2 class="govuk-heading-s govuk-!-padding-top-0 govuk-!-padding-bottom-o govuk-!-margin-bottom-4"">
+         <a href="/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do">Coronavirus: how to stay safe and help prevent the spread</a>
+       </h2>
+       <p>You subscribed on 14 September 2021</p>
+       <p>You’ll get an email each time this page is updated.<br>
+         <a href="#">Change how often you get emails</a>
+       </p>
+       <p>
+         <a href="#">Unsubscribe from this page</a>
+       </p>
+     </div>
+{% endif %}
 
   {% if  (data['notifications'] | length ) or (subscriptionsPage)  %}
 
@@ -83,5 +105,6 @@
 </dl>
 
 {% endif %}
+
 
 {% endblock %}
