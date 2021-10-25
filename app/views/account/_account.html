@@ -62,9 +62,9 @@
     <li class="accounts-menu__item {% if current == 'manage' %}accounts-menu__item--current{% endif %}">
       <a class="accounts-menu__link govuk-link govuk-link--no-visited-state" href="/account/manage-account">Manage your account</a>
     </li>
-    <li class="accounts-menu__item {% if current == 'security' %}accounts-menu__item--current{% endif %}">
+<!--    <li class="accounts-menu__item {% if current == 'security' %}accounts-menu__item--current{% endif %}">
       <a class="accounts-menu__link govuk-link govuk-link--no-visited-state" href="/account/security">Security and privacy</a>
-    </li>
+    </li> -->
   </ul>
 </nav>
 
@@ -130,5 +130,33 @@
     </div>
   </div>
 
+
+{% endblock %}
+
+{% block footer %}
+  {{ govukFooter({
+    meta: {
+      items: [
+      {
+        href: "#",
+        text: "Accessibility statement"
+      },
+        {
+          href: "#",
+          text: "Cookies"
+        },
+        {
+          href: "#",
+          text: "Terms and conditions"
+        },
+        {
+          href: "#",
+          text: "Privacy notice"
+        }
+      ]
+    }
+  }) }}
+
+{% include 'includes/ur-tasks.html'%}
 
 {% endblock %}
