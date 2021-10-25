@@ -1,0 +1,24 @@
+{% extends "account/_account.html" %}
+{% set breadcrumbs = false %}
+{% set hideAccountMenu = true %}
+{% set hideFeedback = true %}
+{% set back = true %}
+{% set title = "Are you sure you want to unsubscribe from everything?" %}
+{% import "includes/xpl-cards.html" as cards %}
+{% import "includes/xpl-tabs.njk" as tabs %}
+
+{% block account %}
+
+<p>You won’t get any more automated emails from GOV.UK.
+</p>
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Unsubscribe"
+}) }}
+
+<div class="govuk-!-margin-bottom-5">
+<a class="" href="/email/manage/index">Cancel</a>
+</div>
+
+{% endblock %}

@@ -91,6 +91,17 @@
 }) }}
 {% endif %}
 
+{% if subscriptionsPage %}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Account home",
+      href: "/account/index-subscriptions"
+    }
+  ]
+}) }}
+{% endif %}
+
 {% if (sessionFlash  or echo ) %}
 {% if ((sessionFlash == "feedback") or (echo == "feedback")) %}
 

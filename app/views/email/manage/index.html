@@ -1,9 +1,15 @@
 {% extends "account/_account.html" %}
 {% set breadcrumbs = true %}
+
+{% if subscriptionsPage %}
+{% set breadcrumbs = false %}
+{% endif %}
+
 {% set hideAccountMenu = true %}
 {% set title = "Manage your GOV.UK email subscriptions" %}
 {% import "includes/xpl-cards.html" as cards %}
 {% import "includes/xpl-tabs.njk" as tabs %}
+
 
 
 {% block account %}
@@ -12,15 +18,31 @@
 
 
 
-  {% if  (data['notifications'] | length ) or (data['user-group'] == "Email updates")  %}
+  {% if  (data['notifications'] | length ) or (data['user-group'] == "Email updates" or subscriptionsPage)  %}
 
     {{ govukInsetText({
     html: "<a href='#'>Unsubscribe from everything</a>"
   }) }}
 {% endif %}
 
+{% if subscriptionsPage %}
+   <div class="govuk-!-margin-bottom-2 govuk-!-padding-top-2" style="border-top: 1px solid #b1b4b6;">
 
-  {% if  (data['notifications'] | length )  %}
+       <p class="govuk-!-margin-bottom-0">Page</p>
+       <h2 class="govuk-heading-s govuk-!-padding-top-0 govuk-!-padding-bottom-o govuk-!-margin-bottom-4"">
+         <a href="/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do">Coronavirus: how to stay safe and help prevent the spread</a>
+       </h2>
+       <p>You subscribed on 14 September 2021</p>
+       <p>You’ll get an email each time this page is updated.<br>
+         <a href="#">Change how often you get emails</a>
+       </p>
+       <p>
+         <a href="#">Unsubscribe from this page</a>
+       </p>
+     </div>
+{% endif %}
+
+  {% if  (data['notifications'] | length ) or (subscriptionsPage)  %}
 
   <dl class="govuk-summary-list">
 
@@ -44,7 +66,7 @@
       {% endfor %}
   {% if not (data['user-group'] == "Email updates") %}  </dl> {% endif %} <!-- one long list if both email udpates and notifications-->
   {% else %}
-{% if not (data['user-group'] == "Email updates") %}  <!-- email updates functionality works separately -->
+{% if not (data['user-group'] == "Email updates")  %}  <!-- email updates functionality works separately -->
     <p>
 
       You’re not currently getting emails about changes to GOV.UK.
@@ -54,7 +76,7 @@
 {% endif %}
   {% endif %}
 
-{% if ( data['user-group'] == "Email updates") %}
+{% if ( data['user-group'] == "Email updates") or (subscriptionsPage) %}
 
 {% set topicList = [{topic: "News and communications", date : "10 August 2021", frequency: "daily" }, {topic: "Money", date : "6 April 2020"}, {topic: "Ofsted", date: "2 February 2019"}]%}
 
@@ -83,5 +105,6 @@
 </dl>
 
 {% endif %}
+
 
 {% endblock %}

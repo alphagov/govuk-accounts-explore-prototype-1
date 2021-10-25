@@ -269,9 +269,11 @@ text: "Default setting is 'Nothing' - even when data is cleared "
                         , { title: "[AUTH] Sign in or create a GOV.UK acount" , url: "/auth/sign-in-or-create" }
                       , { title: "Sign in to your GOV.UK account" , url: "/sign-in" }
                       , { title: 'Home - GOV.UK account' , url: "/account/index" }
+                      , { pre: "With subscriptions", title: 'Home - GOV.UK account' , url: "/account/index-subscriptions" }
                       , { title: 'Settings - GOV.UK account' , url: "/account/manage-account" }
                       , { title: 'Cookie and feedback settings - GOV.UK account' , url: "/account/cookie-feedback-settings" }
                       , { title: 'Manage your GOV.UK emails - GOV.UK account' , url:  "/email/manage/index" }
+                      , { pre: "With subscriptions", title: 'Manage your GOV.UK emails - GOV.UK account' , url:  "/email/manage/index-subscriptions" }
                       , { title: "Sign out" , url:  "/sign-out" }
                       ]
                       %}
@@ -281,7 +283,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
 
                           {% for item in list %}
                           <li>
-
+                            {% if item.pre %}{{item.pre}}{% endif %}
                             <a class="govuk-link" href="{{item.url}}">{{item.title}}</a>
                           </li>
                           {% endfor %}
