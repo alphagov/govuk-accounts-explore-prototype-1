@@ -25,14 +25,19 @@
             <a href="/topic" id="xpl-topics-button-desktop">Topics</a>
 
           </li>
-          <li class="govuk-header__navigation-item {% if req.url === '/government/organisations' %}govuk-header__navigation-item--active{% endif %}">
-            <a href="/government/organisations">Departments</a>
-          </li>
+
           <li id="xpl-activity-menu-item" class="govuk-header__navigation-item">
             <a id="xpl-activity-button-desktop" href="/#activity">
               Government activity
             </a>
           </li>
+
+
+          <li {% if signedIn %} id="xpl-account-menu-item"  {% endif %} class="govuk-header__navigation-item {% if req.url === '/sign-in' %}govuk-header__navigation-item--active{% endif %}">
+            <a {% if signedIn %} id="xpl-account-button-desktop" href="/#account" {% endif %} href="/sign-in">Sign in to a service {% if signedIn %} tk{% endif %}</a>
+          </li>
+
+
           <li id="xpl-search-menu-item" class="govuk-header__navigation-item">
             <a id="xpl-search-button-desktop" href="/search" class="xpl-search-button">
               Search
@@ -125,6 +130,34 @@
           </div>
         </div>
 
+<!-- notifications -->
+<div class="xpl-frame2" id="xpl-frame2-account" style="display: none">
+  <div class="xpl-frame2-inner">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <p class="xpl-dropdown-intro">There are separate accounts for different government services. </p>
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+    <!--    <h3 class="govuk-heading-s" >Services</h3> -->
+
+        <ul>
+          <li><a href="/sign-in">Find the service you need to sign in to</a></li>
+            </ul>
+<hr class="gem-c-layout-super-navigation-header__navigation-second-footer-break govuk-section-break govuk-section-break--visible">
+<br>
+<h3 class="govuk-heading-s" >Your GOV.UK email subscriptions</h3>
+            <ul>
+              <li><a href="/email/admin/index">Manage your GOV.UK email subscriptions</a></li>
+              <li><a href="/sign-out">Sign out of GOV.UK email subscriptions</a></li>
+
+            </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
 
         <!-- Desktop search menu -->
         <div class="xpl-frame2" id="xpl-frame2-search" style="display: none">
@@ -193,15 +226,7 @@
                   </ul>
                 </div>
               </div>
-              <div class="xpl-accordion__section-link">
-                <div class="xpl-accordion__section-header">
-                  <h2 class="xpl-accordion__section-heading">
-                    <a href="/government/organisations" id="xpl-accordion-default-heading-2">
-                      Departments
-                    </a>
-                  </h2>
-                </div>
-              </div>
+
               <div class="xpl-accordion__section">
                 <div class="xpl-accordion__section-header">
                   <h2 class="xpl-accordion__section-heading">
@@ -235,6 +260,48 @@
                   </ul>
                 </div>
               </div>
+
+              {% if signedIn %}
+
+              <div class="xpl-accordion__section">
+                <div class="xpl-accordion__section-header">
+                  <h2 class="xpl-accordion__section-heading">
+                    <span class="xpl-accordion__section-button" id="xpl-accordion-default-heading-4">
+                      Sign in to a service
+                    </span>
+                  </h2>
+                </div>
+                <div id="xpl-accordion-default-content-4" class="xpl-accordion__section-content" aria-labelledby="xpl-accordion-default-heading-3">
+                  <ul class="govuk-list xpl-gov-activity">
+                    <li class="govuk-header__navigation-item-2">
+                      <a class="govuk-header__link" href="/sign-in">Find the service you need to sign in to</a><br/>
+
+                    </li>
+                    <li class="govuk-header__navigation-item-2">
+                      <a class="govuk-header__link" href="/email/admin/index">Manage your GOV.UK email subscriptions</a><br/>
+
+                    </li>
+                    <li class="govuk-header__navigation-item-2">
+                      <a class="govuk-header__link" href="/sign-out">Sign out of GOV.UK email subscriptions</a><br/>
+
+                    </li>
+                  
+                  </ul>
+                </div>
+              </div>
+
+              {% else %}
+              <div class="xpl-accordion__section-link">
+                <div class="xpl-accordion__section-header">
+                  <h2 class="xpl-accordion__section-heading">
+                    <a href="/sign-in" id="xpl-accordion-default-heading-2">
+                      Sign in to a service
+                    </a>
+                  </h2>
+                </div>
+              </div>
+{% endif %}
+
             </div>
             <ul class="govuk-list xpl-below-accordion">
               <li class="govuk-header__navigation-item xpl-minor-nav-item">

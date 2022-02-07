@@ -1,28 +1,24 @@
-{% extends "account/_account.html" %}
+{% extends "email/admin/_base.html" %}
 {% set breadcrumbs = true %}
 
-{% if subscriptionsPage %}
-{% set breadcrumbs = false %}
-{% endif %}
-
-{% set hideAccountMenu = true %}
 {% set title = "Manage your GOV.UK email subscriptions" %}
-{% import "includes/xpl-cards.html" as cards %}
-{% import "includes/xpl-tabs.njk" as tabs %}
 
 
 
-{% block account %}
+{% block emailAdmin %}
+
+{{ govukInsetText({
+  html:
+'You can <a href="/account/manage-account">change your email address or other sign in details</a>. Your email updates will go to your new email address.'
 
 
-
+}) }}
 
 
   {% if  (data['notifications'] | length ) or (data['user-group'] == "Email updates" or subscriptionsPage)  %}
 
-    {{ govukInsetText({
-    html: "<a href='#'>Unsubscribe from everything</a>"
-  }) }}
+    <a class="govuk-button govuk-button--secondary" href='#'>Unsubscribe from everything</a>
+
 {% endif %}
 
 {% if subscriptionsPage %}
