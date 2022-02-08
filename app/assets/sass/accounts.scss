@@ -209,3 +209,20 @@
   padding-top: 20px;
 }
 */
+
+//overrides for testing
+
+#global-bar {
+  display: none; //yay, no covid banner!
+
+}
+#global-header-bar-outer {
+    background: white;
+}
+
+.govuk-breadcrumbs, .explore-body .govuk-breadcrumbs--collapse-on-mobile {
+  background: white;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-bottom: 0 !important;
+}

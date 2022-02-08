@@ -283,13 +283,17 @@ router.all('/sign-in/set-cookie', function (req, res) {
   res.redirect('/account/confirm')
 })
 
+/*
 router.get('/sign-in', function (req, res) {
   res.render('sign-in')
 })
 
+
 router.get('/help/sign-in', function (req, res) {
   res.render('sign-in')
 })
+
+*/
 
 router.get('/auth/email-confirmation', function (req, res) {
   res.render('auth/email-confirmation')
@@ -495,8 +499,8 @@ router.get('/account/index', function (req, res) {
   res.render('account/index')
 })
 
-router.get('/email/manage/index', function (req, res) {
-  res.render('email/manage/index', req  )
+router.get('/email/admin/index', function (req, res) {
+  res.render('email/admin/index', req  )
 })
 
 router.get('/account/manage-account', function (req, res) {
@@ -526,6 +530,13 @@ router.get('/auth/signed-out', function (req, res) {
   res.render('auth/signed-out', req )
 })
 
+
+
+// Router magic
+router.all('/email/manage/router', function (req, res) {
+      req.session.data.signedIn = true;
+      return res.redirect('/email/admin/index')
+})
 
 // Router magic
 router.all('/account/router-remove', function (req, res) {
@@ -573,28 +584,40 @@ router.get('/prototype-admin/clear-data-success', function (req, res) {
 
 /// email stuff
 
-router.get('/email/manage/frequency', function (req, res) {
-  res.render('email/manage/frequency')
+router.get('/email/manage', function (req, res) {
+  res.render('email/manage')
 })
 
-router.get('/email/manage/unsubscribe-everything', function (req, res) {
-  res.render('email/manage/unsubscribe-everything')
+router.get('/email/admin/index', function (req, res) {
+  res.render('email/admin/index')
 })
 
-router.get('/email/manage/authenticate', function (req, res) {
-  res.render('email/manage/authenticate')
+router.post('/email/admin/index', function (req, res) {
+  res.render('email/admin/index')
 })
 
-router.get('/email/manage/index-subscriptions', function (req, res) {
-  res.render('email/manage/index-subscriptions')
+router.get('/email/admin/frequency', function (req, res) {
+  res.render('email/admin/frequency')
 })
 
-router.post('/email/manage/authenticate-2', function (req, res) {
-  res.render('email/manage/authenticate-2')
+router.get('/email/admin/unsubscribe-everything', function (req, res) {
+  res.render('email/admin/unsubscribe-everything')
 })
 
-router.get('/email/manage/authenticate-2', function (req, res) {
-  res.render('email/manage/authenticate-2')
+router.get('/email/admin/authenticate', function (req, res) {
+  res.render('email/admin/authenticate')
+})
+
+router.get('/email/admin/index-subscriptions', function (req, res) {
+  res.render('email/admin/index-subscriptions')
+})
+
+router.post('/email/admin/authenticate-2', function (req, res) {
+  res.render('email/admin/authenticate-2')
+})
+
+router.get('/email/admin/authenticate-2', function (req, res) {
+  res.render('email/admin/authenticate-2')
 })
 
 
@@ -742,8 +765,9 @@ const updateHistory = '<a href="#full-history" class="app-c-published-dates__tog
 /*     .replace(/<footer[^]+?<\/footer>/, footerTemplate + urTasksString) */  //no more UR tasks for now
      .replace(/<footer[^]+?<\/footer>/, footerTemplate + listString) // link to list
 
-    .replace(/<a(.*) href="#history"[^]+?<\/a>/, currentUpdates + emailUpdates )
-    .replace(/<a href="#full-history"[^]+?<\/a>/, updateHistory + emailUpdates )
+    .replace(/<form class="gem-c-single-page-notification-button"[^]+?<\/form>/,  emailUpdates )
+    .replace(/<form class="gem-c-single-page-notification-button"[^]+?<\/form>/,  emailUpdates )
+  /*   .replace(/<a href="#full-history"[^]+?<\/a>/, updateHistory + emailUpdates ) */
 
 /*    .replace(/<div class="gem-c-print-link[^]+?<\/div>/, notificationsTemplate) */
 /*    .replace(/<div class="gem-c-print-link[^]+?<\/div>/, notificationsTemplate) */ // hack to get bottom of page

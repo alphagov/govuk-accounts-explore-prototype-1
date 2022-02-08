@@ -2,20 +2,10 @@
 {% import "includes/xpl-cards.html" as cards %}
 {% import "includes/xpl-tabs.njk" as tabs %}
 {% block pageTitle %}
-Enter your email address
+Change your email preferences
 {% endblock %}
 {% block main %}
-
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-
-{{ govukBackLink({
-  text: "Back",
-  href: "#"
-}) }}
-
   <div id="global-header-bar-outer">
-
-
     <div id="global-header-bar"></div>
   </div>
   <div class="xpl-section-inner ">
@@ -27,14 +17,28 @@ Enter your email address
 
         <div class="govuk-grid-column-two-thirds">
 
-        <h1 class="gem-c-heading govuk-heading-xl govuk-!-margin-bottom-6">Enter your email address
-</h1>
+        <h1 class="gem-c-heading govuk-heading-xl govuk-!-margin-bottom-6">Manage your GOV.UK email subscriptions</h1>
+
+
+        <p>Sign in to see and manage the emails you get about updates to GOV.UK.</p>
+
+        <p>You can:</p>
+
+<ul>
+  <li>
+        unsubscribe from emails you get from GOV.UK
+      </li><li>
+        change how often you get emails
+</li><li>
+        update your email address
+</li></ul>
+
+<p> PANEL You cannot set up new email subscriptions here. Use the link to ‘get emails’ on the page or topic you want to subscribe to. </p>
 
 
 
 
-        <form novalidate="novalidate" action="{% if data['created'] or (data['user-group'] == 'Brexit checker') %}/account/have-govuk-account{% else %}/email/admin/authenticate-2{% endif %}" accept-charset="UTF-8" method="post">
-        <input type="hidden" name="authenticity_token" value="wUGnf9NnTGHpSgY2dsN4xcIUXkmuc5I7GOGFf6wcXt12wScM2Iv7lSLy7d0GA9XJ4pBZr_8brxE2p1oZMmciSQ">
+        <form novalidate="novalidate" action="/email/manage/router" accept-charset="UTF-8"  method="post"  >
 
         <div class="govuk-form-group ">
 
