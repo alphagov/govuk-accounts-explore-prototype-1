@@ -38,7 +38,7 @@ mailinator inbox as '{{data['mailinator-email']}}'
         {% endif %}
 {% endif %}
 
-      <h1 class="govuk-heading-xl">GOV.UK account - design freeze October 2021 </h1>
+      <h1 class="govuk-heading-xl">GOV.UK account: journey testing February 2022 </h1>
 
 
 
@@ -91,9 +91,9 @@ text: "Default setting is 'Nothing' - even when data is cleared "
             text: "Email updates"
           },
           {
-            value: "Brexit checker",
-            checked: true if (data['user-group'] == "Brexit checker") ,
-            text: "Brexit checker"
+            value: "GOV.UK account",
+            checked: true if (data['user-group'] == "GOV.UK account") ,
+            text: "GOV.UK account"
           }
         ]
       }) }}

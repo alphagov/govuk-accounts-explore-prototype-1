@@ -20,7 +20,7 @@ Example usage:
 module.exports = {
   // Insert values here
 
- "user-group" : "Nothing",
+ "user-group" : "GOV.UK account", // "Nothing" , "Email updates" or "GOV.UK account"
 
  "mailinator-email": "govukresearch.inbox1", // comment this out later if required and uncomment other section
 /*
