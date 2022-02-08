@@ -283,12 +283,12 @@ router.all('/sign-in/set-cookie', function (req, res) {
   res.redirect('/account/confirm')
 })
 
-/*
+
 router.get('/sign-in', function (req, res) {
   res.render('sign-in')
 })
 
-
+/* 
 router.get('/help/sign-in', function (req, res) {
   res.render('sign-in')
 })
