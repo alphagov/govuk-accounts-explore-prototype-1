@@ -280,7 +280,13 @@ router.get('/auth/2fa', function (req, res) {
 })
 
 router.all('/sign-in/set-cookie', function (req, res) {
+if (!req.session.data.emailDirect){
   res.redirect('/account/confirm')
+} else {
+  delete req.session.data.emailDirect;
+  res.redirect('/email/admin/index')
+
+  }
 })
 
 
@@ -288,7 +294,7 @@ router.get('/sign-in', function (req, res) {
   res.render('sign-in')
 })
 
-/* 
+/*
 router.get('/help/sign-in', function (req, res) {
   res.render('sign-in')
 })

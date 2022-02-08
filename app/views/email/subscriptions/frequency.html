@@ -33,7 +33,7 @@ Enter your email address
 
 
 
-        <form novalidate="novalidate" action="{% if data['created'] or (data['user-group'] == 'Brexit checker') %}/account/have-govuk-account{% else %}/email/admin/authenticate-2{% endif %}" accept-charset="UTF-8" method="post">
+        <form novalidate="novalidate" action="{% if data['created'] or (data['user-group'] == 'GOV.UK account') %}/account/have-govuk-account{% else %}/email/admin/authenticate-2{% endif %}" accept-charset="UTF-8" method="post">
         <input type="hidden" name="authenticity_token" value="wUGnf9NnTGHpSgY2dsN4xcIUXkmuc5I7GOGFf6wcXt12wScM2Iv7lSLy7d0GA9XJ4pBZr_8brxE2p1oZMmciSQ">
 
         <div class="govuk-form-group ">
