@@ -2,7 +2,7 @@
 {% import "includes/xpl-cards.html" as cards %}
 {% import "includes/xpl-tabs.njk" as tabs %}
 {% block pageTitle %}
-Change your email preferences
+Manage your GOV.UK email subscriptions
 {% endblock %}
 {% block main %}
   <div id="global-header-bar-outer">
@@ -17,18 +17,23 @@ Change your email preferences
 
         <div class="govuk-grid-column-two-thirds">
 
-        <h1 class="gem-c-heading govuk-heading-xl govuk-!-margin-bottom-6">Change your email preferences</h1>
+        <h1 class="gem-c-heading govuk-heading-xl govuk-!-margin-bottom-6">Manage your GOV.UK email subscriptions</h1>
 
 
 
 
 
         <div class="govuk-body">
-          <p>If you are subscribed to GOV.UK email updates, you can unsubscribe or change the frequency at which you receive emails here.</p>
-        <p>You cannot use this page to set up new email subscriptions.  You can set up new subscriptions on topic pages or search pages.</p>
-        <p>For security, we need you to confirm your email address before you can manage your existing subscriptions.</p>
-
+          <p>Sign in to see and manage the emails you get about updates to GOV.UK.</p>
+          <p class="govuk-body">You can:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>unsubscribe from emails you get from GOV.UK</li>
+              <li>change how often you get emails</li>
+              <li>update your email address</li>
+            </ul>
         </div>
+        <div class="govuk-inset-text">
+You cannot set up new email subscriptions here. Use the link to ‘get emails’ on the page or topic you want to subscribe to.</div>
 
         <form novalidate="novalidate" action="{% if not noGovUKAccount %}/account/have-govuk-account{% else %}/email/admin/authenticate-2{% endif %}" accept-charset="UTF-8" method="post">
 
