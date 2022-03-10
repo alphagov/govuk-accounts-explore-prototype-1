@@ -1,11 +1,14 @@
+{% set hideAccountMenu = true %}
 {% set current = "manage" %}
-{% set title = "Cookie and feedback settings" %}
+{% block pageTitle %}
+  Cookie and feedback settings - GOV.UK account - GOV.UK
+{% endblock %}
 {% set back = true %}
 {% set backLink = "/account/manage-account" %}
 {% extends "account/_account.html" %}
 {% block account %}
 
-
+<h1 class="govuk-heading-l govuk-!-margin-top-4">Cookie and feedback settings</h1>
 <form data-module="track-form" data-track-category="account-create" action="/account/cookie-feedback-settings-router"
   accept-charset="UTF-8" data-remote="true" method="post" name="emailAddress" class="form">
 

@@ -32,11 +32,11 @@
             </a>
           </li>
 
-
+          <!-- Sign in to a service
           <li {% if signedIn %} id="xpl-account-menu-item"  {% endif %} class="govuk-header__navigation-item {% if req.url === '/sign-in' %}govuk-header__navigation-item--active{% endif %}">
             <a {% if signedIn %} id="xpl-account-button-desktop" href="/#account" {% endif %} href="/sign-in">Sign in to a service {% if signedIn %} tk{% endif %}</a>
           </li>
-
+          -->
 
           <li id="xpl-search-menu-item" class="govuk-header__navigation-item">
             <a id="xpl-search-button-desktop" href="/search" class="xpl-search-button">
@@ -130,7 +130,7 @@
           </div>
         </div>
 
-<!-- notifications -->
+<!-- notifications-->
 <div class="xpl-frame2" id="xpl-frame2-account" style="display: none">
   <div class="xpl-frame2-inner">
     <div class="govuk-grid-row">
@@ -138,7 +138,8 @@
         <p class="xpl-dropdown-intro">There are separate accounts for different government services. </p>
       </div>
       <div class="govuk-grid-column-two-thirds">
-    <!--    <h3 class="govuk-heading-s" >Services</h3> -->
+
+    <!--    <h3 class="govuk-heading-s" >Services</h3>-->
 
         <ul>
           <li><a href="/sign-in">Find the service you need to sign in to</a></li>
@@ -260,7 +261,7 @@
                   </ul>
                 </div>
               </div>
-
+              <!-- Sign in to a service
               {% if signedIn %}
 
               <div class="xpl-accordion__section">
@@ -308,7 +309,7 @@
                 </div>
               </div>
 {% endif %}
-
+-->
             </div>
             <ul class="govuk-list xpl-below-accordion">
               <li class="govuk-header__navigation-item xpl-minor-nav-item">

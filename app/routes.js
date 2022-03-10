@@ -482,6 +482,22 @@ router.all('/account/router-add', function (req, res) {
 /* END OF SIGN UP FLOWS */
 
 
+// Passenger locator form
+router.get('/passenger-locator-form/home', function (req, res) {
+  res.render('passenger-locator-form/home')
+})
+
+router.get('/passenger-locator-form/update-details', function (req, res) {
+  res.render('passenger-locator-form/update-details')
+})
+
+router.get('/passenger-locator-form/delete-account', function (req, res) {
+  res.render('passenger-locator-form/delete-account')
+})
+
+router.get('/passenger-locator-form/delete-account-success', function (req, res) {
+  res.render('passenger-locator-form/delete-account-success')
+})
 
 // sorting hat
 router.get('/account/other-accounts', function (req, res) {
@@ -513,6 +529,10 @@ router.get('/account/manage-account', function (req, res) {
   res.render('account/manage-account', req )
 })
 
+router.get('/account/manage-account-2', function (req, res) {
+  res.render('account/manage-account-2', req )
+})
+
 router.get('/account/cookie-feedback-settings', function (req, res) {
   res.render('account/cookie-feedback-settings', req )
 })
@@ -536,7 +556,18 @@ router.get('/auth/signed-out', function (req, res) {
   res.render('auth/signed-out', req )
 })
 
+// Change password
+router.get('/account/change-password-1', function (req, res) {
+  res.render('account/change-password-1', req )
+})
 
+router.get('/account/change-password-2', function (req, res) {
+  res.render('account/change-password-2', req )
+})
+
+router.get('/account/change-password-3', function (req, res) {
+  res.render('account/change-password-3', req )
+})
 
 // Router magic
 router.all('/email/manage/router', function (req, res) {

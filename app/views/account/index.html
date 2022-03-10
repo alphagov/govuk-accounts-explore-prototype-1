@@ -1,8 +1,12 @@
+{% set hideAccountMenu = true %}
 {% set current = "home" %}
-{% set title = "Your GOV.UK account" %}
+{% block pageTitle %}
+  Your GOV.UK account - GOV.UK account - GOV.UK
+{% endblock %}
 {% extends "account/_account.html" %}
 {% block account %}
 
+<h1 class="govuk-heading-l govuk-!-margin-top-4">Your GOV.UK account</h1>
 
   <p class="govuk-body accounts-your-account__email">
     test@example.com

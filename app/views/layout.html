@@ -38,11 +38,13 @@
   GOV.UK Prototype Kit
 {% endblock %}
 
+
 {% block header %}
   {% include "includes/cookie-banner.html" %}
   {# Set serviceName in config.js. #}
   {% include "explore-header.html" %}
 {% endblock %}
+
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 {% set containerClasses = "explore-page" %}

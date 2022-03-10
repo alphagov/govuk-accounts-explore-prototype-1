@@ -300,7 +300,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
       {{ govukButton({
         text: "Go to task 2",
         classes: "govuk-!-margin-bottom-0 govuk-!-margin-top-2",
-        href: "/",
+        href: "/passenger-locator-form/home",
         classes: "govuk-button--secondary govuk-!-margin-bottom-0 govuk-!-margin-top-0"
       }) }}
 </p>
@@ -312,15 +312,15 @@ text: "Default setting is 'Nothing' - even when data is cleared "
         </summary>
         <div class="govuk-details__text">
 {% set list =[
-  { title: "GOV.UK" , url: "/" }
-  , { title: "Sign in to a service" , url: "/sign-in" }
-    , { title: "[AUTH] Sign in or create a GOV.UK acount" , url: "/auth/sign-in-or-create" }
-  , { title: "Sign in to your GOV.UK account" , url: "/sign-in" }
-  , { title: 'Home - GOV.UK account' , url: "/account/index" }
-  , { title: 'Settings - GOV.UK account' , url: "/account/manage-account" }
-  , { title: 'Cookie and feedback settings - GOV.UK account' , url: "/account/cookie-feedback-settings" }
-
-  , { title: 'Manage your GOV.UK emails - GOV.UK account' , url:  "/email/admin/index" }]
+  { title: "Passenger Locator form - home" , url: "/passenger-locator-form/home" }
+  , { title: "Passenger Locator form - update details" , url: "/passenger-locator-form/update-details" }
+  , { title: "Passenger Locator form - delete account" , url: "/passenger-locator-form/delete-account" }
+  , { title: "Passenger Locator form - delete account success" , url: "/passenger-locator-form/delete-account-success" }
+  , { title: 'Manage your GOV.UK account' , url: "/account/manage-account-2" }
+  , { title: 'Change your password - enter your password' , url: "/account/change-password-1" }
+  , { title: 'Change your password - enter your new password' , url: "/account/change-password-2" }
+  , { title: 'Change your password - password changed success' , url: "/account/change-password-3" }
+  ]
 
   %}
 
