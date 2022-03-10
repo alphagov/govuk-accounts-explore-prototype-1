@@ -17,11 +17,7 @@
 }) }}
 
 
-  {% if  (data['notifications'] | length ) or (data['user-group'] == "Email updates" or subscriptionsPage)  %}
 
-    <a class="govuk-button govuk-button--secondary" href='#'>Unsubscribe from everything</a>
-
-{% endif %}
 
 {% if subscriptionsPage %}
    <div class="govuk-!-margin-bottom-2 govuk-!-padding-top-2" style="border-top: 1px solid #b1b4b6;">
@@ -104,5 +100,10 @@
 
 {% endif %}
 
+{% if  (data['notifications'] | length ) or (data['user-group'] == "Email updates" or subscriptionsPage)  %}
+
+  <a class="govuk-button govuk-button--secondary" href='#'>Unsubscribe from everything</a>
+
+{% endif %}
 
 {% endblock %}
