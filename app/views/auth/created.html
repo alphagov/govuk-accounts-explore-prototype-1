@@ -7,32 +7,14 @@
 {% block account %}
 
 <br>
-{{ govukPanel({
-  titleText: "You have created your GOV.UK account"
-}) }}
 
-<p>You need to return to GOV.UK to continue.</p>
+<h1 class='govuk-heading-xl'>You've created your GOV.UK account</h1>
+
+<p>Now continue to use the service.</p>
 
 {{ govukButton({
-text: "Go back to GOV.UK to continue",
+text: "Continue",
 href: "/account/control-how-we-use-information-about-you"
 }) }}
-
-
-<h3 class='govuk-heading-m'>What you can do with your GOV.UK account</h3>
-
-<p>At the moment, you can only use your GOV.UK account to:</p>
-<ul class="govuk-list govuk-list--bullet">
-  <li>manage your GOV.UK email subscriptions</li>
-  <li>save your answers to the <a href="#">Brexit checker</a></li>
-</ul>
-
-<p>
-In the future, you’ll be able to use your GOV.UK account to sign in to all government services. It will take a few years for this to happen.
-
-  </p><p>
-For now, you need to use different accounts for different government services.
-
-    </p>
 
 {% endblock %}
