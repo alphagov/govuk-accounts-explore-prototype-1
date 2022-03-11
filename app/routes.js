@@ -521,6 +521,10 @@ router.get('/account/index', function (req, res) {
   res.render('account/index')
 })
 
+router.get('/account/index-2', function (req, res) {
+  res.render('account/index-2')
+})
+
 router.get('/email/admin/index', function (req, res) {
   res.render('email/admin/index', req  )
 })

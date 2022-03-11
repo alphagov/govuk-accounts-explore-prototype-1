@@ -44,9 +44,15 @@
 {% from "govuk/components/header/macro.njk" import govukHeader %}
 
 {{ govukHeader({
-  homepageUrl: "#",
-  serviceName: "Passenger Locator form",
-  serviceUrl: "/passenger-locator-form/home"
+homepageUrl: "/",
+serviceName: "Passenger Locator form",
+serviceUrl: "/passenger-locator-form/home",
+navigation: [
+{
+href: "#1",
+text: "Sign out",
+active: false
+} ]
 }) }}
 {% endblock %}
 

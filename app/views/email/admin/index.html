@@ -3,11 +3,13 @@
 
 {% set title = "Manage your GOV.UK email subscriptions" %}
 
+<div class="govuk-main-wrapper">
+
 
 
 {% block emailAdmin %}
 
-<p class="govuk-body govuk-!-font-weight-bold">Subscriptions for ann@email.com</p>
+<p class="govuk-body govuk-!-font-weight-bold">Subscriptions for your.name@example.com</p>
 
 {{ govukInsetText({
   html:
@@ -107,3 +109,5 @@
 {% endif %}
 
 {% endblock %}
+
+</div>
