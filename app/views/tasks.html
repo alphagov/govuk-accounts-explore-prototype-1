@@ -7,6 +7,9 @@
 {% block main %}
 <main class="govuk-main-wrapper">
   <section>
+
+
+
     <div class="xpl-section-inner">
 
 
@@ -45,6 +48,7 @@ mailinator inbox as '{{data['mailinator-email']}}'
 
 
 
+<!-- hiding for now
 
 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
@@ -57,7 +61,6 @@ mailinator inbox as '{{data['mailinator-email']}}'
       <form action="/tasks-router" method="post" >
 
 
-    <!--     <div class="govuk-inset-text govuk-!-margin-top-0"> -->
 
 {#
 
@@ -98,15 +101,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
         ]
       }) }}
 
-<!--
-      <details class="govuk-details" data-module="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-           Advanced settings
-          </span>
-        </summary>
-        <div class="govuk-details__text">
--->
+
 
 
 {{ govukRadios({
@@ -161,20 +156,16 @@ text: "Default setting is 'Nothing' - even when data is cleared "
   ]
 }) }}
 
-<!--
-</div></details>
--->
-
-
-<!-- </details> -->
 
 {{ govukButton({
   text: "Save selection"
 }) }}
-<!-- </div> -->
 
 
 </form>
+
+
+
 
 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible  govuk-!-margin-top-2 ">
 
@@ -196,8 +187,8 @@ text: "Default setting is 'Nothing' - even when data is cleared "
 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible  govuk-!-margin-top-2 ">
 
 
-<!--
-</div> -->
+end hidden section -->
+
       <h2 class="govuk-heading-m govuk-!-padding-bottom-2 govuk-!-padding-top-0">Task 1</h2>
 
 <p>
@@ -415,6 +406,7 @@ text: "Default setting is 'Nothing' - even when data is cleared "
       </details>
 
 -->
+
 
       </div>
   </section>
