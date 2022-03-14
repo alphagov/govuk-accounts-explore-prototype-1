@@ -408,3 +408,11 @@ img {
     text-indent: -5000px;
     overflow: hidden;
 }
+
+// adding float for PLF
+
+@media (min-width: 40.0625em) {
+.govuk-header.passenger-locator-form nav{
+  float: right;
+
+}}
