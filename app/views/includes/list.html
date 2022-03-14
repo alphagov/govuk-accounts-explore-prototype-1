@@ -1,16 +1,38 @@
-<p><a href="/tasks">Go to user research tasks</a></p>
+
+
+<!-- -->
+
+<p>
+
+</p>
+<div class="govuk-button-group" style="max-width: 960px; margin: 0 auto;">
+
+
+
+  <a href="/tasks" role="button"  draggable="false" class="govuk-button govuk-button--secondary" style="text-decoration: none" data-module="govuk-button">
+  Go to user research tasks
+  </a>
+
+
 
 
 {% if emailShortCut | length %}
 
 {% for item in emailShortCut %} <!-- for as one page may have two emails -->
-<p><a target="_blank" href="/notify/{{item.link}}">{{ item.email}} email (opens in new tab)</a></p>
-<p>&nbsp;</p>
+
+<a href="/notify/{{item.link}}" target="_blank" role="button" draggable="false" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  {{ item.email}} email (opens in new tab)
+</a>
+
+
 {% endfor %}
 
 {% endif %}
 
 {% if sms %} <!-- SMS message -->
-<p><a target="_blank" href="/notify/sms">SMS (opens in new tab)</a></p>
-<p>&nbsp;</p>
+
+<a href="/notify/sms" target="_blank" role="button" draggable="false" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  SMS (opens in new tab)</a>
 {% endif %}
+
+</div>
