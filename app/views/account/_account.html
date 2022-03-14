@@ -13,17 +13,17 @@
   serviceUrl: "/account/index" if accountShow,
   navigation: ([
     {
-      href: "/account/index",
+      href: "/account/index-2" if task2 else "/account/index" ,
       text: "Account home",
       active: true if (current == 'home')
     },
     {
-      href: "/account/manage-account-2",
+      href: "/account/manage-account-2" if task2 else "/account/manage-account",
       text: "Account settings",
       active: true if (current == 'manage')
     },
     {
-      href: "/sign-out",
+      href: "/sign-out" if task2 else "#",
       text: "Sign out"
     }
   ]) if not accountHidden
