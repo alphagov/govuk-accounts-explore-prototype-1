@@ -499,6 +499,23 @@ router.get('/passenger-locator-form/delete-account-success', function (req, res)
   res.render('passenger-locator-form/delete-account-success')
 })
 
+router.get('/passenger-locator-form/sign-in', function (req, res) {
+  res.render('passenger-locator-form/sign-in')
+})
+
+router.get('/passenger-locator-form/password', function (req, res) {
+  res.render('passenger-locator-form/password')
+})
+
+router.get('/passenger-locator-form/enter-phone', function (req, res) {
+  res.render('passenger-locator-form/enter-phone')
+})
+
+router.get('/passenger-locator-form/check-phone', function (req, res) {
+  res.render('passenger-locator-form/check-phone')
+})
+
+
 // sorting hat
 router.get('/account/other-accounts', function (req, res) {
   res.render('sign-in')
