@@ -26,6 +26,6 @@ To run the application locally you will need to include API_URL environment vari
 
 `API_URL=http://localhost:3050 npm start`
 
-## Licence
+## License
 
-[MIT License](LICENCE)
+[MIT License](LICENSE)
