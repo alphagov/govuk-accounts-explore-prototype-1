@@ -1,0 +1,8 @@
+---
+applications:
+  - name: govuk-accounts-explore-prototype
+    memory: 512M
+    disk_quota: 512M
+    command: node start.js
+    buildpacks:
+    - nodejs_buildpack

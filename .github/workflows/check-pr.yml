@@ -1,0 +1,15 @@
+name: Check PR
+
+on: pull_request
+
+jobs:
+  deploy-preview:
+    name: Preview
+    needs: build
+    uses: alphagov/govuk-accounts-explore-prototype-1/.github/workflows/deploy-to-paas.yml
+    with:
+      environment: preview
+      cf_space_name: branch-previews
+    secrets:
+      cf_username: ${{ secrets.CF_USERNAME }}
+      cf_password: ${{ secrets.CF_PASSWORD }}
