@@ -1,4 +1,4 @@
-name: Check PR
+name: Deploy branch preview
 
 on: pull_request
 
