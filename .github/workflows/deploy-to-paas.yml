@@ -12,6 +12,8 @@ on:
     secrets:
       cf_username: { required: true }
       cf_password: { required: true }
+      username: { required: true }
+      password: { required: true }
     outputs:
       deployment_url:
         description: "The PaaS deployment URL"
@@ -63,11 +65,9 @@ jobs:
       - name: Push to PaaS
         env:
           ROLLING_DEPLOYMENT: ${{ inputs.rolling_deployment }}
-          USERNAME: ${{ secrets.username }}
-          PASSWORD: ${{ secrets.password }}
         run: |
           cf push ${{ steps.set_deployment_hostname.outputs.hostname }} \
-            --var username=${USERNAME} \
-            --var password=${PASSWORD}} \
+            --var username=${{ secrets.username }} \
+            --var password=${{ secrets.password }} \
             --var notify-api-key="" \
             --instances ${{ inputs.instances }} $([[ $ROLLING_DEPLOYMENT == "true" ]] && echo --strategy rolling)
