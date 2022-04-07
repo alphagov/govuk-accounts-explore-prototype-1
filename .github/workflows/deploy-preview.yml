@@ -1,0 +1,18 @@
+name: Deploy branch preview
+
+on: pull_request
+
+jobs:
+  deploy-preview:
+    name: Preview
+    uses: alphagov/govuk-accounts-explore-prototype-1/.github/workflows/deploy-to-paas.yml@a6dca9ed279abf73085c72de838c4845be4b34e7
+    with:
+      environment: preview
+      cf_space_name: sandbox
+      app_name: prototype-preview-${{ github.head_ref }}
+    secrets:
+      cf_username: ${{ secrets.CF_USERNAME }}
+      cf_password: ${{ secrets.CF_PASSWORD }}
+      username: ${{ secrets.USERNAME }}
+      password: ${{ secrets.PASSWORD }}
+      notify_api_key: ${{ secrets.NOTIFY_API_KEY }}
