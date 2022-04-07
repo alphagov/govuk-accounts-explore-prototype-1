@@ -7,5 +7,7 @@ applications:
     buildpacks:
     - nodejs_buildpack
     env:
-      NOTIFYAPIKEY: ""
+      NOTIFYAPIKEY: ((notify-api-key))
       API_URL: https://www.gov.uk/api/content
+      USERNAME: ((username))
+      PASSWORD: ((password))

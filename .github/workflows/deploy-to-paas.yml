@@ -65,4 +65,7 @@ jobs:
           ROLLING_DEPLOYMENT: ${{ inputs.rolling_deployment }}
         run: |
           cf push ${{ steps.set_deployment_hostname.outputs.hostname }} \
+            --var username=${{ secrets.username }} \
+            --var password=${{ secrets.password }} \
+            --var notify-api-key="" \
             --instances ${{ inputs.instances }} $([[ $ROLLING_DEPLOYMENT == "true" ]] && echo --strategy rolling)
