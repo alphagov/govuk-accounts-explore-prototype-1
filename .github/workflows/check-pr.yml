@@ -5,7 +5,7 @@ on: pull_request
 jobs:
   deploy-preview:
     name: Preview
-    uses: alphagov/govuk-accounts-explore-prototype-1/.github/workflows/deploy-to-paas.yml@8c1193ea24f21a59029913ac84cd2e863e99d07e
+    uses: alphagov/govuk-accounts-explore-prototype-1/.github/workflows/deploy-to-paas.yml@ec9fc465556cf2dc69c80f0905fd6af9f51f65de
     with:
       environment: preview
       cf_space_name: sandbox
