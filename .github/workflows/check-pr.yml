@@ -5,7 +5,6 @@ on: pull_request
 jobs:
   deploy-preview:
     name: Preview
-    needs: build
     uses: alphagov/govuk-accounts-explore-prototype-1/.github/workflows/deploy-to-paas.yml@d1ec049de823344b54084f6115bdffc8047c2d67
     with:
       environment: preview
