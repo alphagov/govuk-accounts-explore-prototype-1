@@ -27,6 +27,8 @@ jobs:
     outputs:
       deployment_url: ${{ steps.set_deployment_url.outputs.deployment_url }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Install Cloud Foundry client
         env:
           CF_CLI_DOWNLOAD_URL: https://packages.cloudfoundry.org/stable?release=linux64-binary&source=github&version=v7
