@@ -6,3 +6,5 @@ applications:
     command: node start.js
     buildpacks:
     - nodejs_buildpack
+    env:
+      NOTIFYAPIKEY: ""
