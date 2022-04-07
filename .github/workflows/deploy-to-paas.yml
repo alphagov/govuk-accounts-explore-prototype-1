@@ -63,9 +63,11 @@ jobs:
       - name: Push to PaaS
         env:
           ROLLING_DEPLOYMENT: ${{ inputs.rolling_deployment }}
+          USERNAME: ${{ secrets.username }}
+          PASSWORD: ${{ secrets.password }}
         run: |
           cf push ${{ steps.set_deployment_hostname.outputs.hostname }} \
-            --var username=${{ secrets.username }} \
-            --var password=${{ secrets.password }} \
+            --var username=${USERNAME} \
+            --var password=${PASSWORD}} \
             --var notify-api-key="" \
             --instances ${{ inputs.instances }} $([[ $ROLLING_DEPLOYMENT == "true" ]] && echo --strategy rolling)
