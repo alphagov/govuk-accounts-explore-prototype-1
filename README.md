@@ -26,6 +26,26 @@ To run the application locally you will need to include API_URL environment vari
 
 `API_URL=http://localhost:3050 npm start`
 
+## Deploys to GOV.UK PaaS
+
+This repository has Github Actions which deploy pull request preview apps to GOV.UK Paas
+whenever a pull request is opened or updated. This allows people working on designs to 
+easily share early protoypes within the team.
+
+The preview apps are deleted once the pull request is merged or closed, or after 30 days 
+if nothing has changed.
+
+### Updating credentials for deployed apps
+
+The username and password for deployed apps are set by secrets saved in this repository.
+To update them, go to [the secrets setting page](https://github.com/alphagov/govuk-accounts-explore-prototype-1/settings/secrets/actions) 
+and update the values for `USERNAME` and `PASSWORD`.
+
+You'll then need to reload the app so it can pick up the new values. You can do this either 
+by pushing a new commit to the branch or finding the most recent deploy action in 
+[the list of completed actions](https://github.com/alphagov/govuk-accounts-explore-prototype-1/actions/workflows/deploy-preview.yml) 
+and clicking 'Re-run all jobs'.
+
 ## Licence
 
 [MIT License](LICENCE)
