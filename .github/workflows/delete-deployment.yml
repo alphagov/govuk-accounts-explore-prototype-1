@@ -23,8 +23,8 @@ jobs:
       - name: PaaS login
         env:
           CF_API_URL: https://api.london.cloud.service.gov.uk
-          CF_ORG_NAME: [[ORG_NAME]]
-          CF_SPACE_NAME: branch-previews
+          CF_ORG_NAME: gds-digital-identity-accounts
+          CF_SPACE_NAME: sandbox
           CF_USERNAME: ${{ secrets.cf_username }}
           CF_PASSWORD: ${{ secrets.cf_password }}
         run: |

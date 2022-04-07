@@ -9,7 +9,8 @@ jobs:
     uses: alphagov/govuk-accounts-explore-prototype-1/.github/workflows/deploy-to-paas.yml
     with:
       environment: preview
-      cf_space_name: branch-previews
+      cf_space_name: sandbox
+      app_name: prototype-preview-${{ github.head_ref }}
     secrets:
       cf_username: ${{ secrets.CF_USERNAME }}
       cf_password: ${{ secrets.CF_PASSWORD }}
