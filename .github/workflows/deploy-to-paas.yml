@@ -5,6 +5,7 @@ on:
     inputs:
       cf_space_name: { required: true, type: string }
       app_name: { required: true, type: string }
+      environment: { required: true, type: string }
       url: { required: false, type: string }
       instances: { required: false, type: number, default: 1 }
       rolling_deployment: { required: false, type: boolean, default: false }
