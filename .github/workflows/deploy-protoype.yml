@@ -1,0 +1,20 @@
+name: Deploy prototype to GOV.UK PaaS
+
+on: 
+  release:
+    types: [published]
+
+jobs:
+  deploy-prototype:
+    name: Deploy protoype
+    uses: alphagov/govuk-accounts-explore-prototype-1/.github/workflows/deploy-to-paas.yml@2a748fc078cef0c5cd18e27809058b0d6e297da2
+    with:
+      environment: govuk-accounts-prototype-${{ github.event.release.tag_name }}
+      cf_space_name: sandbox
+      app_name: govuk-accounts-prototype-${{ github.event.release.tag_name }}
+    secrets:
+      cf_username: ${{ secrets.CF_USERNAME }}
+      cf_password: ${{ secrets.CF_PASSWORD }}
+      username: ${{ secrets.USERNAME }}
+      password: ${{ secrets.PASSWORD }}
+      notify_api_key: ${{ secrets.NOTIFY_API_KEY }}
