@@ -49,6 +49,8 @@ jobs:
             echo "$app | last uploaded: $last_upload_date"
 
             if [[ -z $last_upload_date || $(date -d $last_upload_date +%Y-%m-%d) < $cut_off_date ]]; then
-              cf delete $app -rf
+              if [[ $app == prototype-preview* ]]; then
+                cf delete $app -rf
+              fi
             fi
           done
