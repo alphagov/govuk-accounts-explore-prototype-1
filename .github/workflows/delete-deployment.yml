@@ -45,12 +45,13 @@ jobs:
 
           for app in $(cf apps | awk 'NR>3 {print $1}')
           do
-            last_upload_date=$(cf events $app | grep audit.app.package.upload | awk 'NR==1 {print $1}')
+            last_upload_date=$(cf app $app | grep 'last uploaded:' | cut -d' ' -f 3-)
             echo "$app | last uploaded: $last_upload_date"
 
             if [[ -z $last_upload_date || $(date -d $last_upload_date +%Y-%m-%d) < $cut_off_date ]]; then
               if [[ $app == prototype-preview* ]]; then
-                cf delete $app -rf
+                # cf delete $app -rf
+                echo deleted
               fi
             fi
           done
