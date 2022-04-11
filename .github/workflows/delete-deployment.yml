@@ -12,7 +12,7 @@ jobs:
   delete-deployment:
     name: Delete prototype preview
     runs-on: ubuntu-latest
-    environment: preview
+    environment: preview-${{ github.head_ref }}
     steps:
       - name: Install Cloud Foundry client
         env:
