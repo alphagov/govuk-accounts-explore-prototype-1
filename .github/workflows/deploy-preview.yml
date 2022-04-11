@@ -7,7 +7,7 @@ jobs:
     name: Preview
     uses: alphagov/govuk-accounts-explore-prototype-1/.github/workflows/deploy-to-paas.yml@a6dca9ed279abf73085c72de838c4845be4b34e7
     with:
-      environment: preview
+      environment: preview-${{ github.head_ref }}
       cf_space_name: sandbox
       app_name: prototype-preview-${{ github.head_ref }}
     secrets:
