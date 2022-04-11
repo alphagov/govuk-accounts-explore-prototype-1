@@ -35,6 +35,8 @@ easily share early protoypes within the team.
 The preview apps are deleted once the pull request is merged or closed, or after 30 days 
 if nothing has changed.
 
+Some new text.
+
 ### Updating credentials for deployed apps
 
 The username and password for deployed apps are set by secrets saved in this repository.
