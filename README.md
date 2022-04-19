@@ -28,9 +28,29 @@ To run the application locally you will need to include API_URL environment vari
 
 ## Deploys to GOV.UK PaaS
 
-This repository has Github Actions which deploy pull request preview apps to GOV.UK Paas
-whenever a pull request is opened or updated. This allows people working on designs to 
-easily share early protoypes within the team.
+This repository has Github Actions which deploy the prototype to GOV.UK PaaS. 
+These are triggered by two events:
+
+1. When a new release is created
+2. When a pull request is opened or updated
+
+### Deploys for a new release
+
+This action runs whenever a [new release](https://github.com/alphagov/govuk-accounts-explore-prototype-1/releases/new) 
+is published in Github. It deploys a 
+long lived protoype that is a snapshot of the repository at the time the release 
+was created. These prototypes aren't updated or redeployed automatically at any 
+point and are designed to be used in user research and testing.
+
+
+### Deploys for a pull request
+
+This action runs whenever a pull request is opened or updated and deploys a short 
+lived preview app. This allows people working on designs to easily share early protoypes 
+within or between teams.
+
+The deploys use the git branch name as part of the URL so that each preview app has a 
+unique URL, which allows multiple branches to be deployed and worked on at once.
 
 The preview apps are deleted once the pull request is merged or closed, or after 30 days 
 if nothing has changed.
@@ -41,10 +61,12 @@ The username and password for deployed apps are set by secrets saved in this rep
 To update them, go to [the secrets setting page](https://github.com/alphagov/govuk-accounts-explore-prototype-1/settings/secrets/actions) 
 and update the values for `USERNAME` and `PASSWORD`.
 
-You'll then need to reload the app so it can pick up the new values. You can do this either 
-by pushing a new commit to the branch or finding the most recent deploy action in 
+Deployed apps use the `USERNAME` and `PASSWORD` that were set at the time they were deployed.
+If you want to update the credentials for an app that's already deployed, you'll also need to reload 
+the app so it can pick up the new values. You can do this either by pushing a new commit to 
+the branch or finding the deploy action in 
 [the list of completed actions](https://github.com/alphagov/govuk-accounts-explore-prototype-1/actions/workflows/deploy-preview.yml) 
-and clicking 'Re-run all jobs'.
+for the deploy you want to update and clicking 'Re-run all jobs'.
 
 ## Licence
 
