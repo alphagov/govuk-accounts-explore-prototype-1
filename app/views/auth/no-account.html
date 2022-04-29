@@ -1,0 +1,30 @@
+{% extends "layout_auth.html" %}
+
+{% block pageTitle %}
+  No GOV.UK account found – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+    <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">
+      No GOV.UK account found
+    </h1>
+    <p>
+      There is no GOV.UK account for :
+</p><p>
+    <strong>{{ data['govUKEmail'] | default('text@example.com', true ) | safe  }}</strong>
+    </p>
+    {{ govukInsetText({
+    html: 'The GOV.UK account is new. It’s separate from other government accounts, such as Government Gateway or your personal tax account.'
+    }) }}
+
+<p>You need to create a GOV.UK account even if you already have another type of government account.</p>
+    {{ govukButton({
+      text: "Create a GOV.UK account",
+      href: "/auth/create"
+    }) }}
+
+      <p>
+        <a class="govuk-link" href="/auth/sign-in">Try another email address</a>
+
+      </p>
+    {% endblock %}

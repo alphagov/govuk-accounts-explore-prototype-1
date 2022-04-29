@@ -1,0 +1,39 @@
+{% extends "layout_auth.html" %}
+
+{% block pageTitle %}
+  Check your phone – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<form data-module="gem-track-click" action="#" accept-charset="UTF-8" data-remote="true" method="post">
+  <input type="hidden" name="authenticity_token"
+    value="qN3NeE0rDQErgwLO7D0w3rPE4Z0dZMcFgmpqi9V96vYzryz7YoE2fVqk0uP12hmEQHBsDl9teD5JL0aPOj2dRQ==">
+  <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">Check your phone</h1>
+  <p>
+We sent a code to *****900457. </p>
+<p>
+It might take a few minutes to arrive. The code will expire after 15 minutes.</p>
+
+  <div class="govuk-form-group">
+    <label for="email" class="gem-c-label govuk-label">Enter the 6 digit security code</label>
+    <input name="_security" class="govuk-input--width-10 gem-c-input govuk-input" id="email" type="text" autocomplete="text">
+  </div>
+
+
+<p>
+  <a class="govuk-link" href="#">Request a new code</a> if:
+
+  <ul class="govuk-list govuk-list--bullet">
+  <li>the code isn’t working or you didn’t receive one</li>
+  <li>you want to use a different phone number</li>
+
+  </ul>
+</p>
+  {{ govukButton({
+  text: "Continue",
+  href: "/auth/created"
+  }) }}
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "layout_govuk.html" %}
+
+{% block pageTitle %}
+  Confirm you want to get emails – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container ">
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+      <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-4">Confirm you want to get emails</h1>
+        <p class="govuk-body">
+
+        You’ll get emails when there are updates to:</P>
+        <p>
+
+           <strong>Travel to England from another country during coronavirus (COVID-19)</strong>
+        </p>
+
+
+        <p>
+
+
+          <form class="form" method="post" action="/email/manage" name="emailAddress">
+
+        <input type='hidden' name="save" id="save" value="{{ data['notifications'][0] | default('/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do') }}" />
+            <input type="hidden">
+            <button class="govuk-button" data-module="govuk-button">Confirm</button>
+          </form>
+        <p>
+          <a class="govuk-link" href="/">Cancel and go to the GOV.UK homepage</a>
+        </p>
+
+      </div>
+    </div>
+    </main>
+  </div>
+
+{% endblock %}

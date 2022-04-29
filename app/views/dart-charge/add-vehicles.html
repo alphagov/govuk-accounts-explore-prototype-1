@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Your vehicles – Dart Charge
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Your vehicles
+      </h1>
+
+      <p>Please add your vehicle(s) below. Please note that you may not be able to add your vehicle if it has been registered or its registration details with the DVLA have changes within the last 3 months.</p>
+
+      <p>All fields are required unless stated otherwise.</p>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="sort">
+          Country of registration
+        </label>
+        <select class="govuk-select" id="sort" name="sort">
+          <option value="published">United Kingdom</option>
+        </select>
+      </div>
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-body" for="event-name">
+            Vehicle registration number
+          </label>
+        </h1>
+        <div id="event-name-hint" class="govuk-hint">
+          Be careful not to mix up the letters 'I' and 'O' with the numbers '1' and '0'
+        </div>
+        <div class="find-vehicle">
+          <div class="govuk-form-group">
+            <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
+          </div>
+          <a href="/dart-charge/add-payment" role="button" draggable="false" class="govuk-button govuk-!-margin-top-2"  data-module="govuk-button">
+            Find vehicle
+          </a>
+        </div>
+    </div>
+
+    <div class="govuk-form-group">
+    <button disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--disabled" data-module="govuk-button">
+      Add credit or debit card
+    </button>
+    <img src="/assets/images/icons-payments.png" alt="visa and mastercard icons">
+    </div>
+
+    <a href="#" class="govuk-body">Go back</a>
+
+    </div>
+
+  </div>
+{% endblock %}

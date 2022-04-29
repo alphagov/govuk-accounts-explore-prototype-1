@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% import "includes/xpl-cards.html" as cards %}
+
+{% block pageTitle %}
+  Topics: detailed information - GOV.UK
+{% endblock %}
+
+
+{% block main %}
+  <div id="global-header-bar-outer">
+    <div id="global-header-bar"></div>
+  </div>
+
+  <div class="xpl-topics-page {{containerClasses}}">
+    <header class="inverse-header">
+      <div class="header-inner">
+        <a class="govuk-back-link" href="/">Home</a>
+      </div>
+      <div class="header-inner">
+        <h1 class="page-heading govuk-heading-xl title--inverse">
+          Topics
+        </h1>
+      </div>
+    </header>
+
+    <section>
+      <div class="xpl-section-inner">
+        {{ cards.list({
+          accent: "black",
+          cards: subtopics
+        }) }}
+      </div>
+    </section>
+  </div>
+{% endblock %}

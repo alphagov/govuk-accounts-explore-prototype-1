@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  The way you subscribe to emails from GOV.UK is changing – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+<h1 class="gem-c-heading govuk-heading-l   govuk-!-margin-bottom-4">
+  The way you subscribe to emails from GOV.UK is changing
+</h1>
+<p class="govuk-body">
+  You need a GOV.UK account to get these emails.</p>
+
+<!--
+<p class="govuk-body">
+  You need a GOV.UK account to subscribe to emails about:
+</p>
+<p>
+  <strong>{{ data['title'] | default('Test') }}</strong>
+</p>
+-->
+<h3 class="govuk-heading-m">GOV.​UK accounts are new</h3>
+<p>They are a first step towards creating a single account that you can use to sign in to all government services.</p>
+<p>
+GOV.UK accounts will eventually replace  all other government accounts.
+</p>
+<div class="govuk-inset-text">
+  At the moment, GOV.UK accounts are separate from <a href="/sign-in">other government accounts</a> (for example Government Gateway or Universal Credit).
+</div>
+
+<p>
+  Currently, you can only use a GOV.UK account to manage your GOV.UK email subscriptions.
+
+<p>
+  We’ll be adding more features and services.
+</p>
+
+<h3 class="govuk-heading-m">If you have other GOV.UK email subscriptions</h3>
+<p>If you have subscriptions to other GOV.UK topics or pages, these will be moved to your new account so you can manage all your subscriptions in one place.</p>
+
+<h3 class="govuk-heading-m">Create a GOV.UK account or sign in</h3>
+<div class="govuk-inset-text">
+  You need a UK mobile number to create an account.
+</div>
+
+{{ govukButton({
+text: "Create a GOV.UK account or sign in",
+href: "/auth/sign-in-or-create"
+}) }}
+
+
+
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+<!-- Javascript -->
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+{% for scriptUrl in extensionConfig.scripts %}
+  <script src="{{scriptUrl}}"></script>
+{% endfor %}
+
+<script src="/public/javascripts/application.js"></script>
+
+<script src="/public/javascripts/explore-header.js"></script>
+<script src="/public/javascripts/application.js"></script> <!-- this version of application seems to have weird stuff in it! -->
+<script src="/public/javascripts/xpl-tabs.js"></script>
+<script src="/public/javascripts/govuk-accordion.js"></script>
+
+{% if useAutoStoreData %}
+  <script src="/public/javascripts/auto-store-data.js"></script>
+{% endif %}

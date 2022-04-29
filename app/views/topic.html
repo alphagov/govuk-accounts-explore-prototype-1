@@ -1,0 +1,119 @@
+{% extends "layout.html" %}
+{% import "includes/xpl-cards.html" as cards %}
+{% import "includes/xpl-tabs.njk" as tabs %}
+
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+
+{% block main %}
+  <div id="global-header-bar-outer">
+    <div id="global-header-bar"></div>
+  </div>
+
+  <div class="xpl-topics-page xpl-topic-page {{containerClasses}}">
+    <header class="inverse-header {{ "inverse-header--with-tabs" if taxon_search_filter }}">
+      <div class="header-inner">
+          <ol class="xpl-breadcrumb">
+            <li>
+              <a href="/">Home</a>
+            </li>
+          </ol>
+      </div>
+
+
+      <div class="header-inner">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl title--inverse">
+              {{ title }}
+            </h1>
+            <p class="lede govuk-body-l lead-paragraph--inverse">{{ description }}</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+    {% set topicsHtml %}
+      {% if featured %}
+        <div class="xpl-most-viewed--topic govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-l">Most viewed</h2>
+            <ul class="featured-list govuk-list">
+              {% for feature in featured %}
+                <li><a href="{{feature.link}}">{{ feature.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+
+      {{ cards.list({title: "Sub-topics", accent: "black", cards: subtopics}) }}
+    {% endset -%}
+
+    {% set governmentHtml %}
+      <section class="xpl-activity-browse">
+        {{ cards.list({
+          title: "Latest activity",
+          accent: "grey",
+          cards: [ { title: "News", link:"/search/news-and-communications?parent="+topicSlug+"&amp;"+taxon_search_filter, description: "News stories, speeches, letters and notices" },
+            { title: "Guidance and regulation", link: "/search/guidance-and-regulation?"+taxon_search_filter+"&amp;order=most-viewed", description: "Detailed guidance, rules and regulation" },
+            { title: "Research and statistics", link: "/search/research-and-statistics?content_store_document_type=statistics_published&amp;"+taxon_search_filter+"&amp;order=updated-newest", description: "Reports, analysis and statistics" },
+            { title: "Policy papers and consultations", link: "/search/policy-papers-and-consultations?"+taxon_search_filter+"&amp;order=updated-newest", description: "Plans, proposals and consultations" },
+            { title: "Transparency documents", link: "/search/transparency-and-freedom-of-information-releases?"+taxon_search_filter+"&amp;order=updated-newest", description: "Government data, freedom of information responses and corporate reports" }
+          ]
+        })}}
+      </section>
+
+
+      <section class="xpl-departments">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-l">Departments and organisations</h2>
+            <ul class="govuk-list">
+
+              {% for organisation in organisations %}
+                <li class="xpl-organisation">
+                  <a href="{{organisation.url}}">
+                    <div class="xpl-organisation__inner {{organisation.slug}}">
+                      <img src="/public/images/org_logos/{{organisation.crest}}_crest_18px_x2.png" alt=organisation logo"/>
+                      <div class="xpl-organisation__chevron"></div>
+                      <p class="govuk-body">{{organisation.title}}</p>
+                    </div>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </section>
+    {% endset -%}
+
+    {% if taxon_search_filter %}
+      <div class="xpl-tabs" data-js="xpl-tabs">
+        {% call tabs.list() %}
+          {{ tabs.selectedItem("Topics", panelId="topics") }}
+          {{ tabs.item("Government activity", panelId="government-activity") }}
+        {% endcall %}
+
+        {% call tabs.content() %}
+          {%- call tabs.panel(id="topics") -%}
+            {{ topicsHtml | safe }}
+          {%- endcall -%}
+
+          {%- call tabs.panel(id="government-activity") -%}
+            {{ governmentHtml | safe }}
+          {%- endcall -%}
+        {% endcall %}
+      </div>
+    {% else %}
+      <section>
+        <div class="xpl-section-inner">
+          {{ topicsHtml | safe }}
+        </div>
+      </section>
+    {% endif %}
+  </div>
+{% endblock %}

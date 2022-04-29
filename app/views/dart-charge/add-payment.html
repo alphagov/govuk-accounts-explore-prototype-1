@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Add credit or debit card – Dart Charge
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Add credit or debit card
+      </h1>
+
+      <div class="govuk-inset-text">
+        No payment will be taken from your card at this stage but by providing your card details, you are authorising payment to be taken when ou use the Dartford Crossing in your registered vehicle.
+      </div>
+
+      <h1 class="govuk-heading-l">Payment details</h1>
+
+      <h1 class="govuk-heading-m">Payment amount: £0.00</h1>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="name-on-the-account">
+          Card holder name
+        </label>
+        <div id="event-name-hint" class="govuk-hint">
+          As printed on the payment card
+        </div>
+        <input class="govuk-input" id="name-on-the-account" name="name-on-the-account" type="text" spellcheck="false" autocomplete="name">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="name-on-the-account">
+          Card number
+        </label>
+        <input class="govuk-input" id="name-on-the-account" name="name-on-the-account" type="text" spellcheck="false" autocomplete="name">
+      </div>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+          <legend class="govuk-fieldset__legend">
+            Expiry date
+          </legend>
+          <div class="govuk-date-input" id="passport-issued">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+          <legend class="govuk-fieldset__legend">
+            Start date
+          </legend>
+          <div id="passport-issued-hint" class="govuk-hint">
+            If required by your card
+          </div>
+          <div class="govuk-date-input" id="passport-issued">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="sort-code">
+          Card security code (CVV/CV2)
+        </label>
+        <div id="sort-code-hint" class="govuk-hint">
+          The last 3 numbers found on the signature strip on the back of the card
+        </div>
+        <input class="govuk-input govuk-input--width-5" id="sort-code" name="sort-code" type="text" spellcheck="false" aria-describedby="sort-code-hint" pattern="[0-9]*" inputmode="numeric">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="more-detail">
+          Card holder address
+        </label>
+        <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5"></textarea>
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="width-5">
+          Postcode
+        </label>
+        <input class="govuk-input govuk-input--width-5" id="width-5" name="width-5" type="text">
+      </div>
+
+      <a href="/dart-charge/success" class="govuk-button">Make Payment</a>
+
+    </div>
+
+  </div>
+{% endblock %}

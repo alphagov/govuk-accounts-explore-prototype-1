@@ -1,0 +1,45 @@
+{% extends "layout_account.html" %}
+
+{% block pageTitle %}
+  Manage your GOV.UK email subscriptions – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container ">
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+      <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Manage your GOV.UK email subscriptions</h1>
+
+      <p class="govuk-!-margin-bottom-8 govuk-!-font-weight-bold">Subcriptions for ann.user@emailaddress.com</p>
+      {{ govukInsetText({
+        html:
+      'Go to your GOV.UK account to <a href="/account/manage-account">update your email address, password or phone number</a>.'
+      }) }}
+
+      <div class="govuk-!-margin-bottom-2 govuk-!-padding-top-2 " style="border-top: 1px solid #b1b4b6; border-bottom: 1px solid #b1b4b6">
+
+       <p class="govuk-!-margin-bottom-0">Page</p>
+       <h3 class="govuk-heading-m govuk-!-padding-top-0 govuk-!-padding-bottom-o govuk-!-margin-bottom-4"">
+         <a href="https://www.gov.uk/guidance/travel-abroad-from-england-during-coronavirus-covid-19">Travel abroad from England during coronavirus (COVID-19)</a>
+       </h3>
+       <p>This page was last updated on 18 March 2022</p>
+
+       <p>You subscribed to get updates as soon as they happen on 28 April 2022 at 3:43pm.<br>
+         <a href="#">Change how often you get emails</a>
+       </p>
+       <p>
+         <a href="#">Unsubscribe</a>
+       </p>
+     </div>
+
+     <a class="govuk-button govuk-button--secondary govuk-!-margin-top-4" href='#'>Unsubscribe from everything</a>
+
+      </div>
+    </div>
+    </main>
+  </div>
+
+{% endblock %}

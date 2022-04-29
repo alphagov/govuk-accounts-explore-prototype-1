@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Your details – Dart Charge
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">Your details</h1>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+      <p><a href="#">Update your details</a></p>
+      <p><a href="#">Change your payment details</a></p>
+      <p><a href="#">Change Dart Charge account type</a></p>
+      <p><a href="#">Close your PAYG</a></p>
+      <p><a href="#">Close your Dart Charge account</a></p>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">Update your details</h2>
+    <p>All fields are required unless stated otherwise.</p>
+
+  <div class="govuk-form-group">
+      <h3 class="govuk-heading-s">Your name</h3>
+  <label class="govuk-label" for="two-thirds">
+    First name
+  </label>
+  <input class="govuk-input govuk-!-width-two-thirds govuk-!-margin-bottom-3" id="event-name" name="event-name" type="text">
+  <label class="govuk-label" for="event-name">
+    Middle name(s) (optional)
+  </label>
+  <input class="govuk-input govuk-!-width-two-thirds govuk-!-margin-bottom-3" id="event-name" name="event-name" type="text">
+  <label class="govuk-label" for="event-name">
+    Surname
+  </label>
+  <input class="govuk-input govuk-!-width-two-thirds govuk-!-margin-bottom-3" id="event-name" name="event-name" type="text">
+  </div>
+
+  <div class="govuk-form-group">
+      <h3 class="govuk-heading-s">Your Dart Charge contact number</h3>
+  <label class="govuk-label" for="two-thirds">
+    Mobile phone
+  </label>
+  <input class="govuk-input govuk-!-width-two-thirds govuk-!-margin-bottom-3" id="event-name" name="event-name" type="text">
+  </div>
+
+  <div class="govuk-form-group">
+      <h3 class="govuk-heading-s">Your address</h3>
+  <label class="govuk-label" for="two-thirds">
+    Address line 1
+  </label>
+  <input class="govuk-input govuk-!-width-two-thirds govuk-!-margin-bottom-3" id="event-name" name="event-name" type="text">
+  <label class="govuk-label" for="two-thirds">
+    Address line 2 (optional)
+  </label>
+  <input class="govuk-input govuk-!-width-two-thirds govuk-!-margin-bottom-3" id="event-name" name="event-name" type="text">
+  <label class="govuk-label" for="two-thirds">
+    City or town
+  </label>
+  <input class="govuk-input govuk-!-width-two-thirds govuk-!-margin-bottom-3" id="event-name" name="event-name" type="text">
+  <label class="govuk-label" for="two-thirds">
+    Postcode
+  </label>
+  <input class="govuk-input govuk-!-width-two-thirds govuk-!-margin-bottom-3" id="event-name" name="event-name" type="text">
+
+  </div>
+
+  <button class="govuk-button" data-module="govuk-button">
+    Save your details
+  </button>
+
+  <h2 class="govuk-heading-m">Change your sign in details</h2>
+  <p>You use your GOV.UK account to sign in to your Dart Charge account.</p>
+  <p class="govuk-body">You can change these details in your GOV.UK account:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>email address</li>
+  <li>password</li>
+  <li>phone number (for getting security codes to sign in)</li>
+</ul>
+  <a href="/account/home" class="govuk-body">Change your sign in details in your GOV.UK account</a>
+  </div>
+
+</div>
+{% endblock %}

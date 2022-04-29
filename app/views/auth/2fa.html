@@ -1,0 +1,39 @@
+{% extends "layout_auth.html" %}
+
+{% block pageTitle %}
+  Check your phone – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+  <form action="/sign-in/set-cookie" method="POST" class="sign-in">
+    <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">
+    Check your phone
+    </h1>
+    <p>
+  We sent a code to *******7777. </p>
+  <p>
+  It might take a few minutes to arrive. The code will expire after 15 minutes.</p>
+
+
+
+        {{ govukInput({
+          label: {
+            text: "Enter the 6 digit security code"
+          },
+          classes: "govuk-input--width-10",
+          id: "email",
+          name: "_email",
+          value: _email
+        }) }}
+
+
+<p>
+          <a class="govuk-link" href="#">Request a new code</a> if the code doesn't work or has expired, or you didn't receive one.
+
+</p>
+        <input id="signedIn" name="signedIn" type="hidden" value="true">
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  PAYG Success – Dart Charge
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Summary
+      </h1>
+
+      <div class="govuk-panel govuk-panel--confirmation dart-panel">
+        <h1 class="govuk-panel__title">
+          Success
+        </h1>
+        <div class="govuk-panel__body">
+          Your PAYG number is<br><strong>1178572247</strong>
+        </div>
+      </div>
+
+      <h2 class="govuk-heading-m">What next?</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Your payment card ending in 9400 will be debited automatically when you use the Dartford Crossing in vehicle(s): AB77ABC</li>
+        <li><span><a href="/dart-charge/payg-home">Continue to your Dart Charge account</a></span> to add vehicles, change payment arrangements and update your personal information.</li>
+      </ul>
+
+      <h2 class="govuk-heading-m">Anything you need to know?</h2>
+      <p>If you have any questions about your application, contact <a href="#">Dart Charge</a>.</p>
+
+    </div>
+
+  </div>
+{% endblock %}

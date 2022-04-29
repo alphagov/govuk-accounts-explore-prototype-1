@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Set up your pay as you go Dart Charge account – Dart Charge
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Set up your pay as you go Dart Charge account
+      </h1>
+
+      <p>You will need your:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>vehicle’s registration number</li>
+        <li>debit or credit card details</li>
+      </ul>
+
+      <p>Once registered, your payment card will be automatically charged each time your vehicle is detected using the crossing. We will notify you by email each time we take payment. It is your responsibility to check that you have been charged otherwise you may receive a penalty charge notice.</p>
+
+      <a href="/dart-charge/add-vehicles" class="govuk-button govuk-!-margin-top-2 govuk-!-margin-bottom-8">Continue</a>
+
+    </div>
+
+  </div>
+{% endblock %}

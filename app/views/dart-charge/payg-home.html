@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  PAYG home – Dart Charge
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">PAYG home</h1>
+  </div>
+
+  <div class="govuk-grid-column-one-quarter">
+      <p><a href="#">Home</a></p>
+      <p><a href="#">Vehicles</a></p>
+      <p><a href="#">Crossings</a></p>
+      <p><a href="#">Payments</a></p>
+      <h3 class="govuk-heading-s">PAYG numbers</h3>
+      <p>123456789</p>
+      <h3 class="govuk-heading-s">Dart Charge account status</h3>
+      <p>Open</p>
+      <h3 class="govuk-heading-s">Dart Charge account type</h3>
+      <p>Pay as you go (PAYG)</p>
+      <h3 class="govuk-heading-s">Top up method</h3>
+      <p>Automatic</p>
+  </div>
+
+  <div class="govuk-grid-column-three-quarters">
+    <div class="stat govuk-!-margin-bottom-8">
+    <h2 class="govuk-heading-m">Balance</h2>
+    <h1 class="govuk-heading-xl govuk-!-font-size-80 govuk-!-margin-bottom-2">£0.00</h1>
+    </div>
+    <div class="stat govuk-!-margin-bottom-8">
+    <h2 class="govuk-heading-m">Your vehicles</h2>
+    <h1 class="govuk-heading-xl govuk-!-font-size-80 govuk-!-margin-bottom-2">1</h1>
+        <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header app-custom-class">Registration number</th>
+          <th scope="col" class="govuk-table__header app-custom-class">Class</th>
+          <th scope="col" class="govuk-table__header app-custom-class">Model</th>
+          <th scope="col" class="govuk-table__header app-custom-class">Vehicle plan</th>
+          <th scope="col" class="govuk-table__header app-custom-class">Date added</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">AB77ABC</td>
+          <td class="govuk-table__cell">B</td>
+          <td class="govuk-table__cell">Toyota</td>
+          <td class="govuk-table__cell">Standard</td>
+          <td class="govuk-table__cell">25/04/2022</td>
+        </tr>
+      </tbody>
+    </table>
+    <a href="#" class="govuk-heading-s">View all vehicles</a>
+    </div>
+    <div class="stat govuk-!-margin-bottom-8">
+    <h2 class="govuk-heading-m">Your monthly usage</h2>
+    <h1 class="govuk-heading-xl govuk-!-font-size-80 govuk-!-margin-bottom-2">0</h1>
+    <p>Your previous 30 day usage.</p>
+    <a href="#" class="govuk-heading-s">View crossing history</a>
+    </div>
+    <div class="stat govuk-!-margin-bottom-8">
+    <h2 class="govuk-heading-m">Your payments</h2>
+    <p>No recent payments.</p>
+    <a href="#" class="govuk-heading-s">View payment history</a>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

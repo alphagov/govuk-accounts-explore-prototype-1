@@ -1,0 +1,26 @@
+{% extends "layout_auth.html" %}
+
+{% block pageTitle %}
+  You’ve signed out – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-4">You’ve signed out</h1>
+<p>
+  {{ govukButton({
+  text: "Return to the GOV.UK homepage",
+  href: "/"
+}) }}
+</p>
+
+
+<!-- use this soon as it has the functionality for saving a notification  -->
+<!--
+  <a class="govuk-button"
+    href="/account/router-add?save={{ data['notifications'][0] | default('/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do') }}">
+      Confirm</a>
+</p>
+->
+ <!-- end functionality to use later -->
+
+{% endblock %}

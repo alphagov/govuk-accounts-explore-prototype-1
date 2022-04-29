@@ -8,9 +8,6 @@ lib/extensions/_extensions.scss
 .start.pid
 .port.tmp
 public
-node_modules/*
+node_modules/
 .tmuxp.*
-package-lock.json
-
-/backstop_data/bitmaps_*
-/backstop_data/html_report
+.idea

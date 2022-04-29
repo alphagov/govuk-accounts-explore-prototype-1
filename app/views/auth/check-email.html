@@ -1,0 +1,50 @@
+{% extends "layout_auth.html" %}
+
+{% block pageTitle %}
+  Check your email – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<form data-module="gem-track-click" action="/check-email" accept-charset="UTF-8" data-remote="true" method="post">
+  <input type="hidden" name="authenticity_token"
+    value="qN3NeE0rDQErgwLO7D0w3rPE4Z0dZMcFgmpqi9V96vYzryz7YoE2fVqk0uP12hmEQHBsDl9teD5JL0aPOj2dRQ==">
+  <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">Check your email</h1>
+
+
+  <div class="govuk-inset-text">
+  <p>
+    We have sent an email to: <strong>your.name@example.com</strong>
+  </p>
+  </div>
+  <p>
+The email contains a 6 digit security code.
+    </p>
+<p>Your email might take a few minutes to arrive. If you do not get an email, check your spam folder.</p>
+    <p>
+The code will expire after 15 minutes.
+      </p>
+  <div class="govuk-form-group">
+    <label for="email" class="gem-c-label govuk-label">Enter the 6 digit security code</label>
+    <input name="_security" class="govuk-input--width-10 gem-c-input govuk-input" id="email" type="text" autocomplete="text">
+  </div>
+
+
+<p>
+<a class="govuk-link" href="#">Request a new code</a> if:
+
+<ul class="govuk-list govuk-list--bullet">
+<li>the code isn’t working or you didn’t receive one</li>
+<li>you want to use a different email address </li>
+
+</ul>
+
+</p>
+  {{ govukButton({
+  text: "Continue",
+  href: "/auth/create-password"
+  }) }}
+</form>
+
+
+
+{% endblock %}

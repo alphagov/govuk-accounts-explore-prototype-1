@@ -1,0 +1,142 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+User research tasks – GOV.UK Account prototype
+{% endblock %}
+
+{% block header %}
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+{{ govukHeader({
+  homepageUrl: "#"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        User research tasks
+      </h1>
+      <p>
+        User research tasks for the GOV.UK account data management and service interagtion prototype.
+      </p>
+
+      <h2 class="govuk-heading-m">Task 1</h2>
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          {{ govukButton({
+            text: "Start task",
+            href: "account/home"
+          }) }}
+          {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Links
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="#">Dart charge start page - MISSING</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="dart-charge/options">Dart charge options</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="auth/sign-in-or-create">Create a GOV.UK account or sign in</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="auth/create">Enter email</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="auth/check-email">Check email</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="auth/enter-phone">Enter phone</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="auth/check-phone">Check phone</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="auth/password">Create password</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="auth/created">Account created success</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="dart-charge/handover-page">Dart Charge handover page</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="dart-charge/add-vehicles">Add vehicles</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="dart-charge/add-payment">Add payment</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="dart-charge/success">PAYG account created success</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="dart-charge/payg-home">Dart Charge - home</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="dart-charge/your-details">Dart Charge - your details</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="account/home">GOV.UK account - home</a>
+                </li>
+              </ul>
+            </div>
+          </details>
+
+      <h2 class="govuk-heading-m">Task 2</h2>
+      {{ govukButton({
+        text: "Start task",
+        href: "account/home"
+      }) }}
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Links
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <ul class="govuk-list">
+            <li>
+              <a class="govuk-link" href="#">Travel abroad from England during coronavirus (COVID-19) - MISSING</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="govuk/interrupt">The way you get emails from GOV.UK is changing</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="auth/sign-in-or-create">Create a GOV.UK account or sign in</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="auth/sign-in">Sign in to your GOV.UK account</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="auth/password">Enter your password</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="/email/confirm">Confirm you want to get emails</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="#">[SUBSCRIBED] Travel to England from another country during coronavirus (COVID-19) - MISSING</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="/email/manage">Manage your GOV.UK email subscriptions</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="account/home">GOV.UK account - home</a>
+            </li>
+          </ul>
+        </div>
+      </details>
+
+    </div>
+  </div>
+
+{% endblock %}

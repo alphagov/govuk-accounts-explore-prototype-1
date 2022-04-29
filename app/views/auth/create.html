@@ -1,0 +1,34 @@
+{% extends "layout_auth.html" %}
+
+{% block pageTitle %}
+  Enter your email address – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "/auth/sign-in-or-create",
+  classes: "govuk-back-link-override"
+}) }}
+
+
+
+
+<form data-module="gem-track-click" action="/auth/check-email" accept-charset="UTF-8" data-remote="true" class="form" method="post" name="emailAddress">
+  <input type="hidden" name="authenticity_token"
+    value="qN3NeE0rDQErgwLO7D0w3rPE4Z0dZMcFgmpqi9V96vYzryz7YoE2fVqk0uP12hmEQHBsDl9teD5JL0aPOj2dRQ==">
+  <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">Enter your email address</h1>
+  <p>
+    Enter your email address to create an account.
+  </p>
+  <div class="govuk-form-group">
+    <label for="email-address" class="gem-c-label govuk-label">Email address</label>
+    <input name="emailAddress" class="govuk-!-width-one-half gem-c-input govuk-input" id="email-address" type="text" value="{{data['emailAddress']}}" autocomplete="username">
+  </div>
+
+  <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+</form>
+
+{% endblock %}

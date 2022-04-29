@@ -1,0 +1,42 @@
+{% extends "layout_auth.html" %}
+
+{% block pageTitle %}
+  Create a GOV.UK account or sign in – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+  <div class="">
+
+    <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-6">
+      Create a GOV.UK account or sign in
+    </h1>
+
+
+<p>You’ll need an email address and a UK mobile phone number. It will take about 2 minutes.</p>
+
+<a href="/auth/create" class="govuk-button" data-module="govuk-button">Create a GOV.UK account</a>
+
+<p>If you already have a GOV.UK account you can <a href="/auth/sign-in">sign in.</a></p>
+
+
+      </div>
+
+
+
+      {% set govUKAccountText %}
+
+          <p>
+            GOV.UK accounts are new. They are a first step towards creating a single account that you can use to sign in to all government services.
+          </p><p>
+          GOV.UK accounts will eventually replace all other government accounts. We're working on adding more features and services.
+      </p><p>
+          For now, you need to use different accounts to access different government services.
+      </p>
+      {% endset %}
+
+          {{ govukDetails({
+            summaryText: "About GOV.UK accounts",
+            html: govUKAccountText
+          }) }}
+
+    {% endblock %}
