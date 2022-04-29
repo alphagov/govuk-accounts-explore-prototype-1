@@ -1,0 +1,161 @@
+// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+.accounts-menu {
+    margin: 0 0 30px 0;
+    padding: 0;
+}
+
+.accounts-menu__link {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+}
+
+@media (min-width: 40.0625em) {
+.accounts-menu__link {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.3157894737;
+}}
+
+
+
+.accounts-menu__item {
+    list-style-type: none;
+    padding: 12px 0;
+}
+
+@media (min-width: 40.0625em) {
+  .accounts-menu__item {
+      margin: 0 0 20px;
+      padding: 5px 0;
+  }
+}
+
+.accounts-menu__item--current {
+    margin-left: -14px;
+    padding-left: 10px;
+    border-left: 4px solid #1d70b8;
+}
+
+
+.accounts-menu__item--current .accounts-menu__link {
+    text-decoration: none;
+}
+
+.feedback-footer {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f3f2f1;
+}
+
+.accounts-panel {
+    padding: 30px;
+    border: solid 1px #b1b4b6;
+    border-top: solid 3px #1d70b8;
+}
+
+.accounts-border-list__item {
+    border-bottom: solid 1px #b1b4b6;
+}
+
+
+
+.gem-c-show-password__toggle {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    z-index: 0;
+    display: table-cell;
+    padding: 5px 15px;
+    min-width: 5em;
+    color: #1d70b8;
+    text-decoration: underline;
+    background: #fff;
+    border: solid 2px #0b0c0c;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+@media (min-width: 40.0625em) {
+.gem-c-show-password__toggle {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.3157894737;
+}}
+
+@media (min-width: 20em) {
+.gem-c-show-password__toggle {
+    margin-left: -2px;
+    margin-top: 0;
+    margin-bottom: 0;
+}}
+
+.gem-c-show-password__input-wrapper .gem-c-input--with-password {
+    display: table-cell;
+}
+
+
+.gem-c-show-password__input-wrapper {
+    display: table;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+@media (min-width: 20em) {
+.gem-c-show-password__input-wrapper {
+    flex-direction: row;
+}}
+
+.user-reminder {
+    padding: 15px;
+    margin-bottom: 40px;
+    background: #f3f2f1;
+}
+
+.account .govuk-main-wrapper {
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+@media (min-width: 40.0625em){
+.account .govuk-main-wrapper {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}}
+
+
+.\/guidance\/red-amber-and-green-list-rules-for-entering-england .gem-c-contents-list__list > li:first-child {
+  display: none !important;
+}
+
+.gem-c-notification-link__link, .gem-c-notification-link__button {
+    background: url(../images/alerts.png) no-repeat 10px 50%;
+    background-size: 16px 18px;
+    padding: 10px 10px 10px 36px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    text-decoration: none !important;
+}
+
+.gem-c-notification-link__link-active, .gem-c-notification-link__button-active {
+    background: url(../images/alerts-active.png) no-repeat 10px 50% !important;
+    background-color: #1D70B8 !important;
+    border-color: #1D70B8 !important;
+    color: white !important;
+}
+
+
+.menu-hidden {
+  display: none;
+}

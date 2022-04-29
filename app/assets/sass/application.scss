@@ -1,6 +1,5 @@
 // global styles for <a> and <p> tags
 $govuk-global-styles: true;
-$govuk-new-link-styles: true;
 
 // We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework.
 $govuk-assets-path: '/govuk/assets/';
@@ -9,15 +8,409 @@ $govuk-assets-path: '/govuk/assets/';
 @import "lib/extensions/extensions";
 
 // Patterns that aren't in Frontend
-@import "patterns/contents-list";
-@import "patterns/mainstream-guide";
-@import "patterns/pagination";
 @import "patterns/step-by-step-header";
 @import "patterns/step-by-step-nav";
 @import "patterns/step-by-step-related";
 @import "patterns/task-list";
+@import "patterns/related-items";
+
+
+// Extra styles for accounts
+@import "accounts";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
-.dart-panel {
-  background-color: #28a197;
+
+
+.inverse-header {
+  background-color: govuk-colour("blue");
+  color: govuk-colour("white");
+  margin-bottom: govuk-spacing(6);
+  padding: 0 govuk-spacing(6) govuk-spacing(6);
 }
+
+.inverse-header a {
+  color: govuk-colour("white");
+  &:focus {
+    color: $govuk-link-active-colour;
+  }
+}
+
+.inverse-header--full-width {
+  padding-left: govuk-spacing(3);
+  padding-right: govuk-spacing(3);
+  padding-bottom: govuk-spacing(3);
+  margin-left: -15px;
+  margin-right: 0px;
+}
+
+.inverse-header--padding-top {
+  padding-top: govuk-spacing(3);
+}
+
+.title--inverse {
+  color: govuk-colour("white");
+
+  .title__text,
+  .title__context {
+    color: inherit;
+  }
+}
+
+.lead-paragraph--inverse {
+  color: govuk-colour("white");
+}
+
+.list-inverse {
+  color: govuk-colour("white");
+
+  .govuk-link{
+    color: inherit;
+  }
+}
+
+.back-link-inverse {
+  width: 100%;
+  background-color: govuk-colour("blue");
+  padding: 10px 15px 10px;
+  border-color: govuk-colour("white");
+  margin-top: -10px;
+  margin-bottom: 0;
+  margin-left: -15px;
+  margin-right: 0px;
+}
+
+
+
+.govuk-back-link {
+    color: govuk-colour("white");
+}
+
+
+.govuk-main-wrapper {
+  padding-top: 0;
+}
+
+.govuk-header__container {
+  // margin: 0
+}
+
+li.topic-link {
+  position: relative;
+  border-top: solid 1px  $govuk-border-colour;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.topic-link-inner {
+  padding: 30px 0 30px 0;
+  &:hover {
+    background: #f3f2f1;
+    color: #003078;
+  }
+  &::after {
+    content: url('/public/images/chevron-right.svg');
+    position: absolute;
+    right: 0px;
+  }
+}
+
+@media (min-width: 48.0625em) {
+.js-enabled .govuk-header__navigation {
+    display: block;
+    float: right;
+}
+}
+
+// Mia's stuff
+
+// Header area
+.govuk-back-link {
+  background-image: url('/public/images/chevron-back.svg');
+  background-repeat: no-repeat;
+  background-position: 0px 2px;
+}
+
+/*
+.govuk-back-link[href] {
+  text-decoration: none;
+  color: white;
+}
+
+.govuk-back-link::before {
+  content: none;
+} */
+
+.sub-topic-header {
+  background-color: #03579F;
+  h1 {
+    margin-bottom: 120px;
+  }
+
+}
+.inverse-header--full-width {
+  padding-bottom: 55px;
+}
+.lede {
+  font-size: 22px;
+  margin-bottom: 35px;
+}
+
+.page-heading {
+  margin-bottom: 5px;
+}
+
+// Typography
+.govuk-heading-m {
+  margin-bottom: 25px;
+}
+
+.govuk-heading-xl {
+  margin-bottom: 10px;
+  padding-top: 25px;
+}
+
+.govuk-body-l {
+  margin-bottom: 45px;
+  font-size: 22px;
+}
+
+.govuk-body-m, .govuk-body, p {
+  margin-bottom: 20px;
+}
+
+.govuk-body a {
+  text-decoration: none;
+}
+
+/* Feature links */
+.feature-links {
+  padding-bottom: 35px;
+}
+
+.feature-links a {
+  text-decoration: none;
+}
+
+.feature-links li {
+  display: block;
+  min-height: 28px;
+  padding-left: 40px;
+  padding-top: 5px;
+  background-image: url('/public/images/arrow.svg');
+  background-repeat: no-repeat, repeat;
+  background-position: 0px 0px;
+  list-style: none;
+  margin-left: -20px;
+}
+
+/* Topic tabs */
+
+// subtopics-list
+.subtopic-list {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+
+/* Tab padding - making accordions appear full width */
+.js-enabled .govuk-accordion__section-header {
+  margin-left: -15px;
+  margin-right: -15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.js-enabled .govuk-accordion {
+    border-bottom: 1px solid #b1b4b6;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+// A-Z lists
+.a-z-list li {
+    padding-bottom: 25px;
+}
+
+.a-z-list {
+  border-bottom: 1px solid grey;
+  margin-bottom: 35px;
+}
+
+/* Accordion styles */
+.js-enabled .govuk-accordion a {
+  text-decoration: none;
+}
+
+// Accordion icons
+
+
+/* Government activity section */
+.publications {
+  margin-left: -15px;
+  margin-right: -15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  border-top: 0;
+}
+
+/* Wrapping sub-topics headings 2/3rds, so that it sits in line with 'open all' */
+.sub-topics {
+  max-width: 80%;
+  margin-bottom: -18px;
+}
+
+/* Accordion */
+.js-enabled .govuk-accordion {
+  margin-bottom: 80px;
+}
+
+.js-enabled .govuk-accordion__open-all {
+  margin-bottom: 20px;
+}
+
+.js-enabled .govuk-accordion__section-button {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Images */
+img {
+  width:100%;
+}
+
+/* Accordion lists */
+.govuk-accordion li {
+  padding-bottom: 20px;
+}
+
+/* Topic tags */
+.topic-tags {
+  ul {
+    padding-left: 0;
+    font-family: "GDS Transport", Arial, sans-serif;
+  }
+
+  li {
+    display: inline-block;
+    padding: 15px;
+    border: 1px solid #1d70b8;
+    border-bottom: 5px solid #1d70b8;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    text-decoration: none;
+    &:hover {
+      background: #f3f2f1;
+      border-bottom: 5px solid #003078;
+      a {
+        color: #003078;
+      }
+    }
+  }
+
+  a {
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
+// Accordion icons
+
+.govuk-accordion__icon:after {
+  display: none;
+}
+
+.govuk-accordion__icon:before {
+  display: none;
+}
+
+.govuk-accordion__icon {
+  background-image: url('/public/images/chevron-down.svg');
+}
+
+.govuk-accordion__section--expanded .govuk-accordion__icon {
+  background-image: url('/public/images/chevron-up.svg');
+}
+
+@import "explore-header";
+@import "explore";
+@import "xpl-tabs";
+@import "xpl-cards";
+
+
+// service list
+.govuk-service-list {
+  margin-bottom: 50px;
+}
+
+.govuk-service-list-item {
+  border-top: 1px solid #b1b4b6;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+.govuk-service-list-item-last {
+  border-bottom: 1px solid #b1b4b6;
+}
+
+.govuk-tag {
+  margin-bottom: 20px;
+}
+
+.govuk-button--secondary {
+  margin-top: 20px;
+}
+
+.govuk-service-list-item-account {
+  background-color: #F3F2F1;
+  border: 0px;
+  border-left: 6px solid #1d70b8;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.govuk-service-list-item-first {
+  border-top: 0px;
+}
+
+.govuk-service-list-item .govuk-heading-m {
+  font-size: 19px;
+  height: 5px;
+}
+
+// SEARCH BOX
+.gem-c-search--on-white .gem-c-search__submit {
+    background-color: #1d70b8;
+    color: #fff;
+}
+
+.gem-c-search--on-white .gem-c-search__submit {
+    background-color: #1d70b8;
+    color: #fff;
+}
+.gem-c-search__submit {
+    border: 0;
+    cursor: pointer;
+    border-radius: 0;
+    position: relative;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    background-image: url("/public/images/magnifying-glass.png");
+    background-repeat: no-repeat;
+    background-size: 30px auto;
+    background-position: 4px 50%;
+    text-indent: -5000px;
+    overflow: hidden;
+}
+
+// adding float for PLF
+
+@media (min-width: 40.0625em) {
+.govuk-header.passenger-locator-form nav{
+  float: right;
+
+}}
