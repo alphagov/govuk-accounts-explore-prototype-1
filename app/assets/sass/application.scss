@@ -336,9 +336,7 @@ img {
 }
 
 @import "explore-header";
-@import "explore";
-@import "xpl-tabs";
-@import "xpl-cards";
+@import "search";
 
 
 // service list
@@ -379,32 +377,6 @@ img {
 .govuk-service-list-item .govuk-heading-m {
   font-size: 19px;
   height: 5px;
-}
-
-// SEARCH BOX
-.gem-c-search--on-white .gem-c-search__submit {
-    background-color: #1d70b8;
-    color: #fff;
-}
-
-.gem-c-search--on-white .gem-c-search__submit {
-    background-color: #1d70b8;
-    color: #fff;
-}
-.gem-c-search__submit {
-    border: 0;
-    cursor: pointer;
-    border-radius: 0;
-    position: relative;
-    padding: 0;
-    width: 40px;
-    height: 40px;
-    background-image: url("/public/images/magnifying-glass.png");
-    background-repeat: no-repeat;
-    background-size: 30px auto;
-    background-position: 4px 50%;
-    text-indent: -5000px;
-    overflow: hidden;
 }
 
 // adding float for PLF
