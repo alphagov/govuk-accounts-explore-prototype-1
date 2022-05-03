@@ -1,8 +1,8 @@
-{% macro serviceNav(showServiceNav, activeServiceNavItem) %}
+{% macro serviceNav(serviceName, showServiceNav, activeServiceNavItem) %}
   <div class="govuk-width-container">
     <div class="govuk-header__content govuk-header__content--service-nav" data-module="govuk-header">
         <a href="#" class="govuk-header__link govuk-header__link--service-name">
-          Dart Charge
+          {{ serviceName }}
         </a>
         {% if showServiceNav == 'true' %}
         <nav aria-label="Menu" class="govuk-header__navigation govuk-header__navigation--service-nav">

@@ -2,6 +2,7 @@
 {% set useAccountNav = useAccountNav | default("false") %}
 {% set showServiceNav = showServiceNav | default("false") %}
 {% set activeServiceNavItem = activeServiceNavItem | default("false") %}
+{% set serviceName = "Dart Charge" %}
 {% import "includes/service-nav.njk" as serviceNav %}
 
 
@@ -11,7 +12,7 @@
   {% else %}
     {{ govukHeader() }}
   {% endif %}
-  {{ serviceNav.serviceNav(showServiceNav, activeServiceNavItem) }}
+  {{ serviceNav.serviceNav(serviceName, showServiceNav, activeServiceNavItem) }}
 {% endblock %}
 
 {% block beforeContent %}
