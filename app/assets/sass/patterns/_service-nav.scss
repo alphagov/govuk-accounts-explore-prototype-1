@@ -14,12 +14,26 @@
   .govuk-header__navigation.govuk-header__navigation--service-nav {
     float: none;
     margin-bottom: 0;
+    @include govuk-media-query($until: "desktop") {
+      margin-bottom: govuk-spacing(2);
+    }
     .govuk-header__navigation-item {
       padding-bottom: govuk-spacing(2);
       margin-right: govuk-spacing(6);
 
+      @include govuk-media-query($until: "desktop") {
+        border-bottom: 0;
+        padding-left: govuk-spacing(3);
+      }
+
       &--active {
-        border-bottom: 5px solid govuk-colour("blue");
+        @include govuk-media-query($from: "desktop") {
+          border-bottom: 5px solid govuk-colour("blue");
+        }
+        @include govuk-media-query($until: "desktop") {
+          padding-left: govuk-spacing(2);
+          border-left: 5px solid govuk-colour("blue");
+        }
       }
     }
     .govuk-header__navigation-item a {
@@ -28,5 +42,28 @@
     .govuk-header__navigation-item--active a {
       color: govuk-colour("black");
     }
+
+    .govuk-header__menu-button {
+      // override stuff from the DS
+      position: relative !important;
+      color: govuk-colour("blue");
+      top: 0px !important;
+      font-weight: bold;
+      margin-bottom: govuk-spacing(2);
+      text-decoration: none;
+      &:after {
+        content: none;
+      }
+      &:before {
+        // this is horrible but I'm trying to make the service nav toggle work for UR without adding any new JS in addition to DS layout header stuff
+        content: "Menu";
+      }
+      &--open {
+        &:before {
+          content: "Close Menu";
+        }
+      }
+    }
   }
+
 }
