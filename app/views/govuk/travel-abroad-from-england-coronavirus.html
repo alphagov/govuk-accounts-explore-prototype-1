@@ -1,12 +1,7 @@
-{% extends "layout.html" %}
+{% extends "layout_govuk.html" %}
 
 {% block pageTitle %}
   Mainstream guide example
-{% endblock %}
-
-{% block header %}
-  <!-- Blank header with no service name for this page -->
-  {{ govukHeader() }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -29,20 +24,8 @@
       <p class="govuk-body govuk-!-font-size-24">Travel restrictions: check the testing and quarantine rules when you travel abroad from England.</p>
     </div>
   </div>
-        <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-        </div>
-        </div>
 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-      <p class="govuk-!-font-size-16">
-        From: <a href="#">Department for Transport</a><br>
-        Published<br>
-        22 June 2021<br>
-        Last updated<br>
-        18 March 2022 — <a href="#">See all updates</a><br>
-      </p>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <p class="govuk-!-font-size-16 govuk-!-margin-bottom-2">From: <a href="#" class="govuk-!-font-weight-bold">Department for Transport</a></p>
@@ -62,9 +45,52 @@
           <li><a href="#" class="govuk-link">Guidance for Northern Ireland</a></li>
         </ul>
       </div>
-      <aside class="a" role="complementary">
+
+      <aside class="app-mainstream-guide-contents-list app-whitehall-guide-contents-list" role="complementary">
         <nav class="app-contents-list" aria-label="Pages in this guide" role="navigation">
           <h2 class="app-contents-list__title">
+            Contents
+          </h2>
+          <ol class="app-contents-list__list">
+            <li aria-current="true" class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              Travel abroad COVID-19 checklist
+            </li>
+            <li class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              <a href="#">
+                1. Check foreign travel advice for the countries you want to go to
+              </a>
+            </li>
+            <li class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              <a href="#">
+                2. Arrange any COVID-19 tests you will need to enter the countries that you will travel to
+              </a>
+            </li>
+            <li class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              <a href="#">
+                3. Find out how you can use the NHS COVID Pass to prove your vaccination status abroad
+              </a>
+            </li>
+            <li class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              <a href="#">
+                Travelling with children
+              </a>
+            </li>
+            <li class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              <a href="#">
+                Operator and transport hub rules
+              </a>
+            </li>
+            <li class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              <a href="#">
+                Ireland, the Channel Islands and the Isle of Man
+              </a>
+            </li>
+            <li class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              <a href="#">
+                Travel to England guidance
+              </a>
+            </li>
+          </ol>
         </nav>
       </aside>
 
@@ -79,27 +105,10 @@
       </div>
 
       <h2 class="govuk-heading-m">
-        Paying the charge
         Travel abroad COVID-19 checklist
       </h2>
-
-      <p>You must pay the Dartford Crossing charge by midnight the day after you cross. You can get a fine if you’re late or do not pay.</p>
       <p>This is a summary of what you need to do to travel abroad from England. Read the guidance below for more information about each point in the checklist.</p>
 
-      <p class="govuk-body">You can also use this service to:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>make a one-off payment</li>
-        <li>set up a pay as you go Dart Charge account</li>
-        <li>set up a local resident discount if you live in Dartford or Thurrock</li>
-        <li>pay or challenge a fine (known as a Penalty Charge Notice)</li>
-        <li><a href="#">Check foreign travel advice for all countries you will visit or travel through</a></li>
-        <li>Arrange any COVID-19 tests you will need to enter the countries that you will travel to.</li>
-        <li><a href="#">Find out how you can use the NHS COVID Pass to prove your vaccination status abroad</a></li>
-      </ul>
-
-      <div class="govuk-inset-text">
-        You need a GOV.UK account to set up a Dart Charge account. If you do not have a GOV.UK account, you'll be asked to create one. You'll need a UK mobile number.
-      </div>
       <h2 class="govuk-heading-m">
         1. Check foreign travel advice for the countries you want to go to
       </h2>
@@ -112,22 +121,15 @@
       <p>Foreign travel advice will also tell you if the UK government advises against all but essential travel to the country.</p>
       <p><a href="#">Check foreign travel advice for all countries you will visit or travel through</a></p>
 
-      <a href="#" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"  data-module="govuk-button">
-        Start now
-        <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
-          <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
-        </svg>
-      </a>
+
       <h2 class="govuk-heading-m">2. Arrange any COVID-19 tests you will need to enter the countries that you will travel to</h2>
       <p>You cannot use an NHS test for this. You must use a private test provider.</p>
 
-      <p><a href="account/sign-in-or-create">Sign in</a> if you already have an account.</p>
       <h2 class="govuk-heading-m">3. Find out how you can use the NHS COVID Pass to prove your vaccination status abroad</h2>
       <p>Some countries require proof of vaccination status before you can enter.</p>
       <p><a href="#">Read about how you can use the NHS COVID Pass to prove your vaccination status</a></p>
       <p>You should do this before you travel.</p>
 
-      <p><a href="account/sign-in-or-create">Contact Dart Charge online</a> if you need any help using the service.</p>
       <h2 class="govuk-heading-m">Travelling with children</h2>
       <p>You should also <a href="#">check the rules about travelling with children in the country you are travelling to or from.</a></p>
 
@@ -153,9 +155,9 @@
 
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
-          <p class="govuk-!-font-size-16 govuk-!-margin-bottom-2">Published 22 June 2021</p>
-          <p class="govuk-!-font-size-16 govuk-!-margin-bottom-2">Last updated 18 March 2022 — <a href="#">See all updates</a><br></p>
-
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+          <p class="govuk-!-font-size-16">Published 22 June 2021<br>
+          Last updated 18 March 2022 <a href="#">+ show all updates</a></p>
         </div>
       </div>
 
@@ -165,7 +167,6 @@
           <ul class="govuk-list govuk-!-font-size-16">
             <li>
               <a href="#">
-                Driving in the UK and abroad
                 Travel abroad
               </a>
             </li>
@@ -184,7 +185,27 @@
           <ul class="govuk-list govuk-!-font-size-16">
             <li>
               <a href="#">
-                Avoid and report internet scams and phishing
+                Using the NHS COVID Pass to demonstrate COVID-19 status
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Travel to England from another country during coronavirus (COVID-19)
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Find a coronavirus (COVID-19) travel test provider if you're arriving in the UK
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Foreign travel insurance
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Finding and choosing a private coronavirus (COVID-19) test provider
               </a>
             </li>
           </ul>
@@ -193,7 +214,6 @@
 
     </div>
 
-  </main>
 </div>
 
 

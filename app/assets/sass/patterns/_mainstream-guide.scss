@@ -3,12 +3,16 @@
     margin-bottom: 30px;
     padding-bottom: 15px;
     border-bottom: 1px solid #b1b4b6;
-  
+
     @include govuk-media-query($from: tablet) {
       margin-top: 0;
       margin-bottom: 0;
     }
   }
+
+.app-whitehall-guide-contents-list {
+      border-bottom: 0px;
+}
 
 .app-mainstream-guide-body{
     margin-top: 20px;
