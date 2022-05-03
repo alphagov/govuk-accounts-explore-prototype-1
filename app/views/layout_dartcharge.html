@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% set useAccountNav = useAccountNav | default("false") %}
+{% set showServiceNav = showServiceNav | default("false") %}
+{% set activeServiceNavItem = activeServiceNavItem | default("false") %}
+{% import "includes/service-nav.njk" as serviceNav %}
+
+
+{% block header %}
+  {% if useAccountNav == 'true' %}
+    {% include "includes/account_nav.njk" %}
+  {% else %}
+    {{ govukHeader() }}
+  {% endif %}
+  {{ serviceNav.serviceNav(showServiceNav, activeServiceNavItem) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  <div class="govuk-!-margin-bottom-4">
+    {{ govukPhaseBanner({
+      tag: {
+        text: "alpha"
+      },
+      html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    }) }}
+  </div>
+{% endblock %}

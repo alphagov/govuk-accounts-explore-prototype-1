@@ -1,0 +1,28 @@
+{% macro serviceNav(showServiceNav, activeServiceNavItem) %}
+  <div class="govuk-width-container">
+    <div class="govuk-header__content govuk-header__content--service-nav" data-module="govuk-header">
+        <a href="#" class="govuk-header__link govuk-header__link--service-name">
+          Dart Charge
+        </a>
+        {% if showServiceNav == 'true' %}
+        <nav aria-label="Menu" class="govuk-header__navigation govuk-header__navigation--service-nav">
+          <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide menu" aria-expanded="false">Menu</button>
+
+          <ul id="navigation" class="govuk-header__navigation-list">
+            <li class="govuk-header__navigation-item {% if activeServiceNavItem == "payg-home" %} govuk-header__navigation-item--active {% endif %}">
+                <a class="govuk-header__link" href="/dart-charge/payg-home">
+                PAYG home
+                </a>
+            </li>
+            <li class="govuk-header__navigation-item {% if activeServiceNavItem == "your-details" %} govuk-header__navigation-item--active {% endif %}">
+                <a class="govuk-header__link" href="/dart-charge/your-details">
+                Your details
+                </a>
+            </li>
+          </ul>
+        </nav>
+        {% endif %}
+    </div>
+  </div>
+  <hr class="govuk-section-break govuk-section-break--visible">
+{% endmacro %}

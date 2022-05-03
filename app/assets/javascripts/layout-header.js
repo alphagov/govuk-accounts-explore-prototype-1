@@ -5,9 +5,11 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {}
 window.GOVUK.Modules.GovukHeader = window.GOVUKFrontend.Header
 
-var layoutHeader = document.querySelectorAll("[data-module='govuk-header']")
+const layoutHeader = document.querySelectorAll("[data-module='govuk-header']")
 
 if (layoutHeader){
-  var header = new window.GOVUK.Modules.GovukHeader(layoutHeader[0]);
-  header.init(layoutHeader);
+  layoutHeader.forEach(function(el){
+    const header = new window.GOVUK.Modules.GovukHeader(el);
+    header.init();
+  })
 }

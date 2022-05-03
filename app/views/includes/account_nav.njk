@@ -1,0 +1,16 @@
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+
+{{ govukHeader({
+  homepageUrl: "/index",
+  navigation: ([
+    {
+      href: "/account/home",
+      text: "GOV.UK account",
+      active: true if (current == 'home')
+    },
+    {
+      href: "/sign-out",
+      text: "Sign out"
+    }
+  ])
+}) }}

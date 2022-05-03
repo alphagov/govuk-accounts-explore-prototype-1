@@ -39,28 +39,6 @@
   GOV.UK Prototype Kit
 {% endblock %}
 
-{% block header %}
-{% from "govuk/components/header/macro.njk" import govukHeader %}
-
-{{ govukHeader({
-  homepageUrl: "/index",
-  serviceName: "Dart Charge",
-  serviceUrl: "#",
-  navigation: [
-    {
-      href: "#1",
-      text: "Home",
-      active: true
-    },
-    {
-      href: "#2",
-      text: "Your details"
-    }
-  ]
-}) }}
-{% endblock %}
-
-
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
 {% if useAutoStoreData %}

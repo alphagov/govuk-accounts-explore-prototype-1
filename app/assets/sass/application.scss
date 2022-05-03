@@ -17,7 +17,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/step-by-step-related";
 @import "patterns/task-list";
 @import "patterns/related-items";
-
+@import "patterns/service-nav";
 
 // Extra styles for accounts
 @import "accounts";
@@ -362,10 +362,6 @@ img {
 
 .govuk-service-list-item-last {
   border-bottom: 1px solid #b1b4b6;
-}
-
-.govuk-tag {
-  margin-bottom: 20px;
 }
 
 .govuk-button--secondary {
