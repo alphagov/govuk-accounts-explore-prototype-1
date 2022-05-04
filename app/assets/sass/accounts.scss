@@ -146,6 +146,7 @@
     margin-bottom: 10px;
     margin-right: 10px;
     text-decoration: none !important;
+    border-color: #1D70B8;
 }
 
 .gem-c-notification-link__link-active, .gem-c-notification-link__button-active {
@@ -153,6 +154,13 @@
     background-color: #1D70B8 !important;
     border-color: #1D70B8 !important;
     color: white !important;
+}
+
+.gem-c-print-link__button {
+    border: 1px solid #b1b4b6;
+    color: #1d70b8;
+    cursor: pointer;
+    margin: 0;
 }
 
 

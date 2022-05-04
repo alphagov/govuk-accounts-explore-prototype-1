@@ -45,8 +45,8 @@
 {{ govukHeader({
   homepageUrl: "/index"
 }) }}
+{% include "includes/beta.html" %}
 {% endblock %}
-
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
@@ -73,8 +73,8 @@
     }) }}
 
   {% endblock %}
-{% endif %}
 
+{% endif %}
 
 
 {% block bodyEnd %}

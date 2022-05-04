@@ -1,12 +1,16 @@
-{% extends "layout.html" %}
+{% extends "layout_govuk.html" %}
 
 {% block pageTitle %}
   The way you subscribe to emails from GOV.UK is changing – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+{% block beforeContent %}
+<div class="gem-c-layout-for-public__blue-bar govuk-width-container"></div>
+{% endblock %}
+
 {% block content %}
 
-<div class="govuk-grid-row">
+<div class="govuk-grid-row govuk-!-margin-top-8">
     <div class="govuk-grid-column-two-thirds">
 
 <h1 class="gem-c-heading govuk-heading-l   govuk-!-margin-bottom-4">
