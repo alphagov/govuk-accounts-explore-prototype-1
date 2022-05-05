@@ -4,6 +4,10 @@
   Confirm you want to get emails – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+{% block beforeContent %}
+<div class="gem-c-layout-for-public__blue-bar govuk-width-container"></div>
+{% endblock %}
+
 {% block content %}
 
 <div class="govuk-width-container ">
@@ -13,23 +17,14 @@
 
         <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-4">Confirm you want to get emails</h1>
         <p class="govuk-body">
-
-        You’ll get emails when there are updates to:</P>
+          You’ll get emails when there are updates to:
+        </P>
         <p>
-
-           <strong>Travel to England from another country during coronavirus (COVID-19)</strong>
+           <strong>Travel abroad from England during coronavirus (COVID-19)</strong>
         </p>
 
+            <a href="/govuk/travel-abroad-from-england-coronavirus-subscribed.html" class="govuk-button">Confirm</a>
 
-        <p>
-
-
-          <form class="form" method="post" action="/email/manage" name="emailAddress">
-
-        <input type='hidden' name="save" id="save" value="{{ data['notifications'][0] | default('/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do') }}" />
-            <input type="hidden">
-            <button class="govuk-button" data-module="govuk-button">Confirm</button>
-          </form>
         <p>
           <a class="govuk-link" href="/">Cancel and go to the GOV.UK homepage</a>
         </p>

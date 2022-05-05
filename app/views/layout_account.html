@@ -46,7 +46,7 @@
   serviceUrl: "/account/index",
   navigation: ([
     {
-      href: "/account/index-2",
+      href: "/account/home",
       text: "GOV.UK account",
       active: true if (current == 'home')
     },
@@ -57,6 +57,19 @@
   ])
 }) }}
 {% endblock %}
+
+{% block beforeContent %}
+  {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  <div class="govuk-!-margin-bottom-4">
+    {{ govukPhaseBanner({
+      tag: {
+        text: "beta"
+      },
+      html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    }) }}
+  </div>
+{% endblock %}
+
 
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
