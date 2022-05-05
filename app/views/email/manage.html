@@ -1,4 +1,5 @@
-{% extends "layout_account.html" %}
+{% extends "layout_email.html" %}
+{% set useAccountNav = "true" %}
 
 {% block pageTitle %}
   Manage your GOV.UK email subscriptions – {{ serviceName }} – GOV.UK Prototype Kit
@@ -16,7 +17,7 @@
       <p class="govuk-!-margin-bottom-8 govuk-!-font-weight-bold">Subcriptions for ann.user@emailaddress.com</p>
       {{ govukInsetText({
         html:
-      'Go to your GOV.UK account to <a href="/account/manage-account">update your email address, password or phone number</a>.'
+      'Go to your GOV.UK account to <a href="/account/home">update your email address, password or phone number</a>.'
       }) }}
 
       <div class="govuk-!-margin-bottom-2 govuk-!-padding-top-2 " style="border-top: 1px solid #b1b4b6; border-bottom: 1px solid #b1b4b6">
