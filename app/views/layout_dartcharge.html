@@ -7,11 +7,23 @@
 
 
 {% block header %}
-  {% if useAccountNav == 'true' %}
-    {% include "includes/account_nav.njk" %}
-  {% else %}
-    {{ govukHeader() }}
-  {% endif %}
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+
+{{ govukHeader({
+  homepageUrl: "/index",
+  classes: "header-service",
+  navigation: ([
+    {
+      href: "/account/home",
+      text: "GOV.UK account",
+      active: true if (current == 'home')
+    },
+    {
+      href: "/sign-out",
+      text: "Sign out"
+    }
+  ])
+}) }}
   {{ serviceNav.serviceNav(serviceName, showServiceNav, activeServiceNavItem) }}
 {% endblock %}
 
