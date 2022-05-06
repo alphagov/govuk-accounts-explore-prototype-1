@@ -3,8 +3,8 @@ name: Delete deployment
 on:
   workflow_dispatch:
   schedule:
-    # Every weekday at 10am
-    - cron: '0 10 * * 1-5'
+    # Every weekday at 4am
+    - cron: '0 4 * * 1-5'
   pull_request:
     types: [ closed ]
 
@@ -45,7 +45,7 @@ jobs:
 
           for app in $(cf apps | awk 'NR>3 {print $1}')
           do
-            last_upload_date=$(cf app $app | grep 'last uploaded:' | cut -d' ' -f 3-)
+            last_upload_date="$(cf app $app | grep 'last uploaded:' | cut -d' ' -f 3- | awk ' { t = $2; $2 = $3; $3 = t; print; } ')"
             echo "$app | last uploaded: $last_upload_date"
 
             if [[ -z $last_upload_date || $(date -d $last_upload_date +%Y-%m-%d) < $cut_off_date ]]; then
