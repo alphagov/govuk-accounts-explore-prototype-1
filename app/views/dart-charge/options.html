@@ -4,6 +4,27 @@
   What would you like to do? – Dart Charge
 {% endblock %}
 
+{% block header %}
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+
+{{ govukHeader({
+  homepageUrl: "/index",
+  classes: "header-service",
+  navigation: ([
+    {
+      href: "",
+      text: "",
+      active: true if (current == 'home')
+    },
+    {
+      href: "",
+      text: ""
+    }
+  ])
+}) }}
+  {{ serviceNav.serviceNav(serviceName, showServiceNav, activeServiceNavItem) }}
+{% endblock %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
