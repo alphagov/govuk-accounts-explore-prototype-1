@@ -62,10 +62,6 @@
           {
             href: "/prototype-admin/clear-data",
             text: "Clear data"
-          },
-          {
-            href: "/index",
-            text: "Go to user research tasks"
           }
         ],
         visuallyHiddenTitle: "Footer links"
@@ -83,4 +79,6 @@
     {% block pageScripts %}{% endblock %}
   {% endblock %}
   <!-- GOV.UK Prototype Kit {{releaseVersion}} -->
+
+  {% include 'includes/ur-tasks.html'%}
 {% endblock %}

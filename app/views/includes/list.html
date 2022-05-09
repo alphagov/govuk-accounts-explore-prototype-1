@@ -1,0 +1,339 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK account - prototype settings
+{% endblock %}
+
+{% block main %}
+<main class="govuk-main-wrapper">
+  <section>
+    <div class="xpl-section-inner">
+
+
+      {% if (sessionFlash  or echo ) %}
+      {% if ((sessionFlash == "settings") or (echo == "settings")) %}
+
+        <div id="notification-success" class="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-top-6 govuk-!-margin-bottom-0" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Success
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-body">
+              You've saved the:
+            <ul> <li>
+              user group as '{{ data['user-group'] }}'
+           </li><li>
+email settings as '{{ data['get-emails'] }}'
+</li><li>
+mailinator inbox as '{{data['mailinator-email']}}'
+
+  </li>
+                </ul>
+            </p>
+
+          </div>
+        </div>
+        {% endif %}
+{% endif %}
+
+      <h1 class="govuk-heading-xl">GOV.UK account: journey testing February 2022 </h1>
+
+
+
+<p><a href="/tasks">Go to UR tasks page</a></p>
+
+
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+  <h1 class="govuk-heading-l govuk-!-padding-top-1  govuk-!-padding-bottom-1">Settings for different user types</h1>
+
+  <p>If you want to reset the journeys (i.e. test signed in or not), you will need to <a href="/prototype-admin/clear-data">clear the data</a> first. </p>
+
+
+      <form action="/list-router" method="post" >
+
+
+    <!--     <div class="govuk-inset-text govuk-!-margin-top-0"> -->
+
+{#
+
+  hint: {
+text: "Default setting is 'Nothing' - even when data is cleared "
+},
+  #}
+
+      {{ govukRadios({
+        idPrefix: "user-group",
+         classes: "govuk-radios--inline",
+        name: "user-group",
+        fieldset: {
+          legend: {
+            text: "Set journey",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+        text: "Default setting is 'Nothing' - even when data is cleared "
+        },
+        items: [
+          {
+            value: "Nothing",
+            checked: true if (data['user-group'] == "Nothing") ,
+            text: "Nothing"
+          },
+          {
+            value: "Email updates",
+            checked: true if (data['user-group'] == "Email updates") ,
+            text: "Email updates"
+          },
+          {
+            value: "GOV.UK account",
+            checked: true if (data['user-group'] == "GOV.UK account") ,
+            text: "GOV.UK account"
+          }
+        ]
+      }) }}
+
+<!--
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+           Advanced settings
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+-->
+
+
+{{ govukRadios({
+  idPrefix: "get-emails",
+  name: "get-emails",
+  classes: "govuk-radios--inline",
+  fieldset: {
+    legend: {
+      text: "Get emails",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  hint: {
+  text: "We can only send 50 Notify emails a day on our trial, so only turn on emails when you need it! "
+  },
+  items: [
+    {
+      value: "Yes",
+      checked: true if (data['get-emails'] == "Yes") ,
+      text: "Yes"
+    },
+    {
+      value: "No",
+      checked: true if (data['get-emails'] == "No") ,
+      text: "No"
+    }
+  ]
+}) }}
+
+
+{{ govukRadios({
+  idPrefix: "mailinator-email",
+  name: "mailinator-email",
+   classes: "govuk-radios--inline",
+  fieldset: {
+    legend: {
+      text: "Mailinator email",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "govukresearch.inbox1",
+      checked: true if (data['mailinator-email'] == "govukresearch.inbox1") ,
+      text: "govukresearch.inbox1"
+    },
+    {
+      value: "govukresearch.inbox2",
+      checked: true if (data['mailinator-email'] == "govukresearch.inbox2") ,
+      text: "govukresearch.inbox2"
+    }
+  ]
+}) }}
+
+<!--
+</div></details>
+-->
+
+
+<!-- </details> -->
+
+{{ govukButton({
+  text: "Save selection"
+}) }}
+<!-- </div> -->
+
+
+</form>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible  govuk-!-margin-top-2 ">
+
+
+<h2 class="govuk-heading-m govuk-!-padding-bottom-1 govuk-!-padding-top-0">Email inbox for research session</h2>
+
+<p>All emails generated from the prototype will be sent to a public email:  {{data['mailinator-email']}}@mailinator.com</p>
+
+
+{{ govukButton({
+  text: "Go to email inbox (opens in new tab)",
+  classes: "govuk-!-margin-bottom-0 govuk-!-margin-top-2",
+  attributes: {"target" : "_blank"},
+  href: "https://www.mailinator.com/v4/public/inboxes.jsp?to=" + data['mailinator-email'] + "#",
+  classes: "govuk-button--secondary govuk-!-margin-top-0"
+}) }}
+
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible  govuk-!-margin-top-2 ">
+
+
+<!--
+</div> -->
+      <h2 class="govuk-heading-m govuk-!-padding-bottom-2 govuk-!-padding-top-0">Single page notifications</h2>
+
+
+{% set list1 =[
+  { pre: "Any Whitehall page with an update history, for example: ", title: "Coronavirus: how to stay safe and help prevent the spread" , url: "/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do" }
+  , { title: "The way you get emails from GOV.UK is changing" , url: "/account/interrupt" }
+  , { pre: "[GOV.UK Sign In team]", title: "Sign in or create a GOV.UK acount" , url: "/auth/sign-in-or-create" }
+  , { pre: "[GOV.UK Sign In team]",title: "Create a GOV.UK account" , url: "/auth/create" }
+  , { pre: "[GOV.UK Sign In team]",title: "Check your email" , url: "/auth/check-email" }
+  , { pre: "[GOV.UK Sign In team - email]",  title: "Security code" , url: "/notify/confirm" }
+  , { pre: "[GOV.UK Sign In team]", title: "Create your password" , url: "/auth/create-password" }
+  , { pre: "[GOV.UK Sign In team]", title: "Enter your mobile phone number" , url: "/auth/enter-phone" }
+  , { pre: "[GOV.UK Sign In team]", title: "Check your phone" , url: "/auth/check-phone" }
+  , { pre: "[GOV.UK Sign In team - email]",  title: "Welcome to your GOV.UK account" , url: "/notify/welcome" }
+  , { pre: "[GOV.UK Sign In team]", title: "You've created your GOV.UK account" , url: "/auth/created" }
+  , { title: "Control how we use information about you" , url: "/account/control-how-we-use-information-about-you" }
+  , { title: "Confirm you want to get email updates" , url: "/account/confirm" }
+  , { pre: "Merge extra text", title: "Confirm you want to get email updates" , url: "/account/confirm-merge" }
+  , { pre: "[IF MERGED] Email: ", title: "Merged" , url: "/notify/merged" }
+  , { pre: "Email", title: "Subscribed" , url: "/notify/subscribed" }
+  , { pre: "[Success] Whitehall page: ", title: "Coronavirus: how to stay safe and help prevent the spread" , url:  "/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do" }]
+  %}
+
+
+  {% set list3 =[
+    { pre: "Any Whitehall page with an update history, for example: ", title: "Coronavirus: how to stay safe and help prevent the spread
+  " , url: "/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do" }
+    , { title: "The way you get emails from GOV.UK is changing" , url: "/account/interrupt" }
+    , { pre: "[GOV.UK Sign In team]", title: "Sign in or create a GOV.UK acount" , url: "/auth/sign-in-or-create" }
+    , { pre: "[GOV.UK Sign In team]", title: "Sign in to your GOV.UK account" , url: "/sign-in" }
+    , { pre: "[GOV.UK Sign In team]", title: "Enter your password" , url: "/auth/password" }
+    , { pre: "[GOV.UK Sign In team]", title: "Check your phone" , url: "/auth/2fa" }
+    , { title: 'Confirm you want to get email updates' , url: "/account/confirm" }
+    , { title: 'Coronavirus: how to stay safe and help prevent the spread' , url:  "/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do" }]
+    %}
+
+<h3 class="govuk-heading-s">No account (with our without existing email updates)</h3>
+                <ul class="govuk-list">
+            {% for item in list1 %}
+            <li>
+{% if item.pre %}{{item.pre}}{% endif %}
+              <a class="govuk-link" href="{{item.url}}">{{item.title}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+
+
+          <h3 class="govuk-heading-s">Brexit checker account</h3>
+          <ul class="govuk-list">
+
+
+                      {% for item in list3 %}
+                      <li>
+{% if item.pre %}{{item.pre}}{% endif %}
+                        <a class="govuk-link" href="{{item.url}}">{{item.title}}</a>
+                      </li>
+                      {% endfor %}
+                    </ul>
+
+
+                    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-top-2 ">
+
+
+                    <h2 class="govuk-heading-m govuk-!-padding-top-0 govuk-!-padding-bottom-2">GOV.UK account and email subscriptions</h2>
+
+                    {% set list =[
+                      { title: "GOV.UK" , url: "/" }
+                      , { title: "Sign in to a service" , url: "/sign-in" }
+                        , { title: "[AUTH] Sign in or create a GOV.UK acount" , url: "/auth/sign-in-or-create" }
+                      , { title: "Sign in to your GOV.UK account" , url: "/sign-in" }
+                      , { title: 'Home - GOV.UK account' , url: "/account/index" }
+                      , { pre: "With subscriptions", title: 'Home - GOV.UK account' , url: "/account/index-subscriptions" }
+                      , { title: 'Settings - GOV.UK account' , url: "/account/manage-account" }
+                      , { title: 'Cookie and feedback settings - GOV.UK account' , url: "/account/cookie-feedback-settings" }
+                      , { title: 'Manage your GOV.UK emails - GOV.UK account' , url:  "/email/admin/index" }
+                      , { pre: "With subscriptions", title: 'Manage your GOV.UK emails - GOV.UK account' , url:  "/email/admin/index-subscriptions" }
+                      , { title: "Sign out" , url:  "/sign-out" }
+                      ]
+                      %}
+
+                <ul class="govuk-list">
+
+
+                          {% for item in list %}
+                          <li>
+                            {% if item.pre %}{{item.pre}}{% endif %}
+                            <a class="govuk-link" href="{{item.url}}">{{item.title}}</a>
+                          </li>
+                          {% endfor %}
+                        </ul>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-top-2 ">
+
+
+      <h2 class="govuk-heading-m govuk-!-padding-top-0 govuk-!-padding-bottom-2">Sign in to a service (‘sorting hat’)</h2>
+
+{% set list =[
+  { title: "GOV.UK" , url: "/" }
+  , { title: "Sign in to a service" , url: "/sign-in" }
+    , { title: "Search (scoped to 'services' and 'guidance')" , url: "/search/all?keywords=&content_purpose_supergroup%5B%5D=services&content_purpose_supergroup%5B%5D=guidance_and_regulation&order=relevance" }
+    ]
+  %}
+
+  <ul class="govuk-list">
+
+
+            {% for item in list %}
+            <li>
+
+              <a class="govuk-link" href="{{item.url}}">{{item.title}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+
+          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-top-2 ">
+
+          <h2 class="govuk-heading-m govuk-!-padding-bottom-2 govuk-!-padding-top-0">Troubleshooting</h2>
+
+          {% set recovery = [
+            { title: "Sign user in" , url:  "/prototype-admin/log-in-verified" }
+            , { title: "Sign out" , url:  "/sign-out" }
+            , { title: "Clear all session data (logged out state)", url: "/prototype-admin/clear-data"}
+          ]  %}
+
+          <ul class="govuk-list">
+
+
+            {% for item in recovery %}
+            <li>
+{% if item.pre %}{{item.pre}}{% endif %}
+              <a class="govuk-link" href="{{item.url}}">{{item.title}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+
+
+  </section>
+</main>
+{% endblock %}
