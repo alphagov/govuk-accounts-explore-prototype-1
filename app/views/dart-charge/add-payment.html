@@ -22,6 +22,8 @@
 
       <h1 class="govuk-heading-m">Payment amount: £0.00</h1>
 
+<form action="/dart-charge/success" method="post" >
+
       <div class="govuk-form-group">
         <label class="govuk-label govuk-!-font-weight-bold" for="name-on-the-account">
           Card holder name
@@ -36,7 +38,7 @@
         <label class="govuk-label govuk-!-font-weight-bold" for="name-on-the-account">
           Card number
         </label>
-        <input class="govuk-input" id="name-on-the-account" name="name-on-the-account" type="text" spellcheck="false" autocomplete="name">
+        <input class="govuk-input" id="card-id" name="card-id" type="text" spellcheck="false" autocomplete="name">
       </div>
 
       <div class="govuk-form-group">
@@ -66,28 +68,28 @@
       </div>
 
       <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-start-hint">
           <legend class="govuk-fieldset__legend govuk-!-font-weight-bold">
             Start date
           </legend>
-          <div id="passport-issued-hint" class="govuk-hint">
+          <div id="passport-start-hint" class="govuk-hint">
             If required by your card
           </div>
-          <div class="govuk-date-input" id="passport-issued">
+          <div class="govuk-date-input" id="passport-start">
             <div class="govuk-date-input__item">
               <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                <label class="govuk-label govuk-date-input__label" for="passport-strart-month">
                   Month
                 </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric">
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-start-month" name="passport-start-month" type="text" pattern="[0-9]*" inputmode="numeric">
               </div>
             </div>
             <div class="govuk-date-input__item">
               <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                <label class="govuk-label govuk-date-input__label" for="passport-start-year">
                   Year
                 </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric">
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-start-year" name="passport-start-year" type="text" pattern="[0-9]*" inputmode="numeric">
               </div>
             </div>
           </div>
@@ -115,10 +117,12 @@
         <label class="govuk-label govuk-!-font-weight-bold" for="width-5">
           Postcode
         </label>
-        <input class="govuk-input govuk-input--width-5" id="width-5" name="width-5" type="text">
+        <input class="govuk-input govuk-input--width-5" id="postcode"  name="postcode" type="text">
       </div>
 
-      <a href="/dart-charge/success" class="govuk-button">Save card</a>
+      <button class="govuk-button" data-module="govuk-button">
+         Save card
+       </button>
 
     </div>
 
