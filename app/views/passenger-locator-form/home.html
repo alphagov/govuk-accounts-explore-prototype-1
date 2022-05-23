@@ -1,0 +1,67 @@
+{% extends "layout-traditional.html" %}
+
+{% import "includes/xpl-cards.html" as cards %}
+{% import "includes/xpl-tabs.njk" as tabs %}
+{% block pageTitle %}
+    Passenger Locator form
+{% endblock %}
+{% block main %}
+
+  <div class="xpl-section-inner govuk-width-container">
+    <main class="govuk-main-wrapper">
+
+
+
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+
+            <h1 class="govuk-heading-xl">
+            Your passenger locator form account
+            </h1>
+
+            <h2 class="govuk-heading-l govuk-!-margin-top-7">
+            Your forms
+            </h2>
+
+            <table class="govuk-table" style="overflow-y:scroll;">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header">Date last accessed</th>
+                  <th scope="col" class="govuk-table__header">Time last accessed</th>
+                  <th scope="col" class="govuk-table__header">Reference IDs</th>
+                  <th scope="col" class="govuk-table__header">Status</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">24 February 2022</td>
+                  <td class="govuk-table__cell">09:18 GMT</td>
+                  <td class="govuk-table__cell">5ZAA010</td>
+                  <td class="govuk-table__cell">Submitted</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p>Start a new passenger locator form.</p>
+            <button class="govuk-button" data-module="govuk-button">
+              Create a new form
+            </button>
+
+            <h2 class="govuk-heading-l">
+            Update your details
+            </h2>
+            <p>Update your passenger locator account details. This includes your given names, contact telephone number, home address and document details.</p>
+            <div class="">
+            {{ govukButton({
+              text: "Update your details",
+              href: "/passenger-locator-form/update-details"
+            }) }}
+            </div>
+
+        </div>
+</main>
+</div>
+
+
+
+    {% endblock %}
