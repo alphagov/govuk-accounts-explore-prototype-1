@@ -20,11 +20,14 @@
     }
     .govuk-header__navigation-item {
       padding-bottom: govuk-spacing(2);
-      margin-right: govuk-spacing(6);
 
       @include govuk-media-query($until: "desktop") {
         border-bottom: 0;
         padding-left: govuk-spacing(3);
+      }
+
+      @include govuk-media-query($from: "desktop") {
+        margin-left: govuk-spacing(6);
       }
 
       &--active {
