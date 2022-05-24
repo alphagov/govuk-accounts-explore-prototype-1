@@ -5,25 +5,30 @@
 {% set serviceName = "Dart Charge" %}
 {% import "includes/service-nav.njk" as serviceNav %}
 
-
 {% block header %}
 {% from "govuk/components/header/macro.njk" import govukHeader %}
-
-{{ govukHeader({
-  homepageUrl: "/index",
-  classes: "header-service",
-  navigation: ([
-    {
-      href: "/account/home",
-      text: "Your GOV.UK account",
-      active: true if (current == 'home')
-    },
-    {
-      href: "/sign-out",
-      text: "Sign out"
-    }
-  ])
-}) }}
+{% if useAccountNav == 'true' %}
+  {{ govukHeader({
+    homepageUrl: "/index",
+    classes: "header-service",
+    navigation: ([
+      {
+        href: "/account/home",
+        text: "Your GOV.UK account",
+        active: true if (current == 'home')
+      },
+      {
+        href: "/sign-out",
+        text: "Sign out"
+      }
+    ])
+  }) }}
+{% else %}
+  {{ govukHeader({
+    homepageUrl: "/index",
+    classes: "header-service"
+  }) }}
+{% endif %}
   {{ serviceNav.serviceNav(serviceName, showServiceNav, activeServiceNavItem) }}
 {% endblock %}
 
