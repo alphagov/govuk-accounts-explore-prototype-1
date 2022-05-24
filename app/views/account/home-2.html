@@ -16,24 +16,33 @@
 
       <p class="govuk-!-margin-bottom-8">You're signed in as <span class="govuk-!-font-weight-bold">your.name@example.com</span></p>
 
-      <div class="home-section govuk-!-margin-bottom-8">
-      <h2 class="govuk-heading-m">Services you can use with GOV.UK accounts</h2>
-
-      <p>GOV.UK accounts are new. At the moment, you can use your GOV.UK account to sign in to these services:</p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li><a href="/govuk/dart-charge-start">Dart Charge</a></li>
-        <li><a href="https://www.gov.uk/export-control-licence">Export control licences</a></li>
-        <li><a href="/email/manage">GOV.UK email subscriptions</a></li>
-      </ul>
-
-      <p>We’re working on adding more features and services.</p>
-    </div>
+      <div class="devolved-nations govuk-!-margin-bottom-8">
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-2">One account to sign in to services on GOV.UK</h2>
+        <p>
+          GOV.UK accounts are new. In the future, you'll be able to use your GOV.UK account to sign in to most services on GOV.UK.
+        </p>
+        <p>
+          Currently GOV.UK accounts are separate from other government accounts (for example Government Gateway).
+        </p>
+        <p>
+          At the moment you can only use your GOV.UK account with a few services.
+        </p>
+        <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Services you can sign in to with your GOV.UK account
+            </span>
+          </summary>
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="/govuk/dart-charge-start">Dart Charge</a></li>
+            <li><a href="https://www.gov.uk/export-control-licence">Export control licences</a></li>
+            <li><a href="https://www.gov.uk/email/manage/authenticate">GOV.UK email subscriptions</a></li>
+          </ul>
+        </details>
+      </div>
 
     <div class="home-section govuk-!-margin-bottom-8">
       <h2 class="govuk-heading-m">Your sign in details</h2>
-
-      <p>These are the details you use to sign in to services with your GOV.UK account.</p>
 
       <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
@@ -56,7 +65,7 @@
               ••••••••••••
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
+              <a class="govuk-link" href="/account/change-password-confirm">
                 Change<span class="govuk-visually-hidden"> password</span>
               </a>
             </dd>
@@ -85,7 +94,8 @@
 
         <div class="home-section govuk-!-margin-bottom-8">
         <h2 class="govuk-heading-m">Delete your GOV.UK account</h2>
-        <p>You can permanently delete your account and all the information stored in it.</p>
+        <p>This will permanently delete your sign in details and other information stored in your GOV.UK account.</p>
+        <p>It will not delete information saved in the services you’ve used with your GOV.UK account.</p>
         <p><a href="#" style="color:#d4351c;">Delete this GOV.UK account</a></p>
         </div>
 
