@@ -1,5 +1,10 @@
+.govuk-header--service-nav {
+  background-color: govuk-colour("light-grey");
+}
+
 .govuk-header__content--service-nav {
   display: block;
+  overflow: auto;
   padding-left: 0;
   padding-top: govuk-spacing(2);
   width: 100%;
@@ -7,12 +12,8 @@
   color: inherit;
   .govuk-header__link {
     color: inherit;
-    &--service-name {
-      display: block;
-    }
   }
   .govuk-header__navigation.govuk-header__navigation--service-nav {
-    float: none;
     margin-bottom: 0;
     @include govuk-media-query($until: "desktop") {
       margin-bottom: govuk-spacing(2);
@@ -39,8 +40,11 @@
     .govuk-header__navigation-item a {
       color: govuk-colour("blue");
     }
+
     .govuk-header__navigation-item--active a {
-      color: govuk-colour("black");
+      @include govuk-media-query($until: "desktop") {
+        color: govuk-colour("black");
+      }
     }
 
     .govuk-header__menu-button {
