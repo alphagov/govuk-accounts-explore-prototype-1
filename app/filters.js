@@ -38,39 +38,6 @@ module.exports = function (env) {
 
   ------------------------------------------------------------------ */
 
-// hack to let us try doing a title from the url
-
-filters.urlToTitle = function(url, shift){
-  if (url) {
-  var temp = url.split('/').pop(); // get last element of the array as we can't guarantee the starting point
-  console.log("url is" + temp);
-  if (shift){
-    temp = temp.slice(shift)
-  }
-  temp2 = temp.replace(/\-/g, ' ');
-  return temp2.charAt(0).toUpperCase() + temp2.slice(1)
-} else {
-  return 'Blank';
-}
-}
-
-
-// filter to rewrite a few obviously different page titles that we're using
-
-filters.rewriteTitle = function(title){
-  if (title == "Covid 19 coronavirus restrictions what you can and cannot do") {
-    title = "Coronavirus: how to stay safe and help prevent the spread";
-  } else if (title == "List of private providers of coronavirus testing" ) {
-    title = "Private providers of coronavirus (COVID-19) testing";
-  } else if (title == "Red amber and green list rules for entering england"){
-    title = "Red, amber, green lists: check the rules for travel to England from abroad";
-  } else {
-    // nothing - continue
-  }
-
-  return title;
-}
-
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */

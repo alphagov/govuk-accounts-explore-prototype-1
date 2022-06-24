@@ -1,0 +1,187 @@
+{% extends "layout_dartcharge.html" %}
+{% set useAccountNav = "true" %}
+{% set showServiceNav = "true" %}
+{% set activeServiceNavItem = "your-details" %}
+
+{% block pageTitle %}
+  Your details – Dart Charge – GOV.UK Prototype
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">Your details</h1>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+      <p><a class="govuk-link govuk-link--no-visited-state" href="your-details">Your contact details</a></p>
+      <p><a class="govuk-link govuk-link--no-visited-state" href="your-payment-details">Change your payment details</a></p>
+      <p><a class="govuk-link govuk-link--no-visited-state" href="#">Change Dart Charge account type</a></p>
+      <p><a class="govuk-link govuk-link--no-visited-state" href="#">Close your PAYG</a></p>
+      <p><a class="govuk-link govuk-link--no-visited-state" href="#">Close your Dart Charge account</a></p>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">Change your payment details</h2>
+<p>    <a href="#" class="govuk-link govuk-link--no-visited-state">View payment history</a>
+</p>
+
+<h2 class="govuk-heading-m">Change your payment details</h2>
+
+<div class="govuk-inset-text">
+  Your card will be automatically debited when you use the Dartford crossing with your vehicle(s).
+</div>
+<!--
+    <div class="govuk-form-group">
+      <label class="govuk-label govuk-!-font-weight-bold" for="name-on-the-account">
+        Card holder name
+      </label>
+      <div id="event-name-hint" class="govuk-hint">
+        As printed on the payment card
+      </div>
+      <input value="{{data['name-on-the-account'] | default('John Smith') }}" class="govuk-input" id="name-on-the-account" name="name-on-the-account" type="text" spellcheck="false" autocomplete="name">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label govuk-!-font-weight-bold" for="card-id">
+        Card number
+      </label>
+      <input  value="{{data['card-id'] | default('7777 7777777') }}" class="govuk-input" id="card-id" name="card-id" type="text" spellcheck="false" autocomplete="name">
+    </div>
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+        <legend class="govuk-fieldset__legend govuk-!-font-weight-bold">
+          Expiry date
+        </legend>
+        <div class="govuk-date-input" id="passport-issued">
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label " for="passport-issued-month">
+                Month
+              </label>
+              <input value="{{data['passport-issued-month'] | default('04') }}" class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric">
+            </div>
+          </div>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                Year
+              </label>
+              <input value="{{data['passport-issued-year'] | default('2021') }}" class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-start-hint">
+        <legend class="govuk-fieldset__legend govuk-!-font-weight-bold">
+          Start date
+        </legend>
+        <div id="passport-start-hint" class="govuk-hint">
+          If required by your card
+        </div>
+        <div class="govuk-date-input" id="passport-start">
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="passport-start-month">
+                Month
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-start-month" name="passport-start-month" type="text" pattern="[0-9]*" inputmode="numeric">
+            </div>
+          </div>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="passport-start-year">
+                Year
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-start-year" name="passport-start-year" type="text" pattern="[0-9]*" inputmode="numeric">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label govuk-!-font-weight-bold" for="sort-code">
+        Card security code (CVV/CV2)
+      </label>
+      <div id="sort-code-hint" class="govuk-hint">
+        The last 3 numbers found on the signature strip on the back of the card
+      </div>
+      <input value="{{data['sort-code'] | default('40-04-40') }}" class="govuk-input govuk-input--width-5" id="sort-code" name="sort-code" type="text" spellcheck="false" aria-describedby="sort-code-hint" pattern="[0-9]*" inputmode="numeric">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label govuk-!-font-weight-bold" for="more-detail">
+        Card holder address
+      </label>
+      <textarea class="govuk-textarea" value="{{data['more-detail'] | default('An address')}}" id="more-detail" name="more-detail" rows="5"></textarea>
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label govuk-!-font-weight-bold" for="width-5">
+        Postcode
+      </label>
+      <input  value="{{data['postcode'] | default('E1 8PT')}}" class="govuk-input govuk-input--width-5" id="postcode"  name="postcode" type="text">
+    </div>
+
+    <a href="/dart-charge/success" class="govuk-button">Save card</a>
+
+  </div>
+
+-->
+
+  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+           <div class="govuk-summary-list__row">
+             <dt class="govuk-summary-list__key">
+               Type
+             </dt>
+             <dd class="govuk-summary-list__value">
+              Visa
+             </dd>
+
+           </div>
+
+           <div class="govuk-summary-list__row">
+             <dt class="govuk-summary-list__key">
+               Card number
+             </dt>
+             <dd class="govuk-summary-list__value">
+              {{data['card-id'] | default('7777 7777777') }}
+             </dd>
+
+           </div>
+
+           <div class="govuk-summary-list__row">
+             <dt class="govuk-summary-list__key">
+               Expires
+             </dt>
+             <dd class="govuk-summary-list__value">
+              {{data['passport-issued-month'] | default('04') }} {{data['passport-issued-year'] | default('2021') }}
+             </dd>
+                </div>
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                Name on card
+               </dt>
+               <dd class="govuk-summary-list__value">
+              {{data['name-on-the-account'] | default('John Smith') }}
+               </dd>
+
+           </div>
+           </dl>
+<p>
+           <button class="govuk-button" data-module="govuk-button">
+              Change credit/debit card
+            </button>
+</p>
+    </div>
+
+
+</div>
+{% endblock %}

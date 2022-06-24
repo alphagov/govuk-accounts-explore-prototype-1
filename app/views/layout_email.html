@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% set useAccountNav = useAccountNav | default("false") %}
+{% set showServiceNav = showServiceNav | default("false") %}
+{% set activeServiceNavItem = activeServiceNavItem | default("false") %}
+{% set serviceName = "GOV.UK email subscriptions" %}
+{% import "includes/service-nav.njk" as serviceNav %}
+
+
+{% block header %}
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+
+{{ govukHeader({
+  homepageUrl: "/index",
+  navigation: ([
+    {
+      href: "/account/home-2",
+      text: "GOV.UK account",
+      active: true if (current == 'home')
+    },
+    {
+      href: "/sign-out",
+      text: "Sign out"
+    }
+  ])
+}) }}
+  {{ serviceNav.serviceNav(serviceName, showServiceNav, activeServiceNavItem) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  <div class="govuk-!-margin-bottom-4">
+    {{ govukPhaseBanner({
+      tag: {
+        text: "alpha"
+      },
+      html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    }) }}
+  </div>
+  
+{% endblock %}

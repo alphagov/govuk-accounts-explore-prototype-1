@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% set useAccountNav = useAccountNav | default("false") %}
+{% set showServiceNav = showServiceNav | default("false") %}
+{% set activeServiceNavItem = activeServiceNavItem | default("false") %}
+{% set serviceName = "Dart Charge" %}
+{% import "includes/service-nav.njk" as serviceNav %}
+
+{% block header %}
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% if useAccountNav == 'true' %}
+  {{ govukHeader({
+    homepageUrl: "/index",
+    classes: "header-service",
+    navigation: ([
+      {
+        href: "/account/home",
+        text: "Your GOV.UK account",
+        active: true if (current == 'home')
+      },
+      {
+        href: "/sign-out",
+        text: "Sign out"
+      }
+    ])
+  }) }}
+{% else %}
+  {{ govukHeader({
+    homepageUrl: "/index",
+    classes: "header-service"
+  }) }}
+{% endif %}
+  {{ serviceNav.serviceNav(serviceName, showServiceNav, activeServiceNavItem) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  <div class="govuk-!-margin-bottom-4">
+    {{ govukPhaseBanner({
+      tag: {
+        text: "alpha"
+      },
+      html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    }) }}
+  </div>
+
+{% endblock %}

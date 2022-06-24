@@ -1,12 +1,15 @@
-{% set auth = true %}
-{% set accountHidden = true %}
-{% set hideAccountMenu = true %}
-{% set hideFeedback = true %}
 {% set emailShortCut = [{link: "welcome" , email: "Welcome" }]%}
-{% extends "account/_account.html" %}
-{% block account %}
+{% extends "layout_auth.html" %}
 
-<br>
+{% block pageTitle %}
+  You’ve created your GOV.UK account – GOV.UK Prototype
+{% endblock %}
+
+{% block content %}
+<div class="ggovuk-width-container">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
 <h1 class='govuk-heading-xl'>You’ve created your GOV.UK account</h1>
 
@@ -14,7 +17,13 @@
 
 {{ govukButton({
 text: "Continue",
-href: "/account/control-how-we-use-information-about-you"
+href: "/dart-charge/handover"
 }) }}
+
+</div>
+</div>
+
+</div>
+
 
 {% endblock %}

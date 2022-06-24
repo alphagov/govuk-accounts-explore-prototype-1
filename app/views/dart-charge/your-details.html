@@ -1,0 +1,82 @@
+{% extends "layout_dartcharge.html" %}
+{% set useAccountNav = "true" %}
+{% set showServiceNav = "true" %}
+{% set activeServiceNavItem = "your-details" %}
+
+{% block pageTitle %}
+  Your details – Dart Charge – GOV.UK Prototype
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">Your details</h1>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+      <p class="govuk-!-margin-bottom-2"><a class="govuk-link govuk-link--no-visited-state" href="your-details">Your contact details</a></p>
+      <p class="govuk-!-margin-bottom-2"><a class="govuk-link govuk-link--no-visited-state" href="your-payment-details">Change your payment details</a></p>
+      <p class="govuk-!-margin-bottom-2"><a class="govuk-link govuk-link--no-visited-state" href="#">Change Dart Charge account type</a></p>
+      <p class="govuk-!-margin-bottom-2"><a class="govuk-link govuk-link--no-visited-state" href="#">Close your PAYG</a></p>
+      <p class="govuk-!-margin-bottom-2"><a class="govuk-link govuk-link--no-visited-state" href="#">Close your Dart Charge account</a></p>
+  </div>
+
+<div class="govuk-grid-column-two-thirds">
+<h2 class="govuk-heading-m">Your contact details</h2>
+
+<p>Your Dart Charge account uses your GOV.UK account sign in details to contact you.</p>
+
+<p>You can change these details in your GOV.UK account:</p>
+
+
+<dl class="govuk-summary-list">
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Email address
+      </dt>
+      <dd class="govuk-summary-list__value">
+        your.name@example.com</dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Phone number 
+      </dt>
+      <dd class="govuk-summary-list__value">
+        ******* 100000
+      </dd>
+    </div>
+  </dl>
+
+<p><a href="/account/home">Change your GOV.UK account details</a></p>
+</div>
+
+<!-- OLD CONENT
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">Your contact details</h2>
+
+
+
+  <div class="govuk-form-group">
+
+      <h3 class="govuk-heading-s">Your Dart Charge contact number</h3>
+  <label class="govuk-label" for="two-thirds">
+    Mobile phone (optional)
+  </label>
+  <input class="govuk-input govuk-!-width-two-thirds govuk-!-margin-bottom-3" id="event-name" name="event-name" type="text">
+  </div>
+
+
+
+  <button class="govuk-button" data-module="govuk-button">
+    Save your details
+  </button>
+
+  <h2 class="govuk-heading-m">Change your sign in details</h2>
+  <p>Go to your GOV.UK account to <a href="/account/home" class="govuk-body">update your email address, password or mobile number (for getting security codes to sign in).</a></p>
+  </div>
+  -->
+
+</div>
+{% endblock %}

@@ -1,73 +1,46 @@
-{% extends "layout.html" %}
-{% import "includes/xpl-cards.html" as cards %}
-{% import "includes/xpl-tabs.njk" as tabs %}
+{% extends "layout_email.html" %}
+{% set useAccountNav = "true" %}
+
 {% block pageTitle %}
-Change your email preferences
+  Manage your GOV.UK email subscriptions – GOV.UK Prototype Kit
 {% endblock %}
-{% block main %}
-  <div id="global-header-bar-outer">
-    <div id="global-header-bar"></div>
+
+{% block content %}
+
+<div class="govuk-width-container ">
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+      <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Manage your GOV.UK email subscriptions</h1>
+
+      <p class="govuk-!-margin-bottom-8 govuk-!-font-weight-bold">Subcriptions for your.name@emailaddress.com</p>
+      {{ govukInsetText({
+        html:
+      'You can <a href="/account/home-2">change your email address, password or mobile number in your GOV.UK account.</a>.'
+      }) }}
+
+      <div class="govuk-!-margin-bottom-2 govuk-!-padding-top-2 " style="border-top: 1px solid #b1b4b6; border-bottom: 1px solid #b1b4b6">
+
+       <p class="govuk-!-margin-bottom-0">Page</p>
+       <h3 class="govuk-heading-m govuk-!-padding-top-0 govuk-!-padding-bottom-o govuk-!-margin-bottom-4"">
+         <a href="/govuk/travel-abroad-from-england-coronavirus-subscribed.html">Travel abroad from England during coronavirus (COVID-19)</a>
+       </h3>
+       <p>This page was last updated on 18 March 2022</p>
+
+       <p>You subscribed to get updates as soon as they happen on 10 May 2022 at 12:00pm.<br>
+         <a href="#">Change how often you get emails</a>
+       </p>
+       <p>
+         <a href="#">Unsubscribe</a>
+       </p>
+     </div>
+
+     <a class="govuk-button govuk-button--secondary govuk-!-margin-top-4" href='#'>Unsubscribe from everything</a>
+
+      </div>
+    </div>
+    </main>
   </div>
 
-  <div class="xpl-section-inner ">
-    <main class="govuk-main-wrapper">
-
-
-      <div class="govuk-grid-row">
-
-
-        <div class="govuk-grid-column-two-thirds">
-
-        <h1 class="gem-c-heading govuk-heading-xl govuk-!-margin-bottom-6">Manage your GOV.UK email subscriptions</h1>
-
-
-        <p>Sign in to see and manage the emails you get about updates to GOV.UK.</p>
-
-        <p>You can:</p>
-
-<ul>
-  <li>
-        unsubscribe from emails you get from GOV.UK
-      </li><li>
-        change how often you get emails
-</li><li>
-        update your email address
-</li></ul>
-
-<p>You cannot set up new email subscriptions here. Use the link to ‘get emails’ on the page or topic you want to subscribe to. </p>
-
-
-
-
-        <form novalidate="novalidate" action="/email/manage/router" accept-charset="UTF-8"  method="post"  >
-
-        <div class="govuk-form-group ">
-
-
-          <label for="email-address-input" class="gem-c-label govuk-label">Email address</label>
-
-
-
-
-
-
-
-            <input name="address" class="gem-c-input govuk-input" id="address-input" type="text" aria-describedby="form">
-        </div>
-
-
-
-
-          <button class="gem-c-button govuk-button gem-c-button--bottom-margin" type="submit" >Continue</button>
-
-
-        </form>
-                      </div>
-
-
-
-
-
-        </div>
-          </div>
-    {% endblock %}
+{% endblock %}

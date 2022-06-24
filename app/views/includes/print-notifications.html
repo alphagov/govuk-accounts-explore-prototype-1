@@ -1,6 +1,0 @@
-{% set notificationTemp = notifications | default(["nothing", "nothing"]) %}
-
-<div class="account-area gem-c-print-link govuk-!-display-none-print govuk-!-margin-top-3 govuk-!-margin-bottom-3">
-  <a role="button" class="govuk-link govuk-body-s gem-c-print-link__button gem-c-notification-link__button {% if signedIn and (notificationTemp.indexOf(currentURL) > -1 ) %} gem-c-notification-link__link-active{% endif %}" href="/account/router{% if signedIn and (notificationTemp.indexOf(currentURL) > -1 ) %}-remove{% else %}-add{% endif %}?{% if signedIn and (notificationTemp.indexOf(currentURL) > -1 ) %}remove{% else %}save{% endif %}={{currentURL}}" data-module="notification-link">{% if signedIn and (notificationTemp.indexOf(currentURL) > -1 )%}Stop getting {% else %}Get{% endif %} updates about this page </a>
-    <button class="govuk-link govuk-body-s gem-c-print-link__button" data-module="print-link">Print this page</button>
-</div>

@@ -5,18 +5,13 @@
   <script src="{{scriptUrl}}"></script>
 {% endfor %}
 
-{% if hideExplore %}
-<script src="/public/javascripts/account.js"></script>
+<script src="/public/javascripts/application.js"></script>
 
-{% else %}
+<script src="/public/javascripts/layout-header.js"></script>
 <script src="/public/javascripts/explore-header.js"></script>
 <script src="/public/javascripts/application.js"></script> <!-- this version of application seems to have weird stuff in it! -->
 <script src="/public/javascripts/xpl-tabs.js"></script>
 <script src="/public/javascripts/govuk-accordion.js"></script>
-
-{% endif %}
-
-
 
 {% if useAutoStoreData %}
   <script src="/public/javascripts/auto-store-data.js"></script>

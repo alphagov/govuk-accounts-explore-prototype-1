@@ -8,20 +8,26 @@ $govuk-assets-path: '/govuk/assets/';
 @import "lib/extensions/extensions";
 
 // Patterns that aren't in Frontend
+@import "patterns/contents-list";
+@import "patterns/mainstream-guide";
+@import "patterns/pagination";
+@import "patterns/related-items";
 @import "patterns/step-by-step-header";
 @import "patterns/step-by-step-nav";
 @import "patterns/step-by-step-related";
 @import "patterns/task-list";
 @import "patterns/related-items";
-
-// Components that aren't in Frontend
-@import "components/cookie-banner";
+@import "patterns/service-nav";
 
 // Extra styles for accounts
 @import "accounts";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
+.gem-c-layout-for-public__blue-bar {
+  background: #1d70b8;
+  height: 10px;
+}
 
 .inverse-header {
   background-color: govuk-colour("blue");
@@ -121,6 +127,12 @@ li.topic-link {
     display: block;
     float: right;
 }
+}
+
+.devolved-nations {
+  background-color: #F3F2F1;
+  padding: 25px;
+  margin-bottom: 20px;
 }
 
 // Mia's stuff
@@ -338,9 +350,7 @@ img {
 }
 
 @import "explore-header";
-@import "explore";
-@import "xpl-tabs";
-@import "xpl-cards";
+@import "search";
 
 
 // service list
@@ -356,10 +366,6 @@ img {
 
 .govuk-service-list-item-last {
   border-bottom: 1px solid #b1b4b6;
-}
-
-.govuk-tag {
-  margin-bottom: 20px;
 }
 
 .govuk-button--secondary {
@@ -381,32 +387,6 @@ img {
 .govuk-service-list-item .govuk-heading-m {
   font-size: 19px;
   height: 5px;
-}
-
-// SEARCH BOX
-.gem-c-search--on-white .gem-c-search__submit {
-    background-color: #1d70b8;
-    color: #fff;
-}
-
-.gem-c-search--on-white .gem-c-search__submit {
-    background-color: #1d70b8;
-    color: #fff;
-}
-.gem-c-search__submit {
-    border: 0;
-    cursor: pointer;
-    border-radius: 0;
-    position: relative;
-    padding: 0;
-    width: 40px;
-    height: 40px;
-    background-image: url("/public/images/magnifying-glass.png");
-    background-repeat: no-repeat;
-    background-size: 30px auto;
-    background-position: 4px 50%;
-    text-indent: -5000px;
-    overflow: hidden;
 }
 
 // adding float for PLF

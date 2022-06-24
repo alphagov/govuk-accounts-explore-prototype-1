@@ -1,18 +1,16 @@
-{% set auth = true %}
-{% set back = true %}
-{% set accountHidden = true %}
-{% set hideFeedback = true %}
-{% extends "account/_account.html" %}
-{% import "includes/xpl-cards.html" as cards %}
-{% import "includes/xpl-tabs.njk" as tabs %}
-{% set hideAccountMenu = true %}
+{% extends "layout_auth.html" %}
 
 {% block pageTitle %}
-  {{ title }}
+  Sign in to your GOV.UK account – GOV.UK Prototype
 {% endblock %}
 
-{% block account %}
-  <form action="{% if data['created'] or (data['user-group'] == 'GOV.UK account') %}/auth/password{% else %}/auth/no-account{% endif %}" method="post" class="sign-in">
+{% block content %}
+<div class="ggovuk-width-container">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+  <form action="/auth/password" method="post" class="sign-in">
     <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">
       Sign in to your GOV.UK account
     </h1>
@@ -24,19 +22,21 @@
           label: {
             text: "Email address"
           },
+          classes: "govuk-!-width-one-half",
           id: "email",
           name: "govUKEmail",
           value: govUKEmail
         }) }}
 
 
-{% if (data['user-group'] == 'GOV.UK account')  %}
         <input id="signedIn" name="signedIn" type="hidden" value="true">
-{% endif %}
         <button class="govuk-button" data-module="govuk-button">
           Continue
         </button>
       </form>
+    </div>
+    </div>
 
+    </div>
 
     {% endblock %}

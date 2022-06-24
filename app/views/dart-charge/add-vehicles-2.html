@@ -1,0 +1,55 @@
+{% extends "layout_dartcharge.html" %}
+{% set useAccountNav = "true" %}
+
+{% block pageTitle %}
+  Your vehicles – Dart Charge – GOV.UK Prototype
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Your vehicles
+      </h1>
+
+      <p>Please add your vehicle(s) below. Please note that you may not be able to add your vehicle if it has been registered or its registration details with the DVLA have changes within the last 3 months.</p>
+
+      <table class="govuk-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header app-custom-class">Registration number</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Class</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Model</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Vehicle plan</th>
+        <th scope="col" class="govuk-table__header app-custom-class"></th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">AB77ABC</td>
+        <td class="govuk-table__cell">B</td>
+        <td class="govuk-table__cell">Toyota</td>
+        <td class="govuk-table__cell">Standard</td>
+        <td class="govuk-table__cell govuk-link">Remove</td>
+      </tr>
+    </tbody>
+  </table>
+
+    <div class="govuk-form-group">
+    <a href="/dart-charge/add-payment" aria-disabled="true" class="govuk-button" data-module="govuk-button">
+      Add credit or debit card
+    </a>
+    <div class="payment-icon-group">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/MasterCard_Logo.svg" alt="Master Card logo" class="payment-icon govuk-!-display-inline">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa logo" class="payment-icon govuk-!-display-inline">
+    </div>
+    </div>
+
+
+    <a href="#" class="govuk-body">Go back</a>
+
+    </div>
+
+  </div>
+{% endblock %}

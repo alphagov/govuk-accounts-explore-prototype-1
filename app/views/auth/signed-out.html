@@ -1,9 +1,15 @@
-{% set auth = true %}
-{% set accountHidden = true %}
-{% set hideAccountMenu = true %}
-{% set hideFeedback = true %}
-{% extends "account/_account.html" %}
-{% block account %}
+{% extends "layout_auth.html" %}
+
+{% block pageTitle %}
+  You’ve signed out – GOV.UK Prototype
+{% endblock %}
+
+{% block content %}
+<div class="ggovuk-width-container">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
 <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-4">You’ve signed out</h1>
 <p>
   {{ govukButton({
@@ -11,6 +17,11 @@
   href: "/"
 }) }}
 </p>
+
+</div>
+</div>
+
+</div>
 
 
 <!-- use this soon as it has the functionality for saving a notification  -->

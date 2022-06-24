@@ -1,16 +1,15 @@
-{% set auth = true %}
-{% set accountHidden = true %}
-{% set hideFeedback = true %}
-{% extends "account/_account.html" %}
-{% import "includes/xpl-cards.html" as cards %}
-{% import "includes/xpl-tabs.njk" as tabs %}
-{% set hideAccountMenu = true %}
-{% set sms = true  %}
+{% extends "layout_auth.html" %}
+
 {% block pageTitle %}
-  Check your phone
+  Check your phone – GOV.UK Prototype
 {% endblock %}
 
-{% block account %}
+{% block content %}
+<div class="ggovuk-width-container">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
   <form action="/sign-in/set-cookie" method="POST" class="sign-in">
     <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">
     Check your phone
@@ -26,6 +25,7 @@
           label: {
             text: "Enter the 6 digit security code"
           },
+          classes: "govuk-input--width-10",
           id: "email",
           name: "_email",
           value: _email
@@ -42,5 +42,8 @@
         </button>
       </form>
 
+    </div>
+  </div>
 
-    {% endblock %}
+</div>
+{% endblock %}

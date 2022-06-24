@@ -18,14 +18,7 @@ Example usage:
 */
 
 module.exports = {
+
   // Insert values here
-
- "user-group" : "Email updates", // "Nothing" , "Email updates" or "GOV.UK account"
-
- "mailinator-email": "govukresearch.inbox1", // comment this out later if required and uncomment other section
-/*
- "mailinator-email": "govukresearch.inbox2", // comment this out later if required and uncomment other section
-*/
-  "get-emails" : "No"
 
 }

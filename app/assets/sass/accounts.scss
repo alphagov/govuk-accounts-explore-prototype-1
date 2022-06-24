@@ -3,8 +3,6 @@
 .accounts-menu {
     margin: 0 0 30px 0;
     padding: 0;
-/*    padding-bottom: 38px;
-    border-bottom: solid 1px #b1b4b6; */ // commented out as inline
 }
 
 .accounts-menu__link {
@@ -17,36 +15,28 @@
     line-height: 1.25;
 }
 
-/*
-.accounts-menu li {
-  float: left;
-  margin-right: 30px;
-}
-*/
-// commented out as it's for inline version
-
 @media (min-width: 40.0625em) {
 .accounts-menu__link {
     font-size: 19px;
     font-size: 1.1875rem;
     line-height: 1.3157894737;
-  /*  text-decoration: none; */ //uncomment for inline version
 }}
+
+
 
 .accounts-menu__item {
     list-style-type: none;
-    padding: 12px 0; // remove for inline stuff
+    padding: 12px 0;
 }
 
 @media (min-width: 40.0625em) {
-.accounts-menu__item {
-    margin: 0 0 20px;
-    padding: 5px 0;
-}}
+  .accounts-menu__item {
+      margin: 0 0 20px;
+      padding: 5px 0;
+  }
+}
 
 .accounts-menu__item--current {
-  /*   border-bottom: 4px solid #1d70b8; */ // uncomment out for inline
-  //comment out all the following for inline
     margin-left: -14px;
     padding-left: 10px;
     border-left: 4px solid #1d70b8;
@@ -61,12 +51,6 @@
     margin-bottom: 20px;
     padding: 15px;
     background: #f3f2f1;
-}
-
-@media (min-width: 40.0625em) {
-    padding: 30px;
-    margin-top: 10px;
-    margin-bottom: 50px;
 }
 
 .accounts-panel {
@@ -120,7 +104,6 @@
 }
 
 
-
 .gem-c-show-password__input-wrapper {
     display: table;
     display: flex;
@@ -139,8 +122,6 @@
     background: #f3f2f1;
 }
 
-
-
 .account .govuk-main-wrapper {
     display: block;
     padding-top: 20px;
@@ -154,17 +135,9 @@
 }}
 
 
-// hide call to action on RAG status page
-
-.\/guidance\/red-amber-and-green-list-rules-for-entering-england .call-to-action {
-  display: none !important;
-}
-
 .\/guidance\/red-amber-and-green-list-rules-for-entering-england .gem-c-contents-list__list > li:first-child {
   display: none !important;
 }
-
-// end hide call to action
 
 .gem-c-notification-link__link, .gem-c-notification-link__button {
     background: url(../images/alerts.png) no-repeat 10px 50%;
@@ -173,54 +146,42 @@
     margin-bottom: 10px;
     margin-right: 10px;
     text-decoration: none !important;
-
-}
-
-.account-area .govuk-link {
-  font-weight: normal; // gem area makes it bold
-  text-decoration: underline;
-  margin-top: 20px; // need to make this not bunch up against our version in mobile view
-}
-/*
-.gem-c-notification-link__link-active, .gem-c-notification-link__button-active {
-    background: url(../images/alerts-active.png) no-repeat 10px 50%;
-    background-color: #1D70B8;
     border-color: #1D70B8;
+}
+
+.gem-c-notification-link__link-active, .gem-c-notification-link__button-active {
+    background: url(../images/alerts-active.png) no-repeat 10px 50% !important;
+    background-color: #1D70B8 !important;
+    border-color: #1D70B8 !important;
     color: white !important;
 }
-*/
-.gem-c-notification-link__link-active:hover, .gem-c-notification-link__button-active:hover {
-    background-color: #f3f2f1 !important;
-    border-color: #b1b4b6 !important;
-    color: #003078	!important;
-}
 
+.gem-c-print-link__button {
+    border: 1px solid #b1b4b6;
+    color: #1d70b8;
+    cursor: pointer;
+    margin: 0;
+}
 
 
 .menu-hidden {
   display: none;
 }
 
-// uncomment out for inlined
-/*
-.govuk-main-wrapper-account {
-  padding-top: 20px;
-}
-*/
-
-//overrides for testing
-
-#global-bar {
-  display: none; //yay, no covid banner!
-
-}
-#global-header-bar-outer {
-    background: white;
+.payment-icon-group{
+  align-items: center;
 }
 
-.govuk-breadcrumbs, .explore-body .govuk-breadcrumbs--collapse-on-mobile {
-  background: white;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  margin-bottom: 0 !important;
+.payment-icon {
+    align: left;
+    width: 80px;
+    height: 50px;
+}
+
+.dart-panel {
+  background-color: #28a197;
+}
+
+.header-service {
+  border-bottom: 10px solid govuk-colour("blue");
 }

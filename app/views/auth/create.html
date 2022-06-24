@@ -1,9 +1,10 @@
-{% set auth = true %}
-{% set accountHidden = true %}
-{% set hideAccountMenu = true %}
-{% set hideFeedback = true %}
-{% extends "account/_account.html" %}
-{% block account %}
+{% extends "layout_auth.html" %}
+
+{% block pageTitle %}
+  Enter your email address – GOV.UK Prototype
+{% endblock %}
+
+{% block content %}
 
 {{ govukBackLink({
   text: "Back",
@@ -12,12 +13,15 @@
 }) }}
 
 
+<div class="ggovuk-width-container">
 
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-<form data-module="gem-track-click" action="/auth/check-email/router" accept-charset="UTF-8" data-remote="true" class="form" method="post" name="emailAddress">
+<form data-module="gem-track-click" action="/auth/check-email" accept-charset="UTF-8" data-remote="true" class="form" method="post" name="emailAddress">
   <input type="hidden" name="authenticity_token"
     value="qN3NeE0rDQErgwLO7D0w3rPE4Z0dZMcFgmpqi9V96vYzryz7YoE2fVqk0uP12hmEQHBsDl9teD5JL0aPOj2dRQ==">
-  <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">Enter your email address</h1>
+  <h1 class="gem-c-heading govuk-heading-xl govuk-!-margin-bottom-3">Enter your email address</h1>
   <p>
     Enter your email address to create an account.
   </p>
@@ -29,5 +33,10 @@
   <button class="govuk-button" data-module="govuk-button">Continue</button>
 
 </form>
+
+</div>
+</div>
+
+</div>
 
 {% endblock %}

@@ -1,17 +1,10 @@
-{% set auth = true %}
-{% set back = true %}
-{% set accountHidden = true %}
-{% set hideFeedback = true %}
-{% extends "account/_account.html" %}
-{% import "includes/xpl-cards.html" as cards %}
-{% import "includes/xpl-tabs.njk" as tabs %}
-{% set hideAccountMenu = true %}
+{% extends "layout_auth.html" %}
 
 {% block pageTitle %}
-  {{ title }}
+  No GOV.UK account found – GOV.UK Prototype
 {% endblock %}
 
-{% block account %}
+{% block content %}
     <h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-3">
       No GOV.UK account found
     </h1>
