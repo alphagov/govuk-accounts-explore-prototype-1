@@ -396,3 +396,52 @@ img {
   float: right;
 
 }}
+
+.service-card {
+  border: 1px solid #b1b4b6;
+  border-top: 4px solid #1d70b8;
+  padding: 20px;
+}
+
+.accounts-blurb {
+  background-color: #f3f2f1;
+  padding: 20px;
+}
+
+.tasks {
+  margin-bottom: 40px;
+}
+
+.task-block {
+  border-top: 1px solid #b1b4b6;
+  padding-top: 20px;
+  margin-bottom: 40px;
+}
+
+.pta-card-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40px;
+}
+
+.pta-card {
+  background-color: #f3f2f1;
+  border: 1px solid #b1b4b6;
+  padding: 10px;
+  margin-right: 20px;
+  flex: 33%;
+  max-width: 170px;
+}
+
+.pta-card:last-child {
+  margin-right: 0px;
+}
+
+@media (max-width: 800px) {
+  .pta-card-container {
+    flex-direction: column;
+  }
+  .pta-card {
+    margin-bottom: 20px;
+  }
+}
