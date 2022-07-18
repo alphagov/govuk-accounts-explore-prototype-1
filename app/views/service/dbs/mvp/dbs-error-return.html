@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Proving your identity with GOV.UK Verify
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  <!--<a class="govuk-back-link" href="dbs-opt-in">Back</a>-->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/pyi-try-again" method="post" class="form">
+
+      <h1 class="govuk-heading-l">You have not finished proving your identity</h1>
+
+      <p>This could be because:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>a technical error meant we could not prove your identity</li>
+        <li>you clicked the back button on your browser</li>
+      </ul>
+
+      {{ govukRadios({
+      classes: "govuk-radios--inline",
+      idPrefix: "dbs-redirect",
+      name: "dbs-redirect",
+      fieldset: {
+        legend: {
+          text: "What would you like to do?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      items: [
+        {
+          value: "try again",
+          text: "Try to prove your identity again with your GOV.UK account"
+        },
+        {
+          value: "use verify",
+          text: "Use GOV.UK Verify instead"
+        }
+      ]
+      }) }}
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+
+</div>
+{% endblock %}

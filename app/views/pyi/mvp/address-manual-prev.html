@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Enter your previous address
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header_mvp.html" %}
+{% endblock %}
+
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+<a class="govuk-back-link" href="address-picker-prev">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="address-manual-prev-post" method="post">
+
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            Enter your previous address
+          </h1>
+        </legend>
+
+        <p>
+          <span class="govuk-!-margin-bottom-1 govuk-!-display-block">Postcode</span>
+          <strong>{{ data['address-postcode-prev'] or 'LS1 3BE' }}</strong>
+          <a href="kbv-address-1" class="govuk-!-margin-left-5">
+            Change
+            <span class="govuk-visually-hidden">your postcode</span>
+          </a>
+        </p>
+
+        <!-- subBuildingName-->
+
+        {{ govukInput({
+        label: {
+          text: "Flat number"
+        },
+        classes: "govuk-input--width-5",
+        id: "address-flat-number-current",
+        value: data['address-flat-number-prev'],
+        name: "address-flat-number-prev"
+      }) }}
+
+        <!-- buildingNumber-->
+
+        {{ govukInput({
+        label: {
+          text: "House number"
+        },
+        classes: "govuk-input--width-5",
+        id: "address-house-number-prev",
+        value: data['address-house-number-prev'],
+        name: "address-house-number-prev"
+      }) }}
+
+        <!-- buildingName-->
+
+        {{ govukInput({
+        label: {
+          text: "House name"
+        },
+        classes: "govuk-input--width-20",
+        id: "address-house-name-prev",
+        value: data['address-house-name-prev'],
+        name: "address-house-name-prev"
+      }) }}
+
+        <!-- throughfareName-->
+
+        {{ govukInput({
+        label: {
+          text: "Street name"
+        },
+        classes: "govuk-input--width-20",
+        id: "address-street-prev",
+        value: data['address-street-prev'],
+        name: "address-street-prev"
+      }) }}
+
+        <!-- postTown-->
+
+        {{ govukInput({
+        label: {
+          text: "Town or city"
+        },
+        classes: "govuk-input--width-20",
+        id: "address-city-prev",
+        value: data['address-city-prev'],
+        name: "address-city-prev"
+      }) }}
+
+      </fieldset>
+
+      <button class="govuk-button" type="submit" data-module="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

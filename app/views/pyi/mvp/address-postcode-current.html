@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Find your address
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header_mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+<!--<a class="govuk-back-link" href="kbv-details">Back</a>-->
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="address-picker-current" method="post">
+
+      <fieldset class="govuk-fieldset" aria-describedby="delivery-address-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            Find your address
+          </h1>
+        </legend>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="postcode">
+            Enter your postcode
+          </label>
+        <div class="govuk-hint">
+          Enter the postcode of your current home address. This must be a UK postcode, for example SW1A 2AA.
+        </div>
+          <input class="govuk-input govuk-input--width-10" id="postcode" name="address-postcode-current" type="text" autocomplete="postal-code" value="{{ data['address-postcode-current'] }}">
+        </div>
+
+      </fieldset>
+
+      <button class="govuk-button" type="submit" data-module="govuk-button">
+        Find address
+      </button>
+
+<!--      <details class="govuk-details" data-module="govuk-details">-->
+<!--        <summary class="govuk-details__summary">-->
+<!--          <span class="govuk-details__summary-text">I do not live in the UK</span>-->
+<!--        </summary>-->
+<!--        <div class="govuk-details__text">-->
+<!--          <p></p>-->
+<!--        </div>-->
+<!--      </details>-->
+
+    </form>
+
+    {% if data['devMode'] === 'true' %}
+    {# DEVMODE SCENARIOS #}
+
+    <details class="nhsuk-details dev-mode govuk-!-margin-bottom-5" role="group">
+      <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+        <span class="nhsuk-details__summary-text">
+          Continue with testing scenario
+        </span>
+      </summary>
+      <div class="nhsuk-details__text">
+        <h4>Errors</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            <a href="address-error-current-nonefound">No addresses returned from Ordinance Survey</a>
+          </li>
+          <li>
+            <a href="address-error-current-nonefound">Validation error from Ordinance Survey</a>
+          </li>
+        </ul>
+      </div>
+    </details>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}

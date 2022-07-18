@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Have you ever been known by any other names?
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+    <a class="govuk-back-link" href="dbs-continue">Back</a>
+  {% endblock %}
+{% block content %}
+
+{% if prevURL === "http://localhost:3000/service/dbs/mvp/dbs-review" or prevURL === "https://gds-identity.herokuapp.com/service/dbs/mvp/dbs-review" or prevURL === "https://gds-identity-ur.herokuapp.com/service/dbs/mvp/dbs-review" %}
+{% set action = '/service/dbs/mvp/dbs-review' %}
+{% else %}
+{% set action = '/service/dbs/mvp/dbs-sex' %}
+{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="{{ action }}" method="post" class="form">
+
+      {{ govukRadios({
+          idPrefix: "dbs-other-names",
+          name: "dbs-other-names",
+          classes: "govuk-radios--inline",
+          fieldset: {
+            legend: {
+              text: "Have you ever been known by any other names?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+          {
+          value: "yes",
+          text: "Yes"
+          },
+          {
+          value: "no",
+          text: "No"
+          }
+          ]
+          }) }}
+
+      <p>You must tell us about all other names you've used, including middle names.</p>
+
+      <p>For example, you may have changed your name through marriage or deed poll.</p>
+
+      <div class="govuk-inset-text">
+        <p>Only your current name will be displayed on your online result.</p>
+      </div>
+
+      <table class="govuk-table">
+        <tr class="govuk-table__cell">
+          <th class="govuk-table__cell" style="text-align: left;">Name</th>
+          <th class="govuk-table__cell" style="text-align: left;">Dates you used this name</th>
+        </tr>
+        <tr>
+          <td class="govuk-table__cell">{{ data['first-name'] or 'Julian' }} {{ data['middle-names'] or '' }} {{ data['surname'] or 'White' }}</td>
+          <td class="govuk-table__cell">Current name</td>
+        </tr>
+      </table>
+
+    <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+  </form>
+</div>
+</div>
+{% endblock %}

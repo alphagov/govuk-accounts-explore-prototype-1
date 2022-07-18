@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Enter your email address
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header-auth-mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+  {% if prevURL === "http://localhost:3000/preauth/mvp/create-spinner" or prevURL === "https://gds-identity.herokuapp.com/preauth/mvp/create-spinner" or prevURL === "https://gds-identity-ur.herokuapp.com/preauth/mvp/create-spinner" %}
+    <a class="govuk-back-link" href="{{ preAuth }}">Back</a>
+  {% else %}
+    <a href="gov-account" class="govuk-back-link">Back</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      Enter your email address
+    </h1>
+
+    <p>Enter your email address to create an account.</p>
+
+    <form class="form" action="/auth/v9/create-account-exists" method="post">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="email">
+          Email address
+        </label>
+        <!-- <div id="email-hint" class="govuk-hint">
+            We’ll only use this to send you a receipt
+        </div> -->
+        <input class="govuk-input govuk-!-width-two-thirds" id="email" name="emailAddress" type="email" spellcheck="false" aria-describedby="email-hint" autocomplete="email">
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+      <input class="govuk-input" name="signin" type="hidden" value="create">
+    </form>
+  </div>
+</div>
+
+{% endblock %}

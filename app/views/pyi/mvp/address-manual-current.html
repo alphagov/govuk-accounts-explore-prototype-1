@@ -1,0 +1,148 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Enter your address
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header_mvp.html" %}
+{% endblock %}
+
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+<a class="govuk-back-link" href="address-picker-current">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="address-check" method="post">
+
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            Enter your address
+          </h1>
+        </legend>
+        
+        <!-- removed postcode lookup
+        <p>
+          <span class="govuk-!-margin-bottom-1 govuk-!-display-block">Postcode</span>
+          <strong>{{ data['address-postcode-current'] or 'LS1 3BE'}}</strong>
+          <a href="address-postcode-current" class="govuk-!-margin-left-5">
+            Change
+            <span class="govuk-visually-hidden">your postcode</span>
+          </a>
+        </p>
+        -->
+
+        <!-- subBuildingName-->
+
+        {{ govukInput({
+          label: {
+            text: "Flat number"
+          },
+          classes: "govuk-input--width-5",
+          id: "address-flat-number-current",
+          value: data['address-flat-number-current'],
+          name: "address-flat-number-current"
+        }) }}
+
+        <!-- buildingNumber-->
+
+        {{ govukInput({
+          label: {
+            text: "House number"
+          },
+          classes: "govuk-input--width-5",
+          id: "address-house-number-current",
+          value: data['address-house-number-current'],
+          name: "address-house-number-current"
+        }) }}
+
+        <!-- buildingName-->
+
+        {{ govukInput({
+          label: {
+            text: "House name"
+          },
+          classes: "govuk-input--width-20",
+          id: "address-house-name-current",
+          value: data['address-house-name-current'],
+          name: "address-house-name-current"
+        }) }}
+
+        <!-- throughfareName-->
+
+        {{ govukInput({
+          label: {
+            text: "Street name"
+          },
+          classes: "govuk-input--width-20",
+          id: "address-street-current",
+          value: data['address-street-current'],
+          name: "address-street-current"
+        }) }}
+
+        <!-- postTown-->
+
+        {{ govukInput({
+          label: {
+            text: "Town or city"
+          },
+          classes: "govuk-input--width-20",
+          id: "address-city-current",
+          value: data['address-city-current'],
+          name: "address-city-current"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Postcode"
+          },
+          classes: "govuk-input--width-10",
+          id: "address-postcode",
+          name: "address-postcode",
+          autocomplete: "postal-code"
+        }) }}
+
+        <!-- yearFrom-->
+
+        {{ govukDateInput({
+          id: "address-date-current",
+          namePrefix: "address-year-current",
+          fieldset: {
+            legend: {
+              text: "When did you start living here?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "Enter the year you started living at this address, for example 2017"
+          },
+          items: [
+            {
+              name: "year",
+              value: data['address-year-current-year'],
+              classes: "govuk-input--width-4"
+            }
+          ]
+        }) }}
+
+
+      </fieldset>
+
+      <button class="govuk-button" type="submit" data-module="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

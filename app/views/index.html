@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-User research tasks – GOV.UK Account prototype
+  Home – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
@@ -10,130 +10,227 @@ User research tasks – GOV.UK Account prototype
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        User research tasks
+        Usability testing 18 and 19 July
       </h1>
-      <p>
-        User research tasks for the GOV.UK account data management and service integration prototype.
-      </p>
 
-      <h2 class="govuk-heading-m">Task 1</h2>
-          {% from "govuk/components/button/macro.njk" import govukButton %}
-
-          {{ govukButton({
-            text: "Start task",
-            href: "/govuk/dart-charge-start"
-          }) }}
-          {% from "govuk/components/details/macro.njk" import govukDetails %}
-
-          <details class="govuk-details" data-module="govuk-details">
-            <summary class="govuk-details__summary">
-              <span class="govuk-details__summary-text">
-                Links
-              </span>
-            </summary>
-            <div class="govuk-details__text">
-              <ul class="govuk-list">
-                <li>
-                  <a class="govuk-link" href="/govuk/dart-charge-start">Dart charge start page</a>
-                </li>
-                <li>
-                  <a class="govuk-link" href="dart-charge/options">Dart charge options</a>
-                </li>
-                <li>
-                  <a class="govuk-link" href="auth/sign-in-or-create">Create a GOV.UK account or sign in</a>
-                </li>
-                <li>
-                  <a class="govuk-link" href="auth/create">Enter email</a>
-                </li>
-                <li>
-                  <a class="govuk-link" href="auth/check-email">Check email</a>
-                </li>
-                <li>
-                  <a class="govuk-link" href="auth/enter-phone">Enter phone</a>
-                </li>
-                <li>
-                  <a class="govuk-link" href="auth/check-phone">Check phone</a>
-                </li>
-                <li>
-                  <a class="govuk-link" href="auth/password">Create password</a>
-                </li>
-                <li>
-                  <a class="govuk-link" href="auth/created">Account created success</a>
-                </li>
-                <li>
-                  <a class="govuk-link" href="dart-charge/handover">Dart Charge handover page</a>
-                </li>
-                <li>
-                  <a class="govuk-link" href="dart-charge/add-vehicles">Add vehicles</a>
-                </li>
-                <li>
-                  <a class="govuk-link" href="dart-charge/add-payment">Add payment</a>
-                </li>
-                <li>
-                  <a class="govuk-link" href="dart-charge/success">PAYG account created success</a>
-                </li>
-                <li>
-                  <a class="govuk-link" href="dart-charge/payg-home">Dart Charge - home</a>
-                </li>
-                <li>
-                  <a class="govuk-link" href="dart-charge/your-details">Dart Charge - your details</a>
-                </li>
-                <li>
-                  <a class="govuk-link" href="dart-charge/your-payment-details">Dart Charge - your payment details</a>
-                </li>
-                <li>
-                  <a class="govuk-link" href="account/home">GOV.UK account - home</a>
-                </li>
-                <li>
-                  <a class="govuk-link" href="notify/welcome">[EMAIL] - Welcome email</a>
-                </li>
-              </ul>
-            </div>
-          </details>
-
-      <h2 class="govuk-heading-m">Task 2</h2>
-      {{ govukButton({
-        text: "Start task",
-        href: "/govuk/travel-abroad-from-england-coronavirus"
-      }) }}
-      <details class="govuk-details" data-module="govuk-details">
+      <div class="tasks">
+      <h2 class="govuk-heading-m">Tasks</h2>
+      <div class="task-block">
+      <a href="govuk/dbs-service-start" class="govuk-button">Start task 1</a>
+      <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-            Links
+            Links to all pages
           </span>
         </summary>
         <div class="govuk-details__text">
-          <ul class="govuk-list">
-            <li>
-              <a class="govuk-link" href="/govuk/travel-abroad-from-england-coronavirus">Travel abroad from England during coronavirus (COVID-19)</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="govuk/interrupt">The way you get emails from GOV.UK is changing</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="auth/sign-in-or-create-2">Create a GOV.UK account or sign in</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="auth/sign-in">Sign in to your GOV.UK account</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="auth/password">Enter your password</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="/email/confirm">Confirm you want to get emails</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="/govuk/travel-abroad-from-england-coronavirus-subscribed-notification">[SUBSCRIBED] - Travel to England from another country during coronavirus (COVID-19)</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="/email/manage">Manage your GOV.UK email subscriptions</a>
-            </li>
-            <li>
-              <a class="govuk-link" href="account/home">GOV.UK account home</a>
-            </li>
-          </ul>
+          <p>User needs a DBS check, they do not have a GOV.UK account.</p>
+        <ul class="govuk-list">
+          <h4 class="govuk-heading-s">GOV.UK</h4>
+          <li>
+            <a href="govuk/dbs-service-start">Request a basic DBS check</a>
+          </li>
+          <h4 class="govuk-heading-s govuk-!-margin-top-4">Prove your identity</h4>
+          <li>
+            <a href="govuk/dbs-service-start">Prove your identity to continue NOT CREATED</a>
+          </li>
+          <h4 class="govuk-heading-s govuk-!-margin-top-4">Authentication</h4>
+          <li>
+            <a href="/auth/v9/gov-account">Create a GOV.UK account or sign in</a>
+          </li>
+          <li>
+            <a href="/auth/v9/create-email">Enter your email address</a>
+          </li>
+          <li>
+            <a href="/auth/v9/create-checkemail">Check your email</a>
+          </li>
+          <li>
+            <a href="/auth/v9/create-password">Create your password</a>
+          </li>
+          <li>
+            <a href="/auth/v9/create-entermobile">Enter your mobile phone number</a>
+          </li>
+          <li>
+            <a href="/auth/v9/create-checkphone">Check your phone</a>
+          </li>
+          <li>
+            <a href="/auth/v9/create-success">You’ve created your GOV.UK account</a>
+          </li>
+          <h4 class="govuk-heading-s govuk-!-margin-top-4">Prove your identity</h4>
+          <li>
+            <a href="/pyi/mvp/passport-details">Enter your details exactly as they appear on your UK passport</a>
+          </li>
+          <!-- removed postcode lookup
+          <li>
+            <a href="/pyi/mvp/address-postcode-current">Find your address</a>
+          </li>
+          <li>
+            <a href="/pyi/mvp/address-picker-current">Choose your address</a>
+          </li>
+          -->
+          <li>
+            <a href="/pyi/mvp/address-manual-current">Enter your address</a>
+          </li>
+          <li>
+            <a href="/pyi/mvp/address-check">Confirm your details</a>
+          </li>
+          <li>
+            <a href="/pyi/mvp/kbv-start">Answer security questions</a>
+          </li>
+          <li>
+            <a href="/pyi/mvp/kbv-question-1">KBV - How much did you borrow when you first took out your mortgage?</a>
+          </li>
+          <li>
+            <a href="/pyi/mvp/kbv-question-2">KBV - How much is your monthly mortgage payment?</a>
+          </li>
+          <li>
+            <a href="/pyi/mvp/kbv-question-3">KBV - When did you open one of your current accounts?</a>
+          </li>
+          <li>
+            <a href="/pyi/mvp/kbv-question-4">KBV - When did you take out your mobile phone contract?</a>
+          </li>
+          <li>
+            <a href="/pyi/mvp/success">You've successfully proved your identity</a>
+          </li>
+          <li>
+            <a href="/pyi/mvp/saved">You’ve saved your proof of identity to your GOV.UK account</a>
+          </li>
+          <h4 class="govuk-heading-s govuk-!-margin-top-4">Service - DBS</h4>
+          <li>
+            <a href="/service/dbs/mvp/dbs-opt-in">Apply for a basic DBS check</a>
+          </li>
+          <li>
+            <a href="/service/dbs/mvp/dbs-end">End of task 1</a>
+          </li>
+        </ul>
         </div>
       </details>
+      </div>
+
+      <div class="task-block">
+      <a href="/govuk/pta-service-start" class="govuk-button">Start task 2</a>
+      <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Links to all pages
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>User has a GOV.UK account with an ID saved in it that they can reuse for other services.</p>
+        <ul class="govuk-list">
+          <h4 class="govuk-heading-s">GOV.UK</h4>
+          <li>
+            <a href="/govuk/pta-service-start">Personal tax account: sign in or set up</a>
+          </li>
+          <h4 class="govuk-heading-s govuk-!-margin-top-4">Authentication</h4>
+          <li>
+            <a href="/auth/v9/gov-account-2.html">Create a GOV.UK account or sign in</a>
+          </li>
+          <li>
+            <a href="/auth/v9/create-email-2">Create - enter email</a>
+          </li>
+          <li>
+            <a href="/auth/v9/create-account-exists">You have a GOV.UK account</a>
+          </li>
+          <li>
+            <a href="/auth/v9/signin-email">Sign in to your GOV.UK account</a>
+          </li>
+          <li>
+            <a href="/auth/v9/signin-password">Enter your password</a>
+          </li>
+          <li>
+            <a href="/auth/v9/signin-checkphone">Check phone</a>
+          </li>
+          <h4 class="govuk-heading-s govuk-!-margin-top-4">Prove your identity</h4>
+          <li>
+            <a href="/pyi/mvp/use-saved-id">Use your saved proof of identity to continue</a>
+          </li>
+          <li>
+            <a href="/pyi/mvp/id-confirmed">Your identity has been confirmed</a>
+          </li>
+          <h4 class="govuk-heading-s govuk-!-margin-top-4">Service - Personal Tax Account</h4>
+          <li>
+            <a href="/service/pta/service-pta-home">Personal tax - Home</a>
+          </li>
+        </div>
+      </details>
+      </div>
+
+      <div class="task-block">
+      <a href="/notify/saved-id" class="govuk-button">Start task 3</a>
+      <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Links to all pages
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>User has a GOV.UK account and has granted access to their proof of identity in the past.</p>
+        <ul class="govuk-list">
+          <h4 class="govuk-heading-s">Email</h4>
+          <li>
+            <a href="/notify/saved-id">Email - You've saved proof of identity to your account</a>
+          </li>
+          <h4 class="govuk-heading-s govuk-!-margin-top-4">Authentication</h4>
+          <li>
+            <a href="/auth/v9/signin-email-3">Enter your email</a>
+          </li>
+          <li>
+            <a href="/auth/v9/signin-password-3">Enter your password</a>
+          </li>
+          <h4 class="govuk-heading-s govuk-!-margin-top-4">Account</h4>
+          <li>
+            <a href="/account/index">GOV.UK account home</a>
+          </li>
+          <li>
+            <a href="/account/manage-account">GOV.UK account settings</a>
+          </li>
+          <li>
+            <a href="/account/proof-of-id">Your proof of identity</a>
+          </li>
+          <li>
+            <a href="/account/delete-id">Delete the information you use to prove your identity</a>
+          </li>
+          <li>
+            <a href="/account/manage-account-2">GOV.UK account home - no identity</a>
+          </li>
+          <li>
+            <a href="/account/account-activity">Account activity</a>
+          </li>
+
+        </div>
+      </details>
+      </div>
+      </div>
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m">Email inbox</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Subject</th>
+            <th scope="col" class="govuk-table__header">From</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header"><a href="/notify/email-code" class="govuk-link--no-visited-state">Your security code for your GOV.UK account</a></th>
+            <td class="govuk-table__cell">GOV.UK account</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header"><a href="/notify/welcome" class="govuk-link--no-visited-state">You’ve created your GOV.UK account</a></th>
+            <td class="govuk-table__cell">GOV.UK account</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header"><a href="/notify/saved-id" class="govuk-link--no-visited-state">You’ve saved your proof of identity</a></th>
+            <td class="govuk-table__cell">GOV.UK account</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header"><a href="/notify/dbs-application" class="govuk-link--no-visited-state">Your basic DBS check application</a></th>
+            <td class="govuk-table__cell">The Disclosure and Barring service</td>
+          </tr>
+        </tbody>
+      </table>
+
 
     </div>
   </div>

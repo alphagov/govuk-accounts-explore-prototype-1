@@ -1,0 +1,92 @@
+{% set hideAccountMenu = true %}
+
+{% set task3 = true %}
+
+{% set current = "manage" %}
+{% block pageTitle %}
+  GOV.UK account settings - GOV.UK account - GOV.UK
+{% endblock %}
+{% extends "account/_account.html" %}
+{% block account%}
+
+<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Success
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <h3 class="govuk-notification-banner__heading">
+      You’ve deleted your proof of identity
+    </h3>
+  </div>
+</div>
+
+<h1 class="govuk-heading-l govuk-!-margin-top-4">GOV.UK account settings</h1>
+
+<div class="accounts-summary-list">
+    <div class="gem-c-summary-list  ">
+
+
+
+      <h2 class="govuk-heading-m gem-c-summary-list__group-title">Sign in details</h2>
+
+      <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+
+            <dt class="govuk-summary-list__key">Email</dt>
+            <dd class="govuk-summary-list__value">name@email.com</dd>
+
+              <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link govuk-link--no-visited-state"  href="#">
+                  Change<span class="govuk-visually-hidden"> Email</span></a>
+
+</dd>
+</div>          <div class="govuk-summary-list__row">
+
+            <dt class="govuk-summary-list__key">Password</dt>
+            <dd class="govuk-summary-list__value">•••••••••••</dd>
+
+
+
+              <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link govuk-link--no-visited-state" href="#">
+                  Change<span class="govuk-visually-hidden"> Password</span></a>
+
+</dd>
+</div>          <div class="govuk-summary-list__row">
+
+            <dt class="govuk-summary-list__key">Mobile number</dt>
+            <dd class="govuk-summary-list__value">*****900457</dd>
+
+
+
+              <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link govuk-link--no-visited-state" href="#">
+                  Change<span class="govuk-visually-hidden"> Mobile number</span></a>
+
+</dd>
+</div></dl>
+    <div class="gem-c-summary__block"></div>
+</div>
+</div>
+
+
+<!-- ID INFO DELETED
+<h2 class="gem-c-heading govuk-heading-m">Your proof of identity</h2>
+<p>You’ve saved your proof of identity to your account. Your account will check it each time a service needs to confirm who you are. </p>
+<p><a class="govuk-link--no-visited-state" href="#">View your saved proof of identity</a></p>
+-->
+
+<h2 class="gem-c-heading govuk-heading-m">View your account activity</h2>
+<p class="govuk-body">See when you’ve signed in and how your account has used your saved information.</p>
+<p><a href="account-activity" class="govuk-link govuk-link--no-visited-state" data-module="gem-track-click" data-track-category="account-manage" data-track-action="manage-account" data-track-label="delete-account">
+View your account activity</a></p>
+
+<h2 class="gem-c-heading govuk-heading-m">Delete your GOV.UK account</h2>
+<p>You can permanently delete this account and all the information stored in it.</p>
+<p><a class="govuk-link--no-visited-state" href="#">Delete your account</a></p>
+
+
+
+{% endblock %}

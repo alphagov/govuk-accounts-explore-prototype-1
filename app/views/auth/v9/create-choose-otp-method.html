@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Enter your mobile phone number
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header-auth-mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+<!--<a class="govuk-back-link" href="create-password">Back</a>-->
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      Choose how to get security codes
+    </h1>
+
+    <p class="govuk-body">We will sometimes need to send you a security code when you sign in, to help keep your account secure.</p>
+
+    <p class="govuk-body">You must use a UK phone number.</p>
+
+    <!-- <form class="form" action="/auth/mvp/create-entermobile-sms" method="post"> -->
+    <form class="form" action="/auth/v9/choose-otp-method" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="security-code-hint">
+          <div class="govuk-radios" data-module="govuk-radios">
+
+            <!-- Text message -->
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="security-code" name="security-code" type="radio" value="otp-sms" aria-describedby="security-code-item-hint">
+              <label class="govuk-label govuk-radios__label" for="security-code">
+                Text message
+              </label>
+              <div id="security-code-item-hint" class="govuk-hint govuk-radios__hint">
+                Get a code sent to your mobile phone
+              </div>
+            </div>
+
+            <!-- Voice call -->
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="security-code-2" name="security-code" type="radio" value="otp-voice" aria-describedby="security-code-2-item-hint">
+              <label class="govuk-label govuk-radios__label" for="security-code-2">
+                Phone call
+              </label>
+              <div id="sign-in-2-item-hint" class="govuk-hint govuk-radios__hint">
+                Get an automated call to a mobile phone or landline
+              </div>
+            </div>
+
+            <!-- WhatsApp message -->
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="security-code-3" name="security-code" type="radio" value="otp-whatsapp" aria-describedby="security-code-3-item-hint">
+              <label class="govuk-label govuk-radios__label" for="security-code-3">
+                WhatsApp message
+              </label>
+              <div id="sign-in-3-item-hint" class="govuk-hint govuk-radios__hint">
+                Get a code sent to WhatsApp
+              </div>
+            </div>
+
+          </div> <!-- /. govuk-radios -->
+        </fieldset> <!-- /. govuk-fieldset -->
+      </div> <!-- /. govuk-form-group -->
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form> <!-- /. form -->
+  </div> <!-- /. govuk-grid-column-two-thirds -->
+</div> <!-- /. govuk-grid-row -->
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Who is paying for your check?
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  {% if prevURL === "http://localhost:3000/service/dbs/mvp/dbs-check-details" or prevURL === "https://gds-identity.herokuapp.com/service/dbs/mvp/dbs-check-details" or prevURL === "https://gds-identity-ur.herokuapp.com/service/dbs/mvp/dbs-check-details" %}
+    <a class="govuk-back-link" href="dbs-check-details">Back</a>
+  {% else %}
+    <a class="govuk-back-link" href="dbs-mobile">Back</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% if prevURL === "http://localhost:3000/service/dbs/mvp/dbs-check-details" or prevURL === "https://gds-identity.herokuapp.com/service/dbs/mvp/dbs-check-details" or prevURL === "https://gds-identity-ur.herokuapp.com/service/dbs/mvp/dbs-check-details" %}
+{% set action = '/service/dbs/mvp/dbs-check-details' %}
+{% else %}
+{% set action = '/service/dbs/mvp/dbs-check-details' %}
+{% endif %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="{{ action }}" method="post" class="form">
+
+      {{ govukRadios({
+      idPrefix: "dbs-paying",
+      name: "dbs-paying",
+      fieldset: {
+        legend: {
+          text: "Who is paying for your check?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+        {
+          value: "I am paying",
+          text: "I am",
+          hint: {
+            text: "Payment is due as soon as your application is complete. You can pay with a debit or credit card. Google Pay or Apple Pay can also be used."
+          },
+          checked:  checked("dbs-paying", "I am paying")
+        },
+        {
+          value: "Someone else is paying",
+          text: "Someone else is (for example, an employer)",
+          hint: {
+            text: "We will send you a payment link by email, which you can forward to someone to pay on your behalf, or you can use yourself."
+          },
+          checked:  checked("dbs-paying", "Someone else is paying")
+        }
+      ]
+    }) }}
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+{% endblock %}

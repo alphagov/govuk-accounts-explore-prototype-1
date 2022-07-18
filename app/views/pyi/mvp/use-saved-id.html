@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You've successfully proved your identity
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header_mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="id-confirmed" method="post" class="form">
+
+        <h1 class="govuk-heading-l">
+          Use your saved proof of identity to continue
+        </h1>
+
+        <p>You need to prove your identity before you use personal tax account.</p>
+
+        <p>Your GOV.UK account will check your saved proof of identity to confirm it’s really you.</p>
+
+        <button id="button" class="govuk-button" data-module="govuk-button">Continue</button>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

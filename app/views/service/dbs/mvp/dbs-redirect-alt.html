@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Unable to prove your identity with GOV.UK account
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  <!--<a class="govuk-back-link" href="dbs-opt-in">Back</a>-->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="dbs-verify-start" method="post" class="form">
+
+      <h1 class="govuk-heading-l">
+        Unable to prove your identity with GOV.UK account
+      </h1>
+
+      <p>GOV.UK account was unable to prove your identity.</p>
+
+      <h2 class="govuk-fieldset__legend--m">
+        What to do next
+      </h2>
+
+      <p>You can either:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>prove your identity online with GOV.UK Verify</li>
+        <li>prove your identity in person</li>
+      </ul>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+
+</div>
+{% endblock %}

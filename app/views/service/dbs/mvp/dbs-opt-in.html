@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Apply for a basic DBS check
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/service/dbs/mvp/dbs-end" method="post">
+
+      <h1 class="govuk-heading-l">Apply for a basic DBS check</h1>
+
+      <p>This takes about 15 to 20 minutes.</p>
+
+      <p class="govuk-body">You’ll  be asked to provide personal information, such as:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>all your addresses for the last 5 years and the dates you lived there</li>
+        <li>your National Insurance number</li>
+        <li>your driving licence (if you have one)</li>
+      </ul>
+
+      <p>Some of the information you provided as part of proving your identity may be reused so you do not have to give the same details again.</p>
+
+      {{ govukCheckboxes({
+      idPrefix: "id-documents",
+      name: "dbs-accept",
+      classes: "govuk-checkboxes--small",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "dbs-accept-privacy",
+          html: "By continuing, I agree that I have read and understood the basic DBS check online application <a href='#'>privacy policy (opens in a new tab)</a>. I understand how the DBS will process my personal data when I'm applying online, before my application has been submitted",
+          checked:  checked("dbs-accept", "dbs-accept-privacy")
+        }
+      ]
+    }) }}
+
+      <input class="govuk-input" id="optin" name="optin" type="hidden" value="yes">
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+
+</div>
+{% endblock %}

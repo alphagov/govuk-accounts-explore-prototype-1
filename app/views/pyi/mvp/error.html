@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+We've not been able to prove your identity
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header_mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="error-choice-post" method="post">
+
+        <h1 class="govuk-heading-l">{{ heading or '[template heading]'}}</h1>
+
+        {% if reason %}
+        {{ reason | safe }}
+        {% endif %}
+
+        {# if more than one option show as radio buttons #}
+        {% if options === '1' %}
+
+        {% if subheading !== '' %}
+        <h2 class="govuk-fieldset__legend--m">
+          {{ subheading or '[template subheading]'}}
+        </h2>
+        {% endif %}
+
+        <p>{{ option1Text | safe }}</p>
+
+        <input class="govuk-input" id="option1" name="destination" type="hidden" value="{{ option1Value }}">
+
+        {% else %}
+
+        <div class="govuk-radios">
+
+          <fieldset class="govuk-fieldset">
+
+            {% if subheading !== '' %}
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h2 class="govuk-fieldset__legend--m">
+                {{ subheading or '[template subheading]'}}
+              </h2>
+            </legend>
+            {% endif %}
+
+            {% if option1Value %}
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="option1" name="destination" type="radio" value="{{ option1Value }}">
+              <label class="govuk-label govuk-radios__label" for="option1">
+                {{ option1Text | safe }}
+              </label>
+            </div>
+            {% endif %}
+
+            {% if option2Value %}
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="option2" name="destination" type="radio" value="{{ option2Value }}">
+              <label class="govuk-label govuk-radios__label" for="option2">
+                {{ option2Text | safe }}
+              </label>
+            </div>
+            {% endif %}
+
+            {% if option3Value %}
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="option3" name="destination" type="radio" value="{{ option3Value }}">
+              <label class="govuk-label govuk-radios__label" for="option3">
+                {{ option3Text | safe }}
+              </label>
+            </div>`
+            {% endif %}
+
+          </fieldset>
+        </div>
+
+        {% endif %}
+
+        <button id="button" class="govuk-button govuk-!-margin-top-4" data-module="govuk-button">{{ buttonText or 'Continue' }}</button>
+      </form>
+
+      {% if contactLink !== '' %}
+        <p><a class="govuk-link" href="{{data.prototype['supportDir'] or '/support/v1'}}/{{data.prototype['supportEntry'] or 'support-start' }}" target="_blank">Contact the GOV.UK account team (opens in a new tab)</a></p>
+      {% endif %}
+
+      {% if data['devMode'] === 'true' %}
+      {# DEVMODE SCENARIOS #}
+      {% include "../_includes/devmode_pyi-mvp-errors.html" %}
+      {% endif %}
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You've successfully proved your identity
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header_mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/service/dbs/mvp/dbs-opt-in" method="post" class="form">
+
+        <h1 class="govuk-heading-l">
+          You’ve saved your proof of identity to your GOV.UK account
+        </h1>
+
+        <p>This means you can skip the identity questions next time a service needs to check who you are.</p>
+
+        <p>You can sign in to your GOV.UK account to see or delete your proof of identity at any time.</p>
+
+        <button id="button" class="govuk-button" data-module="govuk-button">Continue to apply for a basic DBS check</button>
+      </form>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            If you do not want to continue now
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          You can <span><a href="#">apply for a basic DBS check</a></span> later. You’ll be asked to sign to to your GOV.UK account and use your saved proof of identity to continue.
+        </div>
+      </details>
+
+    </div>
+  </div>
+
+{% endblock %}

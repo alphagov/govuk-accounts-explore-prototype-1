@@ -1,0 +1,191 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Review your answers
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  <a class="govuk-back-link" href="dbs-check-details">Back</a>
+{% endblock %}
+
+
+{% set address %}
+  {% if data['postcode-cra'] %}
+    <p>
+      {{ data['address-line-1-cra'] }}
+      {% if data['address-line-2-cra'] %}
+        {{ data['address-line-2-cra'] }},<br>
+      {% endif %}
+      {{ data['address-town-cra'] }},<br>
+      {{ data['postcode-cra'] }}
+    </p>
+  {% else %}
+    <p>Office 14<br>
+    New Station St, <br>
+    Leeds, <br>
+    LS1 5DL</p>
+  {% endif %}
+{% endset -%}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Review your application</h1>
+
+    <form action="/service/dbs/mvp/dbs-disclaimer" method="post" class="form">
+
+      {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: data['first-name'] + " " + data['middle-names'] + " " + data['surname']
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            text: data['dob-day'] + " / " + data['dob-month'] + " / " + data['dob-year']
+          }
+        },
+        {
+          key: {
+            text: "Sex"
+          },
+          value: {
+            html: data['dbs-sex']
+          },
+          actions: {
+            items: [
+              {
+                href: "dbs-sex",
+                text: "Change",
+                visuallyHiddenText: "sex"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Place of birth"
+          },
+          value: {
+            html: data['dbs-born-city'] + ", " + data['dbs-born-country']
+          },
+          actions: {
+            items: [
+              {
+                href: "dbs-born",
+                text: "Change",
+                visuallyHiddenText: "place of birth"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Other names"
+          },
+          value: {
+            text: "None"
+          },
+          actions: {
+            items: [
+              {
+                href: "dbs-other-names",
+                text: "Change",
+                visuallyHiddenText: "other names"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Address history"
+          },
+          value: {
+            html: address
+          }
+        }
+      ]
+    }) }}
+
+      <h2 class="govuk-heading-l">Application details</h2>
+
+      {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "UK National Insurance number"
+          },
+          value: {
+            text: data['dbs-nino-number']
+          },
+          actions: {
+            items: [
+              {
+                href: "dbs-nino?edit",
+                text: "Change",
+                visuallyHiddenText: "UK National Insurance number"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Current UK driving licence"
+          },
+          value: {
+            text: data['dbs-dl-number'] or "None"
+          }
+        },
+        {
+          key: {
+            text: "Current passport"
+          },
+          value: {
+            html: data['passport-number'] or "None"
+          }
+        },
+        {
+          key: {
+            text: "Payment choice"
+          },
+          value: {
+            html: data['dbs-paying']
+          },
+          actions: {
+            items: [
+              {
+                href: "dbs-paying",
+                text: "Change",
+                visuallyHiddenText: "paying"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      <p><a href="">Print this page</a></p>
+    </form>
+  </div>
+</div>
+{% endblock %}

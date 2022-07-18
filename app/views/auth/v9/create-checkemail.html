@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your email
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header-auth-mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+<a class="govuk-back-link" href="create-email">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      Check your email
+    </h1>
+
+    <div class="govuk-inset-text">
+      <p>We have sent an email to: <strong>{{ data['emailAddress'] or 'email@address.com' }}</strong> </p>
+    </div>
+
+    <p>The email contains a 6 digit security code.</p>
+<!--    <p>Open the email to get the security code, then enter it below.</p>-->
+    <p>Your email might take a few minutes to arrive. If you do not get an email, check your spam folder.</p>
+
+    <p>Your code will expire after 15 minutes.</p>
+
+    <form class="form" action="/auth/v9/create-password" method="post">
+
+      <div class="govuk-form-group">
+
+        <label class="govuk-label" for="otp">Enter the 6 digit security code</label>
+
+        <input class="govuk-input govuk-input--width-5" id="otp" name="create-email-otp" type="text" autocomplete="one-time-code" inputmode="numeric" spellcheck="false" >
+
+      </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Problems receiving the code
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p><a href="create-email">Request a new code </a> if:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>the code is not working or has expired, or you did not receive one</li>
+            <li>you want to use a different email address</li>
+          </ul>
+        </div>
+      </details>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

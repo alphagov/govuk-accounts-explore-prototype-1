@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Do you have a current UK driving licence?
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  {% if prevURL === "http://localhost:3000/service/dbs/mvp/dbs-review" or prevURL === "https://gds-identity.herokuapp.com/service/dbs/mvp/dbs-review" or prevURL === "https://gds-identity-ur.herokuapp.com/service/dbs/mvp/dbs-review" %}
+    <a class="govuk-back-link" href="dbs-review">Back</a>
+  {% else %}
+    <a class="govuk-back-link" href="dbs-nino">Back</a>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+{% if prevURL === "http://localhost:3000/service/dbs/mvp/dbs-review" or prevURL === "https://gds-identity.herokuapp.com/service/dbs/mvp/dbs-review" or prevURL === "https://gds-identity-ur.herokuapp.com/service/dbs/mvp/dbs-review" %}
+{% set action = '/service/dbs/mvp/dbs-review' %}
+{% else %}
+{% set action = '/service/dbs/mvp/dbs-certificate' %}
+{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="{{ action }}" method="post" class="form">
+
+      {% set dlHtml %}
+        {{ govukInput({
+          id: "dbs-dl-number",
+          name: "dbs-dl-number",
+          type: "text",
+          spellcheck: false,
+          classes: "govuk-input--width-20",
+          label: {
+            text: "Driving licence number"
+          },
+          hint: {
+            text: "For example, MORGA657054SM9IJ."
+          }
+        }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+      idPrefix: "dbs-driving",
+      name: "dbs-driving",
+      fieldset: {
+        legend: {
+          text: "Do you have a current UK driving licence?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        html: "<p>If you can't provide driving licence details you can still carry on with your application, but it might take us longer to process your check.</p>
+              <div class='govuk-inset-text'><p>The driving licence you provide can be any current full or provisional driving licence (photocard or paper).</p></div>"
+      },
+      items: [
+        {
+          value: "yes",
+          text: "Yes",
+          conditional: {
+            html: dlHtml
+          }
+        },
+        {
+          value: "no",
+          text: "No/I cannot provide the details right now"
+        }
+      ]
+    }) }}
+
+      {{ govukDetails({
+      summaryText: "I don't know my driving licence number",
+      html: "<p>Your driving licence number is in section 5 of your driving licence photocard.</p>"
+      }) }}
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+{% endblock %}

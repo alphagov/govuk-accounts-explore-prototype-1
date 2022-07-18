@@ -1,0 +1,26 @@
+{% extends "notify/_template.html" %}
+
+{% set subjectLine = "Your security code for your GOV.UK account" %}
+
+{% block emailBody %}
+
+<p>Use this security code to confirm the email address for your GOV.​UK account.</p>
+
+<p class="govuk-heading-m">
+123456
+</p>
+
+<p>The code will expire after 15 minutes.</p>
+
+<p>If you did not use this email address to create a GOV.​UK account, you can ignore this email.</p>
+
+    <p class="govuk-body">
+      If you need help using the security code, you can contact us:
+      <a href="#">https://signin.account.gov.uk/contact-us?referer=accountCreatedEmail</a>
+    </p>
+
+
+
+  {% endblock %}
+  {% block header %}{% endblock %}
+  {% block footer %}{% endblock %}

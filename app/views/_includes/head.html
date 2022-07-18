@@ -1,0 +1,10 @@
+<!--[if lte IE 8]><link href="/public/stylesheets/application-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
+<!--[if gt IE 8]><!--><link href="/public/stylesheets/application.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
+
+{% if data['prototype'].code === 'XGOV1' %}
+<!--[if gt IE 8]><!--><link href="/public/stylesheets/xgov.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
+{% endif %}
+
+{% for stylesheetUrl in extensionConfig.stylesheets %}
+  <link href="{{ stylesheetUrl }}" rel="stylesheet" type="text/css" />
+{% endfor %}
