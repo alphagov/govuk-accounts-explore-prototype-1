@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Can we send you text messages about your application and codes to view your result online?
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  {% if prevURL === "http://localhost:3000/service/dbs/mvp/dbs-check-details" or prevURL === "https://gds-identity.herokuapp.com/service/dbs/mvp/dbs-check-details" or prevURL === "https://gds-identity-ur.herokuapp.com/service/dbs/mvp/dbs-check-details" %}
+    <a class="govuk-back-link" href="dbs-check-details">Back</a>
+  {% else %}
+    <a class="govuk-back-link" href="dbs-email">Back</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% if prevURL === "http://localhost:3000/service/dbs/mvp/dbs-check-details" or prevURL === "https://gds-identity.herokuapp.com/service/dbs/mvp/dbs-check-details" or prevURL === "https://gds-identity-ur.herokuapp.com/service/dbs/mvp/dbs-check-details" %}
+{% set action = '/service/dbs/mvp/dbs-check-details' %}
+{% else %}
+{% set action = '/service/dbs/mvp/dbs-paying' %}
+{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="{{ action }}" method="post" class="form">
+
+      {% set mobileHtml %}
+
+        {{ govukInput({
+          id: "dbs-mobile-country",
+          name: "dbs-mobile-country",
+          type: "tel",
+          spellcheck: true,
+          value: "United Kingdom",
+          classes: "govuk-input--width-20",
+          label: {
+            text:   "Which country is your mobile number registered in?"
+          }
+        }) }}
+
+
+        {{ govukInput({
+          id: "dbs-mobile-number",
+          name: "mobileNumber",
+          type: "tel",
+          spellcheck: false,
+          value: data['mobileNumber'],
+          classes: "govuk-input--width-20",
+          label: {
+            text: "What is your mobile number without the country code?"
+          }
+        }) }}
+
+      <p class="govuk-!-margin-top-4">We'll send text messages to:<br>
+      +44 {{ data["mobileNumber"] }}</p>
+      <p>Your number looks like a correct mobile number from the United Kingdom.</p>
+
+      {% endset -%}
+
+      {{ govukRadios({
+      idPrefix: "dbs-mobile",
+      name: "dbs-mobile-pref",
+      fieldset: {
+        legend: {
+          text: "Can we send you text messages about your application and codes to view your result online?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+        {
+          value: "Yes",
+          text: "Yes",
+          checked:  checked("dbs-mobile-pref", "Yes"),
+          conditional: {
+            html: mobileHtml
+          }
+        },
+        {
+          value: "No",
+          text: "No",
+          checked:  checked("dbs-mobile-pref", "No")
+        }
+      ]
+    }) }}
+
+      <p>We'll only use your mobile number to:</p>
+
+      <ul class="govuk-list--bullet govuk-list">
+        <li>send you progress updates about your application</li>
+        <li>send you a security code to let you view your result online</li>
+      </ul>
+
+      {{ govukWarningText({
+      text: "If you do not provide a mobile number, you will not be able to view your result online.",
+      iconFallbackText: "Warning"
+    }) }}
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+{% endblock %}

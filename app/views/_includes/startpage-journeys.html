@@ -1,0 +1,48 @@
+<form action="/journey-start" method="POST" role="form">
+
+    <table class="govuk-table">
+      <tbody class="govuk-table__body">
+
+      {% for i in range(0, data.journeys.length) -%}
+
+      <tr class="govuk-table__row">
+
+        {% set ri = data.journeys.length - loop.index %}
+
+        <td class="govuk-table__cell">
+
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-4">
+            {{ data.journeys[ri].title }}
+          </h3>
+
+          <p class="govuk-body">{{ data.journeys[ri].description }}</p>
+
+
+        </td>
+
+        <td class="govuk-table__cell">
+          {% if data.journeys[ri].status === "complete" %}
+          <strong class="govuk-tag govuk-tag--blue govuk-!-margin-top-0" style="font-size: 11px;">Research complete</strong>
+          {% elif data.journeys[ri].status === "research" %}
+          <strong class="govuk-tag govuk-tag--green govuk-!-margin-top-0" style="font-size: 11px;">in research</strong>
+          {% else %}
+          <strong class="govuk-tag govuk-tag--red govuk-!-margin-top-0" style="font-size: 11px;">In design</strong>
+          {% endif %}
+
+          <p class="govuk-hint govuk-!-margin-top-1"><small>{{ data.journeys[ri].date }}</small></p>
+
+        </td>
+
+        <td class="govuk-table__cell">
+          <button type="submit" class="govuk-button" name="version" value="{{ data.journeys[ri].code }}"><strong>Launch {{ data.journeys[ri].code }} prototype</strong></button>
+        </td>
+
+      </tr>
+    </tbody>
+    {%- endfor %}
+
+  </table>
+
+</form>
+
+<div style="display: block; clear:both;"></div>

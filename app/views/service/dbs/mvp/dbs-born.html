@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Where were you born?
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../../_includes/phase-banner.html" %}
+{% if prevURL === "http://localhost:3000/service/dbs/mvp/dbs-review" or prevURL === "https://gds-identity.herokuapp.com/service/dbs/mvp/dbs-review" or prevURL === "https://gds-identity-ur.herokuapp.com/service/dbs/mvp/dbs-review" %}
+<a class="govuk-back-link" href="dbs-review">Back</a>
+{% else %}
+<a class="govuk-back-link" href="dbs-sex">Back</a>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+{% if prevURL === "http://localhost:3000/service/dbs/mvp/dbs-review" or prevURL === "https://gds-identity.herokuapp.com/service/dbs/mvp/dbs-review" or prevURL === "https://gds-identity-ur.herokuapp.com/service/dbs/mvp/dbs-review" %}
+{% set action = '/service/dbs/mvp/dbs-review' %}
+{% else %}
+{% set action = '/service/dbs/mvp/dbs-nino' %}
+{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      Where were you born?
+    </h1>
+
+    <form class="form" action="{{ action }}" method="post">
+
+      {{ govukInput({
+        label: {
+          text: "Country"
+        },
+        id: "country",
+        name: "dbs-born-country",
+        classes: "govuk-input--width-20",
+        autocomplete: "country",
+        value: data['dbs-born-country']
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Town or city"
+        },
+        id: "city",
+        name: "dbs-born-city",
+        classes: "govuk-input--width-20",
+        autocomplete: "address-level2",
+        value: data['dbs-born-city']
+      }) }}
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

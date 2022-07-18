@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Enter your password
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header-auth-mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+<!--<a class="govuk-back-link" href="signin-email">Back</a>-->
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      Get a security code
+    </h1>
+
+    <form class="form" action="/auth/v9/signin-checkphone-voiceOTP" method="post">
+    
+        <p>You need a security code to sign in. We'll call you with the security code.</p>
+
+        <div class="govuk-inset-text">
+            We will call you on: <strong>{{ data['obfNumber'] }}</strong>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">Get a call from GOV.UK account</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

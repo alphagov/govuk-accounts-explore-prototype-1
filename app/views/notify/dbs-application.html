@@ -1,0 +1,26 @@
+{% extends "notify/_template.html" %}
+
+{% set subjectLine = "Your basic DBS check application  " %}
+
+{% set sender = "The Disclosure and Barring Service" %}
+
+{% block emailBody %}
+
+<p>
+Your basic SBS check application
+</p>
+
+<p>You’ve submitted your basic DBS check application.</p>
+
+<p>Your reference number is: <span class="govuk-!-font-weight-bold">101101</span></p>
+
+    <p class="govuk-body">
+
+      You can track your application: <a href="#">[LINK]</a>
+    </p>
+
+
+
+  {% endblock %}
+  {% block header %}{% endblock %}
+  {% block footer %}{% endblock %}

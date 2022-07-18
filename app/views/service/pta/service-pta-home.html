@@ -1,0 +1,64 @@
+{% extends "layout-hmrc.html" %}
+{% extends "hmrc/layouts/account-header.html" %}
+
+{% block pageTitle %}
+Personal tax account - Home
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <header class="hmrc-page-heading">
+      <h1 class="govuk-heading-xl">Your Name</h1>
+      <p class="hmrc-caption govuk-caption-xl"><span class="govuk-visually-hidden">This section is </span>Account home</p>
+    </header>
+
+    <div class="pta-card-container">
+    <div class="pta-card">
+      <h3 class="govuk-heading-s"><a href="#">Latest news and updates</a></h3>
+      <p class="govuk-body">1.25 percentage points uplift in National Insurance contributions</p>
+    </div>
+    <div class="pta-card">
+      <h3 class="govuk-heading-s"><a href="#">Pay As You Earn (PAYE)</a></h3>
+      <p class="govuk-body">Check or update the employment, pension or other income intormation used to work out your PAYE Income Tax and tax codes.</p>
+    </div>
+    <div class="pta-card">
+      <h3 class="govuk-heading-s"><a href="#">National Insurance</a></h3>
+      <p class="govuk-body">You have a National Insurance number to make sure your National Insurance contributions and tax are recorded against your name only.</p>
+    </div>
+  </div>
+
+  <h3 class="govuk-heading-m">Benefits</h3>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  <div class="pta-card-container">
+  <div class="pta-card">
+    <h3 class="govuk-heading-s"><a href="#">Tax credits</a></h3>
+    <p class="govuk-body">View your next payments and the people on your claim, and make changes to your claim.</p>
+  </div>
+  <div class="pta-card">
+    <h3 class="govuk-heading-s"><a href="#">Child benefit</a></h3>
+    <p class="govuk-body">A tax-free payment to help parents with the cost of brining up children.</p>
+  </div>
+  <div class="pta-card">
+    <h3 class="govuk-heading-s"><a href="#">Marriage Allowance</a></h3>
+    <p class="govuk-body">Transfer part of your Personal Allowance to your partner so they pay less tax.</p>
+  </div>
+  </div>
+
+  <h3 class="govuk-heading-m">Pensions</h3>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  <div class="pta-card-container">
+  <div class="pta-card">
+    <h3 class="govuk-heading-s"><a href="#">State pension</a></h3>
+    <p class="govuk-body">View your State Pension and National Insurance contributions.</p>
+  </div>
+  </div>
+
+  </div>
+
+</div>
+{% endblock %}

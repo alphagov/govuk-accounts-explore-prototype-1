@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Enter your password
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header-auth-mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+<a class="govuk-back-link" href="create-email">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">You have a GOV.UK account</h1>
+
+    <p class="govuk-body">There's already a GOV.UK acount using
+      <strong>{{ data['emailAddress'] or 'email@address.com' }}</strong>
+    </p>
+    <p>Enter your password to sign in.</p>
+    <form class="form" action="/auth/v9/signin-checkphone" method="post">
+
+      <div class="govuk-form-group" style="margin-bottom: 15px;">
+
+        <div class="gem-c-show-password" data-module="show-password" data-disable-form-submit-check="false" data-show-text="Show" data-hide-text="Hide" data-show-full-text="Show password" data-hide-full-text="Hide password" data-announce-show="Your password is shown" data-announce-hide="Your password is hidden">
+          <div class="govuk-form-group">
+            <label for="password" class="gem-c-label govuk-label">Password</label>
+            <div class="gem-c-show-password__input-wrapper">
+              <input name="password[login]" class="gem-c-input govuk-input gem-c-input--with-password govuk-!-width-two-thirds" id="password" type="password" spellcheck="false" autocomplete="off" aria-describedby="password-hint">
+              <span class="govuk-visually-hidden" aria-live="polite">Your password is hidden</span>
+            </div> <!-- /. gem-c-show-password__input-wrapper -->
+          </div> <!-- /. govuk-form-group -->
+        </div> <!-- /. gem-c-show-password -->
+
+      </div>
+
+      <p><a href="#">I've forgotten my password</p>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

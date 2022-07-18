@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Enter your mobile phone number
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header-auth-mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+<a class="govuk-back-link" href="create-choose-otp-method">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      What number should we call you on?
+    </h1>
+
+    <p class="govuk-body">You must use a UK phone number. You can use a mobile phone or landline number.</p>
+
+    <!-- <form class="form" action="/auth/mvp/create-entermobile-sms" method="post"> -->
+    <form class="form" action="/auth/v9/create-entermobile-voice" method="post">
+
+      <div class="govuk-form-group">
+
+        <label class="govuk-label" for="mobileNumber">UK phone number</label>
+
+        <input class="govuk-input govuk-!-width-two-thirds" id="mobileNumber" name="mobileNumber" type="tel" spellcheck="false" autocomplete="tel">
+
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">Get a call from GOV.UK account</button>
+
+    </form> <!-- /. form -->
+  </div> <!-- /. govuk-grid-column-two-thirds -->
+</div> <!-- /. govuk-grid-row -->
+
+{% endblock %}

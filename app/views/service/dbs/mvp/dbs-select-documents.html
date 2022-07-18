@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Select your identity documents
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  <a class="govuk-back-link" href="dbs-postoffice">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/service/dbs/mvp/dbs-validate-offline" method="post" class="form">
+
+      <h1 class="govuk-heading-xl">
+        Select your identity documents
+      </h1>
+
+      <p>Select which of the following documents you have to hand and would be able to take to the Post Office within the next 10 days.</p>
+
+        <p>You must select at least 3 documents. These can be a combination of documents from any of the 3 document lists.</p>
+
+        <p>The documents must:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>be in your current name (except your birth certificate, which is also acceptable in a different name)</li>
+        <li>be in your current address (where an address is included)</li>
+        <li>include your date of birth (at least 1 document should include this)</li>
+        <li>be original documents (you cannot use photocopies)</li>
+      </ul>
+
+      {{ govukCheckboxes({
+      idPrefix: "id-documents",
+      name: "dbs-documents",
+      classes: "govuk-checkboxes",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "dbs-driving-licence",
+          text: "Driving licence (any photocard or paper, full or provisional)",
+          checked:  checked("dbs-documents", "dbs-driving-licence")
+        },
+        {
+          value: "dbs-passport",
+          text: "Passport (any current UK or overseas. UK passports that have expired within the last 6 months are still allowed)",
+          checked:  checked("dbs-documents", "dbs-passport")
+        },
+        {
+          value: "dbs-irish-passport",
+          text: "Irish passport card (current and valid)",
+          checked:  checked("dbs-documents", "dbs-irish-passport")
+        },
+        {
+          value: "dbs-bank-statement",
+          text: "Bank or building society statement (UK or EEA - issued in last 3 months)",
+          checked:  checked("dbs-documents", "dbs-bank-statement")
+        },
+        {
+          value: "dbs-birth-cert",
+          text: "Birth certificate (UK, Isle of Man and Channel Islands)",
+          checked:  checked("dbs-documents", "dbs-birth-cert")
+        },
+        {
+          value: "dbs-utility-bill",
+          text: "Utility bill, for example water, electricity or gas (UK - issued in last 3 months)",
+          checked:  checked("dbs-documents", "dbs-utility-bill")
+        },
+        {
+          value: "dbs-credit-card",
+          text: "Credit card statement (UK or EEA - issued in last 3 months)",
+          checked:  checked("dbs-documents", "dbs-credit-card")
+        },
+        {
+          value: "dbs-residence-permit",
+          text: "Biometric residence permit (UK)",
+          checked:  checked("dbs-documents", "dbs-residence-permit")
+        }
+      ]
+    }) }}
+
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+
+</div>
+{% endblock %}

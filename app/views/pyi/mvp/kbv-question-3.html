@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{{ question }}
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header_mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="kbv-question-4" method="post">
+
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              When did you open one of your current accounts?
+            </h1>
+          </legend>
+          <div id="changed-name-hint" class="govuk-hint">
+            Think about when you opened one of your current accounts instead of any joint, business or saving accounts you might have.
+          </div>
+          <div class="govuk-radios">
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="option1" name="{{ code }}" type="radio" value="{{ option1 }}">
+              <label class="govuk-label govuk-radios__label" for="option1">
+                04/2017
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="option2" name="{{ code }}" type="radio" value="{{ option2 }}">
+              <label class="govuk-label govuk-radios__label" for="option2">
+                10/2017
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="option3" name="{{ code }}" type="radio" value="{{ option3 }}">
+              <label class="govuk-label govuk-radios__label" for="option3">
+                03/2021
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="option4" name="{{ code }}" type="radio" value="{{ option4 }}">
+              <label class="govuk-label govuk-radios__label" for="option4">
+                01/2021
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="option5" name="{{ code }}" type="radio" value="{{ option5 }}">
+              <label class="govuk-label govuk-radios__label" for="option5">
+                NONE OF THE ABOVE / DOES NOT APPLY
+              </label>
+            </div>
+
+
+          </div>
+
+        </fieldset>
+
+        <input class="govuk-input" name="kbvNum" type="hidden" value="{{ code }}">
+        <button id="button" class="govuk-button govuk-!-margin-top-4" data-module="govuk-button">Continue</button>
+      </form>
+      <p><a class="govuk-link" href="#">I cannot answer this question</a></p>
+    </div>
+  </div>
+
+{% if data['devMode'] === 'true' %}
+  {# DEVMODE SCENARIOS #}
+  {% include "../_includes/devmode_kbvs-2.html" %}
+{% endif %}
+
+{% endblock %}

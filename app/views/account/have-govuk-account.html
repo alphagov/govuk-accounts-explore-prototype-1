@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% import "includes/xpl-cards.html" as cards %}
+{% import "includes/xpl-tabs.njk" as tabs %}
+{% block pageTitle %}
+You have a GOV.UK account
+{% endblock %}
+{% block main %}
+  <div id="global-header-bar-outer">
+    <div id="global-header-bar"></div>
+  </div>
+  <div class="xpl-section-inner ">
+    <main class="govuk-main-wrapper">
+
+
+      <div class="govuk-grid-row">
+
+
+        <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="gem-c-heading govuk-heading-xl govuk-!-margin-bottom-6">
+          You have a GOV.UK account
+        </h1>
+
+
+
+
+
+        <div class="govuk-body">
+          <p>Sign in to see and manage your GOV.UK emails.</p>
+
+        </div>
+
+
+
+        {{ govukButton({
+          text: "Continue to sign in to your account",
+          href: "/auth/sign-in-or-create"
+        }) }}
+
+                      </div>
+
+
+
+
+
+        </div>
+          </div>
+    {% endblock %}

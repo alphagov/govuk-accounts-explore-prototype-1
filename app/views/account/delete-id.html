@@ -1,0 +1,32 @@
+{% set hideAccountMenu = true %}
+{% set current = "manage" %}
+{% block pageTitle %}
+  GOV.UK account settings - GOV.UK account - GOV.UK
+{% endblock %}
+{% extends "account/_account.html" %}
+{% block account%}
+
+<div class="xpl-section-inner">
+
+<a href="proof-of-id" class="govuk-back-link">Back</a>
+
+    <h1 class="govuk-heading-l govuk-!-margin-top-4">Delete the information you use to prove your identity</h1>
+
+    <p>Confirm you want to permanently delete the information your GOV.UK account uses to prove your identity. This will not delete your account.</p>
+
+    <p>You will need to go through the process of proving your identity next time you use a service that requires it. </p>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Delete identity information",
+        classes: "govuk-button--warning",
+        href: "manage-account-banner"
+      }) }}
+
+    <p class="govuk-body govuk-link"><a href="proof-of-id govuk-link--no-visited-state">Do not delete your information</a></p>
+</div>
+
+
+
+{% endblock %}

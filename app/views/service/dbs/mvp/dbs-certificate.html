@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Where would you like us to send your certificate?
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../../_includes/phase-banner.html" %}
+
+{% if prevURL === "http://localhost:3000/service/dbs/mvp/dbs-check-details" or prevURL === "https://gds-identity.herokuapp.com/service/dbs/mvp/dbs-check-details" or prevURL === "https://gds-identity-ur.herokuapp.com/service/dbs/mvp/dbs-check-details" %}
+<a class="govuk-back-link" href="dbs-check-details">Back</a>
+{% else %}
+<a class="govuk-back-link" href="dbs-driving">Back</a>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+{% set address %}
+  {% if data['postcode-cra'] %}
+  <p>
+    {{ data['address-line-1-cra'] }}
+    {% if data['address-line-2-cra'] %}
+    {{ data['address-line-2-cra'] }},<br>
+    {% endif %}
+    {{ data['address-town-cra'] }},<br>
+    {{ data['postcode-cra'] }}
+  </p>
+  {% else %}
+  <p>Office 14<br>
+    New Station St, <br>
+    Leeds, <br>
+    LS1 5DL</p>
+  {% endif %}
+{% endset -%}
+
+{% if prevURL === "http://localhost:3000/service/dbs/mvp/dbs-check-details" or prevURL === "https://gds-identity.herokuapp.com/service/dbs/mvp/dbs-check-details" or prevURL === "https://gds-identity-ur.herokuapp.com/service/dbs/mvp/dbs-check-details" %}
+{% set action = '/service/dbs/mvp/dbs-check-details' %}
+{% else %}
+{% set action = '/service/dbs/mvp/dbs-email' %}
+{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="{{ action }}" method="post" class="form">
+
+      {{ govukRadios({
+          idPrefix: "dbs-lived-elsewhere",
+          name: "dbs-lived-elsewhere",
+          fieldset: {
+            legend: {
+              text: "Where would you like us to send your certificate?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            html: "<p>We can send your certificate to your current address, another personal address (for example a family member), or your employer.</p>
+                    <p>If you send your certificate to another address make sure you are able to check the information on it is correct.</p>
+          <div class='govuk-inset-text'><p>If you send your certificate to a non-UK address it could take longer to arrive in the post.</p></div>"
+          },
+          items: [
+          {
+          value: "current",
+          html: address
+          },
+          {
+          value: "another",
+          text: "To another address"
+          }
+          ]
+          }) }}
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+{% endblock %}
