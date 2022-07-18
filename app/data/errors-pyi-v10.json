@@ -1,0 +1,100 @@
+{
+  "//options for optionValues": "return-fraud, abandon, return-technical, back",
+  "pyi": [
+    {
+      "errorcode": "pyi-technical",
+      "description": "Any technical error including timeouts",
+      "options": "1",
+      "heading": "Sorry, there is a problem with the service",
+      "reason": "<p>We cannot prove your identity right now.</p>",
+      "subheading": "What you can do",
+      "option1Text": "Continue to the service you were trying to use and look for other ways to prove your identity.",
+      "option1Value": "return-technical",
+      "buttonText": "Continue",
+      "contactText": "Contact us (opens in a new tab)",
+      "contactLink": "support"
+    },
+    {
+      "errorcode": "pyi-technical-unrecoverable",
+      "description": "technical error in the Passport CRI and we don't have enough information to be able to redirect the user back to IVP Core",
+      "options": "1",
+      "heading": "Sorry, there is a problem with the service",
+      "reason": "<p>We cannot prove your identity right now.<br/><br/>You can go to the GOV.UK homepage to find the service you were trying to use.</p>",
+      "subheading": "",
+      "option1Text": "",
+      "option1Value": "",
+      "buttonText": "Go to the GOV.UK homepage",
+      "contactText": "",
+      "contactLink": ""
+    },
+    {
+      "errorcode": "pyi-page-not-found",
+      "description": "404 page not found",
+      "options": "1",
+      "heading": "Page not found",
+      "reason": "<p>If you typed the web address, check it's correct.<br/><br/>If you pasted the web address, check you copied the entire address.</p>",
+      "subheading": "",
+      "option1Text": "You can also go to the GOV.UK homepage to find the service you were trying to use.",
+      "option1Value": "",
+      "buttonText": "Go to the GOV.UK homepage",
+      "contactText": "",
+      "contactLink": ""
+    },
+    {
+      "errorcode": "pyi-no-match",
+      "description": "When DCS or Experian can't match to a record or When user fails experian velocity check",
+      "options": "1",
+      "heading": "Sorry, we cannot prove your identity right now",
+      "reason": "<p>This might be because we could not match your details to information from another database.<br/><br/>To keep your information safe, we cannot tell you which of your details we had trouble finding a match for.<br/><br/>This could also be because you've been unsuccessful when you've previously tried to prove your identity online.</p>",
+      "subheading": "What you can do",
+      "option1Text": "Continue to the service you were trying to use and look for other ways to prove your identity.",
+      "option1Value": "return-nomatch",
+      "buttonText": "Continue",
+      "contactText": "Contact us (opens in a new tab)",
+      "contactLink": "support"
+    },
+    {
+      "errorcode": "pyi-kbv-fail",
+      "description": "When user fails the kbv challenge",
+      "options": "1",
+      "heading": "Sorry, we cannot prove your identity right now",
+      "reason": "<p>This might be because you gave the wrong answer to some of the security questions.<br/><br/>To keep your information safe, we cannot show you which questions you answered incorrectly.</p>",
+      "subheading": "What you can do",
+      "option1Text": "Continue to the service you were trying to use and look for other ways to prove your identity.",
+      "option1Value": "return-fraud",
+      "buttonText": "Continue",
+      "contactText": "Contact us (opens in a new tab)",
+      "contactLink": "support"
+    },
+    {
+      "errorcode": "pyi-kbv-back",
+      "description": "backward movement from a KBV question page",
+      "options": "2",
+      "heading": "Sorry, you cannot go back from that page",
+      "reason": "<p>You cannot go back to the previous page because you've already answered some of the security questions.</p>",
+      "subheading": "What would you like to do?",
+      "option1Text": "Continue answering the questions",
+      "option1Value": "go-back-kbv",
+      "option2Text": "Stop answering the questions and prove your identity another way",
+      "option2Value": "return-fraud",
+      "buttonText": "Continue",
+      "contactText": "Contact us (opens in a new tab)",
+      "contactLink": "support"
+    },
+    {
+      "errorcode": "pyi-catchall-back",
+      "description": "backward movement from a CRI",
+      "options": "2",
+      "heading": "Sorry, you cannot go back from that page",
+      "reason": "<p>You cannot go back because we've already checked the information you gave us on the previous page.</p>",
+      "subheading": "What would you like to do?",
+      "option1Text": "Return to the page you were on",
+      "option1Value": "go-back",
+      "option2Text": "Continue to the service you were trying to use and look for other ways to prove your identity",
+      "option2Value": "return-bail",
+      "buttonText": "Continue",
+      "contactText": "Contact us (opens in a new tab)",
+      "contactLink": "support"
+    }
+  ]
+}
