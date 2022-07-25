@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Prove your identity with GOV.UK Verify
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  <!--<a class="govuk-back-link" href="dbs-opt-in">Back</a>-->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/service/verify/v1/verify-start" method="post" class="form">
+
+      <h1 class="govuk-heading-l">
+        Prove your identity with GOV.UK Verify
+      </h1>
+
+      <p>GOV.UK Verify is a safe and secure way to prove your identity online.</p>
+
+      <p>It will take you around 15 minutes to prove your identity.</p>
+
+      <div class="govuk-inset-text">
+         Using GOV.UK Verify is different to proving your identity with a GOV.UK account.
+      </div>
+
+      <p>You'll need either:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>a valid passport</li>
+        <li>a full or provisional valid driving licence</li>
+      </ul>
+
+      <p>We only use the personal information you give us to prove that you are who you say you are.</p>
+
+      {{ govukCheckboxes({
+      idPrefix: "id-documents",
+      name: "dbs-accept",
+      classes: "govuk-checkboxes--small",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "dbs-accept-privacy",
+          html: "I agree to the basic DBS check service using my name, date of birth and address provided by my digital identity.",
+          checked:  checked("dbs-accept", "dbs-accept-privacy")
+        }
+      ]
+    }) }}
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      {{ govukDetails({
+      summaryText: "Other ways to apply",
+      html: "<p>If you cannot validate your identity online you can still continue to apply. You will still need your financial and identity documents to hand.</p>
+
+      <p>But you'll also need to go to a UK post office in person after completing your application.</p>
+
+      <p>You'll have 10 days to take your identity documents to a UK post office that offers the DBS ID validation service.</p>
+
+      <p>We'll only start processing your application after you've validated your identity at a UK post office.</p>
+
+      <p><a href='dbs-postoffice'>Continue to application without using a digital identity</a></p>"
+      }) }}
+
+    </form>
+
+  </div>
+
+</div>
+{% endblock %}

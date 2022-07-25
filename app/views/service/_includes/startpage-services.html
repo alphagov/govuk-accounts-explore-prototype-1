@@ -1,0 +1,70 @@
+{# todo: something here to show just the top 3 and a link to show all #}
+{# todo: convert to flexbox #}
+
+<div id="" class="dashboard__research__wrapper">
+
+  {{ govukTable({
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+  rows: [
+    [
+      {
+        html: '<h3 class="govuk-heading-s govuk-!-margin-0">DBS - Basic criminal record check</h3><p class="govuk-!-margin-0 govuk-body-s">Service scope: Identity</p>'
+      },
+      {
+        html: '<a href="/service/dbs/mvp/service-start">Start page (mvp)</a><br>
+               <a href="/service/dbs/v6/service-start">Start page (v6)</a><br>
+               <a href="/service/dbs/v5/service-start">Start page (v5)</a><br>
+               <a href="/service/dbs/v4/service-start">Start page (v4)</a><br>
+               <a href="/service/dbs/v3/service-start">Start page (v3)</a><br>
+               <a href="/service/dbs/v2/service-start">Start page (v2)</a><br>
+               <a href="/service/dbs/v1/service-start">Start page (v1)</a>'
+      },
+      {
+        html: '<a href="/service/dbs/mvp/dbs-continue">Return page (mvp)</a><br>
+               <a href="/service/dbs/v6/dbs-continue">Return page (v6)</a><br>
+               <a href="/service/dbs/v5/dbs-continue">Return page (v5)</a><br>
+               <a href="/service/dbs/v4/dbs-continue">Return page (v4)</a><br>
+               <a href="/service/dbs/v3/dbs-other-names">Return page (v3)</a><br>
+               <a href="/service/dbs/v2/service-continue">Return page (v2)</a><br>
+               <a href="/service/dbs/v1/service-continue">Return page (v1)</a>'
+      }
+    ],
+    [
+      {
+        html: '<h3 class="govuk-heading-s govuk-!-margin-0">HMRC - Check your state pension forecast</h3><p class="govuk-!-margin-0 govuk-body-s">Service scope: Identity</p>'
+      },
+      {
+        html: '<a href="/service/pensions/v1/service-start">Start page (v1)</a>'
+      },
+      {
+        html: '<a href="/service/pensions/v1/pensions-forecast">Return page (v1)</a>'
+      }
+    ],
+    [
+      {
+        html: '<h3 class="govuk-heading-s govuk-!-margin-0">HMRC - Tax account</h3><p class="govuk-!-margin-0 govuk-body-s">Service scope: Identity</p>'
+      },
+      {
+        html: '<a href="/service/tax-account/v1/service-start">Start page (v1)</a>'
+      },
+      {
+        html: '<a href="/service/tax-account/v1/tax-account-return">Return page (v1)</a>'
+      }
+    ],
+    [
+      {
+        html: '<h3 class="govuk-heading-s govuk-!-margin-0">GOV.UK Verify</h3><p class="govuk-!-margin-0 govuk-body-s">Service scope: Identity</p>'
+      },
+      {
+        html: '<a href="/service/verify/v1/service-start">Hub page (v1)</a>'
+      }
+    ]
+  ]
+}) }}
+
+</div>
+
+
+
+<!--<p class="govuk-bodytext"><a href="/pyi/all">See all</a></p>-->

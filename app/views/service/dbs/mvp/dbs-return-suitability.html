@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Proving your identity with GOV.UK Verify
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  <!--<a class="govuk-back-link" href="dbs-opt-in">Back</a>-->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/service/verify/mvp/verify-start" method="post" class="form">
+
+      <h1 class="govuk-heading-xl">
+        Proving your identity with GOV.UK Verify
+      </h1>
+
+      <p>GOV.UK Verify is a secure way to prove who you are online. It helps protect you against online identity theft.</p>
+
+      <p>The Disclosure and Barring Service uses Verify to stop other people getting a criminal record check using your details, as it stops someone from pretending to be you.</p>
+
+      <p>You'll need:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>a valid passport or</li>
+        <li>a valid driving licence, full or provisional, with your photo on it</li>
+      </ul>
+
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      {{ govukDetails({
+      summaryText: "Other ways to apply",
+      html: "<p>If you cannot validate your identity online, you can continue to apply. You still need your financial and identity documents to hand.</p>
+
+      <p>But you'll also need to go to a UK post office in person after completing your application.</p>
+
+      <p>You'll have 10 days to take your identity documents to a UK post office that offers the DBS ID validation service.</p>
+
+      <p>We'll only start processing your application after you've validated your identity at a UK post office.</p>
+
+      <p><a href='dbs-validate-offline'>Continue to application without using a digital identity</a></p>"
+      }) }}
+
+    </form>
+
+  </div>
+
+</div>
+{% endblock %}

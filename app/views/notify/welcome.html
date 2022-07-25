@@ -1,6 +1,6 @@
 {% extends "notify/_template.html" %}
 
-{% set subjectLine = "Welcome to your GOV.UK account" %}
+{% set subjectLine = "You’ve created your GOV.UK account" %}
 
 {% block emailBody %}
 
@@ -8,17 +8,19 @@
 You have created your GOV.UK account.
 </p>
 
-<p>GOV.​UK accounts are new. They are a first step towards creating a single account that you can use to sign in to different government services.</p>
-<p>
-Eventually, you'll be able to use your GOV.UK account with most services on GOV.UK.
-</p>
+<p>GOV.UK accounts are new. At the moment you can only use your GOV.UK account with a few services.</p>
+
+<p>GOV.UK accounts are currently separate from other government accounts (for example Government Gateway or Universal Credit).</p>
+
+
+<p>In the future, you'll be able to use your GOV.UK account to sign in to most services on GOV.UK.</p>
 
     <p class="govuk-body">
 
-      If you have questions, problems or suggestions for how we could make your GOV.UK account better, you can contact us:
-      <a href="#">https://signin.account.gov.uk/contact-us</a>
+      If you have questions, problems or suggestions for how we could make your GOV.UK account better, you can contact us: <a href="#">https://signin.account.gov.uk/contact-us?referer=accountCreatedEmail</a>
     </p>
 
+<p>Sign in to your account: <a href="/auth/v9/signin-email-3">https://signin.account.gov.uk/</a></p>
 
 
   {% endblock %}

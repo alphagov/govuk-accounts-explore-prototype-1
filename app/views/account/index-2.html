@@ -1,0 +1,60 @@
+{% set hideAccountMenu = true %}
+
+{% set current = "home" %}
+{% set task3 = true %}
+{% block pageTitle %}
+  Your GOV.UK account - GOV.UK account - GOV.UK
+{% endblock %}
+{% extends "account/_account.html" %}
+{% block account %}
+
+<h1 class="govuk-heading-l govuk-!-margin-top-4">Your GOV.UK account</h1>
+
+  <p class="govuk-body accounts-your-account__email govuk-!-margin-bottom-6">
+    You're signed in as <span class="govuk-!-font-weight-bold">your.name@example.com</span>
+  </p>
+
+
+  <div class="accounts-panel govuk-!-margin-bottom-6">
+  <h2 class="gem-c-heading govuk-heading-m">Services you sign in to with your GOV.UK account</h2>
+
+  <div class="service-card ">
+    <h3 class="govuk-heading-s">Personal tax account</h3>
+    <p>Check your records and manage your payments to HM Revenue and Customs (HMRC).</p>
+    <p class="govuk-!-margin-bottom-4"><a href="/service/pta/service-pta-home" class="govuk-body govuk-link">Go to your personal tax account</a></p>
+    <p class="govuk-caption-m govuk-!-margin-bottom-0">Last used: 20 June  2022</p>
+  </div>
+  </div>
+
+<br>
+
+<h3 class="govuk-heading-m">Services that have checked your identity</h3>
+<p class="govuk-body">You've used your GOV.UK account to prove your identity to the following services:</p>
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Service</th>
+      <th scope="col" class="govuk-table__header">Date of check</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header"><a href="/service/pta/service-pta-home" class="govuk-body">Personal tax account</a></th>
+      <td class="govuk-table__cell">20 June 2022</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header"><a href="/service/dbs/mvp/service-start" class="govuk-body">Request a basic DBS check</a></th>
+      <td class="govuk-table__cell">18 June 2022</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+<div class="accounts-blurb">
+  <h3 class="govuk-heading-m">About GOV.UK accounts</h3>
+  <p class="govuk-body"class>GOV.UK accounts are new. At the moment you can only use your GOV.UK account with a few services.</p>
+  <p class="govuk-body"class>GOV.UK accounts are currently separate from other government accounts (for example Government Gateway or Universal Credit).</p>
+  <p class="govuk-body ">In the future, you'll be able to use your GOV.UK account to sign in to most services on GOV.UK.</p>
+</div>
+
+{% endblock %}

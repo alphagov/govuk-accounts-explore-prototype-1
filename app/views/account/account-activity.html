@@ -1,0 +1,63 @@
+{% set hideAccountMenu = true %}
+{% set task3 = true %}
+{% set current = "manage" %}
+{% block pageTitle %}
+  GOV.UK account settings - GOV.UK account - GOV.UK
+{% endblock %}
+{% extends "account/_account.html" %}
+{% block account%}
+
+<a href="/account/manage-account-2" class="govuk-back-link">Back to account settings</a>
+
+<h1 class="govuk-heading-l govuk-!-margin-top-4">Account activity</h1>
+
+
+<table class="govuk-table activity-table">
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Deleted proof of identity from your GOV.UK account</th>
+      <td class="govuk-table__cell">22 June 2022 at 09:25</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Signed in to your GOV.UK account</th>
+      <td class="govuk-table__cell">22 June 2022 at 09:22</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Signed out of your GOV.UK account</th>
+      <td class="govuk-table__cell">20 June 2022 at 12:34</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Confirmed your identity to personal tax account with your GOV.UK account </th>
+      <td class="govuk-table__cell">20 June 2022 at 12:08</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Signed in to personal tax account with your GOV.UK account</th>
+      <td class="govuk-table__cell">20 June 2022 at 12:04</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Signed out of your GOV.UK account</th>
+      <td class="govuk-table__cell">18 June 2022 at 16:46</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Confirmed your identity to DBS with your GOV.UK account</th>
+      <td class="govuk-table__cell">18 June 2022 at 16:16</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Saved proof of identity to your GOV.UK account</th>
+      <td class="govuk-table__cell">18 June 2022 at 16:15</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Proved your identity with your GOV.UK account</th>
+      <td class="govuk-table__cell">18 June 2022 at 16:15</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Created your GOV.UK account</th>
+      <td class="govuk-table__cell">18 June 2022 at 15:57</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="govuk-body">If you see something you do not recognise, <span><a href="#">contact us</a></span>.</p>
+
+
+{% endblock %}

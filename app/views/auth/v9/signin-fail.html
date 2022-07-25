@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+No GOV.UK account found
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header-auth-mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+<a class="govuk-back-link" href="signin-email">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      No GOV.UK account found
+    </h1>
+
+    <p class="govuk-body">
+      There is no GOV.UK account for <strong>{{ data['emailAddress'] or 'email@address.com'}}</strong>
+    </p>
+
+    <form class="form" action="/auth/v9/create-new-from-fail" method="post">
+      
+      {{ govukInsetText({
+      html: "<p>GOV.UK accounts are new. At the moment, they are separate from other government accounts, such as Government Gateway or Universal Credit.</p>"
+    }) }}
+
+      <p>You need to create a GOV.UK account even if you already have another type of government account.</p>
+
+      <button class="govuk-button" data-module="govuk-button">Create a GOV.UK Account</button>
+
+      <p><a href="signin-email.html">Try another email address</a></p>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

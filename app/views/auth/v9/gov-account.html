@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{# if coming in from a service - find out which one #}
+
+{% block pageTitle %}
+Sign in or create a GOV.UK account
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header-auth-mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+  {% if data['use-govuk-account'] %}
+    <a class="govuk-back-link" href="/preauth/mvp/identity-welcome">Back</a>
+  {% else %}
+
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/auth/v9/create-email" method="post" class="form">
+      <h1 class="govuk-heading-l">Create a GOV.UK account or sign in
+        {% if data.prototype['serviceType'] === 'identity' %}
+        <!-- to prove your identity -->
+        {% elif data.prototype['serviceType'] === 'save' %}
+        to save your progress
+        {% elif data.prototype['serviceType'] === 'account' %}
+        <!-- to create your account -->
+        {% endif %}
+      </h1>
+
+      <p>You’ll need:<p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>an email address</li>
+        <li>a UK mobile phone number</li>
+      </ul>
+
+      <button class="govuk-button" style="margin-bottom: 20px;">
+      <!--<img src="/public/images/govuk-crown.svg" class="sso-crown__icon-button" alt="GOV.UK Crown icon">-->
+        Create a GOV.UK account
+      </button>
+
+      <p class="govuk-body">If you already have a GOV.UK account you can <a href="signin-email" class="govuk-link">sign in</a>.</p>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">About GOV.UK accounts</span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>GOV.UK accounts are new. At the moment you can only use your GOV.UK account with a few services.</p>
+          <p>GOV.UK accounts are currently separate from other government accounts (for example Government Gateway).</p>
+          <p>In future, you'll be able to use your GOV.UK account to sign in to most services on GOV.UK.</p>
+        </div>
+      </details>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

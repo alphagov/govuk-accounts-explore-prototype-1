@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Sign in to your GOV.UK account
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header-auth-mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+  {% if prevURL === "http://localhost:3000/preauth/mvp/create-spinner" or prevURL === "https://gds-identity.herokuapp.com/preauth/mvp/create-spinner" or prevURL === "https://gds-identity-ur.herokuapp.com/preauth/mvp/create-spinner" %}
+    <a class="govuk-back-link" href="{{ preAuth }}">Back</a>
+  {% else %}
+    <a href="gov-account" class="govuk-back-link">Back</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      Sign in to your GOV.UK account
+    </h1>
+
+    <p>Enter your email address to sign in.</p>
+
+    <!--
+      This URL would take you to the spinner page
+      /auth/mvp/signin-checking
+    -->
+
+    <form class="form" action="/auth/v9/signin-password" method="post">
+
+      <div class="govuk-form-group">
+
+        <label class="govuk-label" for="email">Email address</label>
+
+        <input class="govuk-input govuk-!-width-two-thirds" id="email" name="emailAddress" type="email" spellcheck="false" aria-describedby="email-hint" autocomplete="email">
+
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+      <input class="govuk-input" name="signin" type="hidden" value="signin">
+
+    </form>
+
+  </div>
+</div>
+
+{% if data['devMode'] === 'true' %}
+{# DEVMODE SCENARIOS #}
+
+<details class="nhsuk-details dev-mode" role="group">
+  <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+        <span class="nhsuk-details__summary-text">
+          Continue with testing scenario
+        </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <h4>Happy paths</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="spinner-account-not-found-resume.html">User has account</a>
+      </li>
+    </ul>
+    <h4>Form validation Errors</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="#">No input</a>
+      </li>
+      <li>
+        <a href="#">Not a valid email format</a>
+      </li>
+    </ul>
+    <h4>System Errors</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="#">Session timeout</a>
+      </li>
+      <li>
+        <a href="#">Invalid Session</a>
+      </li>
+      <li>
+        <a href="#">Client not found</a>
+      </li>
+      <li>
+        <a href="#">Service too busy</a>
+      </li>
+      <li>
+        <a href="#">Account lock: We cannot sign you in</a>
+      </li>
+      <li>
+        <a href="#">Disabled GOV.UK account</a>
+      </li>
+    </ul>
+  </div>
+</details>
+{% endif %}
+
+{% endblock %}

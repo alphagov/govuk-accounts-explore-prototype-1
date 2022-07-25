@@ -1,0 +1,152 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Request a basic DBS check
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+homepageUrl: "/",
+serviceName: "",
+serviceUrl: "/",
+containerClasses: "govuk-width-container"
+}) }}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="javascript:void(0)">Home</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="javascript:void(0)">Working, jobs and pensions</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="javascript:void(0)">Finding a job</a>
+    </li>
+  </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Request a basic DBS check
+    </h1>
+
+    <p>Apply for a basic Disclosure and Barring Service (DBS) check to get a copy of your criminal record. This is called ‘basic disclosure’. It costs £23. It’s available for people working in England and Wales.</p>
+
+    <div class="govuk-inset-text">
+      <p>This page is also available in Welsh (<a href="javascript:void(0)">Cymraeg</a>).</p>
+    </div>
+
+    <p>You can also get a basic DBS check if you live in Northern Ireland or Scotland but the job you’re applying for is in England or Wales.</p>
+
+    <div class="govuk-inset-text">
+      <p>There’s a different way to apply if you’re applying for a job in <a href="javascript:void(0)">Northern Ireland</a> or <a href="javascript:void(0)">Scotland</a>.</p>
+    </div>
+
+    <p>The check will only show convictions that are not ‘spent’, for example some types of caution will disappear after 3 months.</p>
+
+    <p>You must be 16 or over to apply.</p>
+
+    <p>It usually takes up to 14 days for you to receive your certificate.</p>
+
+
+
+
+    <h2 class="govuk-heading-m">What you'll need</h2>
+
+    <p>To apply for a basic DBS check you’ll need:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>all your addresses for the last 5 years and the dates you lived there</li>
+      <li>your National Insurance number</li>
+      <li>your passport</li>
+      <li>your driving licence</li>
+    </ul>
+
+    <br />
+
+    <form class="form" action="/pyi/mvp/prove-your-id.html" method="get">
+
+      <div class="govuk-form-group">
+
+        <h2 class="govuk-heading-m">Apply online</h2>
+
+        <p>You’ll need a GOV.UK account to prove your identity and to apply for a basic DBS check online. If you do not have a GOV.UK account, you’ll be able to create one.</p>
+
+        <p>The service is available from 8am to 11:30pm.</p>
+
+        <input class="govuk-input" id="service" name="service" type="hidden" value="dbs">
+
+        <button class="govuk-button no-mar-bot govuk-button--start" data-module="govuk-button">
+          Start now
+          <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" role="presentation" focusable="false">
+            <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+          </svg>
+        </button>
+      </div>
+    </form>
+
+    <div id="before-you-start">
+      <div class="gem-c-govspeak govuk-govspeak " data-module="govspeak">
+        <h2 class="govuk-heading-m">Get help to use the online service</h2>
+
+        <p>If you need support to apply online, call the <abbr title="Disclosure and Barring Service">DBS</abbr> helpline on 03000 200 190 and select option 2 and then option 1.</p>
+
+        <h2 class="govuk-heading-m">Other ways to apply</h2>
+
+        <p>You can also choose to apply through other companies. <abbr title="Disclosure and Barring Service">DBS</abbr> has a <a href="javascript:void(0)">list of companies</a> you can apply through.</p>
+
+        <h2 class="govuk-heading-m">Transgender applications</h2>
+
+        <p>Contact the <abbr title="Disclosure and Barring Service">DBS</abbr> transgender applications team if you’re a transgender applicant and you do not want to reveal details of your previous identity to a potential employer.</p>
+
+        <div class="contact" style="border-left: 1px solid #b1b4b6; padding-left: 15px; margin-bottom: 30px; margin-top: 30px;">
+          <p><strong>DBS transgender applications team</strong><br>
+            <a href="javascript:void(0)">sensitive@dbs.gov.uk</a><br>
+            Telephone: 0151 676 1452<br>
+            Monday to Friday, 9am to 5pm<br>
+            <a href="javascript:void(0)">Find out about call charges</a></p>
+        </div>
+
+
+
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+
+    <!-- The Related items component is not part of GOV.UK Frontend but will be styled if used in the Prototype Kit -->
+
+    <aside class="app-related-items" role="complementary">
+      <h2 class="govuk-heading-m" id="subsection-title">
+        Related content
+      </h2>
+      <nav role="navigation" aria-labelledby="subsection-title">
+        <ul class="govuk-list govuk-!-font-size-16">
+          <li>
+            <a class="govuk-link" href="#">
+              Criminal record checks when you apply for a role
+            </a>
+          </li>
+          <li>
+            <a class="govuk-link" href="#">
+              Find out which DBS check is right for your employee
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+    </aside>
+
+  </div>
+</div>
+{% endblock %}
