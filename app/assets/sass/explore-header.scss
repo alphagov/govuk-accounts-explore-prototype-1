@@ -96,7 +96,8 @@
       @for $item-index from 1 through length($this-column) {
         $this-item: nth($this-column, $item-index);
 
-        & > #{$selector}:nth-child(#{$this-item}) {
+          grid-row: $row-count;
+          grid-column: $item-index;
           -ms-grid-column: $item-index;
           -ms-grid-row: $row-count;
         }
@@ -140,7 +141,8 @@
       @for $item-index from 1 through length($this-row) {
         $this-item: nth($this-row, $item-index);
 
-        & > #{$selector}:nth-child(#{$this-item}) {
+          grid-row: $item-index;
+          grid-column: $column_index;
           -ms-grid-column: $column_index;
           -ms-grid-row: $item-index;
         }
