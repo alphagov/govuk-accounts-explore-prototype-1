@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+We need to check your details
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header_r10.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="fraud-checking-post" method="post">
+
+      <h1 class="govuk-heading-l">We need to check your details</h1>
+
+      <p>Your details will be checked against information held by another organisation.</p>
+
+      <p>This will help us protect you against online identity theft.</p>
+
+      <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">Who we check your details with</span>
+          </summary>
+          <div class="govuk-details__text">
+            <p>We'll check your details with <a href="https://www.experian.co.uk/privacy/privacy-and-your-data?utm_medium=internalRef&utm_source=Consumer%20Services" class="govuk-link" rel="noreferrer noopener" target="_blank">Experian (opens in new tab)</a>. This is because companies like Experian have access to information about interactions you've previously had with other organisations.</p>
+
+            <p><a href="https://signin.account.gov.uk/privacy-notice" class="govuk-link" rel="noreferrer noopener" target="_blank">Read our privacy notice (opens in new tab)</a> if you'd like to know more about how your details will be used to prove your identity.</p>
+          </div>
+        </details>
+
+      <button id="button2" class="govuk-button govuk-visually-hidden" data-module="govuk-button">Continue</button>
+
+      <button class="govuk-button govuk-!-margin-top-4" id="button--save" data-module="govuk-button" >Continue</button>
+
+    </form>
+
+    {# DEVMODE SCENARIOS #}
+
+    {% if data['devMode'] %}
+
+    <details class="nhsuk-details dev-mode" role="group">
+      <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+        <span class="nhsuk-details__summary-text">
+          Continue with testing scenario
+        </span>
+      </summary>
+      <div class="nhsuk-details__text">
+        <h4>Happy paths</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            <a href="fraud-check?errorcode=">Matched to Experian records and no contra-indicators found</a>
+          </li>
+        </ul>
+        <h4>Errors</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            <a href="fraud-check?errorcode=pyi-no-match">No match with Experian records</a>
+          </li>
+          <li>
+            <a href="fraud-check?errorcode=pyi-no-match">Contra-indicator returned from Experian</a>
+          </li>
+        </ul>
+      </div>
+    </details>
+
+    {% endif %}
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  submitSpinner()
+
+  function buttonClicked(target) {
+    target.setAttribute('disabled', 'disabled')
+    target.className += ' button--save'
+    setTimeout(function () {
+      document.getElementById('button2').click()
+    }, 2000)
+  }
+
+  function submitSpinner() {
+    var selects = document.getElementById('button--save')
+    selects.addEventListener('click', function (event) {
+      event.preventDefault()
+      if (selects.getAttribute('disabled') === 'disabled') {
+        console.log('already clicked')
+      } else {
+        event.preventDefault()
+        console.log(selects.getAttribute('disabled'))
+        buttonClicked(selects)
+      }
+    })
+  }
+</script>
+
+{% endblock %}

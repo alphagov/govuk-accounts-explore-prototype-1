@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your phone
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header-auth-mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+<a class="govuk-back-link" href="create-otp-whatsApp">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      Check your WhatsApp
+    </h1>
+
+    <div class="govuk-inset-text">
+      <p>We have sent a code to: <strong>{{ data['obfNumber'] }}</strong></p>
+    </div>
+
+    <p>It might take a few minutes to arrive. The code will expire after 15 minutes.</p>
+
+    <form class="form" action="create-success" method="post">
+
+      <div class="govuk-form-group">
+
+        <label class="govuk-label" for="otp">Enter the 6 digit security code</label>
+
+        <input class="govuk-input govuk-input--width-5" id="otp" name="signin-sms-otp" type="text" autocomplete="one-time-code" inputmode="numeric" spellcheck="false" >
+
+      </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Problems receiving the code
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p class="govuk-body"><a href="create-otp-whatsApp">Request a new code </a> if:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>the code is not working</li>
+            <li>you want to use a different phone number</li>
+          </ul>
+          <p class="govuk-body"><a href="create-choose-otp-method">Get a code another way</a></p>
+        </div>
+      </details>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

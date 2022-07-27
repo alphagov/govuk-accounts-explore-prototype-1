@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Proving your identity with GOV.UK Verify
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  <!--<a class="govuk-back-link" href="dbs-opt-in">Back</a>-->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="dbs-postoffice" method="post" class="form">
+
+      <h1 class="govuk-heading-xl">
+        Your identity provider was unable to confirm your details
+      </h1>
+
+      <p>GOV.UK Verify was unable to validate your details to the level the Disclosure and Barring Service (DBS) requires.</p>
+
+      <h2 class="govuk-heading-l">Other ways to apply for a basic check</h2>
+      <p>You can still apply online.</p>
+
+      <p>You must complete your application first. This will include selecting identity documents from our approved list.</p>
+
+      <p>You will then need to take the identity documents you selected to a DBS ID validation service at the Post Office.</p>
+
+      <div class="govuk-inset-text">
+        <strong>You must complete the application online before going to the Post Office.</strong>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">Continue to application</button>
+
+    </form>
+
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+You've signed in to your GOV.UK account
+{% endblock %}
+
+{% block header %}
+  {% include "../_includes/header_mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../_includes/phase-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="passport-details" method="get">
+
+        <h1 class="govuk-heading-l">
+          You've signed in to your GOV.UK account
+        </h1>
+
+        <p>You can now continue to prove your identity.</p>
+
+        <button id="button" class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

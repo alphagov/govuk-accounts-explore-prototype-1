@@ -1,0 +1,207 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Enter your details exactly as they appear on your UK passport
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header_mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../_includes/phase-banner.html" %}
+  <a class="govuk-back-link" href="start">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+<!--        <span class="govuk-caption-l">Step 1 of 3</span>-->
+        Enter your details exactly as they appear on your UK passport</h1>
+
+      <form class="form" action="/pyi/mvp/address-manual-current" method="post">
+
+        <p>Your passport includes a lot of information that we can check to make sure that you are who you say you are.</p>
+
+        <p>We'll check your details with the HM Passport Office to make sure your passport has not been cancelled or reported as lost or stolen.</p>
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+        label: {
+          text: "Passport number"
+        },
+        classes: "govuk-input--width-10",
+        hint: {
+        text: "This is the 9 digit number in the top right hand corner of the photo page in your passport"
+        },
+        id: "passport-number",
+        name: "passport-number",
+        value: data['passport-number'],
+        spellcheck: false
+      }) }}
+
+        {{ govukInput({
+        label: {
+          text: "Surname"
+        },
+        id: "surname",
+        name: "surname",
+        value: data['surname'],
+        autocomplete: "family-name",
+        spellcheck: false
+      }) }}
+
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend">Given names</legend>
+
+          <div class="govuk-inset-text govuk-!-margin-top-0 govuk-!-padding-top-2" style="border-left-width: 4px;">
+
+        {{ govukInput({
+        label: {
+          text: "First name"
+        },
+        id: "first-name",
+        name: "first-name",
+        value: data['first-name'],
+        autocomplete: "given-name",
+        spellcheck: false
+      }) }}
+
+        {{ govukInput({
+        label: {
+          text: "Middle names"
+        },
+        hint: {
+        text: "You do not have to fill this in if you do not have any middle names"
+        },
+        id: "middle-names",
+        name: "middle-names",
+        value: data['middle-names'],
+        autocomplete: "additional-name",
+        spellcheck: false
+      }) }}
+
+          </div>
+
+        </fieldset>
+
+
+        {{ govukDateInput({
+        id: "dob",
+        namePrefix: "dob",
+        fieldset: {
+          legend: {
+            text: " Date of birth"
+          }
+        },
+        hint: {
+          text: "For example, 5 9 1973"
+        },
+        items: [
+          {
+            name: "day",
+            value: data['dob-day'],
+            classes: "govuk-input--width-2",
+            autocomplete: "bday-day"
+          },
+          {
+            name: "month",
+            value: data['dob-month'],
+            classes: "govuk-input--width-2",
+            autocomplete: "bday-month"
+          },
+          {
+            name: "year",
+            value: data['dob-year'],
+            classes: "govuk-input--width-4",
+            autocomplete: "bday-year"
+          }
+        ]
+      }) }}
+
+        {{ govukDateInput({
+        id: "passport-issued",
+        namePrefix: "passport-expires",
+        fieldset: {
+          legend: {
+            text: "Expiry date"
+          }
+        },
+        hint: {
+          text: "For example, 27 5 2029"
+        }
+      }) }}
+
+        {% if data['errorcode'] %}
+        <input class="govuk-input" id="errorcode" name="errorcode" type="hidden" value="{{ data['errorcode'] }}">
+        {% endif %}
+
+        <button id="button" class="govuk-button govuk-!-margin-top-4" data-module="govuk-button">Continue</button>
+        <button id="button2" class="govuk-button govuk-!-margin-top-4 govuk-visually-hidden" data-module="govuk-button">Continue</button>
+      </form>
+
+      {% if data['devMode'] === 'true' %}
+      {# DEVMODE SCENARIOS #}
+
+      <details class="nhsuk-details dev-mode govuk-!-margin-bottom-5" role="group">
+        <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+        <span class="nhsuk-details__summary-text">
+          Continue with testing scenario
+        </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <h4>Happy paths</h4>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              <a href="passport-details?errorcode=">Match found</a>
+            </li>
+          </ul>
+          <h4>Errors</h4>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              <a href="passport-details?errorcode=pyi-no-match">No match from DCS</a>
+            </li>
+            <li>
+              <a href="passport-details?errorcode=pyi-technical-unrecoverable">Technical error (unrecoverable)</a>
+            </li>
+          </ul>
+        </div>
+      </details>
+      {% endif %}
+
+    </div>
+  </div>
+
+
+<script type="text/javascript">
+  submitSpinner()
+
+  function buttonClicked(target) {
+    target.setAttribute('disabled', 'disabled')
+    setTimeout(function () {
+      // proceed
+      document.getElementById('button2').click()
+    }, 1000)
+  }
+
+  function submitSpinner() {
+    var selects = document.getElementById('button')
+    selects.addEventListener('click', function (event) {
+      event.preventDefault()
+      if (selects.getAttribute('disabled') === 'disabled') {
+        // console.log('already clicked')
+      } else {
+        event.preventDefault()
+        buttonClicked(selects)
+      }
+    })
+  }
+
+</script>
+
+
+{% endblock %}

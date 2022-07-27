@@ -1,0 +1,38 @@
+{% extends "layout_unbranded.html" %}
+
+{% block pageTitle %}
+End of task 1
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/index" method="post">
+
+      <h1 class="govuk-heading-l">End of task 1</h1>
+
+      <p>We've removed the steps that the DBS service requires for this research session.</p>
+
+      <p class="govuk-body">Imagine that you have submitted the following in order to receive a basic criminal record check:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>all your addresses for the last 5 years and the dates you lived there</li>
+        <li>your National Insurance number</li>
+        <li>your driving licence (if you have one)</li>
+      </ul>
+
+      <button class="govuk-button" data-module="govuk-button">Return to tasks</button>
+
+    </form>
+
+  </div>
+
+</div>
+{% endblock %}
+
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}

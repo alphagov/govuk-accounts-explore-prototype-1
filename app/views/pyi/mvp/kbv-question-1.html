@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{{ question }}
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header_mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="kbv-question-2" method="post">
+
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              How much did you borrow when you first took out your mortgage?
+            </h1>
+          </legend>
+          <div id="changed-name-hint" class="govuk-hint">
+            You can find this amount on your offer letter or mortgage agreement.
+          </div>
+          <div class="govuk-radios">
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="option1" name="{{ code }}" type="radio" value="{{ option1 }}">
+              <label class="govuk-label govuk-radios__label" for="option1">
+                UP TO £160,000
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="option2" name="{{ code }}" type="radio" value="{{ option2 }}">
+              <label class="govuk-label govuk-radios__label" for="option2">
+                OVER £160,000 UP TO £185,000
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="option3" name="{{ code }}" type="radio" value="{{ option3 }}">
+              <label class="govuk-label govuk-radios__label" for="option3">
+                OVER £185,000 UP TO £210,000
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="option4" name="{{ code }}" type="radio" value="{{ option4 }}">
+              <label class="govuk-label govuk-radios__label" for="option4">
+                OVER £210,000 UP TO £235,000
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="option5" name="{{ code }}" type="radio" value="{{ option5 }}">
+              <label class="govuk-label govuk-radios__label" for="option5">
+                NONE OF THE ABOVE / DOES NOT APPLY
+              </label>
+            </div>
+
+
+          </div>
+
+        </fieldset>
+
+        <input class="govuk-input" name="kbvNum" type="hidden" value="{{ code }}">
+        <button id="button" class="govuk-button govuk-!-margin-top-4" data-module="govuk-button">Continue</button>
+      </form>
+      <p><a class="govuk-link" href="#">I cannot answer this question</a></p>
+    </div>
+  </div>
+
+{% if data['devMode'] === 'true' %}
+  {# DEVMODE SCENARIOS #}
+  {% include "../_includes/devmode_kbvs-2.html" %}
+{% endif %}
+
+{% endblock %}

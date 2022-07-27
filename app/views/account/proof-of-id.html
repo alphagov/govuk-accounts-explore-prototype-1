@@ -1,0 +1,42 @@
+{% set hideAccountMenu = true %}
+{% set current = "manage" %}
+{% block pageTitle %}
+  GOV.UK account settings - GOV.UK account - GOV.UK
+{% endblock %}
+{% extends "account/_account.html" %}
+{% block account%}
+
+<div class="xpl-section-inner">
+
+<a href="/account/manage-account" class="govuk-back-link">Back to account settings</a>
+
+    <h1 class="govuk-heading-l govuk-!-margin-top-4">Your proof of identity</h1>
+
+    <p>Your GOV.UK account proves your identity with information you’ve provided.</p>
+
+    <p>Your account checks this information to prove your identity every time you use a service that requires it.</p>
+
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Information you’ve provided to prove your identity</caption>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Address check</th>
+          <td class="govuk-table__cell">Saved on 18 June 2022</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">UK passport check</th>
+          <td class="govuk-table__cell">Saved on 18 June 2022</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Answers to questions about your credit history</th>
+          <td class="govuk-table__cell">Saved on 18 June 2022</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="govuk-body govuk-link"><a href="delete-id">Delete this information from your account</a></p>
+</div>
+
+
+
+{% endblock %}

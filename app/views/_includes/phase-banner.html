@@ -1,0 +1,19 @@
+{% set html %}
+This is a new service – your
+
+{% if data.prototype['supportEntry'] %}
+<a class="govuk-link" href="{{data.prototype['supportDir']}}/{{data.prototype['supportEntry']}}">feedback</a>
+{% else %}
+<a class="govuk-link" href="/support/v1/support-start">feedback</a>
+{% endif %}
+
+will help us to improve it.
+
+{% endset -%}
+
+{{ govukPhaseBanner({
+  tag: {
+  text: "beta"
+},
+  html: html
+}) }}

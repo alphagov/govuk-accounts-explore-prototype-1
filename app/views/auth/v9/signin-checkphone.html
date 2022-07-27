@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your phone
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header-auth-mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+<a class="govuk-back-link" href="signin-password">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      Check your phone
+    </h1>
+
+    <p>We sent a code to *****900457</p>
+
+    <p>It might take a few minutes to arrive. The code will expire after 15 minutes.</p>
+
+    <form class="form" action="/pyi/mvp/use-saved-id" method="post">
+
+      <div class="govuk-form-group">
+
+        <label class="govuk-label" for="otp">Enter the 6 digit security code</label>
+
+        <input class="govuk-input govuk-input--width-5" id="otp" name="signin-sms-otp" type="text" autocomplete="one-time-code" inputmode="numeric" spellcheck="false" >
+
+      </div>
+
+      <p><a href="">Request a new code </a> if:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>the code isn't working or you didn't receive one</li>
+        <li>you want to use a different phone number</li>
+      </ul>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

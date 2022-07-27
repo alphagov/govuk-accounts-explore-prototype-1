@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Validating your identity
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  <a class="govuk-back-link" href="dbs-validate">Back</a>
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/service-end" method="post">
+
+      <h1 class="govuk-heading-l">[consent title needed]</h1>
+
+      <p>dffdsf fsdfd</p>
+
+      {{ govukCheckboxes({
+      idPrefix: "id-documents",
+      name: "dbs-accept",
+      classes: "govuk-checkboxes--small",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "dbs-accept-agree",
+          text: "I agree to the Basic DBS Check Service using my name, date of birth and address provided by my digital identity",
+          checked:  checked("dbs-accept", "dbs-accept-agree")
+        },
+        {
+          value: "dbs-accept-privacy",
+          text: "I have read and understood the basic DBS check online application privacy policy (opens in a new tab), which explains how the DBS will process my personal data when I'm applying online, before my application has been submitted",
+          checked:  checked("dbs-accept", "dbs-accept-privacy")
+        }
+      ]
+    }) }}
+      
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+
+</div>
+{% endblock %}

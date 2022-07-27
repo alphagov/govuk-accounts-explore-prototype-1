@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Disclaimer
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  <a class="govuk-back-link" href="dbs-review">Back</a>
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="#" method="post" class="form">
+
+      <h1 class="govuk-heading-xl">
+        By continuing with your application you confirm that:
+      </h1>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>the information you've given is true</li>
+        <li>you'll pay £23 for your application</li>
+      </ul>
+
+
+      {{ govukWarningText({
+      text: "You could be prosecuted if you knowingly give false information in your application",
+      iconFallbackText: "Warning"
+    }) }}
+
+
+      {{ govukCheckboxes({
+      idPrefix: "id-documents",
+      name: "dbs-accept",
+      classes: "govuk-checkboxes--small",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "dbs-accept-agree",
+          html: "I agree to the <a href='#'>terms and conditions</a>",
+          checked:  checked("dbs-accept", "dbs-accept-agree")
+        }
+      ]
+    }) }}
+
+
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+
+</div>
+{% endblock %}

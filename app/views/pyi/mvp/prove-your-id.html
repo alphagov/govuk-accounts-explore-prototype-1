@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Prove your identity to continue
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header_mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">
+          Prove your identity to continue
+        </h1>
+
+        <p>You need to prove your identity before you can apply for a basic DBS check.</p>
+
+      <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h3 class="govuk-heading-m">
+        How would you like to prove your identity?
+      </h3>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sign-in" name="sign-in" type="radio" value="government-gateway" aria-describedby="sign-in-item-hint">
+        <label class="govuk-label govuk-radios__label" for="sign-in">
+          Prove your identity online using a GOV.UK account
+        </label>
+        <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+          You’ll be asked to create a GOV.UK account if you do not have one.
+        </div>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sign-in-2" name="sign-in" type="radio" value="govuk-verify" aria-describedby="sign-in-2-item-hint">
+        <label class="govuk-label govuk-radios__label" for="sign-in-2">
+          Take your identity documents to be checked in person
+        </label>
+      </div>
+    </div>
+  </fieldset>
+
+</div>
+{{ govukButton({
+  text: "Continue",
+  href: "/auth/v9/gov-account.html"
+}) }}
+
+    </div>
+  </div>
+
+{% endblock %}

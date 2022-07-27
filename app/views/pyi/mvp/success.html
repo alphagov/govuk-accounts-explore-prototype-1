@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You've successfully proved your identity
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header_mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="saved" method="post" class="form">
+
+        <h1 class="govuk-heading-l">
+          You've successfully proved your identity
+        </h1>
+
+        <p>You can save your proof of identity to your GOV.UK account so you can skip these questions next time a service needs to check who you are. </p>
+
+        <button id="button" class="govuk-button" data-module="govuk-button">Save proof of identity to your GOV.UK account</button>
+      </form>
+
+      <a href="#" class="govuk-body govuk-link">Do not save proof of identity and continue to DBS</a>
+
+    </div>
+  </div>
+
+{% endblock %}

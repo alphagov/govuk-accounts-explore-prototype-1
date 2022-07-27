@@ -1,0 +1,63 @@
+{% set hideAccountMenu = true %}
+{% if (data['user-group'] == "Email updates") %}
+{% set emailShortCut = [{link: "merged" , email: "Merged" }, {link: "subscribed" , email: "Subscribed" }]%}
+{% else %}
+{% set emailShortCut = [{link: "subscribed" , email: "Subsribed" }]%}
+{% endif %}
+{% extends "account/_account.html" %}
+{% block account %}
+<h1 class="gem-c-heading govuk-heading-xl   govuk-!-margin-bottom-4">Confirm you want to get emails</h1>
+<p class="govuk-body">
+
+You’ll get emails when there are updates to:</P>
+<p>
+
+   <strong>{{ data['title'] | default("National lockdown stay at home")}}</strong>
+</p>
+
+
+<p>
+
+
+  <form class="form" method="post" action="{% if data['user-group'] == "Email updates" %}/account/confirm/router/merge{% else %}/account/router-add{% endif %}" name="emailAddress">
+
+<input type='hidden' name="save" id="save" value="{{ data['notifications'][0] | default('/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do') }}" />
+    <input type="hidden">
+    <button class="govuk-button" data-module="govuk-button">Confirm</button>
+  </form>
+<p>
+  <a class="govuk-link" href="/">Cancel and go to the GOV.UK homepage</a>
+</p>
+
+{% if ((data['user-group'] == "Email updates") or mergePage) %}
+
+<h2 class="govuk-heading-m">Your other GOV.UK email subscriptions</h2>
+<p class="govuk-body">
+There are more GOV.UK email subscriptions for <strong>your.name@example.com</strong>
+</p>
+<p class="govuk-body">
+   These will be moved to your
+new account:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>News and communications</li>
+  <li>Money</li>
+  <li>Ofsted</li>
+</ul>
+<p>
+  You’ll be able to use your account to
+  unsubscribe or change how often you get
+  these emails.
+</p>
+
+{% endif %}
+
+<!-- use this soon as it has the functionality for saving a notification  -->
+<!--
+  <a class="govuk-button"
+    href="/account/router-add?save={{ data['notifications'][0] | default('/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do') }}">
+      Confirm</a>
+</p>
+->
+ <!-- end functionality to use later -->
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your contact preferences
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  <a class="govuk-back-link" href="dbs-paying">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Check your details</h1>
+
+    <p>Please check your mobile number and email address are correct.</p>
+
+    <p>You will need a correct mobile to receive updates about the progress of your application and to receive a code that enables you to view your certificate online.</p>
+
+    <p>You can complete payment at the end of this online application.</p>
+
+    <form action="/service/dbs/mvp/dbs-review" method="post" class="form">
+
+      {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "Mobile number to send text updates to"
+          },
+          value: {
+            text: data['mobileNumber']
+          },
+          actions: {
+            items: [
+              {
+                href: "dbs-mobile",
+                text: "Change",
+                visuallyHiddenText: "mobile number"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Email address"
+          },
+          value: {
+            text: data['emailAddress']
+          },
+          actions: {
+            items: [
+              {
+                href: "dbs-email",
+                text: "Change",
+                visuallyHiddenText: "email address"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Payment choice"
+          },
+          value: {
+            html: data['dbs-paying']
+          },
+          actions: {
+            items: [
+              {
+                href: "dbs-paying",
+                text: "Change",
+                visuallyHiddenText: "paying"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      <p><a href="">Print this page</a></p>
+    </form>
+  </div>
+</div>
+{% endblock %}

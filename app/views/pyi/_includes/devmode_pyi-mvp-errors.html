@@ -1,0 +1,17 @@
+<details class="nhsuk-details dev-mode" role="group">
+  <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+    <span class="nhsuk-details__summary-text">
+      Jump to error page
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <h4>Error pages</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      {% for i in range(0, total) -%}
+      <li>
+        <a href="error?errorcode={{ data.errors.pyi[i].errorcode }}">{{ data.errors.pyi[i].errorcode }}</a>: {{ data.errors.pyi[i].description }}
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</details>

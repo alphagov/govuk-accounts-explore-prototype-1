@@ -39,6 +39,16 @@
   GOV.UK Prototype Kit
 {% endblock %}
 
+{% block header %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
 {% if useAutoStoreData %}
@@ -53,20 +63,13 @@
           {
             href: "/prototype-admin/clear-data",
             text: "Clear data"
-          },
-          {
-            href: "/index",
-            text: "Go to user research tasks"
           }
         ],
         visuallyHiddenTitle: "Footer links"
       }
     }) }}
-
   {% endblock %}
 {% endif %}
-
-
 
 {% block bodyEnd %}
   {% block scripts %}
@@ -74,5 +77,4 @@
     {% block pageScripts %}{% endblock %}
   {% endblock %}
   <!-- GOV.UK Prototype Kit {{releaseVersion}} -->
-    {% include 'includes/ur-tasks.html'%}
 {% endblock %}

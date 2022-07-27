@@ -1,0 +1,45 @@
+<details class="nhsuk-details dev-mode" role="group">
+  <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+    <span class="nhsuk-details__summary-text">
+      Jump to KBV question
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <h4>Question</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="kbv-question-1">Q1. When did you last open a bank account?</a>
+      </li>
+      <li>
+        <a href="kbv-question-2">Q2. What’s the security code (sometimes known as the ‘CVV’) of the debit card connected to your current account?</a>
+      </li>
+      <li>
+        <a href="kbv-question-3">Q3. How much is left to pay on your mortgage?</a>
+      </li>
+      <li>
+        <a href="kbv-question-4">Q4. What’s the postcode of the address where you were living in January 2015?</a>
+      </li>
+      <li>
+        <a href="kbv-question-5">Q5. When did you last take out a hire purchase agreement?</a>
+      </li>
+      <li>
+        <a href="kbv-question-6">Q6. When did you last open a credit account with a retailer?</a>
+      </li>
+      <li>
+        <a href="kbv-question-7">Q7. Enter the ’Employee’s contribution’ figure on your P60?</a>
+      </li>
+      <li>
+        <a href="kbv-question-8">Q8. Enter the ’Total for year’ figure on your P60?</a>
+      </li>
+      <li>
+        <a href="kbv-question-9">Q9. When did you last take out or renew a personal mobile phone contract?</a>
+      </li>
+    </ul>
+    <h4>Selected questions and status</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      {% for question, status in data.kbvs %}
+        <li>Q{{ question }}: {% if status === false %}not answered{% else %}answered{% endif%}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</details>

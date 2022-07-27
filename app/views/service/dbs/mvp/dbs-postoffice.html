@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+By continuing with your application you confirm that:
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  <a class="govuk-back-link" href="dbs-verify-start">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/service/dbs/mvp/dbs-select-documents" method="post" class="form">
+
+      <h1 class="govuk-heading-xl">
+        Validating your identity at the Post Office
+      </h1>
+
+      <p>To validate your identity at the Post Office you need to follow 3 steps:</p>
+
+      <ol class="govuk-list govuk-list--number">
+        <li><p>Select the identity documents you have to hand from our list.</p></li>
+        <li><p>Print the letter we'll generate for you after you complete the rest of your application.</p></li>
+        <li><p>Take your documents and the letter to a post office that offers the DBS ID validation service within 10 days (we'll generate a list of your nearest post offices at the end of this application).</p></li>
+      </ol>
+
+      <button class="govuk-button" data-module="govuk-button">Continue to document list</button>
+
+    </form>
+
+  </div>
+</div>
+{% endblock %}

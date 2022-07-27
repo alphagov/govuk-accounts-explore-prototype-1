@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+By continuing with your application you confirm that:
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  <a class="govuk-back-link" href="dbs-validate">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/service/dbs/mvp/dbs-validate-offline" method="post" class="form">
+
+      <h1 class="govuk-heading-xl">
+        By continuing with your application you confirm that:
+      </h1>
+
+      {{ govukCheckboxes({
+      idPrefix: "id-documents",
+      name: "dbs-accept-offline",
+      classes: "govuk-checkboxes--small",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "dbs-accept-privacy",
+          text: "I have read and understood the basic DBS check online application privacy policy (opens in a new tab), which explains how the DBS will process my personal data when I'm applying online, before my application has been submitted",
+          checked:  checked("dbs-accept-offline", "dbs-accept-privacy")
+        },
+        {
+          value: "dbs-accept-cookies",
+          text: "I accept the optional cookies that the Basic DBS check online application will put onto my computer, tablet or mobile phone. I can manage my cookie preferences at any time by going back to the cookie policy found at the bottom of every page in this service",
+          checked:  checked("dbs-accept-offline", "dbs-accept-cookies")
+        }
+      ]
+    }) }}
+
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+
+</div>
+{% endblock %}

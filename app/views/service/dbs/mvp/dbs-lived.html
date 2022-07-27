@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Have you lived anywhere else from 2016 to now?
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  {% if prevURL === "http://localhost:3000/service/dbs/mvp/review" or prevURL === "https://gds-identity.herokuapp.com/service/dbs/mvp/review" or prevURL === "https://gds-identity-ur.herokuapp.com/service/dbs/mvp/review" %}
+    <a class="govuk-back-link" href="review">Back</a>
+  {% else %}
+    <a class="govuk-back-link" href="dbs-born">Back</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/service/dbs/v4/dbs-nino" method="post" class="form">
+
+      {{ govukRadios({
+          idPrefix: "dbs-lived-elsewhere",
+          name: "dbs-lived-elsewhere",
+          classes: "govuk-radios--inline",
+          fieldset: {
+            legend: {
+              text: "Have you lived anywhere else from 2016 to now?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+          {
+          value: "yes",
+          text: "Yes"
+          },
+          {
+          value: "no",
+          text: "No"
+          }
+          ]
+          }) }}
+
+      <p>You must tell us about all the addresses you've lived at in the last 5 years. You can't leave any gaps but it's fine to have overlapping.</p>
+
+      <p>You need to include any secondary addresses, for example student accommodation or if you work away from home.</p>
+
+      <table class="govuk-table">
+        <tr class="govuk-table__cell">
+          <th class="govuk-table__cell" style="text-align: left;">Address</th>
+          <th class="govuk-table__cell" style="text-align: left;">Dates you lived there</th>
+        </tr>
+        <tr>
+          <td class="govuk-table__cell">
+            {% if data['postcode-cra'] %}
+            <p>{{ data['address-line-1-cra'] }},<br>
+              {{ data['address-line-2-cra'] }},<br>
+              {{ data['address-town-cra'] }},<br>
+              {{ data['postcode-cra'] }}
+            </p>
+            {% else %}
+            <p>1 Whitehall Quay <br/>Whitehall Rd <br/>Leeds <br/>LS1 4HR</p></td>
+          {% endif %}
+          <td class="govuk-table__cell">2014 to now</td>
+        </tr>
+      </table>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+{% endblock %}

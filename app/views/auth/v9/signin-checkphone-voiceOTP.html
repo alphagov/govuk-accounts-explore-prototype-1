@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your phone
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header-auth-mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+<a class="govuk-back-link" href="signin-get-voice-otp">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      Enter your security code
+    </h1>
+
+    <p>When you answer the phone, you’ll hear an automated message reading the code.</p>
+
+    <p>The code will expire after 15 minutes.</p>
+
+    <form class="form" action="../../service/govuk-account/account-management/account-home" method="post">
+
+      <div class="govuk-form-group">
+
+        <label class="govuk-label" for="otp">Enter the 6 digit security code</label>
+
+        <input class="govuk-input govuk-input--width-5" id="otp" name="signin-sms-otp" type="text" autocomplete="one-time-code" inputmode="numeric" spellcheck="false" >
+
+      </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Problems receiving the code
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p class="govuk-body"><a href="signin-get-voice-otp">Request a new code </a> if the code is not working or you did not get a phone call.</p>
+        </div>
+      </details>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

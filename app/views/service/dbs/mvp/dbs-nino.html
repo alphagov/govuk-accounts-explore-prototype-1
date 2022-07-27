@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Do you have a UK National Insurance number?
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  {% if prevURL === "http://localhost:3000/service/dbs/mvp/dbs-review" or prevURL === "https://gds-identity.herokuapp.com/service/dbs/mvp/dbs-review" or prevURL === "https://gds-identity-ur.herokuapp.com/service/dbs/mvp/dbs-review" %}
+    <a class="govuk-back-link" href="dbs-review">Back</a>
+  {% else %}
+    <a class="govuk-back-link" href="dbs-born">Back</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% if prevURL === "http://localhost:3000/service/dbs/mvp/dbs-review" or prevURL === "https://gds-identity.herokuapp.com/service/dbs/mvp/dbs-review" or prevURL === "https://gds-identity-ur.herokuapp.com/service/dbs/mvp/dbs-review" %}
+{% set action = '/service/dbs/mvp/dbs-review' %}
+{% else %}
+{% set action = '/service/dbs/mvp/dbs-driving' %}
+{% endif %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="{{ action }}" method="post" class="form">
+
+      {% set ninoHtml %}
+        {{ govukInput({
+          id: "dbs-nino-number",
+          name: "dbs-nino-number",
+          type: "text",
+          spellcheck: false,
+          value: data['dbs-nino-number'],
+          classes: "govuk-input--width-10",
+          label: {
+            text: "UK National Insurance number"
+          },
+          hint: {
+            text: "For example, QQ123456C."
+          }
+        }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+      idPrefix: "dbs-nino",
+      name: "dbs-nino",
+      fieldset: {
+        legend: {
+          text: "Do you have a UK National Insurance number?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        text: "If you can't provide a UK National Insurance number you can still carry on with your application, but it might take us longer to process your check."
+      },
+      items: [
+        {
+          value: "yes",
+          text: "Yes",
+          checked:  checked("dbs-nino", "yes"),
+          conditional: {
+            html: ninoHtml
+          }
+        },
+        {
+          value: "no",
+          text: "No/I cannot provide the details right now",
+          checked:  checked("dbs-nino", "no")
+        }
+      ]
+    }) }}
+
+      {{ govukDetails({
+      summaryText: "I don't know my UK National Insurance number",
+      html: "<p>You can find your National Insurance number on your payslip or letters about tax pensions or benefits.</p><p>Or you can find out <a href='#'>how to apply for a National Insurance number</a>. You can apply once you're in the UK.</p>"
+      }) }}
+
+      <input class="govuk-input" name="dbs-mobile-pref" type="hidden" value="Yes">
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Choose a way to prove your identity
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  {% if prevURL === "http://localhost:3000/service/dbs/mvp/dbs-review" or prevURL === "https://gds-identity.herokuapp.com/service/dbs/mvp/dbs-review" or prevURL === "https://gds-identity-ur.herokuapp.com/service/dbs/mvp/dbs-review" %}
+    <a class="govuk-back-link" href="dbs-review">Back</a>
+  {% else %}
+    <a class="govuk-back-link" href="dbs-other-names">Back</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% if prevURL === "http://localhost:3000/service/dbs/mvp/dbs-review" or prevURL === "https://gds-identity.herokuapp.com/service/dbs/mvp/dbs-review" or prevURL === "https://gds-identity-ur.herokuapp.com/service/dbs/mvp/dbs-review" %}
+  {% set action = '/service/dbs/mvp/dbs-review' %}
+{% else %}
+  {% set action = '/service/dbs/mvp/dbs-born' %}
+{% endif %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="{{ action }}" method="post" class="form">
+
+      {{ govukRadios({
+          idPrefix: "dbs-sex",
+          name: "dbs-sex",
+          fieldset: {
+            legend: {
+              text: "What is your sex?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "We need to know your sex so we can check police records."
+          },
+          items: [
+          {
+            value: "female",
+            text: "Female",
+            checked:  checked("dbs-sex", "female")
+          },
+          {
+          value: "male",
+          text: "Male",
+            checked:  checked("dbs-sex", "male")
+          }
+          ]
+          }) }}
+
+      {{ govukDetails({
+      summaryText: "What personal details will appear on my certificate?",
+      html: "<p>Your sex will be printed on your paper certificate. However, it will not be displayed on your online result.</p><p>If you're transgender or non-binary and are concerned about completing this application, you can read our <a href='javascript:void(0)'>guidance on transgender applications</a>. You can contact the DBS sensitive transactions team if you do not want to reveal details of your previous identity on your paper certificate.</p>"
+      }) }}
+
+
+  <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+  </form>
+</div>
+</div>
+{% endblock %}

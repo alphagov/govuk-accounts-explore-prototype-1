@@ -1,0 +1,13 @@
+{% if emailLink %}
+<div class="proto-action">
+    <a href="/emails/{{ emailLink }}{{ params }}">
+        <div class="proto-action-icon"></div>
+        <div class="proto-action-text">Email sent</div>
+    </a>
+</div>
+{% endif %}
+
+<div class="proto-error">
+    <div class="proto-error-icon"></div>
+    <div class="proto-error-text">Dev mode</div>
+</div>

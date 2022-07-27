@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is your email address?
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  {% if prevURL === "http://localhost:3000/service/dbs/mvp/dbs-check-details" or prevURL === "https://gds-identity.herokuapp.com/service/dbs/mvp/dbs-check-details" or prevURL === "https://gds-identity-ur.herokuapp.com/service/dbs/mvp/dbs-check-details" %}
+    <a class="govuk-back-link" href="dbs-check-details">Back</a>
+  {% else %}
+    <a class="govuk-back-link" href="dbs-certificate">Back</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% if prevURL === "http://localhost:3000/service/dbs/mvp/dbs-check-details" or prevURL === "https://gds-identity.herokuapp.com/service/dbs/mvp/dbs-check-details" or prevURL === "https://gds-identity-ur.herokuapp.com/service/dbs/mvp/dbs-check-details" %}
+{% set action = '/service/dbs/mvp/dbs-check-details' %}
+{% else %}
+{% set action = '/service/dbs/mvp/dbs-mobile' %}
+{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="{{ action }}" method="post">
+
+      {{ govukInput({
+      label: {
+        text: "What is your email address?",
+        classes: "govuk-label--l",
+        isPageHeading: true
+      },
+      hint: {
+        html: "<p>The email address you provide should be your personal one. If for example, you provide a shared email address, others may be able to view the result of your check.</p>"
+      },
+        id: "emailAddress",
+        name: "emailAddress",
+        classes: "govuk-input--width-20",
+        autocomplete: "email",
+        value: data['emailAddress']
+      }) }}
+
+      <p>We'll use your email address to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>send you general information about your application</li>
+        <li>send you links to track, view and share your result online</li>
+      </ul>
+
+      <div class="govuk-inset-text">
+        <p>You will not be able to view your result online if your check reveals a criminal record.</p>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

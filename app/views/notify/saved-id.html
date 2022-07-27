@@ -1,0 +1,24 @@
+{% extends "notify/_template.html" %}
+
+{% set subjectLine = "You’ve saved your proof of identity" %}
+
+{% block emailBody %}
+
+<p>
+You’ve saved your proof of identity to your GOV.UK account. This means you can skip the identity questions next time a service needs to check who you are.
+</p>
+
+<p>You can sign in to your GOV.UK account to see or delete your proof of identity at any time.</p>
+
+<p>Sign in to your account: <a href="/auth/v9/signin-email-3">https://signin.account.gov.uk/</a></p>
+
+    <p class="govuk-body">
+
+      If you did not do this, contact us: <a href="#">https://signin.account.gov.uk/contact-us?referer=accountCreatedEmail</a>
+    </p>
+
+
+
+  {% endblock %}
+  {% block header %}{% endblock %}
+  {% block footer %}{% endblock %}

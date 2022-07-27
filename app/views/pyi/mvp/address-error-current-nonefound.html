@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+There is a problem
+{% endblock %}
+
+{% block header %}
+{% include "../_includes/header_mvp.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "../../_includes/phase-banner.html" %}
+{% endblock %}
+
+{% set continue %}
+Continue with {{ data['address-postcode-current'] or 'N15 6QJ' }} and enter the rest of your address details manually
+{% endset %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">There is a problem</h1>
+
+    <p>We cannot find any addresses with the postcode <strong>{{ data['address-postcode-current'] or 'N15 6QJ' }}.<strong></p>
+
+    <form class="form" action="address-error-choice-post" method="post">
+
+      {{ govukRadios({
+      classes: "govuk-radios",
+      idPrefix: "error-choice",
+      name: "error-choice",
+      fieldset: {
+        legend: {
+          text: "What would you like to do?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      items: [
+        {
+          value: "continue",
+          html: continue
+        },
+        {
+          value: "tryagain",
+          html: "Try entering your postcode again"
+        }
+      ]
+    }) }}
+
+      <button class="govuk-button" type="submit" data-module="govuk-button">
+        Continue
+      </button>
+
+    </form>
+      <p><a class="govuk-link" href="{{data.prototype['supportDir'] or '/support/v1'}}/{{data.prototype['supportEntry'] or 'support-start' }}" target="_blank">Contact the GOV.UK account team (opens in a new tab)</a></p>
+  </div>
+</div>
+
+{% endblock %}

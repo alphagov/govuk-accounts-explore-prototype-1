@@ -1,3 +1,4 @@
+@import "node_modules/govuk-frontend/govuk/base";
 @import "node_modules/govuk-frontend/govuk/helpers/colour";
 @import "node_modules/govuk-frontend/govuk/helpers/media-queries";
 
@@ -22,7 +23,7 @@
   $fractions: "1fr";
 
   @for $i from 1 to $number {
-    $fractions: $fractions + " 1fr";
+    $fractions: $fractions +" 1fr";
   }
 
   @return unquote($fractions);
@@ -70,7 +71,7 @@
   // Internet Explorer 10-11 require each element to be placed in the grid -
   // the `grid-auto-flow` property isn't supported. This means that both the
   // column and row needs to be set for every child element.
-  @if $flow == "row" {
+  @if $flow =="row" {
     $grid: ();
     $counter: 0;
 
@@ -78,12 +79,13 @@
       $this-row: ();
 
       @for $column from 1 through $columns {
-        $counter: $counter + 1;
+        $counter: $counter +1;
 
         // stylelint-disable max-nesting-depth
-        @if $counter <= $items {
+        @if $counter <=$items {
           $this-row: append($this-row, $counter);
         }
+
         // stylelint-enable max-nesting-depth
       }
 
@@ -96,7 +98,9 @@
       @for $item-index from 1 through length($this-column) {
         $this-item: nth($this-column, $item-index);
 
-        & > #{$selector}:nth-child(#{$this-item}) {
+        &>#{$selector}:nth-child(#{$this-item}) {
+          grid-row: $row-count;
+          grid-column: $item-index;
           -ms-grid-column: $item-index;
           -ms-grid-row: $row-count;
         }
@@ -104,7 +108,7 @@
     }
   }
 
-  @if $flow == "column" {
+  @if $flow =="column" {
     // This creates a list of lists to represent the columns and rows; for
     // example, a 7 item 2 column list would create this:
     //   [
@@ -118,12 +122,13 @@
       $this-row: ();
 
       @for $row from 1 through $rows {
-        $counter: $counter + 1;
+        $counter: $counter +1;
 
         // stylelint-disable max-nesting-depth
-        @if $counter <= $items {
+        @if $counter <=$items {
           $this-row: append($this-row, $counter);
         }
+
         // stylelint-enable max-nesting-depth
       }
 
@@ -140,7 +145,9 @@
       @for $item-index from 1 through length($this-row) {
         $this-item: nth($this-row, $item-index);
 
-        & > #{$selector}:nth-child(#{$this-item}) {
+        &>#{$selector}:nth-child(#{$this-item}) {
+          grid-row: $item-index;
+          grid-column: $column_index;
           -ms-grid-column: $column_index;
           -ms-grid-row: $item-index;
         }
@@ -158,10 +165,12 @@ $pseudo-underline-height: 3px;
 $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
 
 @mixin chevron($colour, $update: false) {
-  @if $update == true {
+  @if $update ==true {
     border-bottom-color: $colour;
     border-right-color: $colour;
-  } @else {
+  }
+
+  @else {
     @include prefixed-transform($rotate: 45deg, $translateY: -35%);
     border-bottom: 2px solid $colour;
     border-right: 2px solid $colour;
@@ -343,9 +352,11 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
 
   display: inline-block;
   font-size: 19px;
+
   @if $govuk-typography-use-rem {
     font-size: govuk-px-to-rem(19px);
   }
+
   font-weight: bold;
   margin: govuk-spacing(3) 0;
 
@@ -391,6 +402,7 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
       @if $govuk-typography-use-rem {
         font-size: govuk-px-to-rem(16px);
       }
+
       // stylelint-enable max-nesting-depth
 
       height: govuk-spacing(4);
@@ -411,6 +423,7 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
 
       // stylelint-disable max-nesting-depth
       @include focus-and-focus-visible {
+
         &,
         &:hover {
           box-shadow: none;
@@ -423,6 +436,7 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
       }
 
       @include focus-not-focus-visible {
+
         &,
         &:hover {
           text-decoration: none;
@@ -444,6 +458,7 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
           background: none;
         }
       }
+
       // stylelint-enable max-nesting-depth
 
       &:after {
@@ -506,9 +521,11 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
       color: govuk-colour("white");
       float: left;
       font-size: 16px;
+
       @if $govuk-typography-use-rem {
         font-size: govuk-px-to-rem(16px);
       }
+
       height: $black-bar-height;
       position: relative;
       text-decoration: none;
@@ -521,6 +538,7 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
         }
       }
     }
+
     @include focus-not-focus-visible {
       &:hover {
         color: govuk-colour("mid-grey");
@@ -603,6 +621,7 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
       }
     }
   }
+
   // stylelint-enable max-nesting-depth
 
   .js-module-initialised & {
@@ -619,6 +638,7 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
 
 // Search link and dropdown.
 .gem-c-layout-super-navigation-header__search-item-link {
+
   &:link,
   &:visited {
     @include govuk-media-query($from: "desktop") {
@@ -706,9 +726,11 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
   @include govuk-link-style-no-underline;
 
   font-size: 16px;
+
   @if $govuk-typography-use-rem {
     font-size: govuk-px-to-rem(16px);
   }
+
   font-weight: 700;
   background: govuk-colour("black");
   border: 0;
@@ -763,6 +785,7 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
 
   // Open button modifier
   &.gem-c-layout-super-navigation-header__open-button {
+
     // stylelint-disable max-nesting-depth
     @include focus-and-focus-visible {
       @include govuk-focused-text;
@@ -804,6 +827,7 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
         }
       }
     }
+
     // stylelint-enable max-nesting-depth
   }
 }
@@ -949,7 +973,7 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
   margin: 0;
   padding: govuk-spacing(6) govuk-spacing(4);
 
-  & > li {
+  &>li {
     margin: 0;
   }
 
@@ -957,7 +981,7 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
     margin: 0 (0 - govuk-spacing(3));
     padding: govuk-spacing(7) 0 govuk-spacing(8) 0;
 
-    & > li {
+    &>li {
       margin: 0 govuk-spacing(3);
     }
   }
@@ -974,7 +998,7 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
     @include columns($items: 6, $columns: 2, $selector: "li", $flow: column);
     padding-bottom: 0;
 
-    & > li {
+    &>li {
       box-sizing: border-box;
       padding-bottom: govuk-spacing(4);
     }
@@ -983,6 +1007,7 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
 
 .gem-c-layout-super-navigation-header__navigation-second-item-link {
   font-size: 16px;
+
   @if $govuk-typography-use-rem {
     font-size: govuk-px-to-rem(16px);
   }
@@ -1003,9 +1028,11 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
 
 .gem-c-layout-super-navigation-header__navigation-second-item-link--with-description {
   font-size: 16px;
+
   @if $govuk-typography-use-rem {
     font-size: govuk-px-to-rem(16px);
   }
+
   font-weight: bold;
 }
 
@@ -1039,9 +1066,11 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
 .gem-c-layout-super-navigation-header__navigation-second-footer-link {
   display: inline-block;
   font-size: 16px;
+
   @if $govuk-typography-use-rem {
     font-size: govuk-px-to-rem(16px);
   }
+
   margin: govuk-spacing(1) 0;
 
   &:after {
@@ -1061,9 +1090,11 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
 .gem-c-layout-super-navigation-header__navigation-second-item-description {
   @include govuk-typography-common;
   font-size: 16px;
+
   @if $govuk-typography-use-rem {
     font-size: govuk-px-to-rem(16px);
   }
+
   font-weight: normal;
   margin: govuk-spacing(1) 0 0 0;
 }
@@ -1101,9 +1132,11 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
 .gem-c-layout-super-navigation-header__popular-link {
   display: inline-block;
   font-size: 16px;
+
   @if $govuk-typography-use-rem {
     font-size: govuk-px-to-rem(16px);
   }
+
   padding: 0;
 
   &:after {

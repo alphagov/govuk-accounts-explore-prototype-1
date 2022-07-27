@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Do you have a current passport?
+{% endblock %}
+
+{% block header %}
+{% include "../../_includes/header-dbs-r7.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../../../_includes/phase-banner.html" %}
+  <a class="govuk-back-link" href="dbs-driving">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/service/dbs/mvp/dbs-certificate" method="post" class="form">
+
+      {% set passportHtml %}
+        {{ govukInput({
+          id: "dbs-passport-number",
+          name: "dbs-passport-number",
+          type: "text",
+          spellcheck: false,
+          classes: "govuk-input--width-20",
+          label: {
+            text: "Passport number"
+          }
+        }) }}
+
+      {{ govukInput({
+        id: "dbs-passport-country",
+        name: "dbs-passport-country",
+        type: "text",
+        spellcheck: true,
+        classes: "govuk-input--width-20",
+        label: {
+          text:   "Country of issue"
+        }
+      }) }}
+
+      {% endset -%}
+
+      {{ govukRadios({
+      idPrefix: "dbs-passport",
+      name: "dbs-passport",
+      fieldset: {
+        legend: {
+          text: "Do you have a current passport?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        html: "<p>If you can't provide passport details you can still carry on with your application, but it might take us longer to process your check.</p>
+              <div class='govuk-inset-text'><p>If you have an Irish passport card and want to provide this instead of your passport, you can enter the details of your card here.</p></div>"
+      },
+      items: [
+        {
+          value: "yes",
+          text: "Yes",
+          conditional: {
+            html: passportHtml
+          }
+        },
+        {
+          value: "no",
+          text: "No/I cannot provide the details right now"
+        }
+      ]
+    }) }}
+
+      {{ govukDetails({
+      summaryText: "I don't know my UK National Insurance number",
+      html: "<p></p>"
+      }) }}
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+{% endblock %}
